@@ -3,11 +3,11 @@ provider "aws" {
 }
 
 variable "name" {
-  default = "test"
+  default = "candidataxyz"
 }
 
 variable "username" {
-  default = "testusername"
+  default = "candidatexyz"
 }
 
 data "aws_ami" "image" {

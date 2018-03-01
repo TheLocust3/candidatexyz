@@ -3,7 +3,7 @@ upstream app {
 }
 
 server {
-    server_name EXAMPLE.com www.EXAMPLE.com;
+    server_name candidatexyz.com www.candidatexyz.com;
 
     try_files $uri @app;
 
@@ -16,8 +16,8 @@ server {
 
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/EXAMPLE.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/EXAMPLE.com/privkey.pem; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/candidatexyz.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/candidatexyz.com/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
@@ -26,12 +26,12 @@ server {
 
 
 server {
-    if ($host = www.EXAMPLE.com) {
+    if ($host = www.candidatexyz.com) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
 
-    if ($host = EXAMPLE.com) {
+    if ($host = candidatexyz.com) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
@@ -39,6 +39,6 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    server_name EXAMPLE.com www.EXAMPLE.com;
+    server_name candidatexyz.com www.candidatexyz.com;
     return 404; # managed by Certbot
 }
