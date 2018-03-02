@@ -8,6 +8,8 @@ import thunkMiddleware from 'redux-thunk';
 
 import reducer from '../components/reducers/root-reducer';
 
+import Navbar from '../components/components/common/Navbar';
+
 import Index from '../components/containers/Index';
 import SignInContainer from '../components/containers/users/SignInContainer';
 import SignUpContainer from '../components/containers/users/SignUpContainer';
@@ -39,6 +41,8 @@ class Base extends React.Component {
                 <div>
                     <Router>
                         <div>
+                            <Navbar />
+
                             <Route component={ScrollToTop} />
 
                             <Switch>

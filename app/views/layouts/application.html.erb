@@ -4,6 +4,7 @@
     <title>CandidateXYZ</title>
     <%= csrf_meta_tags %>
 
+    <link type="text/css" href="/material-components-web.min.css" rel="stylesheet" />
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
@@ -14,5 +15,8 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <script src="/material-components-web.min.js"></script>
+    <script>mdc.autoInit()</script>
   </body>
 </html>

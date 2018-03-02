@@ -21,5 +21,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '*path', to: 'root#index'
+  get '*path', to: 'root#index', :constraints => lambda{|req| req.path !~ /\.(min.css|min.js)$/ }
 end
