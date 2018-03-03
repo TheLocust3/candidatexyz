@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    padding-top: 60%;
+}
+
+.button {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 125%;
+}

@@ -52,7 +52,6 @@ class Base extends React.Component {
                                 <Route exact path="/forgot_password" component={ForgotPasswordContainer} />
                                 <Route exact path="/reset_password" component={ResetPasswordContainer} />
                                 <Route exact path="/users/edit" component={EditUserContainer} />
-
                             </Switch>
                         </div>
                     </Router>
