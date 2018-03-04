@@ -7,7 +7,7 @@ import SocialMediaLinks from './SocialMediaLinks';
 export default class JoinCard extends React.Component {
 
     render() {
-        let top = _.isEmpty(this.props.top) ? '40%' : `${this.props.top}%`;
+        let top = _.isEmpty(this.props.top) ? '15%' : `${this.props.top}%`;
         let right = _.isEmpty(this.props.right) ? '3%' : `${this.props.right}%`;
         let width = _.isEmpty(this.props.width) ? '35%' : `${this.props.width}%`;
 

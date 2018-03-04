@@ -1,13 +1,3 @@
-.icon-row {
-    text-align: center;
-    padding-top: 2%;
-}
-
-.icon-cell {
-    padding-left: 2%;
-    color: white;
-}
-
 .icon-cell:hover {
     color: #cccccc;
 }
@@ -39,19 +29,22 @@
     height: 60vh;
 }
 
+.final-panel {
+    position: relative;
+    width: 100%;
+}
+
 .background-image {
-    position: absolute;
     object-fit: cover;
     width: 100%;
+    height: auto;
     z-index: -1;
 }
 
-.final-panel {
-    width: 100%;
-    height: 80vh;
-}
-
 .final-panel-content {
+    position: absolute;
+    top: 0;
+    width: 100%;
     padding-top: 20%;
     text-align: center;
 }
