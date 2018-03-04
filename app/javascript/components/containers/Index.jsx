@@ -20,7 +20,20 @@ export default class Index extends React.Component {
                         <Link to='/meet' className='link'><div className='mdc-typography--headline'>MEET CANDIDATEXYZ &raquo;</div></Link>
                     </Slideshow>
 
-                    <img className='background-image' src='https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59c33b9c18b27d0daca27f1e/1503727352927/unspecified-43.jpg?format=2500w' />
+                    <div className='final-panel'>
+                        <img className='background-image' src='https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59c33b9c18b27d0daca27f1e/1503727352927/unspecified-43.jpg?format=2500w' />
+
+                        <div className='final-panel-content'>
+                            <div className='final-panel-background final-panel-color'>
+                                <div className='mdc-typography--display3'><b>Join Team CandidateXYZ</b></div>
+                            </div>
+
+                            <div className='final-panel-actions mdc-typography--headline'>
+                                <Link to="/sign_up"><button className="mdc-button mdc-button--raised button final-panel-color" data-mdc-auto-init="MDCRipple">Sign Up</button></Link>
+                                <a href="https://secure.actblue.com"><button className="mdc-button mdc-button--raised button final-panel-color" data-mdc-auto-init="MDCRipple">Donate</button></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
