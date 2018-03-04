@@ -2,7 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class SocialMediaLinks extends React.Component {
+export default class Slideshow extends React.Component {
 
     constructor(props) {
         super(props)
@@ -50,7 +50,7 @@ export default class SocialMediaLinks extends React.Component {
     }
 }
 
-SocialMediaLinks.propTypes = {
+Slideshow.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     children: PropTypes.arrayOf(PropTypes.element)
 };

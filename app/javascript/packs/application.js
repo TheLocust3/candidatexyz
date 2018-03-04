@@ -9,6 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 import reducer from '../components/reducers/root-reducer';
 
 import Navbar from '../components/components/common/Navbar';
+import Footer from '../components/components/common/Footer';
 
 import Index from '../components/containers/Index';
 import SignInContainer from '../components/containers/users/SignInContainer';
@@ -53,6 +54,8 @@ class Base extends React.Component {
                                 <Route exact path="/reset_password" component={ResetPasswordContainer} />
                                 <Route exact path="/users/edit" component={EditUserContainer} />
                             </Switch>
+
+                            <Footer />
                         </div>
                     </Router>
                 </div>

@@ -1,0 +1,25 @@
+.footer {
+    position: absolute;
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    background-color: #00427c;
+    color: white;
+    text-align: center;
+}
+
+.footer .link-holder {
+    width: 100%;
+    padding-top: 3%;
+    text-align: center;
+}
+
+.footer .link {
+    color: white;
+    text-decoration: none;
+    padding-left: 2%;
+}
+
+.footer .link:hover {
+    color: rgba(255, 255, 255, 0.5);
+}

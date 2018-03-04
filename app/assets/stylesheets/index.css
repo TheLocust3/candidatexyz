@@ -1,0 +1,47 @@
+.icon-row {
+    text-align: center;
+    padding-top: 2%;
+}
+
+.icon-cell {
+    padding-left: 2%;
+    color: white;
+}
+
+.icon-cell:hover {
+    color: #cccccc;
+}
+
+.join-card {
+    min-height: 300px;
+}
+
+.join-media {
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+.card-title {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.slideshow {
+    padding-left: 3%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.slideshow-image {
+    object-fit: cover;
+    width: 100%;
+    height: 60vh;
+}
+
+.background-image {
+    object-fit: cover;
+    width: 100%;
+    height: 80vh;
+    z-index: 0;
+}
