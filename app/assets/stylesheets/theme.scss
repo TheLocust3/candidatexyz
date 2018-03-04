@@ -1,0 +1,12 @@
+$button-font-size: 24px;
+$button-font-family: 'Saira Condensed', sans-serif;
+$link-color: #4c4c4c;
+$link-hover-color: #999999;
+
+$mdc-theme-primary: #00427c;
+
+.mdc-button {
+    height: 50px;
+}
+
+@import "@material/theme/mdc-theme";

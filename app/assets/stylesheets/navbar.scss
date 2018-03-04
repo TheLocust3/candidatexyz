@@ -24,6 +24,15 @@
     padding-top: 0.5%;
 }
 
+.navbar .link {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .link:hover {
+    color: #cccccc;
+}
+
 .jumbotron {
     position: absolute;
     z-index: -1;

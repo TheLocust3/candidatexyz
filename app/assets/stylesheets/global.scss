@@ -1,3 +1,5 @@
+@import 'theme';
+
 body {
     margin: 0;
     padding: 0;
@@ -12,22 +14,24 @@ body {
 }
 
 .button {
-    font-family: 'Saira Condensed', sans-serif;
-    font-size: 125%;
+    font-family: $button-font-family;
+    font-size: $button-font-size;
 }
 
 .link {
-    color: #4c4c4c;
+    font-family: $button-font-family;
+    font-size: $button-font-size;
+    color: $link-color;
 }
 
 .link:hover { 
-    color: #999999;
+    color: $link-hover-color;
 }
 
 .approved-by {
     text-align: center;
-    color: #999999;
-    border: #999999 solid 1px;
+    color: $link-hover-color;
+    border: $link-hover-color solid 1px;
     display: inline-block;
     padding: 0.5%;
     font-size: 12px;
