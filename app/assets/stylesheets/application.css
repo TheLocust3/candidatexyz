@@ -31,11 +31,18 @@ body {
     font-size: 125%;
 }
 
-.join {
-    position: absolute;
-    width: 35%;
-    top: 40%;
-    right: 3%;
+.icon-row {
+    text-align: center;
+    padding-top: 2%;
+}
+
+.icon-cell {
+    padding-left: 2%;
+    color: white;
+}
+
+.icon-cell:hover {
+    color: #cccccc;
 }
 
 .join-card {
