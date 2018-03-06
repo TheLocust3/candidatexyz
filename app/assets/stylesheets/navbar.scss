@@ -36,7 +36,7 @@
 }
 
 .header-image {
-    @include parallax('https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59cd9e5032601e2e1011ec17/1506647684440/Seth-headshot-smile.jpg?format=2500w');
-    height: 100%;
+    @include parallax('');
+    width: 100%;
     padding-bottom: 40%;
 }

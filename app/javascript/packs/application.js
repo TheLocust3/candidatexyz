@@ -12,6 +12,7 @@ import Navbar from '../components/components/common/Navbar';
 import Footer from '../components/components/common/Footer';
 
 import Index from '../components/containers/Index';
+import Meet from '../components/containers/Meet';
 import SignInContainer from '../components/containers/users/SignInContainer';
 import SignUpContainer from '../components/containers/users/SignUpContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
@@ -48,6 +49,7 @@ class Base extends React.Component {
 
                             <Switch>
                                 <Route exact path="/" component={Index} />
+                                <Route exact path="/meet" component={Meet} />
                                 <Route exact path="/sign_in" component={SignInContainer} />
                                 <Route exact path="/sign_up" component={SignUpContainer} />
                                 <Route exact path="/forgot_password" component={ForgotPasswordContainer} />
