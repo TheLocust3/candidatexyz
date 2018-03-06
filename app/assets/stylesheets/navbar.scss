@@ -1,3 +1,5 @@
+@import 'global';
+
 .navbar {
     padding: 4% 5% 5%;
 }
@@ -33,11 +35,8 @@
     color: #cccccc;
 }
 
-.jumbotron {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
+.header-image {
+    @include parallax('https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59cd9e5032601e2e1011ec17/1506647684440/Seth-headshot-smile.jpg?format=2500w');
     height: 100%;
-    left: 0;
-    top: 0;
+    padding-bottom: 40%;
 }

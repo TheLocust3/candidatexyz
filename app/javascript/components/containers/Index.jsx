@@ -21,8 +21,6 @@ export default class Index extends React.Component {
                     </Slideshow>
 
                     <div className='final-panel'>
-                        <img className='background-image' src='https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59c33b9c18b27d0daca27f1e/1503727352927/unspecified-43.jpg?format=2500w' />
-
                         <div className='final-panel-content'>
                             <div className='final-panel-background final-panel-color'>
                                 <div className='mdc-typography--display3'><b>Join Team CandidateXYZ</b></div>

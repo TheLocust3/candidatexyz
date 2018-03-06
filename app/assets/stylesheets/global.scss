@@ -10,7 +10,16 @@ body {
 }
 
 .content {
-    padding-top: 50%;
+    
+}
+
+@mixin parallax($image) {
+    background-image: url($image);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
 }
 
 .button {
