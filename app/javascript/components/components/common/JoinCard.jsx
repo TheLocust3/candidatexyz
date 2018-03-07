@@ -22,13 +22,13 @@ export default class JoinCard extends React.Component {
                                 You should totally sign up
                             </p>
 
-                            <div className='mdc-text-field mdc-text-field--dense' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
+                            <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
                                 <input type='text' id='join-email' className='mdc-text-field__input' />
                                 <label className='mdc-text-field__label' htmlFor='join-email'>Zip Code</label>
                                 <div className='mdc-line-ripple'></div>
                             </div><br />
 
-                            <div className='mdc-text-field mdc-text-field--dense' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
+                            <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
                                 <input type='email' id='join-email' className='mdc-text-field__input' />
                                 <label className='mdc-text-field__label' htmlFor='join-email'>Email</label>
                                 <div className='mdc-line-ripple'></div>

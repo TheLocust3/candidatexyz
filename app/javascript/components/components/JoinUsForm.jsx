@@ -34,7 +34,7 @@ export default class JoinUsForm extends React.Component {
 
                 <div className="mdc-text-field" data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
                     <input type="text" id="cell-phone" className="mdc-text-field__input" />
-                    <label className="mdc-text-field__label" htmlFor="cell-phone">Cell phone</label>
+                    <label className="mdc-text-field__label" htmlFor="cell-phone">Phone number</label>
                     <div className="mdc-line-ripple"></div>
                 </div>
 

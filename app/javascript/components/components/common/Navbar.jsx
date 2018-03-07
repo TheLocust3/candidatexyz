@@ -12,7 +12,7 @@ export default class Navbar extends React.Component {
                     <div className='navbar-actions'>
                         <div className='button-cell'><Link className='link' to='/meet'>Meet CandidateXYZ</Link></div>
                         <div className='button-cell'><Link className='link' to='/action'>Take Action</Link></div>
-                        <div className='button-cell'><Link to='https://www.actblue.com'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></Link></div>
+                        <div className='button-cell'><a href='https://www.actblue.com'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></a></div>
                     </div>
                 </div>
             </div>

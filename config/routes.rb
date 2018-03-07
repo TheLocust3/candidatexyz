@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     namespace :users do
       get '' => 'users#index'
     end
+
+    resources :contacts
   end
 
   get '*path', to: 'root#index', :constraints => lambda{|req| req.path !~ /\.(min.css|min.js)$/ }
