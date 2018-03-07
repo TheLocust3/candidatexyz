@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
 
-import JoinTeamPanel from '../components/common/JoinTeamPanel'
+import JoinTeamPanel from '../components/common/JoinTeamPanel';
 
 export default class Action extends React.Component {
 

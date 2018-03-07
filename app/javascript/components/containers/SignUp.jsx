@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import React from 'react';
 
-import JoinTeamPanel from '../components/common/JoinTeamPanel'
+import JoinUsForm from '../components/JoinUsForm';
 
-export default class Action extends React.Component {
+export default class SignUp extends React.Component {
 
     componentDidMount() {
         $('.header-image').css('background-image', 'url()');
@@ -22,6 +22,8 @@ export default class Action extends React.Component {
                     
                     <div className='sign-up-form'>
                         <div className='mdc-typography--title'><b>How can we reach you?</b></div><br />
+
+                        <JoinUsForm />
                     </div>
                 </div>
             </div>
