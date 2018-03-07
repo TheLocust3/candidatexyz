@@ -13,8 +13,10 @@ import Footer from '../components/components/common/Footer';
 
 import Index from '../components/containers/Index';
 import Meet from '../components/containers/Meet';
+import Action from '../components/containers/Action';
+import SignUp from '../components/containers/SignUp';
+
 import SignInContainer from '../components/containers/users/SignInContainer';
-import SignUpContainer from '../components/containers/users/SignUpContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
 import ResetPasswordContainer from '../components/containers/users/ResetPasswordContainer';
 import EditUserContainer from '../components/containers/users/EditUserContainer';
@@ -50,8 +52,10 @@ class Base extends React.Component {
                             <Switch>
                                 <Route exact path="/" component={Index} />
                                 <Route exact path="/meet" component={Meet} />
+                                <Route exact path="/action" component={Action} />
+                                <Route exact path="/sign_up" component={SignUp} />
+
                                 <Route exact path="/sign_in" component={SignInContainer} />
-                                <Route exact path="/sign_up" component={SignUpContainer} />
                                 <Route exact path="/forgot_password" component={ForgotPasswordContainer} />
                                 <Route exact path="/reset_password" component={ResetPasswordContainer} />
                                 <Route exact path="/users/edit" component={EditUserContainer} />

@@ -30,36 +30,3 @@
     width: 100%;
     height: 60vh;
 }
-
-.final-panel {
-    position: relative;
-    width: 100%;
-}
-
-.final-panel-content {
-    @include parallax('https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59c33b9c18b27d0daca27f1e/1503727352927/unspecified-43.jpg?format=2500w');
-
-    width: 100%;
-    padding-top: 20%;
-    padding-bottom: 20%;
-    text-align: center;
-}
-
-.final-panel-color {
-    color: white;
-    background-color: rgba(0, 66, 124, 0.85);
-}
-
-.final-panel-background {
-    display: inline-block;
-    padding: 1% 0.5%;
-}
-
-.final-panel-actions .button {
-    margin: 5%;
-}
-
-.final-panel-content .button {
-    width: 150px;
-    height: 75px;
-}

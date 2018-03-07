@@ -1,0 +1,34 @@
+@import 'global';
+
+.join-team-panel {
+    position: relative;
+    width: 100%;
+}
+
+.join-team-panel-content {
+    @include parallax('https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59c33b9c18b27d0daca27f1e/1503727352927/unspecified-43.jpg?format=2500w');
+
+    height: 0px;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    text-align: center;
+}
+
+.join-team-panel-color {
+    color: white;
+    background-color: rgba(0, 66, 124, 0.85);
+}
+
+.join-team-panel-background {
+    display: inline-block;
+    padding: 1% 0.5%;
+}
+
+.join-team-panel-actions .button {
+    margin: 5%;
+}
+
+.join-team-panel-content .button {
+    width: 150px;
+    height: 75px;
+}

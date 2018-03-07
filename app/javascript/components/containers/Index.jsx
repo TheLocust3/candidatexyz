@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import JoinCard from '../components/common/JoinCard';
+import JoinTeamPanel from '../components/common/JoinTeamPanel'
 import Slideshow from '../components/common/Slideshow';
 
 export default class Index extends React.Component {
@@ -25,18 +26,7 @@ export default class Index extends React.Component {
                         <Link to='/meet' className='link'><div className='mdc-typography--headline'>MEET CANDIDATEXYZ &raquo;</div></Link>
                     </Slideshow>
 
-                    <div className='final-panel'>
-                        <div className='final-panel-content'>
-                            <div className='final-panel-background final-panel-color'>
-                                <div className='mdc-typography--display3'><b>Join Team CandidateXYZ</b></div>
-                            </div>
-
-                            <div className='final-panel-actions mdc-typography--headline'>
-                                <Link to="/sign_up"><button className="mdc-button mdc-button--raised button final-panel-color" data-mdc-auto-init="MDCRipple">Sign Up</button></Link>
-                                <a href="https://secure.actblue.com"><button className="mdc-button mdc-button--raised button final-panel-color" data-mdc-auto-init="MDCRipple">Donate</button></a>
-                            </div>
-                        </div>
-                    </div>
+                    <JoinTeamPanel />
                 </div>
             </div>
         );
