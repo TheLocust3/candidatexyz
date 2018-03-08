@@ -10,6 +10,7 @@ class Api::ContactsController < Api::ApiController
 
     def create
         contact = Contact.new(create_params(params))
+
         if contact.save
             render :json => Contact.find(contact.id)
         else

@@ -1,10 +1,14 @@
 class Contact < ApplicationRecord
-  before_save :sanitize_phone_number
+  before_validation :sanitize_phone_number
 
-  validates :email, presence: true
-  validates :zipcode, presence: true
+  validates :email, presence: true, email: true
+  validates :zipcode, presence: true, zipcode: true
+  validates :phone_number, number: true
 
-  def sanitize_phone_number
-    phone_number = phone_number.gsub(/\D/, "") # remove non-numbers
-  end
+  private
+    def sanitize_phone_number
+      unless self.phone_number.nil?
+        self.phone_number = self.phone_number.gsub(/\D/, "") # remove non-numbers
+      end
+    end
 end

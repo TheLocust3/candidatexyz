@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-let ContactsApi = {
+let ContactApi = {
 
     getAll() {
         return new Promise((resolve, reject) => {
@@ -22,22 +22,22 @@ let ContactsApi = {
         });
     },
 
-    create(email, zipcode, firstName, lastName, phoneNumber) {
+    create(email, zipCode, firstName, lastName, phoneNumber) {
         return new Promise((resolve, reject) => {
             $.ajax('/api/contacts', {
                 type: 'post',
-                data: { email: email, zipcode: zipcode, first_name: firstName, last_name: lastName, phone_number: phoneNumber },
+                data: { email: email, zipcode: zipCode, first_name: firstName, last_name: lastName, phone_number: phoneNumber },
                 success: resolve,
                 error: reject
             });
         });
     },
 
-    update(id, email, zipcode, firstName, lastName, phoneNumber) {
+    update(id, email, zipCode, firstName, lastName, phoneNumber) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/contacts/${id}`, {
                 type: 'patch',
-                data: { email: email, zipcode: zipcode, first_name: firstName, last_name: lastName, phone_number: phoneNumber },
+                data: { email: email, zipcode: zipCode, first_name: firstName, last_name: lastName, phone_number: phoneNumber },
                 success: resolve,
                 error: reject
             });
@@ -55,4 +55,4 @@ let ContactsApi = {
     }
 };
 
-export default MatchDataApi;
+export default ContactApi;

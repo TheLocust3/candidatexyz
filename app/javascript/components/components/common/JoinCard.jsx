@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import SocialMediaLinks from './SocialMediaLinks';
+import SlimJoinUsForm from '../SlimJoinUsForm'
 
 export default class JoinCard extends React.Component {
 
@@ -15,29 +16,13 @@ export default class JoinCard extends React.Component {
             <div style={{ position: 'absolute', top: top, right: right, width: width }}>
                 <div className='mdc-card'>
                     <div className='mdc-card__media join-card'>
-                        <div className='mdc-card__media-content join-media'>
-                            <div className='mdc-typography--headline card-title'><b>Join CandidateXYZ</b></div>
+                        <div className='mdc-typography--headline card-title'><b>Join CandidateXYZ</b></div>
 
-                            <p className='join-description'>
-                                You should totally sign up
-                            </p>
+                        <p className='join-description'>
+                            You should totally sign up
+                        </p>
 
-                            <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                                <input type='text' id='join-email' className='mdc-text-field__input' />
-                                <label className='mdc-text-field__label' htmlFor='join-email'>Zip Code</label>
-                                <div className='mdc-line-ripple'></div>
-                            </div><br />
-
-                            <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                                <input type='email' id='join-email' className='mdc-text-field__input' />
-                                <label className='mdc-text-field__label' htmlFor='join-email'>Email</label>
-                                <div className='mdc-line-ripple'></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='mdc-card__actions' dir='rtl'>
-                        <button className='mdc-button mdc-card__action mdc-card__action--button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Sign Up</button>
+                        <SlimJoinUsForm />
                     </div>
                 </div>
 
