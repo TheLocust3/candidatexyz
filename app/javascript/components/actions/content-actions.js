@@ -42,12 +42,12 @@ export function fetchAllContent() {
     }
 }
 
-export function fetchContact(id) {
+export function fetchContent(identifier) {
 
     return function (dispatch) {
         dispatch(requestContentAction());
 
-        ContentApi.get(id).then( data => {
+        ContentApi.get(identifier).then( data => {
             dispatch(receiveContentAction(data));
         });
     }

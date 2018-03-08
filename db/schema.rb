@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180308142116) do
   end
 
   create_table "contents", force: :cascade do |t|
-    t.string "type"
+    t.string "content_type"
     t.string "identifier"
     t.string "content"
     t.datetime "created_at", null: false

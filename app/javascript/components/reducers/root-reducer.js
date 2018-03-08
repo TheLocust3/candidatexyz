@@ -7,7 +7,7 @@ import { contentReducer } from './content-reducer';
 const reducer = combineReducers({
     users: userReducer,
     contacts: contactReducer,
-    contacts: contentReducer
+    content: contentReducer
 });
 
 export default reducer;

@@ -12,9 +12,9 @@ let ContentApi = {
         });
     },
 
-    get(id) {
+    get(identifier) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/content/${id}`, {
+            $.ajax(`/api/content/${identifier}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -26,16 +26,16 @@ let ContentApi = {
         return new Promise((resolve, reject) => {
             $.ajax('/api/content', {
                 type: 'post',
-                data: { type: type, identifier: identifier, content: content },
+                data: { content_type: type, identifier: identifier, content: content },
                 success: resolve,
                 error: reject
             });
         });
     },
 
-    update(id, content) {
+    update(identifier, content) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/content/${id}`, {
+            $.ajax(`/api/content/${identifier}`, {
                 type: 'patch',
                 data: { content: content },
                 success: resolve,
@@ -44,9 +44,9 @@ let ContentApi = {
         });
     },
 
-    destroy(id) {
+    destroy(identifier) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/content/${id}`, {
+            $.ajax(`/api/content/${identifier}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject

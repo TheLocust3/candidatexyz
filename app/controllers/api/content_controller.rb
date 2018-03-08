@@ -5,7 +5,7 @@ class Api::ContentController < Api::ApiController
     end
 
     def show
-        render :json => Content.find(params[:id])
+        render :json => Content.where(:identifier => params[:id]).first
     end
 
     def create
@@ -19,7 +19,7 @@ class Api::ContentController < Api::ApiController
     end
 
     def update
-        content = Content.find(params[:id])
+        content = Content.where(:identifier => params[:id]).first
 
         if content.update(update_params(params))
             render :json => Content.find(content.id)
@@ -29,7 +29,7 @@ class Api::ContentController < Api::ApiController
     end
 
     def destroy
-        content = Content.find(params[:id])
+        content = Content.where(:identifier => params[:id]).first
         content.destroy
 
         render_success
@@ -37,7 +37,7 @@ class Api::ContentController < Api::ApiController
 
     private
     def create_params(params)
-        params.permit(:type, :identifier, :content)
+        params.permit(:content_type, :identifier, :content)
     end
 
     def update_params(params)
