@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
 
     resources :contacts
+    resources :content
   end
 
   get '*path', to: 'root#index', :constraints => lambda{|req| req.path !~ /\.(min.css|min.js)$/ }
