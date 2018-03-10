@@ -1,11 +1,8 @@
 import * as ContentActions from '../actions/content-actions';
 
-import { combineReducers } from 'redux';
-
 const initialState = {
     isReady: false,
-    content: {},
-    allContent: {},
+    contents: []
 };
 
 export function contentReducer(state = initialState, action) {
@@ -16,14 +13,17 @@ export function contentReducer(state = initialState, action) {
                 isReady: false
             });
         case ContentActions.RECEIVE_CONTENT:
+            let contents = state.contents;
+            contents.push(action.data);
+
             return Object.assign({}, state, {
                 isReady: true,
-                content: action.data
+                contents: contents
             });
         case ContentActions.RECEIVE_ALL_CONTENT:
             return Object.assign({}, state, {
                 isReady: true,
-                allContent: action.data
+                contents: action.data
             });
         default:
             return state;

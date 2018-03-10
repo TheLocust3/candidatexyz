@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import TextContent from '../../containers/content/TextContent';
 import SocialMediaLinks from './SocialMediaLinks';
 import SlimJoinUsForm from '../SlimJoinUsForm'
 
@@ -18,9 +19,9 @@ export default class JoinCard extends React.Component {
                     <div className='mdc-card__media join-card'>
                         <div className='mdc-typography--headline card-title'><b>Join CandidateXYZ</b></div>
 
-                        <p className='join-description'>
-                            You should totally sign up
-                        </p>
+                        <div className='join-description'>
+                            <TextContent identifier='joinCardBlurb' />
+                        </div>
 
                         <SlimJoinUsForm />
                     </div>
