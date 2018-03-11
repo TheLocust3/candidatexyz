@@ -24,7 +24,7 @@ export default class Index extends React.Component {
                             <b><TextContent identifier='slideshowBlurb' /></b>
                         </div><br />
 
-                        <Link to='/meet' className='link'><div className='mdc-typography--headline'>MEET CANDIDATEXYZ &raquo;</div></Link>
+                        <Link to='/meet' className='link'><div className='mdc-typography--headline'><TextContent identifier='slideshowLink' /></div></Link>
                     </Slideshow>
 
                     <JoinTeamPanel />

@@ -30,9 +30,9 @@ class TextContent extends React.Component {
         if (!this.state.isReady) return null;
 
         return (
-            <div {...props}>
+            <span {...props}>
                 {this.state.content.content}
-            </div>
+            </span>
         );
     }
 }

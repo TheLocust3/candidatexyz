@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import TextContent from '../../containers/content/TextContent';
+
 export default class JoinTeamPanel extends React.Component {
 
     render() {
@@ -8,7 +10,7 @@ export default class JoinTeamPanel extends React.Component {
             <div className='join-team-panel'>
                 <div className='join-team-panel-content'>
                     <div className='join-team-panel-background join-team-panel-color'>
-                        <div className='mdc-typography--display3'><b>Join Team CandidateXYZ</b></div>
+                        <div className='mdc-typography--display3'><b><TextContent identifier='joinTeamPanelTitle' /></b></div>
                     </div>
 
                     <div className='join-team-panel-actions mdc-typography--headline'>

@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import TextContent from '../containers/content/TextContent';
 import JoinCard from '../components/common/JoinCard';
 import Slideshow from '../components/common/Slideshow';
 
@@ -14,7 +15,7 @@ export default class Meet extends React.Component {
     render() {
         return (
             <div>
-                <div className='header-text mdc-typography--display2'><b>Meet CandidateXYZ.</b></div>
+                <div className='header-text mdc-typography--display2'><b><TextContent identifier='meetHeader' /></b></div>
 
                 <div className='content'>
                     <div className='about'>

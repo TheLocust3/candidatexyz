@@ -17,7 +17,7 @@ export default class JoinCard extends React.Component {
             <div style={{ position: 'absolute', top: top, right: right, width: width }}>
                 <div className='mdc-card'>
                     <div className='mdc-card__media join-card'>
-                        <div className='mdc-typography--headline card-title'><b>Join CandidateXYZ</b></div>
+                        <div className='mdc-typography--headline card-title'><b><TextContent identifier='joinCardTitle' /></b></div>
 
                         <div className='join-description'>
                             <TextContent identifier='joinCardBlurb' />
