@@ -1,10 +1,12 @@
 import _ from 'lodash';
+import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import ContentApi from '../../../api/content-api';
+import Slideshow from '../../components/common/Slideshow';
 
-class TextContent extends React.Component {
+class SlideshowContent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -21,21 +23,26 @@ class TextContent extends React.Component {
         });
     }
 
+    prepareImages(content) {
+        return $.parseJSON(content);
+    }
+
     render() {
         let { identifier, dispatch, ...props } = this.props;
         
         if (!this.state.isReady) return null;
 
         return (
-            <span {...props}>
-                {this.state.content.content}
-            </span>
+            <Slideshow images={this.prepareImages(this.state.content.content)}>
+                {this.props.children}
+            </Slideshow>
         );
     }
 }
 
-TextContent.propTypes = {
-    identifier: PropTypes.string.isRequired
+SlideshowContent.propTypes = {
+    identifier: PropTypes.string.isRequired,
+    children: PropTypes.arrayOf(PropTypes.element)
 };
 
-export default TextContent;
+export default SlideshowContent;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import ContentApi from '../../../api/content-api';
 
-class TextContent extends React.Component {
+class ImageContent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -27,15 +27,13 @@ class TextContent extends React.Component {
         if (!this.state.isReady) return null;
 
         return (
-            <span {...props}>
-                {this.state.content.content}
-            </span>
+            <img src={this.state.content.content} {...props} />
         );
     }
 }
 
-TextContent.propTypes = {
+ImageContent.propTypes = {
     identifier: PropTypes.string.isRequired
 };
 
-export default TextContent;
+export default ImageContent;
