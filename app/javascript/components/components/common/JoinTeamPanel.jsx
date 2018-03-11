@@ -1,11 +1,30 @@
+import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import ContentApi from '../../../api/content-api';
 import TextContent from '../../containers/content/TextContent';
 
 export default class JoinTeamPanel extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = { isReady: false, imageUrl: '' };
+    }
+
+    componentWillMount() {
+        ContentApi.get('joinBackground').then((response) => {
+            this.setState({
+                isReady: true,
+                imageUrl: response.content
+            });
+        });
+    }
+
     render() {
+        $('.join-team-panel-content').css('background-image', `url(${this.state.imageUrl})`);
+
         return (
             <div className='join-team-panel'>
                 <div className='join-team-panel-content'>

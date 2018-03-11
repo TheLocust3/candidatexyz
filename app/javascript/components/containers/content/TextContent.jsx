@@ -27,9 +27,7 @@ class TextContent extends React.Component {
         if (!this.state.isReady) return null;
 
         return (
-            <span {...props}>
-                {this.state.content.content}
-            </span>
+            <span dangerouslySetInnerHTML={{__html: this.state.content.content }} {...props} />
         );
     }
 }
