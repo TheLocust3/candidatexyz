@@ -21,6 +21,10 @@ Content.create(content_type: 'text', identifier: 'contactBlurb', content: "Submi
 
 Content.create(content_type: 'image', identifier: 'logo', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59933e3e7131a5f7bfb18c09/1518809293655/?format=1500w')
 Content.create(content_type: 'image', identifier: 'signature', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/599d08df197aea73adf91e33/1503463674117/seth-moulton-navy.png?format=300w')
+Content.create(content_type: 'image', identifier: 'photo1', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59e4f6f5cf81e0df88687f5f/1508340413551/SethMoulton.jpg?format=750w')
+Content.create(content_type: 'image', identifier: 'photo2', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59e4fbbecf81e0df8868ccbf/1508340405190/Najaf.jpg?format=750w')
+Content.create(content_type: 'image', identifier: 'photo3', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/5a873053c83025fb2e2ecfb7/1518809178074/20180213+Moulton+%28Robin+Lubbock-WBUR%29.jpg?format=750w')
+Content.create(content_type: 'image', identifier: 'photo4', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59e507458fd4d22a7ab90652/1508181849020/IMG_0322.jpg?format=750w')
 
 Content.create(content_type: 'raw', identifier: 'homeBackground', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59cd9e5032601e2e1011ec17/1506647684440/Seth-headshot-smile.jpg?format=2500w')
 Content.create(content_type: 'raw', identifier: 'joinBackground', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59c33b9c18b27d0daca27f1e/1503727352927/unspecified-43.jpg?format=2500w')
@@ -40,6 +44,11 @@ In eget sem lacus. Etiam tincidunt est a auctor tempus. Vestibulum porta sed jus
 
 Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales tellus, vel fermentum nisi rhoncus a. Sed velit tellus, tempor hendrerit ligula nec, consequat pretium neque. Proin sed neque augue. Quisque accumsan euismod libero a maximus. Curabitur vitae viverra turpis. Nullam porttitor risus et leo luctus dignissim. Integer vel rutrum massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar dui nunc, sit amet accumsan ante gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sit amet ornare tortor. Nam vel mollis lacus.<br /><br />
 ")
+
+Content.create(content_type: 'text', identifier: 'pressSecretaryContact', content: '
+    A cool person, Press Secretary<br />
+    Email: cool@candidatexyz.com
+')
 
 
 Content.create(content_type: 'link', identifier: 'navLink1', content: '{ "text": "Meet CandidateXYZ", "url": "/meet" }')
