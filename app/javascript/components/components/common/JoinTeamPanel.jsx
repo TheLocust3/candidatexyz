@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import ContentApi from '../../../api/content-api';
 import TextContent from '../../containers/content/TextContent';
+import ExternalLinkContent from '../../containers/content/ExternalLinkContent';
 
 export default class JoinTeamPanel extends React.Component {
 
@@ -34,7 +35,7 @@ export default class JoinTeamPanel extends React.Component {
 
                     <div className='join-team-panel-actions mdc-typography--headline'>
                         <Link to="/sign_up"><button className="mdc-button mdc-button--raised button join-team-panel-color" data-mdc-auto-init="MDCRipple">Sign Up</button></Link>
-                        <a href="https://secure.actblue.com"><button className="mdc-button mdc-button--raised button join-team-panel-color" data-mdc-auto-init="MDCRipple">Donate</button></a>
+                        <ExternalLinkContent identifier='donate'><button className="mdc-button mdc-button--raised button join-team-panel-color" data-mdc-auto-init="MDCRipple">Donate</button></ExternalLinkContent>
                     </div>
                 </div>
             </div>

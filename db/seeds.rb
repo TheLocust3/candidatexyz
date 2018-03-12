@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 Content.create(content_type: 'text', identifier: 'slideshowBlurb', content: 'CandidateXYZ is working to put people over politics, ensure that every American has the opportunity to succeed, and tackle the towering challenges of today and tomorrow.')
 Content.create(content_type: 'text', identifier: 'joinCardBlurb', content: 'You should totally sign up')
 Content.create(content_type: 'text', identifier: 'joinCardTitle', content: 'Join CandidateXYZ')
@@ -43,3 +35,14 @@ In eget sem lacus. Etiam tincidunt est a auctor tempus. Vestibulum porta sed jus
 
 Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales tellus, vel fermentum nisi rhoncus a. Sed velit tellus, tempor hendrerit ligula nec, consequat pretium neque. Proin sed neque augue. Quisque accumsan euismod libero a maximus. Curabitur vitae viverra turpis. Nullam porttitor risus et leo luctus dignissim. Integer vel rutrum massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar dui nunc, sit amet accumsan ante gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sit amet ornare tortor. Nam vel mollis lacus.<br /><br />
 ")
+
+
+Content.create(content_type: 'link', identifier: 'navLink1', content: '{ "text": "Meet CandidateXYZ", "url": "/meet" }')
+Content.create(content_type: 'link', identifier: 'navLink2', content: '{ "text": "Take Action", "url": "/action" }')
+Content.create(content_type: 'link', identifier: 'donate', content: '{ "text": "DONATE", "url": "https://secure.actblue.com" }')
+Content.create(content_type: 'link', identifier: 'contact', content: '{ "text": "Contact", "url": "/contact" }')
+Content.create(content_type: 'link', identifier: 'privacy', content: '{ "text": "Privacy", "url": "/privacy" }')
+Content.create(content_type: 'link', identifier: 'facebook', content: '{ "text": "Facebook", "url": "http://www.facebook.com" }')
+Content.create(content_type: 'link', identifier: 'twitter', content: '{ "text": "Twitter", "url": "http://www.twitter.com" }')
+Content.create(content_type: 'link', identifier: 'instagram', content: '{ "text": "Instagram", "url": "http://www.instagram.com" }')
+Content.create(content_type: 'link', identifier: 'youtube', content: '{ "text": "Youtube", "url": "http://www.youtube.com" }')

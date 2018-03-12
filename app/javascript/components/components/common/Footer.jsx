@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 import SocialMediaLinks from './SocialMediaLinks';
-import ApprovedBy from './ApprovedBy'
+import ApprovedBy from './ApprovedBy';
+import SimpleLinkContent from '../../containers/content/SimpleLinkContent';
 
 export default class Footer extends React.Component {
 
@@ -12,8 +13,8 @@ export default class Footer extends React.Component {
                 <SocialMediaLinks size={2} />
 
                 <div className='mdc-typography--headline link-holder'>
-                    <Link className='link' to='/contact'>Contact</Link>
-                    <Link className='link' to='/privacy'>Privacy</Link>
+                    <SimpleLinkContent identifier='contact' className='link' />
+                    <SimpleLinkContent identifier='privacy' className='link' />
                 </div>
 
                 <ApprovedBy style={{ paddingTop: '3%' }} />
