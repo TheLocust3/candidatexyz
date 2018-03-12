@@ -16,6 +16,7 @@ import Meet from '../components/containers/Meet';
 import Action from '../components/containers/Action';
 import SignUp from '../components/containers/SignUp';
 import Privacy from '../components/containers/Privacy';
+import Contact from '../components/containers/Contact';
 
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
@@ -56,6 +57,7 @@ class Base extends React.Component {
                                 <Route exact path='/action' component={Action} />
                                 <Route exact path='/sign_up' component={SignUp} />
                                 <Route exact path='/privacy' component={Privacy} />
+                                <Route exact path='/contact' component={Contact} />
 
                                 <Route exact path='/sign_in' component={SignInContainer} />
                                 <Route exact path='/forgot_password' component={ForgotPasswordContainer} />

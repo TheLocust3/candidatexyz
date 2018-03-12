@@ -5,7 +5,7 @@ import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
 import JoinTeamPanel from '../components/common/JoinTeamPanel';
 
-export default class Action extends React.Component {
+export default class Privacy extends React.Component {
 
     componentDidMount() {
         $('.header-image').addClass('header-image-blank');

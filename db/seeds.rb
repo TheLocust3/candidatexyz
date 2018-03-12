@@ -1,3 +1,7 @@
+Content.create(content_type: 'text', identifier: 'officeAddress', content: '11 Beacon St, Boston, MA 02108')
+Content.create(content_type: 'text', identifier: 'POBox', content: 'PO Box 1234, Boston, MA 02108')
+Content.create(content_type: 'text', identifier: 'phoneNumber', content: '123-456-7890')
+
 Content.create(content_type: 'text', identifier: 'slideshowBlurb', content: 'CandidateXYZ is working to put people over politics, ensure that every American has the opportunity to succeed, and tackle the towering challenges of today and tomorrow.')
 Content.create(content_type: 'text', identifier: 'joinCardBlurb', content: 'You should totally sign up')
 Content.create(content_type: 'text', identifier: 'joinCardTitle', content: 'Join CandidateXYZ')
@@ -13,6 +17,7 @@ Content.create(content_type: 'text', identifier: 'takeActionEnding', content: 'J
 Content.create(content_type: 'text', identifier: 'meetHeader', content: 'Meet CandidateXYZ.')
 Content.create(content_type: 'text', identifier: 'signUpHeader', content: 'Join us!')
 Content.create(content_type: 'text', identifier: 'signUpSubtitle', content: 'How can we reach you?')
+Content.create(content_type: 'text', identifier: 'contactBlurb', content: "Submit your comments, suggestions or feedback for CandidateXYZ’s election campaign here. For inquiries regarding official business, please contact CandidateXYZ' office.")
 
 Content.create(content_type: 'image', identifier: 'logo', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59933e3e7131a5f7bfb18c09/1518809293655/?format=1500w')
 Content.create(content_type: 'image', identifier: 'signature', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/599d08df197aea73adf91e33/1503463674117/seth-moulton-navy.png?format=300w')
