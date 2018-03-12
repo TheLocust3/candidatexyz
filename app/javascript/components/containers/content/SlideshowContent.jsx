@@ -11,29 +11,24 @@ class SlideshowContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false, content: {} };
+        this.state = { content: {} };
     }
 
     componentWillMount() {
         ContentApi.get(this.props.identifier).then((response) => {
             this.setState({
-                isReady: true,
                 content: response
             });
         });
     }
 
-    prepareImages(content) {
-        return $.parseJSON(content);
-    }
-
     render() {
         let { identifier, dispatch, ...props } = this.props;
         
-        if (!this.state.isReady) return null;
+        let images = _.isEmpty(this.state.content) ? [] : $.parseJSON(this.state.content.content);
 
         return (
-            <Slideshow images={this.prepareImages(this.state.content.content)}>
+            <Slideshow images={images}>
                 {this.props.children}
             </Slideshow>
         );

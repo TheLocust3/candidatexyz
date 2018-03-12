@@ -15,6 +15,7 @@ import Index from '../components/containers/Index';
 import Meet from '../components/containers/Meet';
 import Action from '../components/containers/Action';
 import SignUp from '../components/containers/SignUp';
+import Privacy from '../components/containers/Privacy';
 
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
@@ -50,15 +51,16 @@ class Base extends React.Component {
                             <Route component={ScrollToTop} />
 
                             <Switch>
-                                <Route exact path="/" component={Index} />
-                                <Route exact path="/meet" component={Meet} />
-                                <Route exact path="/action" component={Action} />
-                                <Route exact path="/sign_up" component={SignUp} />
+                                <Route exact path='/' component={Index} />
+                                <Route exact path='/meet' component={Meet} />
+                                <Route exact path='/action' component={Action} />
+                                <Route exact path='/sign_up' component={SignUp} />
+                                <Route exact path='/privacy' component={Privacy} />
 
-                                <Route exact path="/sign_in" component={SignInContainer} />
-                                <Route exact path="/forgot_password" component={ForgotPasswordContainer} />
-                                <Route exact path="/reset_password" component={ResetPasswordContainer} />
-                                <Route exact path="/users/edit" component={EditUserContainer} />
+                                <Route exact path='/sign_in' component={SignInContainer} />
+                                <Route exact path='/forgot_password' component={ForgotPasswordContainer} />
+                                <Route exact path='/reset_password' component={ResetPasswordContainer} />
+                                <Route exact path='/users/edit' component={EditUserContainer} />
                             </Switch>
 
                             <Footer />
