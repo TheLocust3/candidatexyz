@@ -2,6 +2,8 @@ import _ from 'lodash'
 import $ from 'jquery';
 import React from 'react';
 
+import MessageApi from '../../api/message-api';
+
 export default class MessageForm extends React.Component {
 
     constructor(props) {
@@ -19,7 +21,13 @@ export default class MessageForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        console.log(this.state)
+        MessageApi.create(this.state.firstName, this.state.lastName, this.state.email, this.state.subject, this.state.message).then(() => {
+            window.location.href = '/';
+        }).catch((response) => {
+            this.setState({
+                errors: response.responseJSON.errors
+            });
+        });
     }
 
     renderErrors() {
@@ -69,7 +77,7 @@ export default class MessageForm extends React.Component {
 
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
                     <input type='message' id='message' className='mdc-text-field__input' name='message' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='message'>Subject</label>
+                    <label className='mdc-text-field__label' htmlFor='message'>Message</label>
                     <div className='mdc-line-ripple'></div>
                 </div><br /><br />
 
