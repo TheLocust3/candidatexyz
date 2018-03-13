@@ -27,7 +27,7 @@ export default class Meet extends React.Component {
                 <TextContent identifier='pressSecretaryContact' /><br /><br />
 
                 <div className='mdc-typography--headline'><b>Biography</b></div><br />
-                Visit Meet Seth for information about Seth.<br /><br />
+                Visit <Link to='/meet'><TextContent identifier='meetCandidate' /></Link> for information.<br /><br />
                 Click <Link to='/short-bio'>here</Link> for an abbreviated biography.<br /><br />
 
                 <div className='mdc-typography--headline'><b>Photos</b></div><br />

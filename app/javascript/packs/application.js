@@ -18,6 +18,7 @@ import SignUp from '../components/containers/SignUp';
 import Privacy from '../components/containers/Privacy';
 import Contact from '../components/containers/Contact';
 import MediaKit from '../components/containers/MediaKit';
+import ShortBio from '../components/containers/ShortBio';
 
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
@@ -60,6 +61,7 @@ class Base extends React.Component {
                                 <Route exact path='/privacy' component={Privacy} />
                                 <Route exact path='/contact' component={Contact} />
                                 <Route exact path='/media-kit' component={MediaKit} />
+                                <Route exact path='/short-bio' component={ShortBio} />
 
                                 <Route exact path='/sign_in' component={SignInContainer} />
                                 <Route exact path='/forgot_password' component={ForgotPasswordContainer} />

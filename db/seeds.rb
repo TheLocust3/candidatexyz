@@ -2,6 +2,7 @@ Content.create(content_type: 'text', identifier: 'officeAddress', content: '11 B
 Content.create(content_type: 'text', identifier: 'POBox', content: 'PO Box 1234, Boston, MA 02108')
 Content.create(content_type: 'text', identifier: 'phoneNumber', content: '123-456-7890')
 
+Content.create(content_type: 'text', identifier: 'meetCandidate', content: 'Meet CandidateXYZ')
 Content.create(content_type: 'text', identifier: 'slideshowBlurb', content: 'CandidateXYZ is working to put people over politics, ensure that every American has the opportunity to succeed, and tackle the towering challenges of today and tomorrow.')
 Content.create(content_type: 'text', identifier: 'joinCardBlurb', content: 'You should totally sign up')
 Content.create(content_type: 'text', identifier: 'joinCardTitle', content: 'Join CandidateXYZ')
@@ -50,6 +51,11 @@ Content.create(content_type: 'text', identifier: 'pressSecretaryContact', conten
     Email: cool@candidatexyz.com
 ')
 
+Content.create(content_type: 'text', identifier: 'shortBio', content: '
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque hendrerit scelerisque cursus. Morbi laoreet gravida turpis, vel iaculis erat pharetra ac. Sed volutpat elementum elit, vel tincidunt tortor gravida vehicula. Fusce dapibus lacus id ante aliquet elementum. Phasellus finibus felis imperdiet turpis pretium auctor. In hac habitasse platea dictumst. Praesent in arcu vel enim dapibus fermentum. In fringilla urna et elit euismod pharetra. Donec tincidunt, ipsum eget luctus condimentum, odio est accumsan sem, sed vulputate massa nulla sed mauris. Mauris sed nisl diam. Ut aliquet, leo a faucibus rhoncus, felis turpis maximus velit, eget facilisis neque magna pretium ipsum. Nam in quam imperdiet, rutrum dui eu, sagittis nunc.<br /><br />
+
+Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus porta, lorem nec dictum imperdiet, quam mauris feugiat eros, sed mattis orci libero at felis. Suspendisse pulvinar congue dui at molestie. Praesent laoreet lectus eu metus dictum, ac sollicitudin nisl fringilla. Nulla faucibus eleifend dolor, non bibendum lorem ullamcorper eget. Cras venenatis eleifend magna tempor eleifend. Vestibulum aliquet urna in mi lacinia, vitae consectetur erat lacinia. Maecenas congue placerat ligula. Donec cursus lobortis laoreet. Sed tempor, urna sit amet laoreet gravida, ipsum justo sollicitudin odio, sollicitudin scelerisque quam est eu ipsum. Sed id eleifend nisl. Proin scelerisque ornare ex eu egestas. Curabitur sagittis ante et mi volutpat accumsan. Duis ultricies mi sed egestas volutpat. Nulla et sagittis elit, nec consectetur purus. Nunc ullamcorper odio vitae tortor malesuada pretium.<br />
+')
 
 Content.create(content_type: 'link', identifier: 'navLink1', content: '{ "text": "Meet CandidateXYZ", "url": "/meet" }')
 Content.create(content_type: 'link', identifier: 'navLink2', content: '{ "text": "Take Action", "url": "/action" }')
