@@ -5,31 +5,31 @@ class Api::ContentController < Api::ApiController
     end
 
     def show
-        render :json => Content.where(:identifier => params[:id]).first
+        render :json => Content.where( :identifier => params[:id] ).first
     end
 
     def create
         content = Content.new(create_params(params))
 
         if content.save
-            render :json => Content.find(content.id)
+            render :json => Content.where( :identifier => params[:id] ).first
         else
             render_errors(content)
         end
     end
 
     def update
-        content = Content.where(:identifier => params[:id]).first
+        content = Content.where( :identifier => params[:id] ).first
 
         if content.update(update_params(params))
-            render :json => Content.find(content.id)
+            render :json => Content.where( :identifier => params[:id] ).first
         else
             render_errors(content)
         end
     end
 
     def destroy
-        content = Content.where(:identifier => params[:id]).first
+        content = Content.where( :identifier => params[:id] ).first
         content.destroy
 
         render_success
