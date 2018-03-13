@@ -23,6 +23,8 @@ class TextContent extends React.Component {
     render() {
         let { identifier, dispatch, ...props } = this.props;
 
+        if (!_.isEmpty(this.state.content) && this.state.content.content_type != 'text') return null;
+
         return (
             <span dangerouslySetInnerHTML={{__html: this.state.content.content.text }} {...props} />
         );

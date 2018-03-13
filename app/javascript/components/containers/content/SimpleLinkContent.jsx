@@ -26,6 +26,8 @@ class LinkContent extends React.Component {
         let { identifier, dispatch, ...props } = this.props;
         let content = this.state.content;
 
+        if (!_.isEmpty(content) && content.content_type != 'link') return null;
+
         return (
             <Link to={content.content.url} {...props}>
                 {content.content.text}

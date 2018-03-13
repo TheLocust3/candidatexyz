@@ -23,6 +23,8 @@ class ImageContent extends React.Component {
     render() {
         let { identifier, dispatch, ...props } = this.props;
 
+        if (!_.isEmpty(this.state.content) && this.state.content.content_type != 'image') return null;
+
         return (
             <img src={this.state.content.content.image} {...props} />
         );
