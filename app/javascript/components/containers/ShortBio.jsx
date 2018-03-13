@@ -20,8 +20,8 @@ export default class Meet extends React.Component {
     render() {
         return (
             <div className='content short-bio'>
-                <div className='mdc-typography--display3'><b>Abbreviated biography</b></div><br />
-                <TextContent identifier='shortBio' /><br /><br />
+                <div className='mdc-typography--display3'><b><TextContent identifier='shortBioHeader' /></b></div><br />
+                <TextContent identifier='shortBioBlurb' /><br /><br />
             </div>
         );
     }

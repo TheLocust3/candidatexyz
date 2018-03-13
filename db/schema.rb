@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180312173555) do
   create_table "contents", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "content_type"
     t.string "identifier"
-    t.string "content"
+    t.json "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

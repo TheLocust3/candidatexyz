@@ -11,7 +11,7 @@ class LinkContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: {} };
+        this.state = { content: { content: { url: '' } } };
     }
 
     componentWillMount() {
@@ -24,12 +24,11 @@ class LinkContent extends React.Component {
 
     render() {
         let { identifier, dispatch, ...props } = this.props;
-
-        let link = _.isEmpty(this.state.content) ? { text: '', url: '' } : $.parseJSON(this.state.content.content);
+        let content = this.state.content;
 
         return (
-            <Link to={link.url} {...props}>
-                {link.text}
+            <Link to={content.content.url} {...props}>
+                {content.content.text}
             </Link>
         );
     }

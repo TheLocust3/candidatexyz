@@ -24,7 +24,7 @@ export default class Contact extends React.Component {
                 <div className='mdc-layout-grid'>
                     <div className='mdc-layout-grid__inner'>
                         <div className='mdc-layout-grid__cell mdc-layout-grid__cell--span-4'>
-                            <div className='mdc-typography--display3'><b>Contact</b></div><br />
+                            <div className='mdc-typography--display3'><b><TextContent identifier='contactHeader' /></b></div><br />
 
                             <TextContent identifier='contactBlurb' /><br /><br />
 
@@ -43,14 +43,14 @@ export default class Contact extends React.Component {
                     </div>
 
                     <div className='mdc-layout-grid__cell mdc-layout-grid__cell--span-4'>
-                        <div className='mdc-typography--headline'><b>Visit</b></div>
-                        <TextContent identifier='officeAddress' /><br /><br />
+                        <div className='mdc-typography--headline'><b><TextContent identifier='contactVisitHeadline' /></b></div>
+                        <TextContent identifier='contactVisitAddress' /><br /><br />
 
-                        <div className='mdc-typography--headline'><b>Write</b></div>
-                        <TextContent identifier='POBox' /><br /><br />
+                        <div className='mdc-typography--headline'><b><TextContent identifier='contactPOBoxHeadline' /></b></div>
+                        <TextContent identifier='contactPOBoxAddress' /><br /><br />
 
-                        <div className='mdc-typography--headline'><b>Call</b></div>
-                        <TextContent identifier='phoneNumber' /><br /><br />
+                        <div className='mdc-typography--headline'><b><TextContent identifier='contactCallHeadline' /></b></div>
+                        <TextContent identifier='contactPhoneNumber' /><br /><br />
                     </div>
                 </div><br />
             </div>

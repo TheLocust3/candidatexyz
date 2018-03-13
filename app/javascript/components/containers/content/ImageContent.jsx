@@ -9,7 +9,7 @@ class ImageContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: {} };
+        this.state = { content: { content: {} } };
     }
 
     componentWillMount() {
@@ -24,7 +24,7 @@ class ImageContent extends React.Component {
         let { identifier, dispatch, ...props } = this.props;
 
         return (
-            <img src={this.state.content.content} {...props} />
+            <img src={this.state.content.content.image} {...props} />
         );
     }
 }

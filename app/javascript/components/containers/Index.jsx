@@ -18,7 +18,7 @@ export default class Index extends React.Component {
     }
 
     componentWillMount() {
-        ContentApi.get('homeBackground').then((response) => {
+        ContentApi.get('indexBackground').then((response) => {
             this.setState({
                 isReady: true,
                 imageUrl: response.content
@@ -34,7 +34,7 @@ export default class Index extends React.Component {
                 <JoinCard />
 
                 <div className='content'>
-                    <SlideshowContent identifier='homePageSlideshow'>
+                    <SlideshowContent identifier='indexSlideshow'>
                         <div className='mdc-typography--headline'>
                             <b><TextContent identifier='slideshowBlurb' /></b>
                         </div><br />

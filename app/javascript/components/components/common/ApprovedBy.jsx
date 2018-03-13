@@ -9,9 +9,7 @@ export default class ApprovedBy extends React.Component {
         return (
             <div {...this.props}>
                 <div className='approved-by'>
-                    Approved by<TextContent identifier='candidateName' />.<br />
-                    Paid for by <TextContent identifier='candidateForOffice' />.<br />
-                    <TextContent identifier='candidateAddress' /><br />
+                    <TextContent identifier='approvedByBlurb' />
                 </div>
             </div>
         );

@@ -2,7 +2,6 @@ import $ from 'jquery';
 import React from 'react';
 
 import TextContent from '../containers/content/TextContent';
-import ImageContent from '../containers/content/ImageContent';
 import JoinTeamPanel from '../components/common/JoinTeamPanel';
 
 export default class Privacy extends React.Component {
@@ -21,7 +20,7 @@ export default class Privacy extends React.Component {
     render() {
         return (
             <div className='content privacy-blurb'>
-                <div className='mdc-typography--display3'><b>Privacy Policy</b></div><br />
+                <div className='mdc-typography--display3'><b><TextContent identifier='privacyHeader' /></b></div><br />
 
                 CandidateXYZ for Office has created this privacy notice to explain how we use information that you may provide while visiting our website and to demonstrate our firm commitment to Internet privacy.<br /><br />
 

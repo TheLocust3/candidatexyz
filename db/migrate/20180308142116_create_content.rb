@@ -3,7 +3,7 @@ class CreateContent < ActiveRecord::Migration[5.1]
     create_table :contents, id: :uuid, default: "uuid_generate_v4()" do |t|
       t.string :content_type
       t.string :identifier
-      t.string :content
+      t.json :content
 
       t.timestamps
     end

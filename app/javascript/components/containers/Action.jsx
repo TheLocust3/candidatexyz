@@ -20,15 +20,15 @@ export default class Action extends React.Component {
         return (
             <div>
                 <div className='take-action'>
-                    <div className='mdc-typography--display3'><b><TextContent identifier='takeAction' /></b></div><br />
-                    <div className='mdc-typography--headline'><TextContent identifier='takeActionSubtitle' /></div><br />
+                    <div className='mdc-typography--display3'><b><TextContent identifier='actionHeader' /></b></div><br />
+                    <div className='mdc-typography--headline'><TextContent identifier='actionSubtitle' /></div><br />
 
                     <p className='take-action-text'>
-                        <TextContent identifier='takeActionBody' /><br /><br />
+                        <TextContent identifier='actionBody' /><br /><br />
 
-                        <TextContent identifier='takeActionEnding' /><br />
+                        <TextContent identifier='actionEnding' /><br />
                         
-                        <ImageContent identifier='signature' />
+                        <ImageContent identifier='actionSignature' />
                     </p>
                 </div>
 

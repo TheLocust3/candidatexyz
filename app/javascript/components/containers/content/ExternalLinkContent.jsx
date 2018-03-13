@@ -10,7 +10,7 @@ class ExternalLinkContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: {} };
+        this.state = { content: { content: { url: '' } } };
     }
 
     componentWillMount() {
@@ -23,11 +23,10 @@ class ExternalLinkContent extends React.Component {
 
     render() {
         let { identifier, dispatch, children, ...props } = this.props;
-
-        let link = _.isEmpty(this.state.content) ? { text: '', url: '' } : $.parseJSON(this.state.content.content);
+        let content = this.state.content;
 
         return (
-            <a href={link.url} {...props}>
+            <a href={content.content.url} {...props}>
                 {children}
             </a>
         );

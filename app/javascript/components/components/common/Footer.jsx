@@ -13,8 +13,8 @@ export default class Footer extends React.Component {
                 <SocialMediaLinks size={2} />
 
                 <div className='mdc-typography--headline link-holder'>
-                    <SimpleLinkContent identifier='contact' className='link' />
-                    <SimpleLinkContent identifier='privacy' className='link' />
+                    <SimpleLinkContent identifier='footerContact' className='link' />
+                    <SimpleLinkContent identifier='footerPrivacy' className='link' />
                 </div>
 
                 <ApprovedBy style={{ paddingTop: '3%' }} />

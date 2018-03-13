@@ -16,7 +16,7 @@ export default class Navbar extends React.Component {
                     <div className='navbar-actions'>
                         <div className='button-cell'><SimpleLinkContent identifier='navLink1' className='link' /></div>
                         <div className='button-cell'><SimpleLinkContent identifier='navLink2' className='link' /></div>
-                        <div className='button-cell'><ExternalLinkContent identifier='donate'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent></div>
+                        <div className='button-cell'><ExternalLinkContent identifier='navButton'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent></div>
                     </div>
                 </div>
             </div>

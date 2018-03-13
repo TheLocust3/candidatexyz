@@ -9,7 +9,7 @@ class TextContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: {} };
+        this.state = { content: { content: {} } };
     }
 
     componentWillMount() {
@@ -24,7 +24,7 @@ class TextContent extends React.Component {
         let { identifier, dispatch, ...props } = this.props;
 
         return (
-            <span dangerouslySetInnerHTML={{__html: this.state.content.content }} {...props} />
+            <span dangerouslySetInnerHTML={{__html: this.state.content.content.text }} {...props} />
         );
     }
 }

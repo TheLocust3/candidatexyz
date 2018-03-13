@@ -11,7 +11,7 @@ class SlideshowContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: {} };
+        this.state = { content: { content: [] } };
     }
 
     componentWillMount() {
@@ -24,11 +24,10 @@ class SlideshowContent extends React.Component {
 
     render() {
         let { identifier, dispatch, ...props } = this.props;
-        
-        let images = _.isEmpty(this.state.content) ? [] : $.parseJSON(this.state.content.content);
+        let content = this.state.content;
 
         return (
-            <Slideshow images={images}>
+            <Slideshow images={content.content}>
                 {this.props.children}
             </Slideshow>
         );
