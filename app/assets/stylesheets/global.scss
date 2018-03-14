@@ -79,3 +79,31 @@ body {
     padding-left: 15%;
     padding-right: 15%;
 }
+
+.map-container {
+    @media (max-width: $mobile-width) {
+        margin-bottom: 30vh;
+    }
+}
+
+.map {
+    padding-left: 5%;
+    width: 60%;
+
+    @media (max-width: $mobile-width) {
+        width: 90%;
+        padding-right: 5%;
+    }
+}
+
+.map-blurb {
+    width: 30%;
+    float: right;
+
+    @media (max-width: $mobile-width) {
+        width: 100%;
+        float: left;
+        padding-top: 3%;
+        padding-left: 3%;
+    }
+}

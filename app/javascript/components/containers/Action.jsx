@@ -10,10 +10,12 @@ export default class Action extends React.Component {
     componentDidMount() {
         $('.header-image').css('background-image', 'url()');
         $('.navbar .link').addClass('inverted-link');
+        $('.header-image').addClass('header-image-blank');
     }
 
     componentWillUnmount() {
         $('.navbar .link').removeClass('inverted-link');
+        $('.header-image').removeClass('header-image-blank');
     }
 
     render() {
