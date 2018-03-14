@@ -9,12 +9,8 @@ import SlimJoinUsForm from '../SlimJoinUsForm'
 export default class JoinCard extends React.Component {
 
     render() {
-        let top = _.isEmpty(this.props.top) ? '13%' : `${this.props.top}%`;
-        let right = _.isEmpty(this.props.right) ? '3%' : `${this.props.right}%`;
-        let width = _.isEmpty(this.props.width) ? '35%' : `${this.props.width}%`;
-
         return (
-            <div style={{ position: 'absolute', top: top, right: right, width: width }}>
+            <div className='join-card-root'>
                 <div className='mdc-card'>
                     <div className='mdc-card__media join-card'>
                         <div className='mdc-typography--headline card-title'><b><TextContent identifier='joinCardTitle' /></b></div>

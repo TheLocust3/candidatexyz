@@ -1,7 +1,13 @@
 @import 'global';
 
 .navbar {
-    padding: 4% 5% 5%;
+    @media (min-width: $mobile-width) {
+        padding: 4% 5% 5%;
+    }
+
+    @media (max-width: $mobile-width) {
+        height: 75px;
+    }
 }
 
 .navbar-image {
@@ -11,6 +17,19 @@
     height: auto;
 
     border: 4px solid white;
+
+    @media (max-width: $mobile-width) {
+        margin-top: -20px;
+        margin-left: 15px;
+        width: 75px;
+        border: 1px solid white;
+    }
+}
+
+.navbar-menu-icon {
+    @media (max-width: $mobile-width) {
+        margin-top: 10px;
+    }
 }
 
 .navbar-actions {
@@ -46,7 +65,8 @@
 .header-image {
     @include parallax('');
     width: 100%;
-    padding-bottom: 40%;
+    height: 40vh;
+    padding-bottom: 55vh;
 }
 
 .header-image-blank {

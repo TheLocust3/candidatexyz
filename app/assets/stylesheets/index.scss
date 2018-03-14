@@ -4,6 +4,30 @@
     color: #cccccc;
 }
 
+@media all and (min-width: 768px) {
+    .join-card-root {
+        position: absolute;
+        top: 13%;
+        right: 3%;
+        width: 35%;
+    }
+}
+
+.join-card-root {
+    position: absolute;
+    top: 13%;
+    right: 3%;
+
+    @media (min-width: $mobile-width) {
+        width: 35%;
+    }
+
+    @media (max-width: $mobile-width) {
+        left: 3%;
+        top: 20%;
+    }
+}
+
 .join-card {
     min-height: 300px;
     padding: 3%;
@@ -17,12 +41,21 @@
 
 .slideshow {
     padding-left: 3%;
+    padding-right: 3%;
     padding-top: 5%;
     padding-bottom: 5%;
 }
 
 .slideshow-image {
     object-fit: cover;
-    width: 100%;
+    width: 60%;
     height: 60vh;
+    display: inline-block;
+}
+
+.slideshow-blurb {
+    padding-left: 5%;
+    width: 35%;
+    height: 60vh;
+    float: right;
 }

@@ -35,15 +35,11 @@ export default class Slideshow extends React.Component {
 
     render() {
         return (
-            <div className='mdc-layout-grid slideshow'>
-                <div className='mdc-layout-grid__inner'>
-                    <div className='mdc-layout-grid__cell mdc-layout-grid__cell--span-7'>
-                        <img src={this.props.images[this.state.index]} className='slideshow-image' />
-                    </div>
-
-                    <div className='mdc-layout-grid__cell mdc-layout-grid__cell--span-5 mdc-layout-grid__cell--align-middle'>
-                        {this.props.children}
-                    </div>
+            <div className='slideshow'>
+                <img src={this.props.images[this.state.index]} className='slideshow-image' />
+                
+                <div className='slideshow-blurb'>
+                    {this.props.children}
                 </div>
             </div>
         );

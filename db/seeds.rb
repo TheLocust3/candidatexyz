@@ -97,6 +97,6 @@ Content.create(content_type: 'image', identifier: 'logo', content: { image: 'htt
 
 Content.create(content_type: 'link', identifier: 'navLink1', content: { text: 'Meet CandidateXYZ', url: '/meet' })
 Content.create(content_type: 'link', identifier: 'navLink2', content: { text: 'Take Action', url: '/action' })
-Content.create(content_type: 'link', identifier: 'navButton', content: { text: 'DONATE', url: 'https://secure.actblue.com' })
+Content.create(content_type: 'link', identifier: 'navButton', content: { text: 'Donate', url: 'https://secure.actblue.com' })
 
 Content.create(content_type: 'text', identifier: 'meetCandidate', content: { text: 'Meet CandidateXYZ' })
