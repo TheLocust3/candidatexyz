@@ -3,6 +3,10 @@
 .join-team-panel {
     position: relative;
     width: 100%;
+
+    @media (max-width: $mobile-width) {
+        padding-top: 30vh;
+    }
 }
 
 .join-team-panel-content {
@@ -11,8 +15,13 @@
     height: 0px;
     margin-top: 5%;
     padding-top: 15%;
-    padding-bottom: 20%;
+    padding-bottom: 30%;
     text-align: center;
+
+    @media (max-width: $mobile-width) {
+        padding-top: 30vh;
+        padding-bottom: 50%;
+    }
 }
 
 .join-team-panel-color {
