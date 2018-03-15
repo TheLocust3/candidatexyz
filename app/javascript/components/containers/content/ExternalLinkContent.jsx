@@ -25,8 +25,6 @@ class ExternalLinkContent extends React.Component {
         let { identifier, dispatch, children, ...props } = this.props;
         let content = this.state.content;
 
-        if (!_.isEmpty(content) && content.content_type != 'link') return null;
-
         return (
             <a href={content.content.url} {...props}>
                 {children}

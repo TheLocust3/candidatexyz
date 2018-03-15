@@ -26,8 +26,6 @@ class SlideshowContent extends React.Component {
         let { identifier, dispatch, ...props } = this.props;
         let content = this.state.content;
 
-        if (!_.isEmpty(content) && content.content_type != 'slideshow') return null;
-
         return (
             <Slideshow images={content.content}>
                 {this.props.children}
