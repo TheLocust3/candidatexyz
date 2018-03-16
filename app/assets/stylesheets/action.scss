@@ -13,4 +13,8 @@
 
 .take-action .take-action-text img {
     width: 25%;
+
+    @media (max-width: $mobile-width) {
+        width: 50%;
+    }
 }

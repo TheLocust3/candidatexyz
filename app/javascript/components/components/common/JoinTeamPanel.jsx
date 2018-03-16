@@ -29,8 +29,8 @@ export default class JoinTeamPanel extends React.Component {
         return (
             <div className='join-team-panel'>
                 <div className='join-team-panel-content'>
-                    <div className='join-team-panel-background join-team-panel-color'>
-                        <div className='mdc-typography--display3'><b><TextContent identifier='joinTeamPanelTitle' /></b></div>
+                    <div className='join-team-panel-title join-team-panel-color'>
+                        <div className='mdc-typography--display2'><b><TextContent identifier='joinTeamPanelTitle' /></b></div>
                     </div>
 
                     <div className='join-team-panel-actions mdc-typography--headline'>
