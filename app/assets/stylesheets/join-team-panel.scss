@@ -1,14 +1,5 @@
 @import 'global';
 
-.join-team-panel {
-    position: relative;
-    width: 100%;
-
-    @media (max-width: $mobile-width) {
-        padding-top: 30vh;
-    }
-}
-
 .join-team-panel-content {
     @include parallax('');
 
@@ -19,8 +10,8 @@
     text-align: center;
 
     @media (max-width: $mobile-width) {
-        padding-top: 30vh;
-        padding-bottom: 50%;
+        padding-top: 20vh;
+        padding-bottom: 40vh;
     }
 }
 
