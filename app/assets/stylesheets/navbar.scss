@@ -1,8 +1,13 @@
 @import 'global';
 
 .navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
     @media (min-width: $mobile-width) {
         padding: 4% 5% 5%;
+        width: 90%;
     }
 
     @media (max-width: $mobile-width) {
@@ -63,15 +68,19 @@
 }
 
 .header-image {
-    @include parallax('');
+    background-image: url();
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+
     width: 100%;
-    height: 40vh;
-    padding-bottom: 55vh;
+    height: 100vh;
 }
 
 .header-image-blank {
     background-image: none;
     padding-bottom: 0%;
+    height: 30vh;
 
     @media (max-width: $mobile-width) {
         height: 15vh;

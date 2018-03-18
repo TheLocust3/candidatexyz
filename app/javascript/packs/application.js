@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import thunkMiddleware from 'redux-thunk';
 
 import reducer from '../components/reducers/root-reducer';
@@ -46,33 +47,35 @@ class Base extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <div>
-                    <Router>
-                        <div>
-                            <Navbar />
+                <ParallaxProvider>
+                    <div>
+                        <Router>
+                            <div>
+                                <Navbar />
 
-                            <Route component={ScrollToTop} />
+                                <Route component={ScrollToTop} />
 
-                            <Switch>
-                                <Route exact path='/' component={Index} />
-                                <Route exact path='/meet' component={Meet} />
-                                <Route exact path='/action' component={Action} />
-                                <Route exact path='/sign_up' component={SignUp} />
-                                <Route exact path='/privacy' component={Privacy} />
-                                <Route exact path='/contact' component={Contact} />
-                                <Route exact path='/media-kit' component={MediaKit} />
-                                <Route exact path='/short-bio' component={ShortBio} />
+                                <Switch>
+                                    <Route exact path='/' component={Index} />
+                                    <Route exact path='/meet' component={Meet} />
+                                    <Route exact path='/action' component={Action} />
+                                    <Route exact path='/sign_up' component={SignUp} />
+                                    <Route exact path='/privacy' component={Privacy} />
+                                    <Route exact path='/contact' component={Contact} />
+                                    <Route exact path='/media-kit' component={MediaKit} />
+                                    <Route exact path='/short-bio' component={ShortBio} />
 
-                                <Route exact path='/sign_in' component={SignInContainer} />
-                                <Route exact path='/forgot_password' component={ForgotPasswordContainer} />
-                                <Route exact path='/reset_password' component={ResetPasswordContainer} />
-                                <Route exact path='/users/edit' component={EditUserContainer} />
-                            </Switch>
+                                    <Route exact path='/sign_in' component={SignInContainer} />
+                                    <Route exact path='/forgot_password' component={ForgotPasswordContainer} />
+                                    <Route exact path='/reset_password' component={ResetPasswordContainer} />
+                                    <Route exact path='/users/edit' component={EditUserContainer} />
+                                </Switch>
 
-                            <Footer />
-                        </div>
-                    </Router>
-                </div>
+                                <Footer />
+                            </div>
+                        </Router>
+                    </div>
+                </ParallaxProvider>
             </Provider>
         );
     }

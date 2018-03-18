@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Parallax } from 'react-scroll-parallax';
 
 import { MAX_MOBILE_WIDTH } from '../../../constants';
 import ImageContent from '../../containers/content/ImageContent';
@@ -50,7 +51,11 @@ export default class Navbar extends React.Component {
 
     renderDeskop() {
         return (
-            <div className='header-image'>
+            <div>
+                <Parallax offsetYMax='50%' offsetYMin='-50%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
+                    <div className='header-image' />
+                </Parallax>
+
                 <div className='navbar'>
                     <Link to='/'><ImageContent identifier='logo' className='navbar-image' /></Link>
 
@@ -66,7 +71,11 @@ export default class Navbar extends React.Component {
 
     renderMobile() {
         return (
-            <div className='header-image'>
+            <div>
+                <Parallax offsetYMax='50%' offsetYMin='-50%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
+                    <div className='header-image' />
+                </Parallax>
+
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>
                     <div className='mdc-toolbar__row'>
                         <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>

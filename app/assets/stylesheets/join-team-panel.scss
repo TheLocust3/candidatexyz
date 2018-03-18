@@ -1,7 +1,14 @@
 @import 'global';
 
+.join-team-panel {
+    position: relative;
+    width: 100%;
+}
+
 .join-team-panel-content {
-    @include parallax('');
+    position: absolute;
+    top: 0;
+    width: 100%;
 
     height: 0px;
     margin-top: 5%;
@@ -13,6 +20,15 @@
         padding-top: 20vh;
         padding-bottom: 40vh;
     }
+}
+
+.join-team-panel-image {
+    background-image: url();
+    background-position: center;
+    background-size: cover;
+
+    width: 100%;
+    height: 60vh;
 }
 
 .join-team-panel-color {
