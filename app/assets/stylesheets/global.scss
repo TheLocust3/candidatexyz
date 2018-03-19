@@ -29,14 +29,32 @@ body {
     font-size: $button-font-size;
 }
 
-.link {
+%link-shared {
     font-family: $button-font-family;
     font-size: $button-font-size;
     color: $link-color;
 }
 
-.link:hover { 
+%link-hover-shared {
     color: $link-hover-color;
+}
+
+.link {
+    @extend %link-shared;
+}
+
+.link:hover { 
+    @extend %link-hover-shared;
+}
+
+.link-small {
+    @extend %link-shared;
+
+    font-size: 18px;
+}
+
+.link-small:hover { 
+    @extend %link-hover-shared;
 }
 
 .approved-by {
@@ -106,4 +124,20 @@ body {
         padding-top: 3%;
         padding-left: 3%;
     }
+}
+
+.signInForm {
+    padding-left: 3%;
+    padding-right: 40%;
+    padding-bottom: 3%;
+
+    @media (max-width: $mobile-width) {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+
+.checkboxLabel {
+    position: absolute;
+    padding-top: 1vh;
 }

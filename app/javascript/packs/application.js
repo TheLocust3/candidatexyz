@@ -11,6 +11,7 @@ import reducer from '../components/reducers/root-reducer';
 
 import Navbar from '../components/components/common/Navbar';
 import Footer from '../components/components/common/Footer';
+import AdminOverlay from '../components/containers/common/AdminOverlay';
 
 import Index from '../components/containers/Index';
 import Meet from '../components/containers/Meet';
@@ -52,6 +53,7 @@ class Base extends React.Component {
                         <Router>
                             <div>
                                 <Navbar />
+                                <AdminOverlay />
 
                                 <Route component={ScrollToTop} />
 
