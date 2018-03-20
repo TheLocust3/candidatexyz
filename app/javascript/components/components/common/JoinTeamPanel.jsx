@@ -39,8 +39,8 @@ export default class JoinTeamPanel extends React.Component {
                     </div>
 
                     <div className='join-team-panel-actions mdc-typography--headline'>
-                        <Link to="/sign_up"><button className="mdc-button mdc-button--raised button join-team-panel-color" data-mdc-auto-init="MDCRipple">Sign Up</button></Link>
-                        <ExternalLinkContent identifier='joinTeamPanelDonateLink'><button className="mdc-button mdc-button--raised button join-team-panel-color" data-mdc-auto-init="MDCRipple">Donate</button></ExternalLinkContent>
+                        <Link to='/sign_up'><button className='mdc-button mdc-button--raised button join-team-panel-color' data-mdc-auto-init='MDCRipple'>Sign Up</button></Link>
+                        <ExternalLinkContent identifier='joinTeamPanelDonateLink'><button className='mdc-button mdc-button--raised button join-team-panel-color' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent>
                     </div>
                 </div>
             </div>

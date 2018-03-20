@@ -1,0 +1,22 @@
+.overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.overlayActionsLeft {
+    position: fixed;
+    width: 100%;
+    bottom: 1%;
+    left: 1%;
+}
+
+.overlayActionsLeft .overlayActionIcon {
+    margin-right: 1%;
+}
+
+.overlayActionsRight {
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+}

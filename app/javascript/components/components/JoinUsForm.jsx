@@ -85,7 +85,7 @@ export default class JoinUsForm extends React.Component {
 
                 <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
 
-                <button className='mdc-button mdc-button--raised sign-up-form-button'>Subscribe</button>
+                <button className='mdc-button mdc-button--raised sign-up-form-button'data-mdc-auto-init='MDCRipple'>Subscribe</button>
             </form>
         );
     }
