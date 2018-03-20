@@ -2,9 +2,10 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Corner, AnchorMargin } from '@material/menu';
+import { MDCSnackbar } from '@material/snackbar';
 
 import { fetchCurrentUser } from '../../actions/user-actions';
-import { toggleEdit } from '../../actions/content-actions';
+import { setEdit } from '../../actions/content-actions';
 
 class AdminOverlay extends React.Component {
 
@@ -19,7 +20,14 @@ class AdminOverlay extends React.Component {
     }
 
     onEditClick(event) {
-        this.props.dispatch(toggleEdit());
+        this.props.dispatch(setEdit(true));
+        
+        const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
+        snackbar.show({ message: 'Edit Mode', timeout: 999999999, actionText: 'Done', actionHandler: this.onDoneClick.bind(this) }); // TODO: bit of a hack
+    }
+
+    onDoneClick(event) {
+        this.props.dispatch(setEdit(false));
     }
 
     onSettingsClick(event) {
@@ -29,23 +37,39 @@ class AdminOverlay extends React.Component {
         menu.open = !menu.open;
     }
 
+    renderEditSnackbar() {
+        return (
+            <div className='mdc-snackbar' aria-live='assertive' aria-atomic='true' aria-hidden='true'>
+                <div className='mdc-snackbar__text'></div>
+
+                <div className='mdc-snackbar__action-wrapper'>
+                    <button type='button' className='mdc-snackbar__action-button'></button>
+                </div>
+            </div>
+        )
+    }
+
+    renderButtons() {
+        return (
+            <div>
+                {this.renderEditSnackbar()}
+
+                <button className='mdc-fab material-icons overlayActionIcon' aria-label='Edit' onClick={this.onEditClick.bind(this)} data-mdc-auto-init='MDCRipple'>
+                    <span className='mdc-fab__icon'>
+                        edit
+                    </span>
+                </button>
+            </div>
+        )
+    }
+
     render() {
         if (!this.props.isReady || _.isEmpty(this.props.user)) return null;
 
         return (
             <div className='overlay'>
                 <div className='overlayActionsLeft'>
-                    <button className='mdc-fab material-icons overlayActionIcon' aria-label='Preview' data-mdc-auto-init='MDCRipple'>
-                        <span className='mdc-fab__icon'>
-                            visibility
-                        </span>
-                    </button>
-
-                    <button className='mdc-fab material-icons overlayActionIcon' aria-label='Edit' onClick={this.onEditClick.bind(this)} data-mdc-auto-init='MDCRipple'>
-                        <span className='mdc-fab__icon'>
-                            build
-                        </span>
-                    </button>
+                    {this.renderButtons()}
                 </div>
 
                 <div className='overlayActionsRight'>

@@ -4,7 +4,7 @@ export const REQUEST_CONTENT = 'REQUEST_CONTENT';
 export const RECEIVE_CONTENT = 'RECEIVE_CONTENT';
 export const REQUEST_ALL_CONTENT = 'REQUEST_ALL_CONTENT';
 export const RECEIVE_ALL_CONTENT = 'RECEIVE_ALL_CONTENT';
-export const TOGGLE_EDIT_CONTENT = 'TOGGLE_EDIT_CONTENT';
+export const SET_EDIT_CONTENT = 'SET_EDIT_CONTENT';
 
 export function requestContentAction() {
     return {
@@ -54,8 +54,9 @@ export function fetchContent(identifier) {
     }
 }
 
-export function toggleEdit(edit) {
+export function setEdit(edit) {
     return {
-        type: TOGGLE_EDIT_CONTENT
+        type: SET_EDIT_CONTENT,
+        data: edit
     }
 }

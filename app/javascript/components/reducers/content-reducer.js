@@ -26,9 +26,9 @@ export function contentReducer(state = initialState, action) {
                 isReady: true,
                 contents: action.data
             });
-        case ContentActions.TOGGLE_EDIT_CONTENT:
+        case ContentActions.SET_EDIT_CONTENT:
             return Object.assign({}, state, {
-                edit: !state.edit
+                edit: action.data
             });
         default:
             return state;
