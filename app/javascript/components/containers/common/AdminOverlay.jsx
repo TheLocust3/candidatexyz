@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Corner, AnchorMargin } from '@material/menu';
 
 import { fetchCurrentUser } from '../../actions/user-actions';
+import { toggleEdit } from '../../actions/content-actions';
 
 class AdminOverlay extends React.Component {
 
@@ -15,6 +16,10 @@ class AdminOverlay extends React.Component {
 
     componentWillMount() {
         this.props.dispatch(fetchCurrentUser());
+    }
+
+    onEditClick(event) {
+        this.props.dispatch(toggleEdit());
     }
 
     onSettingsClick(event) {
@@ -36,7 +41,7 @@ class AdminOverlay extends React.Component {
                         </span>
                     </button>
 
-                    <button className='mdc-fab material-icons overlayActionIcon' aria-label='Edit' data-mdc-auto-init='MDCRipple'>
+                    <button className='mdc-fab material-icons overlayActionIcon' aria-label='Edit' onClick={this.onEditClick.bind(this)} data-mdc-auto-init='MDCRipple'>
                         <span className='mdc-fab__icon'>
                             build
                         </span>
@@ -72,7 +77,8 @@ class AdminOverlay extends React.Component {
 function mapStateToProps(state) {
     return {
         isReady: state.users.isReady,
-        user: state.users.user
+        user: state.users.user,
+        edit: state.content.edit
     };
 }
 

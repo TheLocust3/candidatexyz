@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import ContentApi from '../../../api/content-api';
 
@@ -20,12 +21,30 @@ class TextContent extends React.Component {
         });
     }
 
-    render() {
-        let { identifier, dispatch, ...props } = this.props;
+    renderEdit() {
+        let { identifier, edit, dispatch, ...props } = this.props;
+
+        return (
+            <div>
+                Test
+            </div>
+        )
+    }
+
+    renderContent() {
+        let { identifier, edit, dispatch, ...props } = this.props;
 
         return (
             <span dangerouslySetInnerHTML={{__html: this.state.content.content.text }} {...props} />
         );
+    }
+
+    render() {
+        if (this.props.edit) {
+            return this.renderEdit();
+        }
+
+        return this.renderContent();
     }
 }
 
@@ -33,4 +52,10 @@ TextContent.propTypes = {
     identifier: PropTypes.string.isRequired
 };
 
-export default TextContent;
+function mapStateToProps(state) {
+    return {
+        edit: state.content.edit
+    };
+}
+
+export default connect(mapStateToProps)(TextContent);

@@ -2,7 +2,8 @@ import * as ContentActions from '../actions/content-actions';
 
 const initialState = {
     isReady: false,
-    contents: []
+    contents: [],
+    edit: false
 };
 
 export function contentReducer(state = initialState, action) {
@@ -24,6 +25,10 @@ export function contentReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 isReady: true,
                 contents: action.data
+            });
+        case ContentActions.TOGGLE_EDIT_CONTENT:
+            return Object.assign({}, state, {
+                edit: !state.edit
             });
         default:
             return state;
