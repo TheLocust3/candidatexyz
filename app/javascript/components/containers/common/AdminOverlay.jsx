@@ -50,10 +50,10 @@ class AdminOverlay extends React.Component {
     }
 
     renderButtons() {
+        if (this.props.edit) return;
+
         return (
             <div>
-                {this.renderEditSnackbar()}
-
                 <button className='mdc-fab material-icons overlayActionIcon' aria-label='Edit' onClick={this.onEditClick.bind(this)} data-mdc-auto-init='MDCRipple'>
                     <span className='mdc-fab__icon'>
                         edit
@@ -68,6 +68,8 @@ class AdminOverlay extends React.Component {
 
         return (
             <div className='overlay'>
+                {this.renderEditSnackbar()}
+
                 <div className='overlayActionsLeft'>
                     {this.renderButtons()}
                 </div>
