@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Corner, AnchorMargin } from '@material/menu';
 import { MDCSnackbar } from '@material/snackbar';
 
+import AuthApi from '../../../api/auth-api';
 import { fetchCurrentUser } from '../../actions/user-actions';
 import { setEdit } from '../../actions/content-actions';
 
@@ -35,6 +36,13 @@ class AdminOverlay extends React.Component {
         menu.setAnchorCorner(Corner.BOTTOM_START);
         menu.setAnchorMargin({ top: 25, right: 25 });
         menu.open = !menu.open;
+    }
+
+    onLogoutClick(event) {
+        console.log('test')
+        AuthApi.signOut().then(() => {
+            window.location.href = '/';
+        })
     }
 
     renderEditSnackbar() {
@@ -85,11 +93,11 @@ class AdminOverlay extends React.Component {
                         <div className='mdc-menu' tabIndex='-1'>
                             <ul className='mdc-menu__items mdc-list' role='menu' aria-hidden='true'>
                                 <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                    Logout
+                                    Settings
                                 </li>
 
-                                <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                    Settings
+                                <li className='mdc-list-item' role='menuitem' tabIndex='0' onClick={this.onLogoutClick.bind(this)}>
+                                    Logout
                                 </li>
                             </ul>
                         </div>

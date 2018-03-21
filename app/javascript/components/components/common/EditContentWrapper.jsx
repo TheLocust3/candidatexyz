@@ -1,12 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class EditContentWrapper extends React.Component {
+class EditContentWrapper extends React.Component {
 
     render() {
         return (
             <div className='editContentWrapper'>
-                test
+                {this.props.children}
             </div>
         );
     }
 }
+
+EditContentWrapper.propTypes = {
+    children: PropTypes.element.isRequired
+};
+
+export default EditContentWrapper;

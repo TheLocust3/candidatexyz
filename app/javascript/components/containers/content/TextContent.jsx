@@ -35,12 +35,16 @@ class TextContent extends React.Component {
         $(document).click((event) => { // TODO: find a better way to do this
             let target = event.target;
 
-            if (!$(target).is(`#${this.props.identifier}`)) {
+            if (!$(target).is(`#${this.props.identifier}`) && !$(target).parents().is(`#${this.props.identifier}`)) {
                 this.setState({
                     editingSelf: false
                 });
             }
         });
+    }
+
+    componentWillUnmount() {
+        $(document).off('click');
     }
 
     onEditContent(event) {
@@ -56,17 +60,29 @@ class TextContent extends React.Component {
 
         let { identifier, edit, dispatch, ...props } = this.props;
 
-        return <EditContentWrapper />
+        return (
+            <EditContentWrapper>
+                <form>
+                    <div className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
+                        <input type='text' id='text-content' className='mdc-text-field__input' name='textContent' />
+                        <label className='mdc-text-field__label' htmlFor='text-content'>Text Content</label>
+                        <div className='mdc-line-ripple'></div>
+                    </div><br />
+
+                    <button className='mdc-button mdc-button--raised sign-up-form-button button'>Save</button>
+                </form>
+            </EditContentWrapper>
+        )
     }
 
     render() {
         let { identifier, edit, dispatch, ...props } = this.props;
 
         return (
-            <span onClick={this.onEditContent.bind(this)}>
+            <span id={identifier} onClick={this.onEditContent.bind(this)}>
                 {this.renderEdit()}
 
-                <span dangerouslySetInnerHTML={{__html: this.state.content.content.text }} id={identifier} {...props} />
+                <span dangerouslySetInnerHTML={{__html: this.state.content.content.text }} {...props} />
             </span>
         );
     }
