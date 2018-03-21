@@ -14,6 +14,11 @@ class EditContent extends React.Component {
         this.state = { content: { content: {} } };
     }
 
+    componentWillReceiveProps(nextProps) {
+        let textField = new mdc.textField.MDCTextField(document.querySelector('#text-content'));
+        textField.value = nextProps.content.content.text;
+    }
+
     componentDidMount() {
         $(document).click((event) => { // TODO: find a better way to do this
             let target = event.target;
@@ -40,7 +45,9 @@ class EditContent extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        ContentApi.update(this.props.identifier, this.state.content.content);
+        ContentApi.update(this.props.content.identifier, this.state.content.content).then(() => {
+            location.reload();
+        });
 
         this.props.dispatch(setEditOverlayOpen(false));
     }
@@ -48,14 +55,11 @@ class EditContent extends React.Component {
     renderInner() {
         return (
             <form onSubmit={this.handleSubmit.bind(this)}>
-                <div className='mdc-text-field mdc-text-field--upgraded' data-mdc-auto-init='MDCTextField'>
-                    <input type='text' id='text-content' className='mdc-text-field__input'  name='textContent' defaultValue={this.props.content.content.text} onChange={this.handleContentChange.bind(this)} />
-
-                    <label className='mdc-floating-label mdc-floating-label--float-above' htmlFor='text-content'>
-                        Text Content
-                    </label>
+                <div id='text-content' className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
+                    <input type='text' id='text-content' className='mdc-text-field__input' onChange={this.handleContentChange.bind(this)} size={40} />
+                    <label className='mdc-text-field__label' htmlFor='text-content'>Text Content</label>
                     <div className='mdc-line-ripple'></div>
-                </div><br />
+                </div>
 
                 <button className='mdc-button mdc-button--raised edit-content-button button'>Save</button>
             </form>
