@@ -29,7 +29,7 @@ export default class JoinTeamPanel extends React.Component {
 
         return (
             <div className='join-team-panel'>
-                <Parallax offsetYMax='50%' offsetYMin='-25%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
+                <Parallax offsetYMax='25%' offsetYMin='0%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
                     <div className='join-team-panel-image' />
                 </Parallax>
 

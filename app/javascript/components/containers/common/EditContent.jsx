@@ -46,8 +46,6 @@ class EditContent extends React.Component {
     }
 
     renderInner() {
-        if (!this.props.edit || !this.props.editOverlayOpen) return null;
-
         return (
             <form onSubmit={this.handleSubmit.bind(this)}>
                 <div className='mdc-text-field mdc-text-field--upgraded' data-mdc-auto-init='MDCTextField'>
@@ -65,6 +63,8 @@ class EditContent extends React.Component {
     }
 
     render() {
+        let visibility = this.props.edit && this.props.editOverlayOpen ? 'visible' : 'hidden';
+
         let element = $(`#${this.props.content.identifier}`);
         if (element.offset() != null) {
             let position = element.offset();
@@ -72,7 +72,7 @@ class EditContent extends React.Component {
         }
 
         return (
-            <div className='editContentWrapper'>
+            <div className='editContentWrapper' style={{ visibility: visibility }}>
                 {this.renderInner()}
             </div>
         );

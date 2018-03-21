@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import React from 'react';
 
+import MDCAutoInit from '../components/common/MDCAutoInit';
+
 import TextContent from '../containers/content/TextContent';
 import JoinTeamPanel from '../components/common/JoinTeamPanel';
 
@@ -77,6 +79,8 @@ export default class Privacy extends React.Component {
                 Questions regarding this Privacy Policy should be emailed to team@candidatexyz.com<br /><br />
 
                 <i>Updated March 11, 2018</i><br /><br />
+
+                <MDCAutoInit />
             </div>
         );
     }

@@ -7,3 +7,4 @@ Misc To-Do's:
 - Use uuids to index content and allow user to reference variables in their content
 - Import mdc properly
 - Store content in Redux
+- Parallax doesn't seem to properly scale with image size

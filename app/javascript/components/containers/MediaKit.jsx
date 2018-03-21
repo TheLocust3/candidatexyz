@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import MDCAutoInit from '../components/common/MDCAutoInit';
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
 
@@ -42,6 +43,8 @@ export default class Meet extends React.Component {
                         <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6"><ImageContent identifier='mediaKitPhoto4' className='media-photo' /></div>
                     </div>
                 </div>
+
+                <MDCAutoInit />
             </div>
         );
     }

@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom'
 
+import MDCAutoInit from '../../components/common/MDCAutoInit';
 import SignInForm from '../../components/users/SignInForm';
 
 export default class SignInContainer extends React.Component {
@@ -23,6 +24,8 @@ export default class SignInContainer extends React.Component {
                 <SignInForm redirectUrl='/' /><br />
 
                 <Link className='link-small' to='/forgot_password'>Forgot password?</Link>
+
+                <MDCAutoInit />
             </div>
         );
     }

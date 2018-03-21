@@ -2,6 +2,8 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import MDCAutoInit from '../components/common/MDCAutoInit';
+
 import ContentApi from '../../api/content-api';
 import TextContent from './content/TextContent';
 import SlideshowContent from './content/SlideshowContent';
@@ -44,6 +46,8 @@ export default class Index extends React.Component {
 
                     <JoinTeamPanel />
                 </div>
+
+                <MDCAutoInit />
             </div>
         );
     }

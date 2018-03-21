@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import React from 'react';
 
+import MDCAutoInit from '../components/common/MDCAutoInit';
+
 import TextContent from '../containers/content/TextContent';
 import JoinUsForm from '../components/JoinUsForm';
 
@@ -27,6 +29,8 @@ export default class SignUp extends React.Component {
                         <JoinUsForm />
                     </div>
                 </div>
+
+                <MDCAutoInit />
             </div>
         );
     }

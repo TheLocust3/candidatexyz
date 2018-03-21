@@ -2,6 +2,8 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import MDCAutoInit from '../components/common/MDCAutoInit';
+
 import ContentApi from '../../api/content-api';
 import TextContent from '../containers/content/TextContent';
 import JoinCard from '../components/common/JoinCard';
@@ -36,6 +38,8 @@ export default class Meet extends React.Component {
                         <TextContent identifier='meetBlurb' />
                     </div>
                 </div>
+
+                <MDCAutoInit />
             </div>
         );
     }

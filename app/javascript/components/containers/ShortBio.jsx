@@ -2,6 +2,8 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import MDCAutoInit from '../components/common/MDCAutoInit';
+
 import TextContent from '../containers/content/TextContent';
 
 export default class Meet extends React.Component {
@@ -22,6 +24,8 @@ export default class Meet extends React.Component {
             <div className='content short-bio'>
                 <div className='mdc-typography--display3'><b><TextContent identifier='shortBioHeader' /></b></div><br />
                 <TextContent identifier='shortBioBlurb' /><br /><br />
+
+                <MDCAutoInit />
             </div>
         );
     }

@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import React from 'react';
 
+import MDCAutoInit from '../components/common/MDCAutoInit';
+
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
 import JoinTeamPanel from '../components/common/JoinTeamPanel';
@@ -35,6 +37,8 @@ export default class Action extends React.Component {
                 </div>
 
                 <JoinTeamPanel />
+
+                <MDCAutoInit />
             </div>
         );
     }

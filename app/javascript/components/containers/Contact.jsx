@@ -2,6 +2,8 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import MDCAutoInit from '../components/common/MDCAutoInit';
+
 import TextContent from './content/TextContent';
 import MessageForm from '../components/MessageForm';
 
@@ -51,6 +53,8 @@ export default class Contact extends React.Component {
                         <TextContent identifier='contactPhoneNumber' /><br /><br />
                     </div>
                 </div><br />
+
+                <MDCAutoInit />
             </div>
         );
     }
