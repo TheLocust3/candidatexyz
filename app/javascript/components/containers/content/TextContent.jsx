@@ -5,22 +5,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ContentApi from '../../../api/content-api';
-import EditContentWrapper from '../../components/common/EditContentWrapper';
+import { setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
 
 class TextContent extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { content: { content: {} }, editingSelf: false };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (!nextProps.edit) {
-            this.setState({
-                editingSelf: false
-            });
-        }
+        this.state = { content: { content: {} } };
     }
     
     componentWillMount() {
@@ -31,48 +23,13 @@ class TextContent extends React.Component {
         });
     }
 
-    componentDidMount() {
-        $(document).click((event) => { // TODO: find a better way to do this
-            let target = event.target;
-
-            if (!$(target).is(`#${this.props.identifier}`) && !$(target).parents().is(`#${this.props.identifier}`)) {
-                this.setState({
-                    editingSelf: false
-                });
-            }
-        });
-    }
-
-    componentWillUnmount() {
-        $(document).off('click');
-    }
-
     onEditContent(event) {
+        if (!this.props.edit) return;
+
         event.stopPropagation();
 
-        this.setState({
-            editingSelf: true
-        });
-    }
-
-    renderEdit() {
-        if (!this.state.editingSelf) return;
-
-        let { identifier, edit, dispatch, ...props } = this.props;
-
-        return (
-            <EditContentWrapper>
-                <form>
-                    <div className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
-                        <input type='text' id='text-content' className='mdc-text-field__input' name='textContent' />
-                        <label className='mdc-text-field__label' htmlFor='text-content'>Text Content</label>
-                        <div className='mdc-line-ripple'></div>
-                    </div><br />
-
-                    <button className='mdc-button mdc-button--raised sign-up-form-button button'>Save</button>
-                </form>
-            </EditContentWrapper>
-        )
+        this.props.dispatch(setEditingContent(this.state.content));
+        this.props.dispatch(setEditOverlayOpen(true));
     }
 
     render() {
@@ -80,8 +37,6 @@ class TextContent extends React.Component {
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
-                {this.renderEdit()}
-
                 <span dangerouslySetInnerHTML={{__html: this.state.content.content.text }} {...props} />
             </span>
         );

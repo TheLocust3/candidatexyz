@@ -23,13 +23,20 @@
 
 .editContentWrapper {
     position: absolute;
-    left: 0px;
-    top: 0px;
+    z-index: 9999;
+    padding: 1%;
 
     background-color: white;
-    padding: 3%;
-    border-radius: 10px;
+    border-radius: 5px;
     border-style: solid;
     border-width: 1px;
     border-color: #BBB;
+
+    //font-size: initial;
+    //font-weight: initial;
+}
+
+.edit-content-button {
+    float: right;
+    margin-top: 20%;
 }

@@ -3,7 +3,9 @@ import * as ContentActions from '../actions/content-actions';
 const initialState = {
     isReady: false,
     contents: [],
-    edit: false
+    edit: false,
+    editOverlayOpen: false,
+    editingContent: { content: {} }
 };
 
 export function contentReducer(state = initialState, action) {
@@ -26,9 +28,17 @@ export function contentReducer(state = initialState, action) {
                 isReady: true,
                 contents: action.data
             });
-        case ContentActions.SET_EDIT_CONTENT:
+        case ContentActions.SET_EDIT:
             return Object.assign({}, state, {
                 edit: action.data
+            });
+        case ContentActions.SET_EDIT_OVERLAY_OPEN:
+            return Object.assign({}, state, {
+                editOverlayOpen: action.data
+            });
+        case ContentActions.SET_EDITING_CONTENT:
+            return Object.assign({}, state, {
+                editingContent: action.data
             });
         default:
             return state;

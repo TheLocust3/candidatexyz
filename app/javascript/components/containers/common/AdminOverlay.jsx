@@ -7,6 +7,7 @@ import { MDCSnackbar } from '@material/snackbar';
 import AuthApi from '../../../api/auth-api';
 import { fetchCurrentUser } from '../../actions/user-actions';
 import { setEdit } from '../../actions/content-actions';
+import EditContent from './EditContent';
 
 class AdminOverlay extends React.Component {
 
@@ -76,6 +77,8 @@ class AdminOverlay extends React.Component {
 
         return (
             <div className='overlay'>
+                <EditContent />
+
                 {this.renderEditSnackbar()}
 
                 <div className='overlayActionsLeft'>

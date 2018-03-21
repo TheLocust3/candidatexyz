@@ -5,31 +5,32 @@ class Api::ContentController < Api::ApiController
     end
 
     def show
-        render :json => Content.where( :identifier => params[:id] ).first
+        render :json => Content.where( :identifier => params[:identifier] ).first
     end
 
     def create
         content = Content.new(create_params(params))
 
         if content.save
-            render :json => Content.where( :identifier => params[:id] ).first
+            render :json => Content.where( :identifier => params[:identifier] ).first
         else
             render_errors(content)
         end
     end
 
     def update
-        content = Content.where( :identifier => params[:id] ).first
+        content = Content.where( :identifier => params[:identifier] ).first
+        content.content = params[:content]
 
-        if content.update(update_params(params))
-            render :json => Content.where( :identifier => params[:id] ).first
+        if content.save
+            render :json => Content.where( :identifier => params[:identifier] ).first
         else
             render_errors(content)
         end
     end
 
     def destroy
-        content = Content.where( :identifier => params[:id] ).first
+        content = Content.where( :identifier => params[:identifier] ).first
         content.destroy
 
         render_success
@@ -38,10 +39,6 @@ class Api::ContentController < Api::ApiController
     private
     def create_params(params)
         params.permit(:content_type, :identifier, :content)
-    end
-
-    def update_params(params)
-        params.permit(:content)
     end
 end
   
