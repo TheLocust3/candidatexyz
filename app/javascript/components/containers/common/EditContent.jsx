@@ -7,6 +7,7 @@ import { setEditOverlayOpen } from '../../actions/content-actions';
 import TextContentEditor from '../../components/content/TextContentEditor';
 import ImageContentEditor from '../../components/content/ImageContentEditor';
 import LinkContentEditor from '../../components/content/LinkContentEditor';
+import SlideshowContentEditor from '../../components/content/SlideshowContentEditor';
 
 class EditContent extends React.Component {
 
@@ -38,6 +39,8 @@ class EditContent extends React.Component {
                 return <ImageContentEditor content={this.props.content} dispatch={this.props.dispatch} />
             case 'link':
                 return <LinkContentEditor content={this.props.content} dispatch={this.props.dispatch} />
+            case 'slideshow':
+                return <SlideshowContentEditor content={this.props.content} dispatch={this.props.dispatch} />
         }
     }
 
