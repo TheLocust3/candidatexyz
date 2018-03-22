@@ -3,8 +3,9 @@ import $ from 'jquery';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ContentApi from '../../../api/content-api';
-import { setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
+import { setEditOverlayOpen } from '../../actions/content-actions';
+import TextContentEditor from '../../components/content/TextContentEditor';
+import ImageContentEditor from '../../components/content/ImageContentEditor';
 
 class EditContent extends React.Component {
 
@@ -12,11 +13,6 @@ class EditContent extends React.Component {
         super(props);
 
         this.state = { content: { content: {} } };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        let textField = new mdc.textField.MDCTextField(document.querySelector('#text-content'));
-        textField.value = nextProps.content.content.text;
     }
 
     componentDidMount() {
@@ -32,38 +28,14 @@ class EditContent extends React.Component {
     componentWillUnmount() {
         $(document).off('click');
     }
-    
-    handleContentChange(event) {
-        let content = this.state.content;
-        content.content.text = event.target.value;
 
-        this.setState({
-            content: content
-        });
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-
-        ContentApi.update(this.props.content.identifier, this.state.content.content).then(() => {
-            location.reload();
-        });
-
-        this.props.dispatch(setEditOverlayOpen(false));
-    }
-
-    renderInner() {
-        return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                <div id='text-content' className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
-                    <input type='text' id='text-content' className='mdc-text-field__input' onChange={this.handleContentChange.bind(this)} size={40} />
-                    <label className='mdc-text-field__label' htmlFor='text-content'>Text Content</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-
-                <button className='mdc-button mdc-button--raised edit-content-button button'>Save</button>
-            </form>
-        )
+    renderEditor() {
+        switch (this.props.content.content_type) {
+            case 'text':
+                return <TextContentEditor content={this.props.content} dispatch={this.props.dispatch} />
+            case 'image':
+                return <ImageContentEditor content={this.props.content} dispatch={this.props.dispatch} />
+        }
     }
 
     render() {
@@ -77,7 +49,7 @@ class EditContent extends React.Component {
 
         return (
             <div className='editContentWrapper' style={{ visibility: visibility }}>
-                {this.renderInner()}
+                {this.renderEditor()}
             </div>
         );
     }
