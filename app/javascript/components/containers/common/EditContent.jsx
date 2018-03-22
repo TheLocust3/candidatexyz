@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { setEditOverlayOpen } from '../../actions/content-actions';
 import TextContentEditor from '../../components/content/TextContentEditor';
 import ImageContentEditor from '../../components/content/ImageContentEditor';
+import LinkContentEditor from '../../components/content/LinkContentEditor';
 
 class EditContent extends React.Component {
 
@@ -35,6 +36,8 @@ class EditContent extends React.Component {
                 return <TextContentEditor content={this.props.content} dispatch={this.props.dispatch} />
             case 'image':
                 return <ImageContentEditor content={this.props.content} dispatch={this.props.dispatch} />
+            case 'link':
+                return <LinkContentEditor content={this.props.content} dispatch={this.props.dispatch} />
         }
     }
 

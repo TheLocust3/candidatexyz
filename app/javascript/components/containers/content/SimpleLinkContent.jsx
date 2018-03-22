@@ -3,8 +3,10 @@ import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import ContentApi from '../../../api/content-api';
+import { setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
 
 class SimpleLinkContent extends React.Component {
 
@@ -22,14 +24,26 @@ class SimpleLinkContent extends React.Component {
         });
     }
 
+    onEditContent(event) {
+        if (!this.props.edit) return;
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        this.props.dispatch(setEditingContent(this.state.content));
+        this.props.dispatch(setEditOverlayOpen(true));
+    }
+
     render() {
-        let { identifier, dispatch, ...props } = this.props;
+        let { identifier, edit, dispatch, ...props } = this.props;
         let content = this.state.content;
 
         return (
-            <Link to={content.content.url} {...props}>
-                {content.content.text}
-            </Link>
+            <span id={identifier}>
+                <Link to={content.content.url} onClick={this.onEditContent.bind(this)} {...props}>
+                    {content.content.text}
+                </Link>
+            </span>
         );
     }
 }
@@ -38,4 +52,10 @@ SimpleLinkContent.propTypes = {
     identifier: PropTypes.string.isRequired
 };
 
-export default SimpleLinkContent;
+function mapStateToProps(state) {
+    return {
+        edit: state.content.edit
+    };
+}
+
+export default connect(mapStateToProps)(SimpleLinkContent);

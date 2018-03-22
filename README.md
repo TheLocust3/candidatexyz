@@ -8,3 +8,4 @@ Misc To-Do's:
 - Import mdc properly
 - Store content in Redux
 - Parallax doesn't seem to properly scale with image size
+- Combine like editors
