@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Corner, AnchorMargin } from '@material/menu';
 import { MDCSnackbar } from '@material/snackbar';
+import { Link }  from 'react-router-dom';
 
 import AuthApi from '../../../api/auth-api';
 import { fetchCurrentUser } from '../../actions/user-actions';
@@ -98,6 +99,12 @@ class AdminOverlay extends React.Component {
                                 <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                     Settings
                                 </li>
+
+                                <Link to='/edit_content' className='menu-item-link'>
+                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                                        Edit Other Content
+                                    </li>
+                                </Link>
 
                                 <li className='mdc-list-item' role='menuitem' tabIndex='0' onClick={this.onLogoutClick.bind(this)}>
                                     Logout
