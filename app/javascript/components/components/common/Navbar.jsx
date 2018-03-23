@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
+import { MDCTemporaryDrawer } from '@material/drawer';
 
 import { MAX_MOBILE_WIDTH } from '../../../constants';
 import ImageContent from '../../containers/content/ImageContent';
@@ -40,12 +41,12 @@ export default class Navbar extends React.Component {
     onMenuClick() {
         event.preventDefault()
 
-        let drawer = new mdc.drawer.MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary'));
+        let drawer = new MDCTemporaryDrawer(document.querySelector('#mobile-navbar'));
         drawer.open = true;
     }
 
     onLinkClick() {
-        let drawer = new mdc.drawer.MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary'));
+        let drawer = new MDCTemporaryDrawer(document.querySelector('#mobile-navbar'));
         drawer.open = false;
     }
 
@@ -88,7 +89,7 @@ export default class Navbar extends React.Component {
                     </div>
                 </header>
 
-                <aside className='mdc-drawer mdc-drawer--temporary'>
+                <aside className='mdc-drawer mdc-drawer--temporary' id='mobile-navbar'>
                     <nav className='mdc-drawer__drawer'>
                         <header className='mdc-drawer__header'>
                             <div className='mdc-drawer__header-content mdc-theme--text-primary-on-primary mdc-theme--primary-bg'>

@@ -5,7 +5,6 @@ Misc To-Do's:
 - Allow text of buttons to be editable
 - Allow privacy policy to be editable
 - Use uuids to index content and allow user to reference variables in their content
-- Import mdc properly
 - Store content in Redux
 - Parallax doesn't seem to properly scale with image size
 - Combine like editors

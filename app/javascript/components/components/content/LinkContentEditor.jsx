@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDCTextField } from '@material/textfield';
 
 import ContentApi from '../../../api/content-api';
 import { setEditOverlayOpen } from '../../actions/content-actions';
@@ -14,18 +15,18 @@ class LinkContentEditor extends React.Component {
     }
     
     componentDidMount() {
-        let textField = new mdc.textField.MDCTextField(document.querySelector('#link-text-content'));
-        textField.value = this.props.content.content.text;
-
-        textField = new mdc.textField.MDCTextField(document.querySelector('#link-url-content'));
-        textField.value = this.props.content.content.url;
+        this.setDefaultFieldValues();
     }
 
     componentDidUpdate() {
-        let textField = new mdc.textField.MDCTextField(document.querySelector('#link-text-content'));
+        this.setDefaultFieldValues();
+    }
+
+    setDefaultFieldValues() {
+        let textField = new MDCTextField(document.querySelector('#link-text-content'));
         textField.value = this.props.content.content.text;
 
-        textField = new mdc.textField.MDCTextField(document.querySelector('#link-url-content'));
+        textField = new MDCTextField(document.querySelector('#link-url-content'));
         textField.value = this.props.content.content.url;
     }
 

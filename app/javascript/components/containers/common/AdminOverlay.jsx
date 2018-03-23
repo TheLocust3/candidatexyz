@@ -3,7 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Corner, AnchorMargin } from '@material/menu';
 import { MDCSnackbar } from '@material/snackbar';
-import { Link }  from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { MDCMenu } from '@material/menu';
 
 import AuthApi from '../../../api/auth-api';
 import { fetchCurrentUser } from '../../actions/user-actions';
@@ -34,7 +35,7 @@ class AdminOverlay extends React.Component {
     }
 
     onSettingsClick(event) {
-        let menu = new mdc.menu.MDCMenu(document.querySelector('.mdc-menu'));
+        let menu = new MDCMenu(document.querySelector('#admin-overlay-settings'));
         menu.setAnchorCorner(Corner.BOTTOM_START);
         menu.setAnchorMargin({ top: 25, right: 25 });
         menu.open = !menu.open;
@@ -94,7 +95,7 @@ class AdminOverlay extends React.Component {
                             </span>
                         </button>
 
-                        <div className='mdc-menu' tabIndex='-1'>
+                        <div id='admin-overlay-settings' className='mdc-menu' tabIndex='-1'>
                             <ul className='mdc-menu__items mdc-list' role='menu' aria-hidden='true'>
                                 <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                     Settings

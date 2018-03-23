@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDCTextField } from '@material/textfield';
 
 import ContentApi from '../../../api/content-api';
 import { setEditOverlayOpen } from '../../actions/content-actions';
@@ -14,12 +15,12 @@ class ImageContentEditor extends React.Component {
     }
 
     componentDidMount() {
-        let textField = new mdc.textField.MDCTextField(document.querySelector('#image-content'));
+        let textField = new MDCTextField(document.querySelector('#image-content'));
         textField.value = this.props.content.content.image;
     }
 
     componentDidUpdate() {
-        let textField = new mdc.textField.MDCTextField(document.querySelector('#image-content'));
+        let textField = new MDCTextField(document.querySelector('#image-content'));
         textField.value = this.props.content.content.image;
     }
 

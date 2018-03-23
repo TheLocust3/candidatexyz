@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDCTextField } from '@material/textfield';
 
 import ContentApi from '../../../api/content-api';
 import { setEditOverlayOpen } from '../../actions/content-actions';
@@ -15,7 +16,7 @@ class SlideshowContentEditor extends React.Component {
 
     setTextFields() {
         this.props.content.content.map((image, index) => {
-            let textField = new mdc.textField.MDCTextField(document.querySelector(`#image-${index}-content`));
+            let textField = new MDCTextField(document.querySelector(`#image-${index}-content`));
             textField.value = image;
         });
     }

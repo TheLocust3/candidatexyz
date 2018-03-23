@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDCTextField } from '@material/textfield';
 
 import ContentApi from '../../../api/content-api';
 import { setEditOverlayOpen } from '../../actions/content-actions';
@@ -14,12 +15,15 @@ class TextContentEditor extends React.Component {
     }
     
     componentDidMount() {
-        let textField = new mdc.textField.MDCTextField(document.querySelector('#text-content'));
-        textField.value = this.props.content.content.text;
+        this.setDefaultFieldValues();
     }
 
     componentDidUpdate() {
-        let textField = new mdc.textField.MDCTextField(document.querySelector('#text-content'));
+        this.setDefaultFieldValues();
+    }
+
+    setDefaultFieldValues() {
+        let textField = new MDCTextField(document.querySelector('#text-content'));
         textField.value = this.props.content.content.text;
     }
 
