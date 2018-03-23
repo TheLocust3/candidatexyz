@@ -67,11 +67,11 @@ class Base extends React.Component {
                                     <Route exact path='/contact' component={Contact} />
                                     <Route exact path='/media-kit' component={MediaKit} />
                                     <Route exact path='/short-bio' component={ShortBio} />
-                                    <Route exact path='/edit_content' component={EditRawContent} />
+                                    <Route exact path='/edit-content' component={EditRawContent} />
 
-                                    <Route exact path='/sign_in' component={SignInContainer} />
-                                    <Route exact path='/forgot_password' component={ForgotPasswordContainer} />
-                                    <Route exact path='/reset_password' component={ResetPasswordContainer} />
+                                    <Route exact path='/sign-in' component={SignInContainer} />
+                                    <Route exact path='/forgot-password' component={ForgotPasswordContainer} />
+                                    <Route exact path='/reset-password' component={ResetPasswordContainer} />
                                     <Route exact path='/users/edit' component={EditUserContainer} />
                                 </Switch>
 

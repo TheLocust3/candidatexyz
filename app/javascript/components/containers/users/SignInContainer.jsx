@@ -23,7 +23,7 @@ export default class SignInContainer extends React.Component {
             <div className='content signInForm'>
                 <SignInForm redirectUrl='/' /><br />
 
-                <Link className='link-small' to='/forgot_password'>Forgot password?</Link>
+                <Link className='link-small' to='/forgot-password'>Forgot password?</Link>
 
                 <MDCAutoInit />
             </div>

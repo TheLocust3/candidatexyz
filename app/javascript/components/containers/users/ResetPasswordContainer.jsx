@@ -12,7 +12,7 @@ export default class ResetPasswordContainer extends React.Component {
         return (
             <div>
                 <ResetPasswordForm redirectUrl="/" token={parsed.reset_password_token} /><br />
-                <Link to="/sign_in">Sign in</Link><br />
+                <Link to="/sign-in">Sign in</Link><br />
             </div>
         );
     }
