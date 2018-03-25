@@ -26,7 +26,7 @@ export default class JoinTeamPanel extends React.Component {
     render() {
         return (
             <div className='join-team-panel'>
-                <Parallax offsetYMax='50%' offsetYMin='-50%' styleOuter={{ overflow: 'hidden', height: '60vh' }} styleInner={{ marginTop: '-20vh' }} slowerScrollRate>
+                <Parallax offsetYMax='100px' offsetYMin='-100px' styleOuter={{ overflow: 'hidden', height: '60vh' }} styleInner={{ marginTop: '-20vh' }} slowerScrollRate>
                     <div className='join-team-panel-image' style={{ backgroundImage: `url(${this.state.imageUrl})` }} />
                 </Parallax>
 
