@@ -5,3 +5,6 @@ Misc To-Do's:
 - Allow privacy policy to be editable
 - Parallax doesn't seem to properly scale with image size
 - Make contents DRY
+
+Bugs:
+- Clicking anywhere inside slideshow content will trigger editor (when editing)
