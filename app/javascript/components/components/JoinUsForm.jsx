@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import $ from 'jquery';
 import React from 'react';
 
 import ContactApi from '../../api/contact-api';
@@ -48,7 +47,7 @@ export default class JoinUsForm extends React.Component {
 
     render() {
         return (
-            <form className='join-us-form' onSubmit={this.handleSubmit.bind(this)}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
                 {this.renderErrors()}
 
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>

@@ -23,7 +23,7 @@ export default class JoinCard extends React.Component {
                     </div>
                 </div>
 
-                <SocialMediaLinks size={1.5} />
+                <SocialMediaLinks size={2} />
             </div>
         );
     }

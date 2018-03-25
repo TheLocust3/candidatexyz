@@ -1,20 +1,19 @@
-import $ from 'jquery';
 import React from 'react';
+import { connect } from 'react-redux';
 
+import { setBlankNavbar } from '../actions/global-actions';
 import MDCAutoInit from '../components/common/MDCAutoInit';
-
 import TextContent from '../containers/content/TextContent';
 import JoinUsForm from '../components/JoinUsForm';
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
 
     componentDidMount() {
-        $('.header-image').css('background-image', 'url()');
-        $('.navbar .link').addClass('inverted-link');
+        this.props.dispatch(setBlankNavbar(true));
     }
 
     componentWillUnmount() {
-        $('.navbar .link').removeClass('inverted-link');
+        this.props.dispatch(setBlankNavbar(false));
     }
 
     render() {
@@ -35,3 +34,5 @@ export default class SignUp extends React.Component {
         );
     }
 }
+
+export default connect()(SignUp);

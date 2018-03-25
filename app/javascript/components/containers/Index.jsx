@@ -1,9 +1,9 @@
-import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { setHeaderImage } from '../actions/global-actions';
 import MDCAutoInit from '../components/common/MDCAutoInit';
-
 import ContentApi from '../../api/content-api';
 import TextContent from './content/TextContent';
 import SlideshowContent from './content/SlideshowContent';
@@ -11,7 +11,7 @@ import JoinCard from '../components/common/JoinCard';
 import JoinTeamPanel from '../components/common/JoinTeamPanel'
 import Slideshow from '../components/common/Slideshow';
 
-export default class Index extends React.Component {
+class Index extends React.Component {
 
     constructor(props) {
         super(props);
@@ -28,9 +28,13 @@ export default class Index extends React.Component {
         });
     }
 
-    render() {
-        $('.header-image').css('background-image', `url(${this.state.imageUrl})`);
+    componentDidUpdate() {
+        if (!_.isEmpty(this.state.imageUrl)) {
+            this.props.dispatch(setHeaderImage(this.state.imageUrl));
+        }
+    }
 
+    render() {
         return (
             <div>
                 <JoinCard />
@@ -52,3 +56,5 @@ export default class Index extends React.Component {
         );
     }
 }
+
+export default connect()(Index);

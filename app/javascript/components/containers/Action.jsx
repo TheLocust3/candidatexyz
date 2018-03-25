@@ -1,23 +1,20 @@
-import $ from 'jquery';
 import React from 'react';
+import { connect } from 'react-redux';
 
+import { setBlankNavbar } from '../actions/global-actions';
 import MDCAutoInit from '../components/common/MDCAutoInit';
-
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
 import JoinTeamPanel from '../components/common/JoinTeamPanel';
 
-export default class Action extends React.Component {
+class Action extends React.Component {
 
     componentDidMount() {
-        $('.header-image').css('background-image', 'url()');
-        $('.navbar .link').addClass('inverted-link');
-        $('.header-image').addClass('header-image-blank');
+        this.props.dispatch(setBlankNavbar(true));
     }
 
     componentWillUnmount() {
-        $('.navbar .link').removeClass('inverted-link');
-        $('.header-image').removeClass('header-image-blank');
+        this.props.dispatch(setBlankNavbar(false));
     }
 
     render() {
@@ -43,3 +40,5 @@ export default class Action extends React.Component {
         );
     }
 }
+
+export default connect()(Action);

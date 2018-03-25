@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
@@ -25,12 +24,10 @@ export default class JoinTeamPanel extends React.Component {
     }
 
     render() {
-        $('.join-team-panel-image').css('background-image', `url(${this.state.imageUrl})`);
-
         return (
             <div className='join-team-panel'>
                 <Parallax offsetYMax='50%' offsetYMin='-25%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
-                    <div className='join-team-panel-image' />
+                    <div className='join-team-panel-image' style={{ backgroundImage: `url(${this.state.imageUrl})` }} />
                 </Parallax>
 
                 <div className='join-team-panel-content'>

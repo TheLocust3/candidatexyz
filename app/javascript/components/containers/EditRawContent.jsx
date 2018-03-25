@@ -1,7 +1,7 @@
-import $ from 'jquery';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { setBlankNavbar } from '../actions/global-actions';
 import ContentApi from '../../api/content-api';
 import MDCAutoInit from '../components/common/MDCAutoInit';
 import RawContentInlineEditor from '../components/content/edit/RawContentInlineEditor';
@@ -30,14 +30,11 @@ class EditRawContent extends React.Component {
     }
 
     componentDidMount() {
-        $('.header-image').css('background-image', 'url()');
-        $('.navbar .link').addClass('inverted-link');
-        $('.header-image').addClass('header-image-blank');
+        this.props.dispatch(setBlankNavbar(true));
     }
 
     componentWillUnmount() {
-        $('.navbar .link').removeClass('inverted-link');
-        $('.header-image').removeClass('header-image-blank');
+        this.props.dispatch(setBlankNavbar(false));
     }
 
     render() {

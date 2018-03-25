@@ -1,22 +1,20 @@
-import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { setBlankNavbar } from '../actions/global-actions';
 import MDCAutoInit from '../components/common/MDCAutoInit';
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
 
-export default class Meet extends React.Component {
+class Meet extends React.Component {
 
     componentDidMount() {
-        $('.header-image').addClass('header-image-blank');
-        $('.header-image').css('background-image', 'url()');
-        $('.navbar .link').addClass('inverted-link');
+        this.props.dispatch(setBlankNavbar(true));
     }
 
     componentWillUnmount() {
-        $('.header-image').removeClass('header-image-blank');
-        $('.navbar .link').removeClass('inverted-link');
+        this.props.dispatch(setBlankNavbar(false));
     }
 
     render() {
@@ -49,3 +47,5 @@ export default class Meet extends React.Component {
         );
     }
 }
+
+export default connect()(Meet);

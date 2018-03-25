@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import $ from 'jquery';
 import React from 'react';
 
 import ContactApi from '../../api/contact-api';
