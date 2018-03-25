@@ -16,12 +16,9 @@ export function contentReducer(state = initialState, action) {
                 isReady: false
             });
         case ContentActions.RECEIVE_CONTENT:
-            let contents = state.contents;
-            contents.push(action.data);
-
             return Object.assign({}, state, {
                 isReady: true,
-                contents: contents
+                contents: [...state.contents, action.data]
             });
         case ContentActions.RECEIVE_ALL_CONTENT:
             return Object.assign({}, state, {

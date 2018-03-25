@@ -3,23 +3,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import ContentApi from '../../../api/content-api';
-import { setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
+import { fetchContent, setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
 
 class ImageContent extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = { content: { content: {} } };
+    componentWillMount() {
+        if (_.isEmpty(this.findContent().identifier)) {
+            this.props.dispatch(fetchContent(this.props.identifier));
+        }
     }
 
-    componentWillMount() {
-        ContentApi.get(this.props.identifier).then((response) => {
-            this.setState({
-                content: response
-            });
-        });
+    findContent() {
+        let content = _.find(this.props.contents, { identifier: this.props.identifier })
+
+        if (_.isEmpty(content)) {
+            return { content: {  } }
+        }
+
+        return content;
     }
 
     onEditContent(event) {
@@ -28,16 +29,16 @@ class ImageContent extends React.Component {
         event.stopPropagation();
         event.preventDefault();
 
-        this.props.dispatch(setEditingContent(this.state.content));
+        this.props.dispatch(setEditingContent(this.findContent()));
         this.props.dispatch(setEditOverlayOpen(true));
     }
 
     render() {
-        let { identifier, edit, dispatch, ...props } = this.props;
+        let { identifier, contents, edit, dispatch, ...props } = this.props;
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
-                <img src={this.state.content.content.image} {...props} />
+                <img src={this.findContent().content.image} {...props} />
             </span>
         );
     }
@@ -49,6 +50,7 @@ ImageContent.propTypes = {
 
 function mapStateToProps(state) {
     return {
+        contents: state.content.contents,
         edit: state.content.edit
     };
 }

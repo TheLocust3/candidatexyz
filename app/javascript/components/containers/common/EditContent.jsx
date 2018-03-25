@@ -4,10 +4,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setEditOverlayOpen } from '../../actions/content-actions';
-import TextContentEditor from '../../components/content/TextContentEditor';
-import ImageContentEditor from '../../components/content/ImageContentEditor';
-import LinkContentEditor from '../../components/content/LinkContentEditor';
-import SlideshowContentEditor from '../../components/content/SlideshowContentEditor';
+import TextContentEditor from '../../components/content/edit/TextContentEditor';
+import ImageContentEditor from '../../components/content/edit/ImageContentEditor';
+import LinkContentEditor from '../../components/content/edit/LinkContentEditor';
+import SlideshowContentEditor from '../../components/content/edit/SlideshowContentEditor';
 
 class EditContent extends React.Component {
 

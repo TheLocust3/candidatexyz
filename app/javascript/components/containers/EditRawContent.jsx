@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import ContentApi from '../../api/content-api';
 import MDCAutoInit from '../components/common/MDCAutoInit';
-import RawContentInlineEditor from '../components/content/RawContentInlineEditor';
+import RawContentInlineEditor from '../components/content/edit/RawContentInlineEditor';
 
 class EditRawContent extends React.Component {
 

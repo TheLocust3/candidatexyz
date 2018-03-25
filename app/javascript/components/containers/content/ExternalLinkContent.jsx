@@ -4,23 +4,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import ContentApi from '../../../api/content-api';
-import { setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
+import { fetchContent, setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
 
 class ExternalLinkContent extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = { content: { content: { url: '' } } };
+    componentWillMount() {
+        if (_.isEmpty(this.findContent().identifier)) {
+            this.props.dispatch(fetchContent(this.props.identifier));
+        }
     }
 
-    componentWillMount() {
-        ContentApi.get(this.props.identifier).then((response) => {
-            this.setState({
-                content: response
-            });
-        });
+    findContent() {
+        let content = _.find(this.props.contents, { identifier: this.props.identifier })
+
+        if (_.isEmpty(content)) {
+            return { content: {} }
+        }
+
+        return content;
     }
 
     onEditContent(event) {
@@ -29,17 +30,16 @@ class ExternalLinkContent extends React.Component {
         event.stopPropagation();
         event.preventDefault();
 
-        this.props.dispatch(setEditingContent(this.state.content));
+        this.props.dispatch(setEditingContent(this.findContent()));
         this.props.dispatch(setEditOverlayOpen(true));
     }
 
     render() {
         let { identifier, edit, dispatch, children, ...props } = this.props;
-        let content = this.state.content;
 
         return (
             <span id={identifier}>
-                <a href={content.content.url} onClick={this.onEditContent.bind(this)} {...props}>
+                <a href={this.findContent().content.url} onClick={this.onEditContent.bind(this)} {...props}>
                     {children}
                 </a>
             </span>
@@ -54,6 +54,7 @@ ExternalLinkContent.propTypes = {
 
 function mapStateToProps(state) {
     return {
+        contents: state.content.contents,
         edit: state.content.edit
     };
 }

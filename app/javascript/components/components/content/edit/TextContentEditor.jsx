@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDCTextField } from '@material/textfield';
 
-import ContentApi from '../../../api/content-api';
-import { setEditOverlayOpen } from '../../actions/content-actions';
+import ContentApi from '../../../../api/content-api';
+import { setEditOverlayOpen } from '../../../actions/content-actions';
 
 class TextContentEditor extends React.Component {
 

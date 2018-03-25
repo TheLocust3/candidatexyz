@@ -4,9 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import ContentApi from '../../../api/content-api';
 import Slideshow from '../../components/common/Slideshow';
-import { setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
+import { fetchContent, setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
 
 class SlideshowContent extends React.Component {
 
@@ -17,11 +16,19 @@ class SlideshowContent extends React.Component {
     }
 
     componentWillMount() {
-        ContentApi.get(this.props.identifier).then((response) => {
-            this.setState({
-                content: response
-            });
-        });
+        if (_.isEmpty(this.findContent().identifier)) {
+            this.props.dispatch(fetchContent(this.props.identifier));
+        }
+    }
+
+    findContent() {
+        let content = _.find(this.props.contents, { identifier: this.props.identifier })
+
+        if (_.isEmpty(content)) {
+            return { content: [] }
+        }
+
+        return content;
     }
 
     onEditContent(event) {
@@ -30,17 +37,16 @@ class SlideshowContent extends React.Component {
         event.stopPropagation();
         event.preventDefault();
 
-        this.props.dispatch(setEditingContent(this.state.content));
+        this.props.dispatch(setEditingContent(this.findContent()));
         this.props.dispatch(setEditOverlayOpen(true));
     }
 
     render() {
-        let { identifier, dispatch, ...props } = this.props;
-        let content = this.state.content;
+        let { identifier, contents, edit, dispatch, ...props } = this.props;
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
-                <Slideshow images={content.content}>
+                <Slideshow images={this.findContent().content}>
                     {this.props.children}
                 </Slideshow>
             </span>
@@ -55,6 +61,7 @@ SlideshowContent.propTypes = {
 
 function mapStateToProps(state) {
     return {
+        contents: state.content.contents,
         edit: state.content.edit
     };
 }
