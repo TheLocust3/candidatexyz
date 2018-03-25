@@ -14,7 +14,7 @@ class EditContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: { content: {} }, top: 0, left: 0 };
+        this.state = { top: 0, left: 0 };
     }
 
     componentDidMount() {
@@ -23,11 +23,11 @@ class EditContent extends React.Component {
 
             if (!$(event.target).parents().is(`#${this.props.content.identifier}`) && !$(event.target).parents().is('.editContentWrapper') && this.props.edit) {
                 this.props.dispatch(setEditOverlayOpen(false));
-            } else {
+            } else if (!$(event.target).parents().is('.editContentWrapper')) {
                 this.setState({
                     top: event.pageY + 5,
                     left: event.pageX
-                })
+                });
             }
         });
     }
@@ -54,13 +54,8 @@ class EditContent extends React.Component {
     render() {
         let visibility = this.props.edit && this.props.editOverlayOpen ? 'visible' : 'hidden';
 
-        let element = $(`#${this.props.content.identifier}`);
-        if (element.offset() != null) {
-            $('.editContentWrapper').css({ top: this.state.top, left: this.state.left });
-        }
-
         return (
-            <div className='editContentWrapper' style={{ visibility: visibility }}>
+            <div className='editContentWrapper' style={{ visibility: visibility, top: this.state.top, left: this.state.left }}>
                 {this.renderEditor()}
             </div>
         );
