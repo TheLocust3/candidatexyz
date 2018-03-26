@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar } from '../actions/global-actions';
-import MDCAutoInit from '../components/common/MDCAutoInit';
+import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
 import JoinTeamPanel from '../components/common/JoinTeamPanel';

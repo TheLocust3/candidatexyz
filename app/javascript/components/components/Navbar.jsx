@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import { MDCTemporaryDrawer } from '@material/drawer';
 
-import { MAX_MOBILE_WIDTH } from '../../../constants';
-import ImageContent from '../../containers/content/ImageContent';
-import SimpleLinkContent from '../../containers/content/SimpleLinkContent';
-import ExternalLinkContent from '../../containers/content/ExternalLinkContent';
+import { MAX_MOBILE_WIDTH } from '../../constants';
+import ImageContent from '../containers/content/ImageContent';
+import SimpleLinkContent from '../containers/content/SimpleLinkContent';
+import ExternalLinkContent from '../containers/content/ExternalLinkContent';
 
 export default class Navbar extends React.Component {
 

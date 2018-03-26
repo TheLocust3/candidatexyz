@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SocialMediaLinks from './SocialMediaLinks';
+import SocialMediaLinks from '../global/SocialMediaLinks';
 import TextContent from '../../containers/content/TextContent';
 
 export default class ApprovedBy extends React.Component {

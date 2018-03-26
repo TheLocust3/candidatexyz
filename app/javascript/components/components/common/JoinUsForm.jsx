@@ -1,14 +1,14 @@
 import _ from 'lodash'
 import React from 'react';
 
-import MessageApi from '../../api/message-api';
+import ContactApi from '../../../api/contact-api';
 
-export default class MessageForm extends React.Component {
+export default class JoinUsForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { firstName: '', lastName: '', email: '', subject: '', message: '', errors: [] };
+        this.state = { firstName: '', lastName: '', zipCode: '', email: '', phoneNumber: '', errors: [] };
     }
 
     handleChange(event) {
@@ -20,7 +20,7 @@ export default class MessageForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        MessageApi.create(this.state.firstName, this.state.lastName, this.state.email, this.state.subject, this.state.message).then(() => {
+        ContactApi.create(this.state.email, this.state.zipCode, this.state.firstName, this.state.lastName, this.state.phoneNumber).then(() => {
             window.location.href = '/';
         }).catch((response) => {
             this.setState({
@@ -47,7 +47,7 @@ export default class MessageForm extends React.Component {
 
     render() {
         return (
-            <form className='message-form' onSubmit={this.handleSubmit.bind(this)}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
                 {this.renderErrors()}
 
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
@@ -62,25 +62,29 @@ export default class MessageForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div><br /><br />
 
+
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
+                    <input type='text' id='zip-code' className='mdc-text-field__input' name='zipCode' onChange={this.handleChange.bind(this)} required />
+                    <label className='mdc-text-field__label' htmlFor='zip-code'>Zip code</label>
+                    <div className='mdc-line-ripple'></div>
+                </div><br /><br />
+
+
+                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
                     <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} required />
                     <label className='mdc-text-field__label' htmlFor='email'>Email</label>
                     <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                </div>
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='text' id='subject' className='mdc-text-field__input' name='subject' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='subject'>Subject</label>
+                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
+                    <input type='text' id='phone-number' className='mdc-text-field__input' name='phoneNumber' onChange={this.handleChange.bind(this)} required />
+                    <label className='mdc-text-field__label' htmlFor='phone-number'>Phone number</label>
                     <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                </div>
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='message' id='message' className='mdc-text-field__input' name='message' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='message'>Message</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
 
-                <button className='mdc-button mdc-button--raised sign-up-form-button'>Submit</button>
+                <button className='mdc-button mdc-button--raised sign-up-form-button'data-mdc-auto-init='MDCRipple'>Subscribe</button>
             </form>
         );
     }

@@ -9,8 +9,8 @@ import thunkMiddleware from 'redux-thunk';
 
 import reducer from '../components/reducers/root-reducer';
 
-import Navbar from '../components/components/common/Navbar';
-import Footer from '../components/components/common/Footer';
+import Navbar from '../components/components/Navbar';
+import Footer from '../components/components/Footer';
 import AdminOverlay from '../components/containers/common/AdminOverlay';
 
 import Index from '../components/containers/Index';

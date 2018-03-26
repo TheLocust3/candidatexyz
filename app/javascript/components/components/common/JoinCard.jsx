@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import TextContent from '../../containers/content/TextContent';
-import SocialMediaLinks from './SocialMediaLinks';
-import SlimJoinUsForm from '../SlimJoinUsForm'
+import SocialMediaLinks from '../global/SocialMediaLinks';
+import SlimJoinUsForm from './SlimJoinUsForm'
 
 export default class JoinCard extends React.Component {
 

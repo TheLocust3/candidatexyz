@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { setBlankNavbar } from '../actions/global-actions';
 import ContentApi from '../../api/content-api';
-import MDCAutoInit from '../components/common/MDCAutoInit';
+import MDCAutoInit from '../components/global/MDCAutoInit';
 import RawContentInlineEditor from '../components/content/edit/RawContentInlineEditor';
 
 class EditRawContent extends React.Component {

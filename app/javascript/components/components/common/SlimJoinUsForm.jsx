@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 
-import ContactApi from '../../api/contact-api';
+import ContactApi from '../../../api/contact-api';
 
 export default class JoinUsForm extends React.Component {
 

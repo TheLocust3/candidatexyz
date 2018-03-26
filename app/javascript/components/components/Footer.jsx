@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import SocialMediaLinks from './SocialMediaLinks';
-import ApprovedBy from './ApprovedBy';
-import SimpleLinkContent from '../../containers/content/SimpleLinkContent';
+import SocialMediaLinks from './global/SocialMediaLinks';
+import ApprovedBy from './common/ApprovedBy';
+import SimpleLinkContent from '../containers/content/SimpleLinkContent';
 
 export default class Footer extends React.Component {
 

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setHeaderImage } from '../actions/global-actions';
-import MDCAutoInit from '../components/common/MDCAutoInit';
 import ContentApi from '../../api/content-api';
+import { setHeaderImage } from '../actions/global-actions';
+import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from './content/TextContent';
 import SlideshowContent from './content/SlideshowContent';
 import JoinCard from '../components/common/JoinCard';
