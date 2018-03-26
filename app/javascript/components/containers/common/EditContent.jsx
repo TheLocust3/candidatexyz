@@ -45,13 +45,13 @@ class EditContent extends React.Component {
     renderEditor() {
         switch (this.props.content.content_type) {
             case 'text':
-                return <TextContentEditor content={this.props.content} dispatch={this.props.dispatch} />
+                return <TextContentEditor content={this.props.content} />
             case 'image':
-                return <ImageContentEditor content={this.props.content} dispatch={this.props.dispatch} />
+                return <ImageContentEditor content={this.props.content} />
             case 'link':
-                return <LinkContentEditor content={this.props.content} dispatch={this.props.dispatch} />
+                return <LinkContentEditor content={this.props.content} />
             case 'slideshow':
-                return <SlideshowContentEditor content={this.props.content} dispatch={this.props.dispatch} />
+                return <SlideshowContentEditor content={this.props.content} />
             default:
                 return;
         }

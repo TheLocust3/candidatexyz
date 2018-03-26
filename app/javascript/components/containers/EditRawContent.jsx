@@ -44,11 +44,11 @@ class EditRawContent extends React.Component {
             <div className='content edit-raw-content'>
                 <div className='mdc-typography--display3'><b>Edit Raw Content</b></div><br />
 
-                <RawContentInlineEditor content={this.state.indexBackground} dispatch={this.props.dispatch} /><br />
+                <RawContentInlineEditor content={this.state.indexBackground} /><br />
                 
-                <RawContentInlineEditor content={this.state.joinTeamBackground} dispatch={this.props.dispatch} /><br />
+                <RawContentInlineEditor content={this.state.joinTeamBackground} /><br />
                 
-                <RawContentInlineEditor content={this.state.meetBackground} dispatch={this.props.dispatch} />
+                <RawContentInlineEditor content={this.state.meetBackground} />
 
                 <MDCAutoInit />
             </div>

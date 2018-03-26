@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { MDCTextField } from '@material/textfield';
 
 import ContentApi from '../../../../api/content-api';
@@ -82,8 +83,7 @@ class TextContentEditor extends React.Component {
 }
 
 TextContentEditor.propTypes = {
-    content: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
+    content: PropTypes.object.isRequired
 };
 
-export default TextContentEditor;
+export default connect()(TextContentEditor);

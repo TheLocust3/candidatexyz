@@ -14,13 +14,12 @@ class Meet extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false, imageUrl: '' };
+        this.state = { imageUrl: '' };
     }
 
     componentWillMount() {
         ContentApi.get('meetBackground').then((response) => {
             this.setState({
-                isReady: true,
                 imageUrl: response.content
             });
         });

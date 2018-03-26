@@ -1,15 +1,16 @@
 import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Parallax } from 'react-scroll-parallax';
 import { MDCTemporaryDrawer } from '@material/drawer';
 
-import { MAX_MOBILE_WIDTH } from '../../constants';
-import ImageContent from '../containers/content/ImageContent';
-import SimpleLinkContent from '../containers/content/SimpleLinkContent';
-import ExternalLinkContent from '../containers/content/ExternalLinkContent';
+import { MAX_MOBILE_WIDTH } from '../../../constants';
+import ImageContent from '../content/ImageContent';
+import SimpleLinkContent from '../content/SimpleLinkContent';
+import ExternalLinkContent from '../content/ExternalLinkContent';
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -19,17 +20,11 @@ export default class Navbar extends React.Component {
 
     updateDimensions() {
         let width = $(document).width();
-        if (this.state.lastRenderedWidth > MAX_MOBILE_WIDTH && width < MAX_MOBILE_WIDTH) {
+        if ((this.state.lastRenderedWidth > MAX_MOBILE_WIDTH && width < MAX_MOBILE_WIDTH) || (this.state.lastRenderedWidth < MAX_MOBILE_WIDTH && width > MAX_MOBILE_WIDTH)) {
             this.setState({
                 lastRenderedWidth: width
             });
 
-            this.forceUpdate();
-        } else if (this.state.lastRenderedWidth < MAX_MOBILE_WIDTH && width > MAX_MOBILE_WIDTH) {
-            this.setState({
-                lastRenderedWidth: width
-            });
-            
             this.forceUpdate();
         }
     }
@@ -51,18 +46,22 @@ export default class Navbar extends React.Component {
     }
 
     renderDeskop() {
+        let headerImage = this.props.blankNavbar ? 'url()' : `url(${this.props.headerImage})`;
+        let headerImageBlank = this.props.blankNavbar ? 'header-image-blank' : '';
+        let invertedLink = this.props.blankNavbar ? 'inverted-link' : '';
+
         return (
             <div>
                 <Parallax offsetYMax='50%' offsetYMin='-50%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
-                    <div className='header-image' />
+                    <div className={`header-image ${headerImageBlank}`} style={{ backgroundImage: headerImage }} />
                 </Parallax>
 
                 <div className='navbar'>
                     <Link to='/home'><ImageContent identifier='logo' className='navbar-image' /></Link>
 
                     <div className='navbar-actions'>
-                        <div className='button-cell'><SimpleLinkContent identifier='navLink1' className='link' /></div>
-                        <div className='button-cell'><SimpleLinkContent identifier='navLink2' className='link' /></div>
+                        <div className='button-cell'><SimpleLinkContent identifier='navLink1' className={`link ${invertedLink}`} /></div>
+                        <div className='button-cell'><SimpleLinkContent identifier='navLink2' className={`link ${invertedLink}`} /></div>
                         <div className='button-cell'><ExternalLinkContent identifier='navButton'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent></div>
                     </div>
                 </div>
@@ -71,10 +70,13 @@ export default class Navbar extends React.Component {
     }
 
     renderMobile() {
+        let headerImage = this.props.blankNavbar ? 'url()' : `url(${this.props.headerImage})`;
+        let headerImageBlank = this.props.blankNavbar ? 'header-image-blank' : '';
+
         return (
             <div>
                 <Parallax offsetYMax='50%' offsetYMin='-50%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
-                    <div className='header-image' />
+                    <div className={`header-image ${headerImageBlank}`} style={{ backgroundImage: headerImage }} />
                 </Parallax>
 
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>
@@ -115,6 +117,8 @@ export default class Navbar extends React.Component {
     }
 
     render() {
+        if (this.props.fullscreen) return null;
+
         if (this.state.lastRenderedWidth < MAX_MOBILE_WIDTH) {
             return this.renderMobile();
         } else {
@@ -122,3 +126,13 @@ export default class Navbar extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        fullscreen: state.global.fullscreen,
+        headerImage: state.global.headerImage,
+        blankNavbar: state.global.blankNavbar
+    };
+}
+
+export default connect(mapStateToProps)(Navbar);

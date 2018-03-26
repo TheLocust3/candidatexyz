@@ -8,6 +8,7 @@ import ContentApi from '../../api/content-api';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 
 import TextContent from './content/TextContent';
+import JoinCard from '../components/common/JoinCard';
 
 class SplashPage extends React.Component {
 
@@ -43,7 +44,13 @@ class SplashPage extends React.Component {
     render() {
         return (
             <div className='splash-page'>
-                
+                <div className='mdc-typography--display2 splashPageHeadline'>
+                    <b><TextContent identifier='splashPageHeadline' /></b>
+                </div><br />
+
+                <JoinCard top='45%' right='60%' />
+
+                <Link to='/home'><button className='mdc-button mdc-button--raised button splash-page-button' data-mdc-auto-init='MDCRipple'><TextContent identifier='splashPageButton' /></button></Link>
 
                 <MDCAutoInit />
             </div>

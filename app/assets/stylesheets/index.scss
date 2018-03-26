@@ -4,27 +4,16 @@
     color: #cccccc;
 }
 
-@media all and (min-width: 768px) {
-    .join-card-root {
-        position: absolute;
-        top: 13%;
-        right: 3%;
-        width: 35%;
-    }
-}
-
 .join-card-root {
     position: absolute;
-    top: 13%;
     right: 3%;
-
-    @media (min-width: $mobile-width) {
-        width: 35%;
-    }
+    top: 13%;
+    width: 35%;
 
     @media (max-width: $mobile-width) {
         left: 3%;
         top: 15%;
+        width: 94%;
     }
 }
 

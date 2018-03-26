@@ -1,13 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import SocialMediaLinks from './global/SocialMediaLinks';
 import ApprovedBy from './common/ApprovedBy';
 import SimpleLinkContent from '../containers/content/SimpleLinkContent';
 
-export default class Footer extends React.Component {
+class Footer extends React.Component {
 
     render() {
+        if (this.props.fullscreen) return null;
+
         return (
             <div className='footer'>
                 <SocialMediaLinks size={2} />
@@ -26,3 +29,11 @@ export default class Footer extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        fullscreen: state.global.fullscreen,
+    };
+}
+
+export default connect(mapStateToProps)(Footer);

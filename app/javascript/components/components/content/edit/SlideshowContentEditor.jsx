@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { MDCTextField } from '@material/textfield';
 
 import ContentApi from '../../../../api/content-api';
@@ -80,4 +81,4 @@ SlideshowContentEditor.propTypes = {
     dispatch: PropTypes.func.isRequired
 };
 
-export default SlideshowContentEditor;
+export default connect()(SlideshowContentEditor);

@@ -9,7 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 
 import reducer from '../components/reducers/root-reducer';
 
-import Navbar from '../components/components/Navbar';
+import Navbar from '../components/containers/common/Navbar';
 import Footer from '../components/components/Footer';
 import AdminOverlay from '../components/containers/common/AdminOverlay';
 

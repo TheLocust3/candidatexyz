@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import ContentApi from '../../api/content-api';
 import { setHeaderImage } from '../actions/global-actions';
+import ContentApi from '../../api/content-api';
 import MDCAutoInit from '../components/global/MDCAutoInit';
+
 import TextContent from './content/TextContent';
 import SlideshowContent from './content/SlideshowContent';
 import JoinCard from '../components/common/JoinCard';
@@ -16,13 +17,12 @@ class Index extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false, imageUrl: '' };
+        this.state = { imageUrl: '' };
     }
 
     componentWillMount() {
         ContentApi.get('indexBackground').then((response) => {
             this.setState({
-                isReady: true,
                 imageUrl: response.content
             });
         });
