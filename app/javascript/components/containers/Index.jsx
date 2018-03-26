@@ -9,7 +9,7 @@ import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from './content/TextContent';
 import SlideshowContent from './content/SlideshowContent';
 import JoinCard from '../components/common/JoinCard';
-import JoinTeamPanel from '../components/common/JoinTeamPanel'
+import JoinTeamPanel from '../components/common/JoinTeamPanel';
 import Slideshow from '../components/common/Slideshow';
 
 class Index extends React.Component {

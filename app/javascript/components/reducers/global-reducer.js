@@ -11,12 +11,14 @@ export function globalReducer(state = initialState, action) {
         case GlobalActions.SET_BLANK_NAVBAR:
             return Object.assign({}, state, {
                 blankNavbar: action.data,
-                headerImage: ''
+                headerImage: '',
+                fullscreen: false
             });
         case GlobalActions.SET_HEADER_IMAGE:
             return Object.assign({}, state, {
                 headerImage: action.data,
-                blankNavbar: false
+                blankNavbar: false,
+                fullscreen: false
             });
         case GlobalActions.SET_FULLSCREEN:
             return Object.assign({}, state, {

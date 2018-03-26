@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -15,13 +16,12 @@ class SplashPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false, imageUrl: '' };
+        this.state = { imageUrl: '' };
     }
 
     componentWillMount() {
         ContentApi.get('splashPageBackground').then((response) => {
             this.setState({
-                isReady: true,
                 imageUrl: response.content
             });
         });
@@ -31,12 +31,8 @@ class SplashPage extends React.Component {
         this.props.dispatch(setFullscreen(true));
     }
 
-    componentWillUnmount() {
-        this.props.dispatch(setFullscreen(false));
-    }
-
     componentDidUpdate() {
-        if (this.state.isReady) {
+        if (!_.isEmpty(this.state.imageUrl)) {
             $('.splash-page').css('background-image', `url(${this.state.imageUrl})`);
         }
     }

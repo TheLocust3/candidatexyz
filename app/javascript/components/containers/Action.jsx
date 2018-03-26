@@ -12,11 +12,7 @@ class Action extends React.Component {
     componentDidMount() {
         this.props.dispatch(setBlankNavbar(true));
     }
-
-    componentWillUnmount() {
-        this.props.dispatch(setBlankNavbar(false));
-    }
-
+    
     render() {
         return (
             <div>

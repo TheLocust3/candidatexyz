@@ -11,19 +11,20 @@ export default class JoinTeamPanel extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false, imageUrl: '' };
+        this.state = { imageUrl: '' };
     }
 
     componentWillMount() {
         ContentApi.get('joinTeamBackground').then((response) => {
             this.setState({
-                isReady: true,
                 imageUrl: response.content
             });
         });
     }
 
     render() {
+        if (_.isEmpty(this.state.imageUrl)) return null;
+        
         return (
             <div className='join-team-panel'>
                 <Parallax offsetYMax='100px' offsetYMin='-100px' styleOuter={{ overflow: 'hidden', height: '60vh' }} styleInner={{ marginTop: '-20vh' }} slowerScrollRate>
