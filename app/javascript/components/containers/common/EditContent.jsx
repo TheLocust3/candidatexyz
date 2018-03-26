@@ -36,6 +36,12 @@ class EditContent extends React.Component {
         $(document).off('click');
     }
 
+    setPosition() {
+        if (!this.props.editOverlayOpen) return { top: 0, left: 0 };
+
+        return { top: this.state.top, left: this.state.left };
+    }
+
     renderEditor() {
         switch (this.props.content.content_type) {
             case 'text':
@@ -55,7 +61,7 @@ class EditContent extends React.Component {
         let visibility = this.props.edit && this.props.editOverlayOpen ? 'visible' : 'hidden';
 
         return (
-            <div className='editContentWrapper' style={{ visibility: visibility, top: this.state.top, left: this.state.left }}>
+            <div className='editContentWrapper' style={{ visibility: visibility, ...this.setPosition() }}>
                 {this.renderEditor()}
             </div>
         );
