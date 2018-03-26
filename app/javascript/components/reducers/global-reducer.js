@@ -2,7 +2,8 @@ import * as GlobalActions from '../actions/global-actions';
 
 const initialState = {
     blankNavbar: false,
-    headerImage: ''
+    headerImage: '',
+    fullscreen: false
 };
 
 export function globalReducer(state = initialState, action) {
@@ -14,6 +15,10 @@ export function globalReducer(state = initialState, action) {
         case GlobalActions.SET_HEADER_IMAGE:
             return Object.assign({}, state, {
                 headerImage: action.data
+            });
+        case GlobalActions.SET_FULLSCREEN:
+            return Object.assign({}, state, {
+                fullscreen: action.data
             });
         default:
             return state;

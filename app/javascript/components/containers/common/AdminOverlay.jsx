@@ -43,7 +43,7 @@ class AdminOverlay extends React.Component {
 
     onLogoutClick(event) {
         AuthApi.signOut().then(() => {
-            window.location.href = '/';
+            window.location.href = '/home';
         })
     }
 

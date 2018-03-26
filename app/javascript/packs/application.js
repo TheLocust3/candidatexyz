@@ -13,6 +13,7 @@ import Navbar from '../components/components/Navbar';
 import Footer from '../components/components/Footer';
 import AdminOverlay from '../components/containers/common/AdminOverlay';
 
+import SplashPage from '../components/containers/SplashPage';
 import Index from '../components/containers/Index';
 import Meet from '../components/containers/Meet';
 import Action from '../components/containers/Action';
@@ -59,7 +60,8 @@ class Base extends React.Component {
                                 <Route component={ScrollToTop} />
 
                                 <Switch>
-                                    <Route exact path='/' component={Index} />
+                                    <Route exact path='/' component={SplashPage} />
+                                    <Route exact path='/home' component={Index} />
                                     <Route exact path='/meet' component={Meet} />
                                     <Route exact path='/action' component={Action} />
                                     <Route exact path='/sign_up' component={SignUp} />

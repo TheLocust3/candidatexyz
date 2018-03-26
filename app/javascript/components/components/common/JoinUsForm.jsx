@@ -21,7 +21,7 @@ export default class JoinUsForm extends React.Component {
         event.preventDefault();
 
         ContactApi.create(this.state.email, this.state.zipCode, this.state.firstName, this.state.lastName, this.state.phoneNumber).then(() => {
-            window.location.href = '/';
+            window.location.href = '/home';
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors

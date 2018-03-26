@@ -21,7 +21,7 @@ export default class MessageForm extends React.Component {
         event.preventDefault();
 
         MessageApi.create(this.state.firstName, this.state.lastName, this.state.email, this.state.subject, this.state.message).then(() => {
-            window.location.href = '/';
+            window.location.href = '/home';
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors
