@@ -45,10 +45,10 @@ export function fetchPostType(postType) {
 export function fetchPost(postType, url) {
 
     return function (dispatch) {
-        dispatch(requestContentAction());
+        dispatch(requestPostAction());
 
         PostApi.get(postType, url).then( data => {
-            dispatch(receiveContentAction(data));
+            dispatch(receivePostAction(data));
         });
     }
 }

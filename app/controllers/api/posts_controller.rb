@@ -1,35 +1,35 @@
 class Api::PostsController < Api::ApiController
 
     def index
-        render :json => Posts.where( :post_type => params[:post_type] )
+        render :json => Post.where( :post_type => params[:post_type] )
     end
 
     def show
-        render :json => Posts.where( :post_type => params[:post_type], :url => params[:url] ).first
+        render :json => Post.where( :post_type => params[:post_type], :url => params[:url] ).first
     end
 
     def create
-        post = Posts.new(create_params(params))
+        post = Post.new(create_params(params))
 
         if post.save
-            render :json => Posts.find(post.id)
+            render :json => Post.find(post.id)
         else
             render_errors(post)
         end
     end
 
     def update
-        post = Posts.where( :post_type => params[:post_type], :url => params[:url] ).first
+        post = Post.where( :post_type => params[:post_type], :url => params[:url] ).first
 
         if issue.update(update_params(params))
-            render :json => Posts.where( :post_type => params[:post_type], :url => params[:url] ).first
+            render :json => Post.where( :post_type => params[:post_type], :url => params[:url] ).first
         else
             render_errors(post)
         end
     end
 
     def destroy
-        post = Posts.where( :post_type => params[:post_type], :url => params[:url] ).first
+        post = Post.where( :post_type => params[:post_type], :url => params[:url] ).first
         post.destroy
 
         render_success

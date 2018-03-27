@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 import { setHeaderImage } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
+
 import ContentApi from '../../api/content-api';
-import TextContent from '../containers/content/TextContent';
+import TextContent from './content/TextContent';
+import ShowPost from './posts/ShowPost'
 import JoinCard from '../components/common/JoinCard';
 import Slideshow from '../components/common/Slideshow';
 
@@ -38,7 +40,7 @@ class Meet extends React.Component {
 
                 <div className='content'>
                     <div className='about'>
-                        <TextContent identifier='meetBlurb' />
+                        <ShowPost postType='meet' url='meet-body' />
                     </div>
                 </div>
 
