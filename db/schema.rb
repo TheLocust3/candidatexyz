@@ -34,20 +34,21 @@ ActiveRecord::Schema.define(version: 20180327002840) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "issues", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "title"
-    t.string "url"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "messages", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "subject"
     t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "title"
+    t.string "post_type"
+    t.string "url"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
