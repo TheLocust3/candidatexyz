@@ -2,7 +2,8 @@ import * as PostActions from '../actions/post-actions';
 
 const initialState = {
     isReady: false,
-    posts: []
+    posts: [],
+    postsOfType: []
 };
 
 export function postReducer(state = initialState, action) {
@@ -20,7 +21,7 @@ export function postReducer(state = initialState, action) {
         case PostActions.RECEIVE_ALL_POST_TYPE:
             return Object.assign({}, state, {
                 isReady: true,
-                posts: action.data
+                postsOfType: action.data
             });
         default:
             return state;

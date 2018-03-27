@@ -22,18 +22,10 @@ class Index extends React.Component {
 
     componentWillMount() {
         ContentApi.get('indexBackground').then((response) => {
-            this.setState({
-                imageUrl: response.content
-            });
+            this.props.dispatch(setHeaderImage(response.content));
         });
     }
-
-    componentDidUpdate() {
-        if (!_.isEmpty(this.state.imageUrl)) {
-            this.props.dispatch(setHeaderImage(this.state.imageUrl));
-        }
-    }
-
+    
     render() {
         return (
             <div>

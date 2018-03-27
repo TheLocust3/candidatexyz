@@ -28,8 +28,8 @@ class ShowPost extends React.Component {
         let post = this.findPost();
 
         return (
-            <div>
-                <div className='mdc-typography--display2'><b>{post.title}</b></div><br />
+            <div {...props}>
+                <span className='mdc-typography--display2'><b>{post.title}</b></span><br /><br />
 
                 <span dangerouslySetInnerHTML={{__html: post.body }} {...props} />
             </div>

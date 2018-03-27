@@ -24,6 +24,9 @@ import MediaKit from '../components/containers/MediaKit';
 import ShortBio from '../components/containers/ShortBio';
 import EditRawContent from '../components/containers/EditRawContent';
 
+import Issues from '../components/containers/issues/Issues';
+import ShowIssue from '../components/containers/issues/ShowIssue';
+
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
 import ResetPasswordContainer from '../components/containers/users/ResetPasswordContainer';
@@ -64,6 +67,7 @@ class Base extends React.Component {
                                     <Route exact path='/home' component={Index} />
                                     <Route exact path='/meet' component={Meet} />
                                     <Route exact path='/action' component={Action} />
+                                    <Route exact path='/issues' component={Issues} />
                                     <Route exact path='/sign_up' component={SignUp} />
                                     <Route exact path='/privacy' component={Privacy} />
                                     <Route exact path='/contact' component={Contact} />
@@ -75,6 +79,8 @@ class Base extends React.Component {
                                     <Route exact path='/forgot-password' component={ForgotPasswordContainer} />
                                     <Route exact path='/reset-password' component={ResetPasswordContainer} />
                                     <Route exact path='/users/edit' component={EditUserContainer} />
+
+                                    <Route exact path='/issues/:url' component={ShowIssue} />
                                 </Switch>
 
                                 <Footer />

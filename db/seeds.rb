@@ -144,6 +144,7 @@ Content.create(content_type: 'image', identifier: 'logo', content: { image: 'htt
 
 Content.create(content_type: 'link', identifier: 'navLink1', content: { text: 'Meet CandidateXYZ', url: '/meet' })
 Content.create(content_type: 'link', identifier: 'navLink2', content: { text: 'Take Action', url: '/action' })
+Content.create(content_type: 'link', identifier: 'navLink3', content: { text: 'On the Issues', url: '/issues' })
 Content.create(content_type: 'link', identifier: 'navButton', content: { text: 'Donate', url: 'https://secure.actblue.com' })
 
 Content.create(content_type: 'text', identifier: 'meetCandidate', content: { text: 'Meet CandidateXYZ' })
@@ -154,6 +155,8 @@ User.create(email: 'jake.kinsella@gmail.com', password: 'password')
 Content.create(content_type: 'raw', identifier: 'splashPageBackground', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59cc37a49f745669f140c067/1506555832105/IMG_0459+copy.jpg?format=2500w')
 Content.create(content_type: 'text', identifier: 'splashPageHeadline', content: { text: 'Join CandidateXYZ' })
 Content.create(content_type: 'text', identifier: 'splashPageButton', content: { text: 'Go to CandidateXYZ.com' })
+
+# issues
 
 # posts
 Post.create(post_type: 'meet', url: 'meet-body', title: '', body: "
@@ -166,4 +169,16 @@ Cras pellentesque tempor vehicula. Interdum et malesuada fames ac ante ipsum pri
 
 In eget sem lacus. Etiam tincidunt est a auctor tempus. Vestibulum porta sed justo non scelerisque. Sed est metus, venenatis sit amet lacinia sed, iaculis eu justo. Donec ligula justo, tincidunt eu augue vel, euismod ultrices libero. Aliquam sed cursus dui. Mauris porttitor ac nisi vel elementum. Aenean tempus vehicula velit, eget dictum lectus eleifend id. Donec a quam condimentum, suscipit tortor nec, dapibus neque. Morbi eleifend placerat blandit. Fusce molestie finibus est, et dignissim metus auctor nec. Nullam aliquam, mauris a semper cursus, risus tortor porttitor dui, nec rutrum turpis augue ut libero. Aliquam non neque posuere, vehicula purus tincidunt, pretium tortor. Proin semper ipsum eget nibh varius eleifend. Sed nibh sapien, molestie vel ligula at, interdum condimentum massa. Sed tempor maximus sem, ac malesuada purus efficitur in.<br /><br />
 
+Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales tellus, vel fermentum nisi rhoncus a. Sed velit tellus, tempor hendrerit ligula nec, consequat pretium neque. Proin sed neque augue. Quisque accumsan euismod libero a maximus. Curabitur vitae viverra turpis. Nullam porttitor risus et leo luctus dignissim. Integer vel rutrum massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar dui nunc, sit amet accumsan ante gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sit amet ornare tortor. Nam vel mollis lacus.<br /><br />")
+
+Post.create(post_type: 'issues-page', url: 'issues-blurb', title: 'On the Issues', body: "
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu massa efficitur, laoreet ex malesuada, scelerisque sem. Nam porttitor elit at felis molestie aliquet. Sed id metus massa. Etiam congue magna eget vulputate hendrerit. Proin hendrerit maximus ipsum, ut lobortis sem ultrices et. Integer quis odio egestas, tristique purus sit amet, pretium ante. Pellentesque tincidunt mollis libero non imperdiet.
+Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales tellus, vel fermentum nisi rhoncus a. Sed velit tellus, tempor hendrerit ligula nec, consequat pretium neque. Proin sed neque augue. Quisque accumsan euismod libero a maximus. Curabitur vitae viverra turpis. Nullam porttitor risus et leo luctus dignissim. Integer vel rutrum massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar dui nunc, sit amet accumsan ante gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sit amet ornare tortor. Nam vel mollis lacus.<br /><br />")
+
+Post.create(post_type: 'issues', url: 'income-and-wealth-inequality', title: 'Income and Wealth Inequality', body: "
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu massa efficitur, laoreet ex malesuada, scelerisque sem. Nam porttitor elit at felis molestie aliquet. Sed id metus massa. Etiam congue magna eget vulputate hendrerit. Proin hendrerit maximus ipsum, ut lobortis sem ultrices et. Integer quis odio egestas, tristique purus sit amet, pretium ante. Pellentesque tincidunt mollis libero non imperdiet.
+Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales tellus, vel fermentum nisi rhoncus a. Sed velit tellus, tempor hendrerit ligula nec, consequat pretium neque. Proin sed neque augue. Quisque accumsan euismod libero a maximus. Curabitur vitae viverra turpis. Nullam porttitor risus et leo luctus dignissim. Integer vel rutrum massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar dui nunc, sit amet accumsan ante gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sit amet ornare tortor. Nam vel mollis lacus.<br /><br />")
+
+Post.create(post_type: 'issues', url: 'its-time-to-make-college-tuition-free-and-debt-free', title: "It's Time to Make College Tuition Free and Debt Free", body: "
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu massa efficitur, laoreet ex malesuada, scelerisque sem. Nam porttitor elit at felis molestie aliquet. Sed id metus massa. Etiam congue magna eget vulputate hendrerit. Proin hendrerit maximus ipsum, ut lobortis sem ultrices et. Integer quis odio egestas, tristique purus sit amet, pretium ante. Pellentesque tincidunt mollis libero non imperdiet.
 Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales tellus, vel fermentum nisi rhoncus a. Sed velit tellus, tempor hendrerit ligula nec, consequat pretium neque. Proin sed neque augue. Quisque accumsan euismod libero a maximus. Curabitur vitae viverra turpis. Nullam porttitor risus et leo luctus dignissim. Integer vel rutrum massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar dui nunc, sit amet accumsan ante gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sit amet ornare tortor. Nam vel mollis lacus.<br /><br />")

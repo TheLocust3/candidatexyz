@@ -60,9 +60,11 @@ class Navbar extends React.Component {
                     <Link to='/home'><ImageContent identifier='logo' className='navbar-image' /></Link>
 
                     <div className='navbar-actions'>
-                        <div className='button-cell'><SimpleLinkContent identifier='navLink1' className={`link ${invertedLink}`} /></div>
-                        <div className='button-cell'><SimpleLinkContent identifier='navLink2' className={`link ${invertedLink}`} /></div>
-                        <div className='button-cell'><ExternalLinkContent identifier='navButton'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent></div>
+                        <div><SimpleLinkContent identifier='navLink1' className={`link ${invertedLink}`} /></div>
+                        <div><SimpleLinkContent identifier='navLink2' className={`link ${invertedLink}`} /></div>
+                        <div><SimpleLinkContent identifier='navLink3' className={`link ${invertedLink}`} /></div>
+
+                        <div><ExternalLinkContent identifier='navButton'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent></div>
                     </div>
                 </div>
             </div>
@@ -104,6 +106,8 @@ class Navbar extends React.Component {
                                 <SimpleLinkContent identifier='navLink1' className='mdc-list-item' onClick={this.onLinkClick.bind(this)} />
 
                                 <SimpleLinkContent identifier='navLink2' className='mdc-list-item' onClick={this.onLinkClick.bind(this)} />
+
+                                <SimpleLinkContent identifier='navLink3' className='mdc-list-item' onClick={this.onLinkClick.bind(this)} />
 
                                 <hr className='mdc-list-divider' />
 

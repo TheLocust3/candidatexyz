@@ -19,26 +19,18 @@ class Meet extends React.Component {
         this.state = { imageUrl: '' };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         ContentApi.get('meetBackground').then((response) => {
-            this.setState({
-                imageUrl: response.content
-            });
+            this.props.dispatch(setHeaderImage(response.content));
         });
-    }
-
-    componentDidUpdate() {
-        if (!_.isEmpty(this.state.imageUrl)) {
-            this.props.dispatch(setHeaderImage(this.state.imageUrl));
-        }
     }
 
     render() {
         return (
             <div>
-                <div className='header-text mdc-typography--display2'><b><TextContent identifier='meetHeader' /></b></div>
-
                 <div className='content'>
+                    <div className='header-text mdc-typography--display2'><b><TextContent identifier='meetHeader' /></b></div>
+
                     <div className='about'>
                         <ShowPost postType='meet' url='meet-body' />
                     </div>
