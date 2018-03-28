@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Parallax } from 'react-scroll-parallax';
+import { Parallax, Background } from 'react-parallax';
 
 import ContentApi from '../../../api/content-api';
 import TextContent from '../../containers/content/TextContent';
@@ -27,20 +27,22 @@ export default class JoinTeamPanel extends React.Component {
         
         return (
             <div className='join-team-panel'>
-                <Parallax offsetYMax='100px' offsetYMin='-100px' styleOuter={{ overflow: 'hidden', height: '60vh' }} styleInner={{ marginTop: '-20vh' }} slowerScrollRate>
-                    <div className='join-team-panel-image' style={{ backgroundImage: `url(${this.state.imageUrl})` }} />
+                <Parallax strength={300} style={{ height: '60vh' }}>
+                    <Background>
+                        <img src={this.state.imageUrl} style={{ height: '100vh' }} />
+                    </Background>
+
+                    <div className='join-team-panel-content'>
+                        <div className='join-team-panel-title join-team-panel-color'>
+                            <div className='mdc-typography--display2'><b><TextContent identifier='joinTeamPanelTitle' /></b></div>
+                        </div>
+
+                        <div className='join-team-panel-actions mdc-typography--headline'>
+                            <Link to='/sign_up'><button className='mdc-button mdc-button--raised button join-team-panel-color' data-mdc-auto-init='MDCRipple'>Sign Up</button></Link>
+                            <ExternalLinkContent identifier='joinTeamPanelDonateLink'><button className='mdc-button mdc-button--raised button join-team-panel-color' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent>
+                        </div>
+                    </div>
                 </Parallax>
-
-                <div className='join-team-panel-content'>
-                    <div className='join-team-panel-title join-team-panel-color'>
-                        <div className='mdc-typography--display2'><b><TextContent identifier='joinTeamPanelTitle' /></b></div>
-                    </div>
-
-                    <div className='join-team-panel-actions mdc-typography--headline'>
-                        <Link to='/sign_up'><button className='mdc-button mdc-button--raised button join-team-panel-color' data-mdc-auto-init='MDCRipple'>Sign Up</button></Link>
-                        <ExternalLinkContent identifier='joinTeamPanelDonateLink'><button className='mdc-button mdc-button--raised button join-team-panel-color' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent>
-                    </div>
-                </div>
             </div>
         );
     }

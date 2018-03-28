@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { ParallaxProvider } from 'react-scroll-parallax';
 import thunkMiddleware from 'redux-thunk';
 
 import reducer from '../components/reducers/root-reducer';
@@ -53,41 +52,39 @@ class Base extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <ParallaxProvider>
-                    <div>
-                        <Router>
-                            <div>
-                                <Navbar />
-                                <AdminOverlay />
+                <div>
+                    <Router>
+                        <div>
+                            <Navbar />
+                            <AdminOverlay />
 
-                                <Route component={ScrollToTop} />
+                            <Route component={ScrollToTop} />
 
-                                <Switch>
-                                    <Route exact path='/' component={SplashPage} />
-                                    <Route exact path='/home' component={Index} />
-                                    <Route exact path='/meet' component={Meet} />
-                                    <Route exact path='/action' component={Action} />
-                                    <Route exact path='/issues' component={Issues} />
-                                    <Route exact path='/sign_up' component={SignUp} />
-                                    <Route exact path='/privacy' component={Privacy} />
-                                    <Route exact path='/contact' component={Contact} />
-                                    <Route exact path='/media-kit' component={MediaKit} />
-                                    <Route exact path='/short-bio' component={ShortBio} />
-                                    <Route exact path='/edit-content' component={EditRawContent} />
+                            <Switch>
+                                <Route exact path='/' component={SplashPage} />
+                                <Route exact path='/home' component={Index} />
+                                <Route exact path='/meet' component={Meet} />
+                                <Route exact path='/action' component={Action} />
+                                <Route exact path='/issues' component={Issues} />
+                                <Route exact path='/sign_up' component={SignUp} />
+                                <Route exact path='/privacy' component={Privacy} />
+                                <Route exact path='/contact' component={Contact} />
+                                <Route exact path='/media-kit' component={MediaKit} />
+                                <Route exact path='/short-bio' component={ShortBio} />
+                                <Route exact path='/edit-content' component={EditRawContent} />
 
-                                    <Route exact path='/sign-in' component={SignInContainer} />
-                                    <Route exact path='/forgot-password' component={ForgotPasswordContainer} />
-                                    <Route exact path='/reset-password' component={ResetPasswordContainer} />
-                                    <Route exact path='/users/edit' component={EditUserContainer} />
+                                <Route exact path='/sign-in' component={SignInContainer} />
+                                <Route exact path='/forgot-password' component={ForgotPasswordContainer} />
+                                <Route exact path='/reset-password' component={ResetPasswordContainer} />
+                                <Route exact path='/users/edit' component={EditUserContainer} />
 
-                                    <Route exact path='/issues/:url' component={ShowIssue} />
-                                </Switch>
+                                <Route exact path='/issues/:url' component={ShowIssue} />
+                            </Switch>
 
-                                <Footer />
-                            </div>
-                        </Router>
-                    </div>
-                </ParallaxProvider>
+                            <Footer />
+                        </div>
+                    </Router>
+                </div>
             </Provider>
         );
     }

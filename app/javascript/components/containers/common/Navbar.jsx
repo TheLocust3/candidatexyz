@@ -2,13 +2,14 @@ import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Parallax } from 'react-scroll-parallax';
+import { Parallax, Background } from 'react-parallax';
 import { MDCTemporaryDrawer } from '@material/drawer';
 
 import { MAX_MOBILE_WIDTH } from '../../../constants';
 import ImageContent from '../content/ImageContent';
 import SimpleLinkContent from '../content/SimpleLinkContent';
 import ExternalLinkContent from '../content/ExternalLinkContent';
+import JoinTeamPanel from '../../components/common/JoinTeamPanel';
 
 class Navbar extends React.Component {
 
@@ -46,15 +47,17 @@ class Navbar extends React.Component {
     }
 
     renderDeskop() {
-        let headerImage = this.props.blankNavbar ? 'url()' : `url(${this.props.headerImage})`;
+        if (_.isEmpty(this.props.headerImage) || this.props.blankNavbar) return null;
+
+        let headerImage = this.props.blankNavbar ? '' : this.props.headerImage;
         let headerImageBlank = this.props.blankNavbar ? 'header-image-blank' : '';
         let invertedLink = this.props.blankNavbar ? 'inverted-link' : '';
 
         return (
-            <div>
-                <Parallax offsetYMax='50%' offsetYMin='-50%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
-                    <div className={`header-image ${headerImageBlank}`} style={{ backgroundImage: headerImage }} />
-                </Parallax>
+            <Parallax strength={300} style={{ height: '100vh' }}>
+                <Background>
+                    <img src={headerImage} className={headerImageBlank} style={{ height: '100vh' }} />
+                </Background>
 
                 <div className='navbar'>
                     <Link to='/home'><ImageContent identifier='logo' className='navbar-image' /></Link>
@@ -67,19 +70,21 @@ class Navbar extends React.Component {
                         <div><ExternalLinkContent identifier='navButton'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent></div>
                     </div>
                 </div>
-            </div>
+            </Parallax>
         );
     }
 
     renderMobile() {
-        let headerImage = this.props.blankNavbar ? 'url()' : `url(${this.props.headerImage})`;
+        if (_.isEmpty(this.props.headerImage) || this.props.blankNavbar) return null;
+
+        let headerImage = this.props.blankNavbar ? '' : `${this.props.headerImage}`;
         let headerImageBlank = this.props.blankNavbar ? 'header-image-blank' : '';
 
         return (
-            <div>
-                <Parallax offsetYMax='50%' offsetYMin='-50%' styleOuter={{ overflow: 'hidden' }} slowerScrollRate>
-                    <div className={`header-image ${headerImageBlank}`} style={{ backgroundImage: headerImage }} />
-                </Parallax>
+            <Parallax strength={300} style={{ height: '100vh' }}>
+                <Background>
+                    <img src={headerImage} className={headerImageBlank} style={{ height: '100vh' }} />
+                </Background>
 
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>
                     <div className='mdc-toolbar__row'>
@@ -116,7 +121,7 @@ class Navbar extends React.Component {
                         </nav>
                     </nav>
                 </aside>
-            </div>
+            </Parallax>
         )
     }
 
