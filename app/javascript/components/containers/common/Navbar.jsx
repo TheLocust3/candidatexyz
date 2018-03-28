@@ -47,16 +47,16 @@ class Navbar extends React.Component {
     }
 
     renderDeskop() {
-        if (_.isEmpty(this.props.headerImage) || this.props.blankNavbar) return null;
+        if (_.isEmpty(this.props.headerImage) && !this.props.blankNavbar) return null;
 
         let headerImage = this.props.blankNavbar ? '' : this.props.headerImage;
-        let headerImageBlank = this.props.blankNavbar ? 'header-image-blank' : '';
+        let headerImageBlankHeight = this.props.blankNavbar ? '30vh' : '100vh';
         let invertedLink = this.props.blankNavbar ? 'inverted-link' : '';
 
         return (
-            <Parallax strength={300} style={{ height: '100vh' }}>
+            <Parallax strength={300} style={{ height: headerImageBlankHeight }}>
                 <Background>
-                    <img src={headerImage} className={headerImageBlank} style={{ height: '100vh' }} />
+                    <img src={headerImage} style={{ height: '100vh' }} />
                 </Background>
 
                 <div className='navbar'>
@@ -75,15 +75,15 @@ class Navbar extends React.Component {
     }
 
     renderMobile() {
-        if (_.isEmpty(this.props.headerImage) || this.props.blankNavbar) return null;
+        if (_.isEmpty(this.props.headerImage) && !this.props.blankNavbar) return null;
 
         let headerImage = this.props.blankNavbar ? '' : `${this.props.headerImage}`;
-        let headerImageBlank = this.props.blankNavbar ? 'header-image-blank' : '';
+        let headerImageBlankHeight = this.props.blankNavbar ? '10vh' : '100vh';
 
         return (
-            <Parallax strength={300} style={{ height: '100vh' }}>
+            <Parallax strength={300} style={{ height: headerImageBlankHeight }}>
                 <Background>
-                    <img src={headerImage} className={headerImageBlank} style={{ height: '100vh' }} />
+                    <img src={headerImage} style={{ height: '100vh' }} />
                 </Background>
 
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>

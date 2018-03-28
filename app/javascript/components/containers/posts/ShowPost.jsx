@@ -23,12 +23,18 @@ class ShowPost extends React.Component {
         return post;
     }
 
+    onEditClick() {
+        if (!this.props.edit) return;
+
+        window.location.href = `/${this.props.postType}/${this.props.url}/edit`;
+    }
+
     render() {
-        let { postType, url, posts, dispatch, ...props } = this.props;
+        let { postType, url, posts, edit, dispatch, ...props } = this.props;
         let post = this.findPost();
 
         return (
-            <div {...props}>
+            <div {...props} onClick={this.onEditClick.bind(this)}>
                 <span className='mdc-typography--display2'><b>{post.title}</b></span><br /><br />
 
                 <span dangerouslySetInnerHTML={{__html: post.body }} {...props} />
@@ -44,7 +50,8 @@ ShowPost.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts.posts
+        posts: state.posts.posts,
+        edit: state.content.edit
     };
 }
 

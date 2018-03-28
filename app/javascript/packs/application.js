@@ -26,6 +26,8 @@ import EditRawContent from '../components/containers/EditRawContent';
 import Issues from '../components/containers/issues/Issues';
 import ShowIssue from '../components/containers/issues/ShowIssue';
 
+import EditPost from '../components/containers/posts/EditPost';
+
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
 import ResetPasswordContainer from '../components/containers/users/ResetPasswordContainer';
@@ -79,6 +81,7 @@ class Base extends React.Component {
                                 <Route exact path='/users/edit' component={EditUserContainer} />
 
                                 <Route exact path='/issues/:url' component={ShowIssue} />
+                                <Route exact path='/:postType/:url/edit' component={EditPost} />
                             </Switch>
 
                             <Footer />
