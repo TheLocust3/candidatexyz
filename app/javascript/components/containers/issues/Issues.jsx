@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { fetchCurrentUser } from '../../actions/user-actions';
 import { setBlankNavbar } from '../../actions/global-actions';
 import { fetchPostType } from '../../actions/post-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
@@ -9,6 +10,10 @@ import MDCAutoInit from '../../components/global/MDCAutoInit';
 import ShowPost from '../posts/ShowPost';
 
 class Issues extends React.Component {
+
+    componentWillMount() {
+        this.props.dispatch(fetchCurrentUser());
+    }
 
     componentDidMount() {
         this.props.dispatch(setBlankNavbar(true));
@@ -29,6 +34,14 @@ class Issues extends React.Component {
         )
     }
 
+    renderAddIssue() {
+        if (!this.props.isUserReady || _.isEmpty(this.props.user)) return;
+
+        return (
+            <Link className='link' to={`/posts/issues/new`}>Add Issue</Link>
+        );
+    }
+
     render() {
         return (
             <div>
@@ -36,6 +49,8 @@ class Issues extends React.Component {
                     <ShowPost postType='issues-page' url='issues-blurb' />
 
                     {this.renderIssueList()}<br />
+
+                    {this.renderAddIssue()}
                 </div>
 
                 <MDCAutoInit />
@@ -46,7 +61,9 @@ class Issues extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts.postsOfType
+        posts: state.posts.postsOfType,
+        isUserReady: state.users.isReady,
+        user: state.users.user,
     };
 }
 

@@ -7,3 +7,6 @@ Misc To-Do's:
 Bugs:
 - Clicking anywhere inside slideshow content will trigger editor (when editing)
 - After editing, screen doesn't shrink back to normal size
+
+Cleanup:
+- Create form superclass (things like renderErrors)

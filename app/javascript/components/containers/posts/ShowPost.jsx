@@ -26,7 +26,7 @@ class ShowPost extends React.Component {
     onEditClick() {
         if (!this.props.edit) return;
 
-        window.location.href = `/${this.props.postType}/${this.props.url}/edit`;
+        window.location.href = `/posts/${this.props.postType}/${this.props.url}/edit`;
     }
 
     render() {

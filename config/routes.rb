@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get 'posts/:post_type/:url' => 'posts#show'
     post 'posts' => 'posts#create'
     patch 'posts/:post_type/:url' => 'posts#update'
+    delete 'posts/:post_type/:url' => 'posts#destroy'
   end
 
   get '*path', to: 'root#index', :constraints => lambda{|req| req.path !~ /\.(min.css|min.js)$/ }

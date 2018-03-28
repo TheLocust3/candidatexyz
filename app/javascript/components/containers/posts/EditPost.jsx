@@ -3,18 +3,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { setBlankNavbar } from '../../actions/global-actions';
 import { fetchPost } from '../../actions/post-actions';
+import MDCAutoInit from '../../components/global/MDCAutoInit';
+
+import PostForm from '../../components/posts/PostForm';
 
 class EditPost extends React.Component {
-    
+
     componentWillMount() {
         if (_.isEmpty(this.findPost().url)) {
             this.props.dispatch(fetchPost(this.props.match.params.postType, this.props.match.params.url));
         }
     }
 
+    componentDidMount() {
+        this.props.dispatch(setBlankNavbar(true));
+    }
+
     findPost() {
-        let post = _.find(this.props.posts, { post_type: this.props.postType, url: this.props.url })
+        let post = _.find(this.props.posts, { post_type: this.props.match.params.postType, url: this.props.match.params.url })
 
         if (_.isEmpty(post)) {
             return { }
@@ -24,12 +32,15 @@ class EditPost extends React.Component {
     }
 
     render() {
-        let { posts, edit, dispatch, ...props } = this.props;
         let post = this.findPost();
+        
+        if (_.isEmpty(post.url)) return null;
 
         return (
             <div>
-                Edit post!
+                <PostForm post={post} />
+                
+                <MDCAutoInit />
             </div>
         );
     }
