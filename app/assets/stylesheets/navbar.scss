@@ -65,11 +65,3 @@
 .navbar .inverted-link:hover {
     color: #7f7f7f;
 }
-
-.header-image-blank {
-    height: 30vh;
-
-    @media (max-width: $mobile-width) {
-        height: 15vh;
-    }
-}

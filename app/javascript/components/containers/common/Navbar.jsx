@@ -54,9 +54,9 @@ class Navbar extends React.Component {
         let invertedLink = this.props.blankNavbar ? 'inverted-link' : '';
 
         return (
-            <Parallax strength={300} style={{ height: headerImageBlankHeight }}>
+            <Parallax strength={300} style={{ height: headerImageBlankHeight }} bgStyle={{ width: '100%' }}>
                 <Background>
-                    <img src={headerImage} style={{ height: '100vh' }} />
+                    <img src={headerImage} style={{ width: '100%', height: '100vh', objectFit: 'cover' }} />
                 </Background>
 
                 <div className='navbar'>
@@ -81,9 +81,9 @@ class Navbar extends React.Component {
         let headerImageBlankHeight = this.props.blankNavbar ? '10vh' : '100vh';
 
         return (
-            <Parallax strength={300} style={{ height: headerImageBlankHeight }}>
+            <Parallax strength={300} style={{ height: headerImageBlankHeight }} bgStyle={{ width: '100%' }}>
                 <Background>
-                    <img src={headerImage} style={{ height: '100vh' }} />
+                    <img src={headerImage} style={{ width: '100%', height: '100vh', objectFit: 'cover' }} />
                 </Background>
 
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>

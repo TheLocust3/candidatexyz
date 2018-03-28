@@ -27,9 +27,9 @@ export default class JoinTeamPanel extends React.Component {
         
         return (
             <div className='join-team-panel'>
-                <Parallax strength={300} style={{ height: '60vh' }}>
+                <Parallax strength={300} style={{ height: '60vh' }} bgStyle={{ width: '100%' }}>
                     <Background>
-                        <img src={this.state.imageUrl} style={{ height: '100vh' }} />
+                        <img src={this.state.imageUrl} style={{ width: '100%', height: '100vh', objectFit: 'cover' }} />
                     </Background>
 
                     <div className='join-team-panel-content'>
