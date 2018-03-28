@@ -37,11 +37,11 @@ class Api::PostsController < Api::ApiController
 
     private
     def create_params(params)
-        params.permit(:title, :post_type, :url, :body)
+        params.permit(:title, :post_type, :url, :body, :image)
     end
 
     def update_params(params)
-        params.permit(:title, :url, :body)
+        params.permit(:title, :url, :body, :image)
     end
   end
   

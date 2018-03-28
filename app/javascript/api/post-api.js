@@ -22,22 +22,22 @@ let PostApi = {
         });
     },
 
-    create(postType, url, title, body) {
+    create(postType, url, title, body, image) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/posts`, {
                 type: 'post',
-                data: { post_type: postType, url: url, title: title, body: body },
+                data: { post_type: postType, url: url, title: title, body: body, image: image },
                 success: resolve,
                 error: reject
             });
         });
     },
 
-    update(postType, url, title, body) {
+    update(postType, url, title, body, image) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/posts/${postType}/${url}`, {
                 type: 'patch',
-                data: { url: url, title: title, body: body },
+                data: { url: url, title: title, body: body, image: image },
                 success: resolve,
                 error: reject
             });
