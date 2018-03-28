@@ -46,18 +46,26 @@ class Navbar extends React.Component {
         drawer.open = false;
     }
 
+    renderHeaderImage() {
+        let headerImage = this.props.blankNavbar ? '' : this.props.headerImage;
+        let headerImageBlankDisplay = this.props.blankNavbar ? 'none' : '';
+
+        return (
+            <Background>
+                <img src={headerImage} style={{ width: '100%', height: '100vh', objectFit: 'cover', display: headerImageBlankDisplay }} />
+            </Background>
+        )
+    }
+
     renderDeskop() {
         if (_.isEmpty(this.props.headerImage) && !this.props.blankNavbar) return null;
-
-        let headerImage = this.props.blankNavbar ? '' : this.props.headerImage;
+        
         let headerImageBlankHeight = this.props.blankNavbar ? '30vh' : '100vh';
         let invertedLink = this.props.blankNavbar ? 'inverted-link' : '';
 
         return (
             <Parallax strength={300} style={{ height: headerImageBlankHeight }} bgStyle={{ width: '100%' }}>
-                <Background>
-                    <img src={headerImage} style={{ width: '100%', height: '100vh', objectFit: 'cover' }} />
-                </Background>
+                {this.renderHeaderImage()}
 
                 <div className='navbar'>
                     <Link to='/home'><ImageContent identifier='logo' className='navbar-image' /></Link>
@@ -77,14 +85,11 @@ class Navbar extends React.Component {
     renderMobile() {
         if (_.isEmpty(this.props.headerImage) && !this.props.blankNavbar) return null;
 
-        let headerImage = this.props.blankNavbar ? '' : `${this.props.headerImage}`;
         let headerImageBlankHeight = this.props.blankNavbar ? '10vh' : '100vh';
 
         return (
             <Parallax strength={300} style={{ height: headerImageBlankHeight }} bgStyle={{ width: '100%' }}>
-                <Background>
-                    <img src={headerImage} style={{ width: '100%', height: '100vh', objectFit: 'cover' }} />
-                </Background>
+                {this.renderHeaderImage()}
 
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>
                     <div className='mdc-toolbar__row'>
