@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
+import { history } from '../../../constants';
 import { fetchCurrentUser } from '../../actions/user-actions';
 import { setBlankNavbar } from '../../actions/global-actions';
 import { fetchPostType } from '../../actions/post-actions';
@@ -29,7 +30,7 @@ class News extends React.Component {
         return (
             <div className='news-list'>
                 {posts.map((post, index) => {
-                    return <NewsThumbnail post={post} history={this.props.history} key={post.id} />;
+                    return <NewsThumbnail post={post} history={history} key={post.id} />;
                 })}
             </div>
         )

@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 
+import { history } from '../../../constants';
 import MessageApi from '../../../api/message-api';
 
 export default class MessageForm extends React.Component {
@@ -21,7 +22,7 @@ export default class MessageForm extends React.Component {
         event.preventDefault();
 
         MessageApi.create(this.state.firstName, this.state.lastName, this.state.email, this.state.subject, this.state.message).then(() => {
-            window.location.href = '/home';
+            history.push('/home');
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors

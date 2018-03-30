@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
 export default class EditUserForm extends React.Component {
@@ -21,7 +22,7 @@ export default class EditUserForm extends React.Component {
         event.preventDefault();
 
         AuthApi.editUser(this.state.email, this.state.currentPassword, this.state.password, this.state.passwordConfirmation, this.state.firstName, this.state.lastName).then( response => {
-            window.location.href = this.props.redirectUrl;
+            history.push(this.props.redirectUrl);
         }).catch( response => {
             this.setState({
                 errors: response.responseJSON.errors

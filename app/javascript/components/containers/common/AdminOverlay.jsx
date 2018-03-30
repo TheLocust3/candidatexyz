@@ -1,14 +1,15 @@
 import _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Corner, AnchorMargin } from '@material/menu';
 import { MDCSnackbar } from '@material/snackbar';
 import { Link } from 'react-router-dom';
 import { MDCMenu } from '@material/menu';
 
-import AuthApi from '../../../api/auth-api';
 import { fetchCurrentUser } from '../../actions/user-actions';
 import { setEdit } from '../../actions/content-actions';
+import AuthApi from '../../../api/auth-api';
 import EditContent from './EditContent';
 
 class AdminOverlay extends React.Component {
@@ -43,7 +44,7 @@ class AdminOverlay extends React.Component {
 
     onLogoutClick(event) {
         AuthApi.signOut().then(() => {
-            window.location.href = '/home';
+            window.location.reload();
         })
     }
 
@@ -122,7 +123,7 @@ function mapStateToProps(state) {
     return {
         isReady: state.users.isReady,
         user: state.users.user,
-        edit: state.content.edit
+        edit: state.content.edit,
     };
 }
 

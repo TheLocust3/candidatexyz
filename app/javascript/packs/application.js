@@ -1,12 +1,13 @@
 import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
 import reducer from '../components/reducers/root-reducer';
+import { history } from '../constants';
 
 import Navbar from '../components/containers/common/Navbar';
 import Footer from '../components/components/Footer';
@@ -58,7 +59,7 @@ class Base extends React.Component {
         return (
             <Provider store={store}>
                 <div>
-                    <Router>
+                    <Router history={history}>
                         <div>
                             <Navbar />
                             <AdminOverlay />

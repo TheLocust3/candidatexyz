@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { history } from '../../../constants';
 import PostApi from '../../../api/post-api';
 
 class PostForm extends React.Component {
@@ -30,7 +31,7 @@ class PostForm extends React.Component {
 
         if (_.isEmpty(this.props.post)) {
             PostApi.create(this.props.postType, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
-                window.location.href = '/home';
+                history.push('/home');
             }).catch((response) => {
                 this.setState({
                     errors: response.responseJSON.errors
@@ -38,7 +39,7 @@ class PostForm extends React.Component {
             });
         } else {
             PostApi.update(this.state.post.post_type, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
-                window.location.href = '/home';
+                history.push('/home');
             }).catch((response) => {
                 this.setState({
                     errors: response.responseJSON.errors
@@ -49,7 +50,7 @@ class PostForm extends React.Component {
 
     onDeleteClick() {
         PostApi.destroy(this.state.post.post_type, this.state.post.url).then(() => {
-            window.location.href = '/home';
+            history.push('/home');
         });
     }
 

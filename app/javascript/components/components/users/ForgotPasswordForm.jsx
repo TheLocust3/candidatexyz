@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
 export default class ForgotPasswordForm extends React.Component {
@@ -21,7 +22,7 @@ export default class ForgotPasswordForm extends React.Component {
         event.preventDefault();
 
         AuthApi.forgotPassword(this.state.email).then( response => {
-            window.location.href = this.props.redirectUrl;
+            history.push(this.props.redirectUrl);
         }).catch( response => {
             this.setState({
                 errors: response.responseJSON.errors

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
 export default class SignInForm extends React.Component {
@@ -28,7 +29,7 @@ export default class SignInForm extends React.Component {
         event.preventDefault();
 
         AuthApi.signIn(this.state.email, this.state.password, this.state.rememberMe).then( response => {
-            window.location.href = this.props.redirectUrl;
+            window.location.href = '/home';
         }).catch( response => {
             this.setState({
                 error: response.responseJSON.error

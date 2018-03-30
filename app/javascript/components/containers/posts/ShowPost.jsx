@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
+import { history } from '../../../constants';
 import { fetchPost } from '../../actions/post-actions';
 
 class ShowPost extends React.Component {
@@ -27,7 +28,7 @@ class ShowPost extends React.Component {
     onEditClick() {
         if (!this.props.edit) return;
 
-        window.location.href = `/posts/${this.props.postType}/${this.props.url}/edit`;
+        history.push(`/posts/${this.props.postType}/${this.props.url}/edit`);
     }
 
     renderAsNews(post) {

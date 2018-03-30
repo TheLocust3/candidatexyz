@@ -3,12 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+import { history } from '../../../constants';
+
 const THUMBNAIL_BODY_LENGTH = 200;
 
 class NewsThumbnail extends React.Component {
 
     onThumbnailClick() {
-        this.props.history.push(`/news/${this.props.post.url}`)
+        history.push(`/news/${this.props.post.url}`)
     }
 
     render() {
