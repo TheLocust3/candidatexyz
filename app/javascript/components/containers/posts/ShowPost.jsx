@@ -35,9 +35,9 @@ class ShowPost extends React.Component {
 
         return (
             <div>
-                <div className='post-created-at'>{moment(post.created_at).format('MMMM D, YYYY')}</div>
+                <div className='post-created-at'>{moment(post.created_at).format('MMMM D, YYYY')}</div><br />
 
-                <img src={post.image} /><br />
+                <img className='post-image' src={post.image} /><br /><br />
             </div>
         )
     }
@@ -47,7 +47,7 @@ class ShowPost extends React.Component {
         let post = this.findPost();
 
         return (
-            <div {...props} onClick={this.onEditClick.bind(this)}>
+            <div className='post' {...props} onClick={this.onEditClick.bind(this)}>
                 <span className='mdc-typography--display2'><b>{post.title}</b></span><br />
 
                 {this.renderAsNews(post)}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import { fetchCurrentUser } from '../../actions/user-actions';
 import { setBlankNavbar } from '../../actions/global-actions';
@@ -9,6 +10,7 @@ import MDCAutoInit from '../../components/global/MDCAutoInit';
 
 import ShowPost from '../posts/ShowPost';
 import TextContent from '../content/TextContent';
+import NewsThumbnail from './NewsThumbnail';
 
 class News extends React.Component {
 
@@ -22,14 +24,12 @@ class News extends React.Component {
     }
     
     renderNewsList() {
+        let posts = _.reverse(_.sortBy(this.props.posts, [(post) => { return post.created_at }]));
+
         return (
             <div className='news-list'>
-                {this.props.posts.map((post) => {
-                    return (
-                        <div className='news-list' key={post.url}>
-                            <Link className='link' to={`/news/${post.url}`}>{post.title}</Link>
-                        </div>
-                    )
+                {posts.map((post, index) => {
+                    return <NewsThumbnail post={post} history={this.props.history} key={post.id} />;
                 })}
             </div>
         )

@@ -41,7 +41,7 @@ class Api::PostsController < Api::ApiController
     end
 
     def update_params(params)
-        params.permit(:title, :url, :body, :image)
+        params.permit(:title, :post_type, :url, :body, :image)
     end
   end
   
