@@ -1,7 +1,8 @@
 import _ from 'lodash'
 import React from 'react';
+import { MDCSelect } from '@material/select';
 
-import { history } from '../../../constants';
+import { history, STATES } from '../../../constants';
 import VolunteerApi from '../../../api/volunteer-api';
 
 export default class VolunteerForm extends React.Component {
@@ -10,6 +11,15 @@ export default class VolunteerForm extends React.Component {
         super(props);
 
         this.state = { email: '', homeNumber: '', mobileNumber: '', firstName: '', lastName: '', address1: '', address2: '', zipCode: '', city: '', state: '', helpBlurb: '', errors: [] };
+    }
+
+    componentDidMount() {
+        const select = new MDCSelect(document.querySelector('.mdc-select'));
+        select.listen('MDCSelect:change', () => {
+            this.setState({
+                state: select.value
+            });
+        });
     }
 
     handleChange(event) {
@@ -40,8 +50,32 @@ export default class VolunteerForm extends React.Component {
                         <div key={errorName}>
                             {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
                         </div>
-                    )
+                    );
                 })}
+            </div>
+        )
+    }
+
+    renderStateDropdown() {
+        return (
+            <div className='mdc-select' role='listbox' style={{ width: '30%' }} data-mdc-auto-init='MDCSelect'>
+                <div className='mdc-select__surface' tabIndex='0'>
+                    <div className='mdc-select__label'>State</div>
+                    <div className='mdc-select__selected-text' />
+                    <div className='mdc-select__bottom-line' />
+                </div>
+
+                <div className='mdc-menu mdc-select__menu'>
+                    <ul className='mdc-list mdc-menu__items'>
+                        {STATES.map((state) => {
+                            return (
+                                <li key={state} className='mdc-list-item' role='option' tabIndex='0'>
+                                    {state}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
             </div>
         )
     }
@@ -90,12 +124,7 @@ export default class VolunteerForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div>
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '30%' }}>
-                    <input type='text' id='state' className='mdc-text-field__input' name='state' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='state'>State</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
-
+                {this.renderStateDropdown()}
 
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '30%', marginRight: '5%' }}>
                     <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} required />
