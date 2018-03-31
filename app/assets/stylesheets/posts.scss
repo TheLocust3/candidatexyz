@@ -1,3 +1,5 @@
+@import 'global';
+
 .post {
     margin-bottom: 5%;
 }
@@ -8,4 +10,54 @@
 
 .post-created-at {
     font-size: 12px;
+}
+
+.floating-title {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    color: white;
+    text-align: center;
+
+    @media (max-width: $mobile-width) {
+        top: 10%;
+    }
+}
+
+.share-menu {
+    position: fixed;
+    right: 40px;
+    bottom: 3%;
+    width: 60px;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.share-sub-button {
+    margin-bottom: 30%;
+}
+
+.share-sub-buttons {
+    visibility: hidden;
+    opacity: 0.0;
+    -webkit-transition: all 250ms ease-in-out;
+    -moz-transition: all 250ms ease-in-out;
+    -ms-transition: all 250ms ease-in-out;
+    -o-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+}
+
+.share-sub-buttons:hover {
+    visibility: visible;
+    opacity: 1.0;
+}
+
+.share-button:hover + .share-sub-buttons {
+    visibility: visible;
+    opacity: 1.0;
 }

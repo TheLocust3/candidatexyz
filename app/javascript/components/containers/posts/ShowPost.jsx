@@ -7,6 +7,9 @@ import moment from 'moment';
 import { history } from '../../../constants';
 import { fetchPost } from '../../actions/post-actions';
 import { setHeaderImage, setBlankNavbar } from '../../actions/global-actions';
+import { DOMAIN } from '../../../constants';
+
+import Share from '../../components/global/Share';
 
 class ShowPost extends React.Component {
     
@@ -61,6 +64,12 @@ class ShowPost extends React.Component {
         history.push(`/posts/${this.props.postType}/${this.props.url}/edit`);
     }
 
+    renderShare() {
+        if (!this.props.renderAsIssue && !this.props.renderAsNews) return;
+
+        return <Share text={this.state.post.title} url={`${DOMAIN}/issues/${this.state.post.url}`} />;
+    }
+
     renderAsNews() {
         if (!this.props.renderAsNews) return <br />;
 
@@ -76,8 +85,10 @@ class ShowPost extends React.Component {
     renderTitle() {
         if (_.isEmpty(this.state.post.title)) return;
 
+        let titleClassName = this.props.renderAsIssue ? 'floating-title' : '';
+
         return (
-            <div>
+            <div className={titleClassName}>
                 <span className='mdc-typography--display2'><b>{this.state.post.title}</b></span><br />
             </div>
         );
@@ -93,6 +104,8 @@ class ShowPost extends React.Component {
                 {this.renderAsNews()}
 
                 <span dangerouslySetInnerHTML={{__html: this.state.post.body }} {...props} />
+
+                {this.renderShare()}
             </div>
         );
     }

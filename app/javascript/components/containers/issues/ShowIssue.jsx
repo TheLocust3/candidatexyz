@@ -13,8 +13,6 @@ class ShowIssue extends React.Component {
         return (
             <div className='content'>
                 <div className='issues'>
-                    <span className='mdc-typography--headline'><b>Issues</b></span><br />
-
                     <ShowPost postType='issues' url={this.props.match.params.url} renderAsIssue={true} />
                 </div>
 

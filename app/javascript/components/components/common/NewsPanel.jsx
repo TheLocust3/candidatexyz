@@ -18,7 +18,7 @@ class NewsPanel extends React.Component {
         return (
             <div>
                 {posts.map((post, index) => {
-                    if (index < 4) {
+                    if (index < 3) {
                         return <NewsThumbnail post={post} history={history} key={post.id} small={true} />;
                     }
                 })}
