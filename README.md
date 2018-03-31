@@ -1,7 +1,12 @@
+Big To-Do's:
+- Emails (formatting, unsubscribe)
+- Contact list
+- Volunteer list
+- Update user pages
+
 Misc To-Do's:
 - Javascript form validation
 - Allow text of buttons to be editable
-- Make contents DRY
 - Use redux to set background AND pull the image
 - Optimize store to not pull full postTypes and other pulls like that
 
@@ -13,3 +18,7 @@ Bugs:
 
 Cleanup:
 - Create form superclass (things like renderErrors)
+- Make contents DRY
+- Use a hash to pass arguments to api functions
+- Add panels folder
+- Add forms folder

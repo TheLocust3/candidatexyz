@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328222740) do
+ActiveRecord::Schema.define(version: 20180331193342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,4 +73,23 @@ ActiveRecord::Schema.define(version: 20180328222740) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "volunteers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "email"
+    t.string "home_number"
+    t.string "mobile_number"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address1"
+    t.string "address2"
+    t.string "zipcode"
+    t.string "city"
+    t.string "state"
+    t.text "help_blurb"
+    t.uuid "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_volunteers_on_contact_id"
+  end
+
+  add_foreign_key "volunteers", "contacts"
 end

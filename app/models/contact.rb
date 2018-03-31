@@ -8,7 +8,7 @@ class Contact < ApplicationRecord
   private
   def sanitize_phone_number
     unless self.phone_number.nil?
-      self.phone_number = self.phone_number.gsub(/\D/, "") # remove non-numbers
+      self.phone_number = self.phone_number.gsub(/\D/, '') # remove non-numbers
     end
   end
 end

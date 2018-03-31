@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
+
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
 import JoinTeamPanel from '../components/common/JoinTeamPanel';
+import VolunteerPanel from '../components/common/VolunteerPanel';
 
 class Action extends React.Component {
 
@@ -31,6 +33,8 @@ class Action extends React.Component {
                 </div>
 
                 <JoinTeamPanel />
+                
+                <VolunteerPanel />
 
                 <MDCAutoInit />
             </div>
