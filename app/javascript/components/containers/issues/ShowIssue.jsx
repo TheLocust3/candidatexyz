@@ -9,17 +9,13 @@ import ShowPost from '../posts/ShowPost'
 
 class ShowIssue extends React.Component {
 
-    componentDidMount() {
-        this.props.dispatch(setBlankNavbar(true));
-    }
-
     render() {
         return (
-            <div>
+            <div className='content'>
                 <div className='issues'>
                     <span className='mdc-typography--headline'><b>Issues</b></span><br />
 
-                    <ShowPost postType='issues' url={this.props.match.params.url} />
+                    <ShowPost postType='issues' url={this.props.match.params.url} renderAsIssue={true} />
                 </div>
 
                 <MDCAutoInit />
