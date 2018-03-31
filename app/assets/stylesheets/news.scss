@@ -20,8 +20,10 @@
     display: inline-block;
     position: relative;
     max-width: 44%; // 50% minus marigns
-    min-height: 40vh;
+    height: 80vh;
     
+    object-fit: cover;
+    overflow: hidden;
     padding-bottom: 3%;
     margin-left: 3%;
     margin-right: 3%;
@@ -59,6 +61,11 @@
 }
 
 .news-thumbnail-created-at {
+    position: absolute;
+    left: 0;
+    bottom: 5%;
+    width: 100%;
+
     text-align: center;
 }
 

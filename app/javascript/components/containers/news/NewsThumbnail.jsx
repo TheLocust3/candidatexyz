@@ -13,6 +13,12 @@ class NewsThumbnail extends React.Component {
         history.push(`/news/${this.props.post.url}`)
     }
 
+    renderCreatedAt() {
+        if (this.props.small) return;
+
+        return <div className='post-created-at news-thumbnail-created-at'>{moment(this.props.post.created_at).format('MMMM D, YYYY')}</div>;
+    }
+
     render() {
         let { post, history, small, ...props } = this.props;
         let smallClassName = small ? 'news-thumbnail-small' : '';
@@ -25,7 +31,7 @@ class NewsThumbnail extends React.Component {
                     <div style={{ fontSize: '26px' }}><b>{post.title}</b></div><br />
                     <div>{post.body.substring(0, THUMBNAIL_BODY_LENGTH)}...</div><br />
 
-                    <div className='post-created-at news-thumbnail-created-at'>{moment(post.created_at).format('MMMM D, YYYY')}</div>
+                    {this.renderCreatedAt()}
                 </div>
             </div>
         );

@@ -9,7 +9,7 @@ import SlimJoinUsForm from './SlimJoinUsForm'
 export default class JoinCard extends React.Component {
 
     render() {
-        let style = { top: _.isEmpty(this.props.top) ? '13%' : this.props.top, right: _.isEmpty(this.props.right) ? '3%' : this.props.right };
+        let style = { top: _.isEmpty(this.props.top) ? '40vh' : this.props.top, right: _.isEmpty(this.props.right) ? '3vh' : this.props.right };
 
         return (
             <div className='join-card-root' style={style}>

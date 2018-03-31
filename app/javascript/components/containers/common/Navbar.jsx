@@ -60,7 +60,7 @@ class Navbar extends React.Component {
     renderDeskop() {
         if (_.isEmpty(this.props.headerImage) && !this.props.blankNavbar) return null;
         
-        let headerImageBlankHeight = this.props.blankNavbar ? '30vh' : '100vh';
+        let headerImageBlankHeight = this.props.blankNavbar ? '40vh' : '100vh';
         let invertedLink = this.props.blankNavbar ? 'inverted-link' : '';
 
         return (
