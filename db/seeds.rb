@@ -161,6 +161,10 @@ Content.create(content_type: 'text', identifier: 'splashPageButton', content: { 
 # news
 Content.create(content_type: 'text', identifier: 'newsHeader', content: { text: 'News' })
 
+    # news panel
+    Content.create(content_type: 'text', identifier: 'newsPanelHeadline', content: { text: 'Latest News' })
+    Content.create(content_type: 'text', identifier: 'newsPanelButton', content: { text: 'View All News' })
+
 # posts
 Post.create(post_type: 'meet', url: 'meet-body', title: '', body: "
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu massa efficitur, laoreet ex malesuada, scelerisque sem. Nam porttitor elit at felis molestie aliquet. Sed id metus massa. Etiam congue magna eget vulputate hendrerit. Proin hendrerit maximus ipsum, ut lobortis sem ultrices et. Integer quis odio egestas, tristique purus sit amet, pretium ante. Pellentesque tincidunt mollis libero non imperdiet.<br /><br />

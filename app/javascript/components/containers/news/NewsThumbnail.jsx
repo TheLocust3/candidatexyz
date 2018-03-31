@@ -14,10 +14,11 @@ class NewsThumbnail extends React.Component {
     }
 
     render() {
-        let { post, history, ...props } = this.props;
-            
+        let { post, history, small, ...props } = this.props;
+        let smallClassName = small ? 'news-thumbnail-small' : '';
+        
         return (
-            <div className='news-thumbnail' onClick={this.onThumbnailClick.bind(this)} {...props}>
+            <div className={`news-thumbnail ${smallClassName}`} onClick={this.onThumbnailClick.bind(this)} {...props}>
                 <img className='news-thumbnail-image' src={post.image} />
                 
                 <div className='news-thumbnail-text'>
@@ -33,7 +34,8 @@ class NewsThumbnail extends React.Component {
 
 NewsThumbnail.propTypes = {
     post: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    small: PropTypes.bool
 };
 
 export default NewsThumbnail;
