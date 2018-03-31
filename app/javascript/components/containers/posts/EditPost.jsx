@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { setBlankNavbar } from '../../actions/global-actions';
+import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchPost } from '../../actions/post-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
@@ -18,6 +18,7 @@ class EditPost extends React.Component {
     }
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Edit Post'));
         this.props.dispatch(setBlankNavbar(true));
     }
 

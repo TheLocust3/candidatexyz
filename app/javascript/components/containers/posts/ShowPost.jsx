@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import { history } from '../../../constants';
 import { fetchPost } from '../../actions/post-actions';
-import { setHeaderImage, setBlankNavbar } from '../../actions/global-actions';
+import { setHeaderImage, setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { DOMAIN } from '../../../constants';
 
 import Share from '../../components/global/Share';
@@ -96,6 +96,10 @@ class ShowPost extends React.Component {
 
     render() {
         let { postType, url, posts, renderAsNews, renderAsIssue, edit, dispatch, ...props } = this.props;
+
+        if (!_.isEmpty(this.state.post.title)) {
+            this.props.dispatch(setDocumentTitle(this.state.post.title));
+        }
 
         return (
             <div className='post' {...props} onClick={this.onEditClick.bind(this)}>

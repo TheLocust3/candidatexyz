@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setBlankNavbar } from '../actions/global-actions';
+import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from './content/TextContent';
 import MessageForm from '../components/common/MessageForm';
@@ -10,6 +10,7 @@ import MessageForm from '../components/common/MessageForm';
 class Contact extends React.Component {
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Contact Us'));
         this.props.dispatch(setBlankNavbar(true));
     }
 

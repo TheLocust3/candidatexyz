@@ -10,4 +10,8 @@ $mdc-theme-secondary: #00427c;
     height: 50px;
 }
 
+.mdc-snackbar {
+    z-index: 9999;
+}
+
 @import '@material/theme/mdc-theme';

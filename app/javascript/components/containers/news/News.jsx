@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import { history } from '../../../constants';
 import { fetchCurrentUser } from '../../actions/user-actions';
-import { setBlankNavbar } from '../../actions/global-actions';
+import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchPostType } from '../../actions/post-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
@@ -20,6 +20,7 @@ class News extends React.Component {
     }
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle('News'));
         this.props.dispatch(setBlankNavbar(true));
         this.props.dispatch(fetchPostType('news'));
     }

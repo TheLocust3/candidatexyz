@@ -1,9 +1,11 @@
 import * as GlobalActions from '../actions/global-actions';
+import { TITLE } from '../../constants';
 
 const initialState = {
     blankNavbar: false,
     headerImage: '',
-    fullscreen: false
+    fullscreen: false,
+    documentTitle: ''
 };
 
 export function globalReducer(state = initialState, action) {
@@ -23,6 +25,12 @@ export function globalReducer(state = initialState, action) {
         case GlobalActions.SET_FULLSCREEN:
             return Object.assign({}, state, {
                 fullscreen: action.data
+            });
+        case GlobalActions.SET_DOCUMENT_TITLE:
+            document.title = `${TITLE} - ${action.data}`
+
+            return Object.assign({}, state, {
+                documentTitle: action.data
             });
         default:
             return state;

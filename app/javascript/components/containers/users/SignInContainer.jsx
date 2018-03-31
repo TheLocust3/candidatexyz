@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import { setBlankNavbar } from '../../actions/global-actions';
+import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import SignInForm from '../../components/users/SignInForm';
 
 class SignInContainer extends React.Component {
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Sign In'));
         this.props.dispatch(setBlankNavbar(true));
     }
 

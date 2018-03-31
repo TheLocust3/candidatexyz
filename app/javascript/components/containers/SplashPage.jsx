@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setFullscreen } from '../actions/global-actions';
+import { setFullscreen, setDocumentTitle } from '../actions/global-actions';
 import ContentApi from '../../api/content-api';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 
@@ -28,6 +28,7 @@ class SplashPage extends React.Component {
     }
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle(''));
         this.props.dispatch(setFullscreen(true));
     }
 

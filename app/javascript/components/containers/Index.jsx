@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setHeaderImage } from '../actions/global-actions';
+import { setHeaderImage, setDocumentTitle } from '../actions/global-actions';
 import ContentApi from '../../api/content-api';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 
@@ -21,7 +21,9 @@ class Index extends React.Component {
         this.state = { imageUrl: '' };
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Home'));
+
         ContentApi.get('indexBackground').then((response) => {
             this.props.dispatch(setHeaderImage(response.content));
         });

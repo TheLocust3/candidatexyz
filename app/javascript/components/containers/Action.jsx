@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setBlankNavbar } from '../actions/global-actions';
+import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
@@ -10,6 +10,7 @@ import JoinTeamPanel from '../components/common/JoinTeamPanel';
 class Action extends React.Component {
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Take Action'));
         this.props.dispatch(setBlankNavbar(true));
     }
     

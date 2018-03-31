@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchCurrentUser } from '../../actions/user-actions';
-import { setBlankNavbar } from '../../actions/global-actions';
+import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchPostType } from '../../actions/post-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
@@ -16,6 +16,7 @@ class Issues extends React.Component {
     }
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Issues'));
         this.props.dispatch(setBlankNavbar(true));
         this.props.dispatch(fetchPostType('issues'));
     }

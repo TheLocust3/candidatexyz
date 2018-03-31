@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setBlankNavbar } from '../actions/global-actions';
+import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
@@ -10,6 +10,7 @@ import ImageContent from '../containers/content/ImageContent';
 class Meet extends React.Component {
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Media Kit'));
         this.props.dispatch(setBlankNavbar(true));
     }
     

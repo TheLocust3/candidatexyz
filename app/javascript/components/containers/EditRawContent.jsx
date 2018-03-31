@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setBlankNavbar } from '../actions/global-actions';
+import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import ContentApi from '../../api/content-api';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 import RawContentInlineEditor from '../components/content/edit/RawContentInlineEditor';
@@ -30,11 +30,8 @@ class EditRawContent extends React.Component {
     }
 
     componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Edit Content'));
         this.props.dispatch(setBlankNavbar(true));
-    }
-
-    componentWillUnmount() {
-        this.props.dispatch(setBlankNavbar(false));
     }
 
     render() {
