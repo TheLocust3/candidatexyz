@@ -2,6 +2,9 @@ import _ from 'lodash'
 import React from 'react';
 import { MDCSelect } from '@material/select';
 
+import ContentApi from '../../../api/content-api';
+import MDCAutoInit from '../global/MDCAutoInit';
+
 import { history, STATES } from '../../../constants';
 import VolunteerApi from '../../../api/volunteer-api';
 
@@ -10,14 +13,36 @@ export default class VolunteerForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { email: '', homeNumber: '', mobileNumber: '', firstName: '', lastName: '', address1: '', address2: '', zipCode: '', city: '', state: '', helpBlurb: '', errors: [] };
+        this.state = { email: '', homeNumber: '', mobileNumber: '', firstName: '', lastName: '', address1: '', address2: '', zipCode: '', city: '', state: '', helpBlurb: '', errors: [], helpOptions: [], otherOpened: false };
     }
 
     componentDidMount() {
-        const select = new MDCSelect(document.querySelector('.mdc-select'));
-        select.listen('MDCSelect:change', () => {
+        const stateSelect = new MDCSelect(document.querySelector('#state-select'));
+        stateSelect.listen('MDCSelect:change', () => {
             this.setState({
-                state: select.value
+                state: stateSelect.value
+            });
+        });
+
+        const helpSelect = new MDCSelect(document.querySelector('#help-select'));
+        helpSelect.listen('MDCSelect:change', () => {
+            let otherOpened = false;
+            if (helpSelect.value == 'Other') {
+                otherOpened = true;
+            }
+
+            this.setState({
+                helpBlurb: helpSelect.value,
+                otherOpened: otherOpened
+            });
+        });
+
+        ContentApi.get('voluneteerHelpOption').then((response) => {
+            let helpOptions = _.split(response.content, ',');
+            helpOptions.push('Other');
+
+            this.setState({
+                helpOptions: helpOptions
             });
         });
     }
@@ -58,7 +83,7 @@ export default class VolunteerForm extends React.Component {
 
     renderStateDropdown() {
         return (
-            <div className='mdc-select' role='listbox' style={{ width: '30%' }} data-mdc-auto-init='MDCSelect'>
+            <div className='mdc-select' id='state-select' role='listbox' style={{ width: '30%' }} data-mdc-auto-init='MDCSelect'>
                 <div className='mdc-select__surface' tabIndex='0'>
                     <div className='mdc-select__label'>State</div>
                     <div className='mdc-select__selected-text' />
@@ -75,6 +100,45 @@ export default class VolunteerForm extends React.Component {
                             );
                         })}
                     </ul>
+                </div>
+            </div>
+        )
+    }
+
+    renderHelpOptionsDropdown() {
+        return (
+            <div className='mdc-select' id='help-select' role='listbox' style={{ width: '30%' }} data-mdc-auto-init='MDCSelect'>
+                <div className='mdc-select__surface' tabIndex='0'>
+                    <div className='mdc-select__label'>How can you help?</div>
+                    <div className='mdc-select__selected-text' />
+                    <div className='mdc-select__bottom-line' />
+                </div>
+
+                <div className='mdc-menu mdc-select__menu'>
+                    <ul className='mdc-list mdc-menu__items'>
+                        {this.state.helpOptions.map((help) => {
+                            return (
+                                <li key={help} className='mdc-list-item' role='option' tabIndex='0'>
+                                    {help}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            </div>
+        )
+    }
+
+    renderOtherHelp() {
+        if (!this.state.otherOpened) return;
+
+        return (
+            <div>
+                <br />
+                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
+                    <input type='text' id='help-blurb' className='mdc-text-field__input' name='helpBlurb' onChange={this.handleChange.bind(this)} />
+                    <label className='mdc-text-field__label' htmlFor='help-blurb'>How Can You Help</label>
+                    <div className='mdc-line-ripple'></div>
                 </div>
             </div>
         )
@@ -144,17 +208,14 @@ export default class VolunteerForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div><br /><br />
 
-                <b>How can you help?</b><br />
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='text' id='help-blurb' className='mdc-text-field__input' name='helpBlurb' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='help-blurb'>How Can You Help</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                {this.renderHelpOptionsDropdown()}<br />
+                {this.renderOtherHelp()}
 
                 <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
 
                 <button className='mdc-button mdc-button--raised sign-up-form-button'data-mdc-auto-init='MDCRipple'>Submit</button>
+
+                <MDCAutoInit />
             </form>
         );
     }
