@@ -2,10 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setHeaderImage, setDocumentTitle } from '../actions/global-actions';
+import { fetchHeaderImage, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 
-import ContentApi from '../../api/content-api';
 import TextContent from './content/TextContent';
 import ShowPost from './posts/ShowPost'
 import JoinCard from '../components/common/JoinCard';
@@ -21,10 +20,7 @@ class Meet extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Meet'));
-
-        ContentApi.get('meetBackground').then((response) => {
-            this.props.dispatch(setHeaderImage(response.content));
-        });
+        this.props.dispatch(fetchHeaderImage('meetBackground'));
     }
 
     render() {

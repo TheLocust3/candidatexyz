@@ -7,7 +7,6 @@ Big To-Do's:
 Misc To-Do's:
 - Javascript form validation
 - Allow text of buttons to be editable
-- Use redux to set background AND pull the image
 - Optimize store to not pull full postTypes and other pulls like that (also don't pull user repeatedly)
 
 Bugs:

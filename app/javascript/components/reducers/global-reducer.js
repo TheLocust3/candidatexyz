@@ -16,12 +16,6 @@ export function globalReducer(state = initialState, action) {
                 headerImage: '',
                 fullscreen: false
             });
-        case GlobalActions.SET_HEADER_IMAGE:
-            return Object.assign({}, state, {
-                headerImage: action.data,
-                blankNavbar: false,
-                fullscreen: false
-            });
         case GlobalActions.SET_FULLSCREEN:
             return Object.assign({}, state, {
                 fullscreen: action.data
@@ -31,6 +25,12 @@ export function globalReducer(state = initialState, action) {
 
             return Object.assign({}, state, {
                 documentTitle: action.data
+            });
+        case GlobalActions.SET_HEADER_IMAGE:
+            return Object.assign({}, state, {
+                blankNavbar: false,
+                fullscreen: false,
+                headerImage: action.data
             });
         default:
             return state;
