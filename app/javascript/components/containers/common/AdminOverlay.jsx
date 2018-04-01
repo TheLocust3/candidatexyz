@@ -109,6 +109,12 @@ class AdminOverlay extends React.Component {
                                     </li>
                                 </Link>
 
+                                <Link to='/staff-management' className='menu-item-link'>
+                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                                        Staff Management
+                                    </li>
+                                </Link>
+
                                 <Link to='/edit-content' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                         Edit Other Content
@@ -130,7 +136,7 @@ class AdminOverlay extends React.Component {
 function mapStateToProps(state) {
     return {
         isReady: state.users.isReady,
-        user: state.users.user,
+        user: state.users.currentUser,
         edit: state.content.edit,
     };
 }

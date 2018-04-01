@@ -23,3 +23,5 @@ Cleanup:
 - Use a hash to pass arguments to api functions
 - Add panels folder
 - Add forms folder
+- Clean up action names (content)
+- Use redux actions (don't know name, used on PipeDream)

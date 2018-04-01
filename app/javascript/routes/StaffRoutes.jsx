@@ -9,6 +9,7 @@ import EditRawContent from '../components/containers/EditRawContent';
 import EditPost from '../components/containers/posts/EditPost';
 import CreatePost from '../components/containers/posts/CreatePost';
 import EditUserContainer from '../components/containers/users/EditUserContainer';
+import StaffManagement from '../components/containers/users/StaffManagement';
 
 class StaffRoutes extends React.Component {
 
@@ -23,6 +24,7 @@ class StaffRoutes extends React.Component {
             <div>
                 <Route exact path='/edit-content' component={EditRawContent} />
                 <Route exact path='/users/edit' component={EditUserContainer} />
+                <Route exact path='/staff-management' component={StaffManagement} />
 
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
                 <Route exact path='/posts/:postType/new' component={CreatePost} />
@@ -33,7 +35,7 @@ class StaffRoutes extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.users.user
+        user: state.users.currentUser
     };
 }
 

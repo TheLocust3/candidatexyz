@@ -64,7 +64,7 @@ function mapStateToProps(state) {
     return {
         posts: state.posts.postsOfType,
         isUserReady: state.users.isReady,
-        user: state.users.user,
+        user: state.users.currentUser
     };
 }
 

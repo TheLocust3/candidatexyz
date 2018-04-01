@@ -16,9 +16,8 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    namespace :users do
-      get '' => 'users#index'
-    end
+    get 'current_user' => 'users/users#get_current_user'
+    resources :users
 
     resources :contacts
     resources :volunteers
