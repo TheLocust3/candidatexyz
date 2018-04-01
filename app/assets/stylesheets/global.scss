@@ -137,6 +137,17 @@ body {
     }
 }
 
+.editUserForm {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+
+    @media (max-width: $mobile-width) {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+
 .checkboxLabel {
     position: absolute;
     padding-top: 1vh;

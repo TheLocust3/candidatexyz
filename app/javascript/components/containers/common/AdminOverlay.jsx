@@ -103,9 +103,11 @@ class AdminOverlay extends React.Component {
 
                         <div id='admin-overlay-settings' className='mdc-menu' tabIndex='-1'>
                             <ul className='mdc-menu__items mdc-list' role='menu' aria-hidden='true'>
-                                <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                    Settings
-                                </li>
+                                <Link to='/edit-user' className='menu-item-link'>
+                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                                        Settings
+                                    </li>
+                                </Link>
 
                                 <Link to='/edit-content' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>

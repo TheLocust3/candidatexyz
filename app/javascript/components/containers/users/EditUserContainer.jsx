@@ -19,7 +19,7 @@ class EditUserContainer extends React.Component {
         if (!this.props.isReady) return null;
 
         return (
-            <div className='content signInForm'>
+            <div className='content editUserForm'>
                 <EditUserForm redirectUrl="/" user={this.props.user} />
 
                 <MDCAutoInit />

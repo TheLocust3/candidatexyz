@@ -2,6 +2,9 @@ Big To-Do's:
 - Emails (formatting, unsubscribe)
 - Contact list
 - Volunteer list
+- Staff management
+  - Add users by email
+  - Manage users page
 
 Misc To-Do's:
 - Javascript form validation
