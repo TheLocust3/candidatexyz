@@ -57,7 +57,7 @@ export function fetchUser(identifier) {
     }
 }
 
-export function fetchAllUser() {
+export function fetchAllUsers() {
 
     return function (dispatch) {
         dispatch(requestAllUsers());

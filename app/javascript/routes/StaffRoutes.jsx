@@ -8,7 +8,7 @@ import { fetchCurrentUser } from '../components/actions/user-actions';
 import EditRawContent from '../components/containers/EditRawContent';
 import EditPost from '../components/containers/posts/EditPost';
 import CreatePost from '../components/containers/posts/CreatePost';
-import EditUserContainer from '../components/containers/users/EditUserContainer';
+import EditCurrentUserContainer from '../components/containers/users/EditCurrentUserContainer';
 import StaffManagement from '../components/containers/users/StaffManagement';
 
 class StaffRoutes extends React.Component {
@@ -23,7 +23,7 @@ class StaffRoutes extends React.Component {
         return (
             <div>
                 <Route exact path='/edit-content' component={EditRawContent} />
-                <Route exact path='/users/edit' component={EditUserContainer} />
+                <Route exact path='/edit-user' component={EditCurrentUserContainer} />
                 <Route exact path='/staff-management' component={StaffManagement} />
 
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />

@@ -7,7 +7,7 @@ import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import EditUserForm from '../../components/users/EditUserForm';
 
-class EditUserContainer extends React.Component {
+class EditCurrentUserContainer extends React.Component {
 
     componentWillMount() {
         this.props.dispatch(fetchCurrentUser());
@@ -35,4 +35,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(EditUserContainer);
+export default connect(mapStateToProps)(EditCurrentUserContainer);

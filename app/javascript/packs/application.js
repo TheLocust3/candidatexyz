@@ -31,7 +31,6 @@ import ShowIssue from '../components/containers/issues/ShowIssue';
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
 import ResetPasswordContainer from '../components/containers/users/ResetPasswordContainer';
-import EditUserContainer from '../components/containers/users/EditUserContainer';
 
 import StaffRoutes from '../routes/StaffRoutes';
 
@@ -78,7 +77,6 @@ class Base extends React.Component {
                                 <Route exact path='/short-bio' component={ShortBio} />
 
                                 <Route exact path='/sign-in' component={SignInContainer} />
-                                <Route exact path='/edit-user' component={EditUserContainer} />
                                 <Route exact path='/forgot-password' component={ForgotPasswordContainer} />
                                 <Route exact path='/reset_password' component={ResetPasswordContainer} />
 

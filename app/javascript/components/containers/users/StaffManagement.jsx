@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import { fetchCurrentUser } from '../../actions/user-actions';
+import { fetchCurrentUser, fetchAllUsers } from '../../actions/user-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
@@ -10,8 +10,31 @@ class StaffManagement extends React.Component {
 
     componentWillMount() {
         this.props.dispatch(fetchCurrentUser());
+        this.props.dispatch(fetchAllUsers());
         this.props.dispatch(setDocumentTitle('Staff Management'));
         this.props.dispatch(setBlankNavbar(true));
+    }
+
+    renderUserList() {
+        return (
+            <ul className='mdc-list mdc-list--two-line'>
+                {this.props.users.map((user) => {
+                    return (
+                        <Link className='unstyled-link' key={user.id} to={`/users/${user.id}`}>
+                            <li className='mdc-list-item'>
+                                <span className='mdc-list-item__text'>
+                                    {user.first_name} {user.last_name}
+
+                                    <span className='mdc-list-item__secondary-text'>
+                                        {user.email}
+                                    </span>
+                                </span>
+                            </li>
+                        </Link>
+                    )
+                })}
+            </ul>
+        );
     }
 
     render() {
@@ -19,7 +42,9 @@ class StaffManagement extends React.Component {
 
         return (
             <div className='content editUserForm'>
-                Staff Management
+                <div className='mdc-typography--display2'><b>Staff Management</b></div><br />
+
+                {this.renderUserList()}
 
                 <MDCAutoInit />
             </div>
@@ -30,7 +55,8 @@ class StaffManagement extends React.Component {
 function mapStateToProps(state) {
     return {
         isReady: state.users.isReady,
-        user: state.users.currentUser
+        currentUser: state.users.currentUser,
+        users: state.users.users
     };
 }
 

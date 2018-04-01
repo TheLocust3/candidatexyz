@@ -47,6 +47,11 @@ body {
     @extend %link-hover-shared;
 }
 
+.unstyled-link {
+    text-decoration: none;
+    color: black;
+}
+
 .link-small {
     @extend %link-shared;
 
