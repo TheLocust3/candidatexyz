@@ -33,7 +33,11 @@ export default class ForgotPasswordForm extends React.Component {
     renderInputs() {
         return (
             <div>
-                Email:&nbsp;<input type="email" name="email" onChange={this.handleChange.bind(this)} /> {this.state.errors.email}
+                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
+                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} />
+                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
+                    <div className='mdc-line-ripple'></div>
+                </div>
             </div>
         );
     }
@@ -41,10 +45,11 @@ export default class ForgotPasswordForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit.bind(this)}>
-                {this.renderInputs()}
-                <input type="submit" style={{visibility: 'hidden'}} /><br />
+                {this.renderInputs()}<br />
 
-                <button type="submit" onClick={this.handleSubmit.bind(this)}>Reset Password</button>
+                <button className='mdc-button mdc-button--raised'>Reset Password</button><br />
+
+                {this.state.errors.email}
             </form>
         );
     }
