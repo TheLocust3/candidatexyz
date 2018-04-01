@@ -167,7 +167,7 @@ Content.create(content_type: 'text', identifier: 'newsHeader', content: { text: 
 
 # volunteer panel
 Content.create(content_type: 'text', identifier: 'volunteerPanelHeadline', content: { text: 'Volunteer with us.' })
-Content.create(content_type: 'raw', identifier: 'voluneteerHelpOption', content: 'Data Entry,Make Calls, Door-to-Door Canvassing,Share information and news on social media,Hold Signs/Standouts')
+Content.create(content_type: 'raw', identifier: 'voluneteerHelpOptions', content: 'Data Entry,Make Calls, Door-to-Door Canvassing,Share information and news on social media,Hold Signs/Standouts')
 
 # posts
 Post.create(post_type: 'meet', url: 'meet-body', title: '', body: "

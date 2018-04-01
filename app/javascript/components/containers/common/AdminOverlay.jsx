@@ -7,9 +7,11 @@ import { MDCSnackbar } from '@material/snackbar';
 import { Link } from 'react-router-dom';
 import { MDCMenu } from '@material/menu';
 
+import { history } from '../../../constants';
 import { fetchCurrentUser } from '../../actions/user-actions';
 import { setEdit } from '../../actions/content-actions';
 import AuthApi from '../../../api/auth-api';
+
 import EditContent from './EditContent';
 
 class AdminOverlay extends React.Component {
@@ -22,6 +24,10 @@ class AdminOverlay extends React.Component {
 
     componentWillMount() {
         this.props.dispatch(fetchCurrentUser());
+
+        history.listen((event) => {
+            this.props.dispatch(setEdit(false));
+        })
     }
 
     onEditClick(event) {

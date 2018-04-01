@@ -22,20 +22,17 @@ import Privacy from '../components/containers/Privacy';
 import Contact from '../components/containers/Contact';
 import MediaKit from '../components/containers/MediaKit';
 import ShortBio from '../components/containers/ShortBio';
-import EditRawContent from '../components/containers/EditRawContent';
 
 import News from '../components/containers/news/News';
 import ShowNews from '../components/containers/news/ShowNews';
 import Issues from '../components/containers/issues/Issues';
 import ShowIssue from '../components/containers/issues/ShowIssue';
 
-import EditPost from '../components/containers/posts/EditPost';
-import CreatePost from '../components/containers/posts/CreatePost';
-
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
 import ResetPasswordContainer from '../components/containers/users/ResetPasswordContainer';
-import EditUserContainer from '../components/containers/users/EditUserContainer';
+
+import StaffRoutes from '../routes/StaffRoutes';
 
 $.ajaxSetup({
     headers: {
@@ -78,17 +75,15 @@ class Base extends React.Component {
                                 <Route exact path='/contact' component={Contact} />
                                 <Route exact path='/media-kit' component={MediaKit} />
                                 <Route exact path='/short-bio' component={ShortBio} />
-                                <Route exact path='/edit-content' component={EditRawContent} />
 
                                 <Route exact path='/sign-in' component={SignInContainer} />
                                 <Route exact path='/forgot-password' component={ForgotPasswordContainer} />
                                 <Route exact path='/reset-password' component={ResetPasswordContainer} />
-                                <Route exact path='/users/edit' component={EditUserContainer} />
 
                                 <Route exact path='/news/:url' component={ShowNews} />
                                 <Route exact path='/issues/:url' component={ShowIssue} />
-                                <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
-                                <Route exact path='/posts/:postType/new' component={CreatePost} />
+                                
+                                <StaffRoutes />
                             </Switch>
 
                             <Footer />

@@ -1,5 +1,7 @@
 class Api::ContactsController < Api::ApiController
 
+    before_action :authenticate_user!, only: [ :index, :show, :update, :destroy ]
+
     def index
         render :json => Contact.all
     end

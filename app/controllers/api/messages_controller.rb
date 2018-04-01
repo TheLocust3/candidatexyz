@@ -1,5 +1,7 @@
 class Api::MessagesController < Api::ApiController
 
+    before_action :authenticate_user!, only: [ :index, :show, :update, :destroy ]
+
     def index
         render :json => Message.all
     end

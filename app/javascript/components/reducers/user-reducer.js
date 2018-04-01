@@ -4,7 +4,6 @@ import { combineReducers } from 'redux';
 
 const initialState = {
     isReady: false,
-    currentUser: {},
     user: {},
     users: []
 };

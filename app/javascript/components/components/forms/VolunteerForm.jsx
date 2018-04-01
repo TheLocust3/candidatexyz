@@ -37,7 +37,7 @@ export default class VolunteerForm extends React.Component {
             });
         });
 
-        ContentApi.get('voluneteerHelpOption').then((response) => {
+        ContentApi.get('voluneteerHelpOptions').then((response) => {
             let helpOptions = _.split(response.content, ',');
             helpOptions.push('Other');
 

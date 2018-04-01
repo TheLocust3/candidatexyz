@@ -11,18 +11,21 @@ class EditRawContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false, indexBackground: {}, joinTeamBackground: {}, meetBackground: {} };
+        this.state = { isReady: false, indexBackground: {}, joinTeamBackground: {}, meetBackground: {}, voluneteerHelpOptions: {} };
     }
 
     componentWillMount() {
         ContentApi.get('indexBackground').then((indexBackground) => {
             ContentApi.get('joinTeamBackground').then((joinTeamBackground) => {
                 ContentApi.get('meetBackground').then((meetBackground) => {
-                    this.setState({
-                        isReady: true,
-                        indexBackground: indexBackground,
-                        joinTeamBackground: joinTeamBackground,
-                        meetBackground: meetBackground
+                    ContentApi.get('voluneteerHelpOptions').then((voluneteerHelpOptions) => {
+                        this.setState({
+                            isReady: true,
+                            indexBackground: indexBackground,
+                            joinTeamBackground: joinTeamBackground,
+                            meetBackground: meetBackground,
+                            voluneteerHelpOptions: voluneteerHelpOptions
+                        });
                     });
                 });
             });
@@ -46,6 +49,8 @@ class EditRawContent extends React.Component {
                 <RawContentInlineEditor content={this.state.joinTeamBackground} /><br />
                 
                 <RawContentInlineEditor content={this.state.meetBackground} />
+
+                <RawContentInlineEditor content={this.state.voluneteerHelpOptions} />
 
                 <MDCAutoInit />
             </div>
