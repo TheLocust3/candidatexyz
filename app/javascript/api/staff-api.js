@@ -1,10 +1,10 @@
 import $ from 'jquery';
 
-let UserApi = {
+let StaffApi = {
 
     getAll() {
         return new Promise((resolve, reject) => {
-            $.ajax('/api/users', {
+            $.ajax('/api/staff', {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -14,7 +14,7 @@ let UserApi = {
 
     get(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/users/${id}`, {
+            $.ajax(`/api/staff/${id}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -32,9 +32,20 @@ let UserApi = {
         });
     },
 
+    update(id, email, firstName, lastName) {
+        return new Promise((resolve, reject) => {
+            $.ajax(`/api/staff/${id}`, {
+                type: 'patch',
+                data: { email: email, first_name: firstName, last_name: lastName },
+                success: resolve,
+                error: reject
+            });
+        });
+    },
+
     destroy(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/users/${id}`, {
+            $.ajax(`/api/staff/${id}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject
@@ -43,4 +54,4 @@ let UserApi = {
     }
 };
 
-export default UserApi
+export default StaffApi

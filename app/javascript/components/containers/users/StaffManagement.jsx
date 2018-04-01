@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import { fetchCurrentUser, fetchAllUsers } from '../../actions/user-actions';
+import { fetchCurrentUser, fetchAllUsers } from '../../actions/staff-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
@@ -20,7 +20,7 @@ class StaffManagement extends React.Component {
             <ul className='mdc-list mdc-list--two-line'>
                 {this.props.users.map((user) => {
                     return (
-                        <Link className='unstyled-link' key={user.id} to={`/users/${user.id}`}>
+                        <Link className='unstyled-link' key={user.id} to={`/staff-management/${user.id}/edit`}>
                             <li className='mdc-list-item'>
                                 <span className='mdc-list-item__text'>
                                     {user.first_name} {user.last_name}
@@ -54,9 +54,9 @@ class StaffManagement extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        isReady: state.users.isReady,
-        currentUser: state.users.currentUser,
-        users: state.users.users
+        isReady: state.staff.isReady,
+        currentUser: state.staff.currentUser,
+        users: state.staff.users
     };
 }
 

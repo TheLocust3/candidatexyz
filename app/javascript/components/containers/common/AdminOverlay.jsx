@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { MDCMenu } from '@material/menu';
 
 import { history } from '../../../constants';
-import { fetchCurrentUser } from '../../actions/user-actions';
+import { fetchCurrentUser } from '../../actions/staff-actions';
 import { setEdit } from '../../actions/content-actions';
 import AuthApi from '../../../api/auth-api';
 
@@ -135,8 +135,8 @@ class AdminOverlay extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        isReady: state.users.isReady,
-        user: state.users.currentUser,
+        isReady: state.staff.isReady,
+        user: state.staff.currentUser,
         edit: state.content.edit,
     };
 }

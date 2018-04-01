@@ -1,4 +1,4 @@
-import UserApi from '../../api/user-api';
+import StaffApi from '../../api/staff-api';
 
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
@@ -51,7 +51,7 @@ export function fetchUser(identifier) {
     return function (dispatch) {
         dispatch(requestUser());
 
-        UserApi.get(identifier).then( data => {
+        StaffApi.get(identifier).then( data => {
             dispatch(receiveUser(data));
         });
     }
@@ -62,7 +62,7 @@ export function fetchAllUsers() {
     return function (dispatch) {
         dispatch(requestAllUsers());
 
-        UserApi.getAll().then( data => {
+        StaffApi.getAll().then( data => {
             dispatch(receiveAllUsers(data));
         });
     }
@@ -74,7 +74,7 @@ export function fetchCurrentUser() {
     return function (dispatch) {
         dispatch(requestCurrentUserAction());
 
-        UserApi.getCurrentUser().then( data => {
+        StaffApi.getCurrentUser().then( data => {
             dispatch(receiveCurrentUserAction(data));
         });
     }

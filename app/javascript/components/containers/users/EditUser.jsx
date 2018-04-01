@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import { fetchCurrentUser } from '../../actions/staff-actions';
+import { fetchUser } from '../../actions/staff-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
-import EditUserForm from '../../components/users/EditUserForm';
+import MasterEditUserForm from '../../components/users/MasterEditUserForm';
 
-class EditCurrentUserContainer extends React.Component {
+class EditUser extends React.Component {
 
     componentWillMount() {
-        this.props.dispatch(fetchCurrentUser());
+        this.props.dispatch(fetchUser(this.props.match.params.id));
         this.props.dispatch(setDocumentTitle('Reset Password'));
         this.props.dispatch(setBlankNavbar(true));
     }
@@ -20,7 +20,7 @@ class EditCurrentUserContainer extends React.Component {
 
         return (
             <div className='content editUserForm'>
-                <EditUserForm redirectUrl="/" user={this.props.user} />
+                <MasterEditUserForm redirectUrl='/staff-management' user={this.props.user} />
 
                 <MDCAutoInit />
             </div>
@@ -35,4 +35,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(EditCurrentUserContainer);
+export default connect(mapStateToProps)(EditUser);

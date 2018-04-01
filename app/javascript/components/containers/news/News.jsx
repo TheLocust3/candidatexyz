@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import { history } from '../../../constants';
-import { fetchCurrentUser } from '../../actions/user-actions';
+import { fetchCurrentUser } from '../../actions/staff-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchPostType } from '../../actions/post-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
@@ -64,8 +64,8 @@ class News extends React.Component {
 function mapStateToProps(state) {
     return {
         posts: state.posts.postsOfType,
-        isUserReady: state.users.isReady,
-        user: state.users.currentUser
+        isUserReady: state.staff.isReady,
+        user: state.staff.currentUser
     };
 }
 

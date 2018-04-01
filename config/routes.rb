@@ -17,8 +17,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'current_user' => 'users/users#get_current_user'
-    get 'users' => 'users/users#index'
-    get 'users/:id' => 'users/users#show'
+    get 'staff' => 'users/users#index'
+    get 'staff/:id' => 'users/users#show'
+    patch 'staff/:id' => 'users/users#update'
 
     resources :contacts
     resources :volunteers

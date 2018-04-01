@@ -1,4 +1,4 @@
-import * as UserActions from '../actions/user-actions';
+import * as StaffActions from '../actions/staff-actions';
 
 import { combineReducers } from 'redux';
 
@@ -9,25 +9,25 @@ const initialState = {
     users: []
 };
 
-export function userReducer(state = initialState, action) {
+export function staffReducer(state = initialState, action) {
     switch (action.type) {
-        case UserActions.REQUEST_USER:
-        case UserActions.REQUEST_ALL_USERS:
-        case UserActions.REQUEST_CURRENT_USER:
+        case StaffActions.REQUEST_USER:
+        case StaffActions.REQUEST_ALL_USERS:
+        case StaffActions.REQUEST_CURRENT_USER:
             return Object.assign({}, state, {
                 isReady: false
             });
-        case UserActions.RECEIVE_CURRENT_USER:
+        case StaffActions.RECEIVE_CURRENT_USER:
             return Object.assign({}, state, {
                 isReady: true,
                 currentUser: action.data
             });
-        case UserActions.RECEIVE_USER:
+        case StaffActions.RECEIVE_USER:
             return Object.assign({}, state, {
                 isReady: true,
                 user: action.data
             });
-        case UserActions.RECEIVE_ALL_USERS:
+        case StaffActions.RECEIVE_ALL_USERS:
             return Object.assign({}, state, {
                 isReady: true,
                 users: action.data

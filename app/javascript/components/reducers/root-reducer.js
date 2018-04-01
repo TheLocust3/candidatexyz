@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { userReducer } from './user-reducer';
+import { staffReducer } from './staff-reducer';
 import { contactReducer } from './contact-reducer';
 import { volunteerReducer } from './volunteer-reducer';
 import { contentReducer } from './content-reducer';
@@ -9,7 +9,7 @@ import { postReducer } from './post-reducer';
 import { globalReducer } from './global-reducer';
 
 const reducer = combineReducers({
-    users: userReducer,
+    staff: staffReducer,
     contacts: contactReducer,
     volunteers: volunteerReducer,
     content: contentReducer,
