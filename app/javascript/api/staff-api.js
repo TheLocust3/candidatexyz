@@ -32,11 +32,11 @@ let StaffApi = {
         });
     },
 
-    update(id, email, firstName, lastName) {
+    update(id, email, firstName, lastName, admin) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/staff/${id}`, {
                 type: 'patch',
-                data: { email: email, first_name: firstName, last_name: lastName },
+                data: { email: email, first_name: firstName, last_name: lastName, admin: admin },
                 success: resolve,
                 error: reject
             });

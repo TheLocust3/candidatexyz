@@ -4,7 +4,6 @@ Big To-Do's:
 - Volunteer list
 - Staff management
   - Add users by email
-  - Create admin privilege
 
 Misc To-Do's:
 - Javascript form validation

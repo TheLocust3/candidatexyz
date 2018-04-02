@@ -31,7 +31,7 @@ class EditUser extends React.Component {
 function mapStateToProps(state) {
     return {
         isReady: state.staff.isReady,
-        user: state.staff.currentUser
+        user: state.staff.user
     };
 }
 

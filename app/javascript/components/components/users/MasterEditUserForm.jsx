@@ -9,7 +9,7 @@ export default class MasterEditUserForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { email: this.props.user.email, firstName: this.props.user.first_name, lastName: this.props.user.last_name, errors: [] };
+        this.state = { email: this.props.user.email, firstName: this.props.user.first_name, lastName: this.props.user.last_name, admin: this.props.user.admin, errors: [] };
     }
 
     handleChange(event) {
@@ -18,10 +18,16 @@ export default class MasterEditUserForm extends React.Component {
         });
     }
 
+    handleAdminCheck(event) {
+        this.setState({
+            admin: !this.state.admin
+        });
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
-        StaffApi.update(this.props.user.id, this.state.email, this.state.firstName, this.state.lastName).then( response => {
+        StaffApi.update(this.props.user.id, this.state.email, this.state.firstName, this.state.lastName, this.state.admin).then( response => {
             history.push(this.props.redirectUrl);
         }).catch( response => {
             this.setState({
@@ -65,7 +71,20 @@ export default class MasterEditUserForm extends React.Component {
                     <input type='text' id='last-name' className='mdc-text-field__input' name='lastName' onChange={this.handleChange.bind(this)} defaultValue={this.state.lastName} />
                     <label className='mdc-text-field__label' htmlFor='last-name'>Last name</label>
                     <div className='mdc-line-ripple'></div>
+                </div><br />
+
+                <div className='mdc-checkbox'>
+                    <input type='checkbox' className='mdc-checkbox__native-control' onChange={this.handleAdminCheck.bind(this)} defaultChecked={this.state.admin} />
+                    <div className='mdc-checkbox__background'>
+                        <svg className='mdc-checkbox__checkmark' viewBox='0 0 24 24'>
+                            <path className='mdc-checkbox__checkmark-path' fill='none' stroke='white' d='M1.73,12.91 8.1,19.28 22.79,4.59' />
+                        </svg>
+
+                        <div className='mdc-checkbox__mixedmark' />
+                    </div>
                 </div>
+
+                <label className='checkboxLabel'>Admin</label>
             </div>
         );
     }
@@ -73,7 +92,7 @@ export default class MasterEditUserForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit.bind(this)}>
-                {this.renderInputs()}
+                {this.renderInputs()}<br />
 
                 <button className='mdc-button mdc-button--raised'>Save</button><br /><br />
 

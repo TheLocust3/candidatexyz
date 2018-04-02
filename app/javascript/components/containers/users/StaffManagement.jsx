@@ -19,8 +19,10 @@ class StaffManagement extends React.Component {
         return (
             <ul className='mdc-list mdc-list--two-line'>
                 {this.props.users.map((user) => {
+                    let link = this.props.currentUser.admin ? `/staff-management/${user.id}/edit` : '#';
+
                     return (
-                        <Link className='unstyled-link' key={user.id} to={`/staff-management/${user.id}/edit`}>
+                        <Link className='unstyled-link' key={user.id} to={link}>
                             <li className='mdc-list-item'>
                                 <span className='mdc-list-item__text'>
                                     {user.first_name} {user.last_name}

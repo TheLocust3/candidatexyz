@@ -1,6 +1,7 @@
-class Api::Users::UsersController < ApplicationController
+class Api::Users::UsersController < Api::ApiController
 
-    before_action :authenticate_user!, only: [ :index, :show, :destroy ]
+    before_action :authenticate_user!, only: [ :index, :show, :update, :destroy ]
+    before_action :authenticate_admin!, only: [ :update ]
 
     def index
         render :json => User.all
@@ -33,6 +34,6 @@ class Api::Users::UsersController < ApplicationController
 
     private
     def update_params(params)
-        params.permit(:email, :first_name, :last_name)
+        params.permit(:email, :first_name, :last_name, :admin)
     end
 end
