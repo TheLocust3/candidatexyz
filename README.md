@@ -4,6 +4,8 @@ Big To-Do's:
 - Volunteer list
 - Staff management
   - Add users by email
+- Admin Overlay
+  - Undo button
 
 Misc To-Do's:
 - Javascript form validation
@@ -14,7 +16,7 @@ Bugs:
 - Clicking anywhere inside slideshow content will trigger editor (when editing)
 - After editing, screen doesn't shrink back to normal size
 - Little white line on left of parallax header after some window resizes
-- Admin overlay blocks click
+- Fix position of mail button
 
 Cleanup:
 - Create form superclass (things like renderErrors)

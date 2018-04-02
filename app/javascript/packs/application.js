@@ -32,6 +32,8 @@ import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
 import ResetPasswordContainer from '../components/containers/users/ResetPasswordContainer';
 
+import Unsubscribe from '../components/containers/contact/Unsubscribe';
+
 import StaffRoutes from '../routes/StaffRoutes';
 
 $.ajaxSetup({
@@ -82,6 +84,8 @@ class Base extends React.Component {
 
                                 <Route exact path='/news/:url' component={ShowNews} />
                                 <Route exact path='/issues/:url' component={ShowIssue} />
+                                
+                                <Route exact path='/unsubscribe/:token' component={Unsubscribe} />
                                 
                                 <StaffRoutes />
                             </Switch>

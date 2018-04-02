@@ -1,10 +1,13 @@
-class ContactMailer < ApplicationMailer
+class Mailer < ApplicationMailer
 
     def to_contacts(subject, body)
-        emails = Contact.all.map({ |contact| contact.email })
-        @logo = Content.where( identifier: 'logo' ).first
+        @logo = Content.where( identifier: 'logo' ).first.content['image']
+        @approved_by = Content.where( identifier: 'approvedByBlurb' ).first.content['text']
         @body = body
         
-        mail(to: emails, subject: subject)
+        Contact.all.map { |contact|
+            @token = Rails.application.message_verifier(:email).generate(contact.id)
+            mail(to: contact.email, subject: subject, template_path: 'mail', template_name: 'campaign')
+        }
     end
 end

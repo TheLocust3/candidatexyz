@@ -37,6 +37,14 @@ class Api::ContactsController < Api::ApiController
         render_success
     end
 
+    def unsubscribe
+        token = Rails.application.message_verifier(:unsubscribe).verify(params[:token])
+        contact = Contact.find(token)
+        contact.destroy
+
+        render_success
+    end
+
     private
     def create_params(params)
         params.permit(:email, :first_name, :last_name, :zipcode, :phone_number)

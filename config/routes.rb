@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     get 'staff/:id' => 'users/users#show'
     patch 'staff/:id' => 'users/users#update'
 
+    delete 'contacts/unsubscribe' => 'contacts#unsubscribe'
     resources :contacts
+
     resources :volunteers
     resources :messages
     resources :content, param: :identifier

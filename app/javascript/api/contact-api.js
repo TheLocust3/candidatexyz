@@ -52,6 +52,16 @@ let ContactApi = {
                 error: reject
             });
         });
+    },
+
+    unsubscribe(token) {
+        return new Promise((resolve, reject) => {
+            $.ajax(`/api/contacts/unsubscribe?token=${token}`, {
+                type: 'delete',
+                success: resolve,
+                error: reject
+            });
+        });
     }
 };
 

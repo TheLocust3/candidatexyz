@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+        <center><img class='logo' src='<%= @logo %>' /></center><br />
+
+        <div class='body'>
+            <%= @body.html_safe %>
+        </div>
+
+        <div class='footer'>
+            <center>
+                <%= @approved_by.html_safe %><br /><br />
+
+                If you believe you received this message in error or wish to no longer receive email from us, please <a href='127.0.0.1:3000/unsubscribe/<%= @token %>'>unsubscribe</a>.
+            </center>
+        </div>
+    </body>
+</html>

@@ -44,7 +44,7 @@ class AdminOverlay extends React.Component {
     onSettingsClick(event) {
         let menu = new MDCMenu(document.querySelector('#admin-overlay-settings'));
         menu.setAnchorCorner(Corner.BOTTOM_START);
-        menu.setAnchorMargin({ top: 25, right: 25 });
+        menu.setAnchorMargin({ top: -25, right: 25 });
         menu.open = !menu.open;
     }
 
@@ -94,13 +94,21 @@ class AdminOverlay extends React.Component {
                 </div>
 
                 <div className='overlayActionsRight'>
-                    <div className='mdc-menu-anchor'>
-                        <button className='mdc-fab material-icons' aria-label='Settings' onClick={this.onSettingsClick.bind(this)} data-mdc-auto-init='MDCRipple'>
+                    <Link to='/staff/mail' style={{ marginRight: '5%' }}>
+                        <button className='mdc-fab material-icons' aria-label='Mail' data-mdc-auto-init='MDCRipple'>
                             <span className='mdc-fab__icon'>
-                                settings
+                                mail
                             </span>
                         </button>
+                    </Link>
 
+                    <button className='mdc-fab material-icons' aria-label='Settings' onClick={this.onSettingsClick.bind(this)} data-mdc-auto-init='MDCRipple'>
+                        <span className='mdc-fab__icon'>
+                            settings
+                        </span>
+                    </button>
+
+                    <div className='mdc-menu-anchor'>
                         <div id='admin-overlay-settings' className='mdc-menu' tabIndex='-1'>
                             <ul className='mdc-menu__items mdc-list' role='menu' aria-hidden='true'>
                                 <Link to='/edit-user' className='menu-item-link'>
@@ -125,7 +133,7 @@ class AdminOverlay extends React.Component {
                                     Logout
                                 </li>
                             </ul>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
