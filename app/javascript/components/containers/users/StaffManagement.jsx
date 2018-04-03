@@ -45,6 +45,7 @@ class StaffManagement extends React.Component {
         return (
             <div className='content editUserForm'>
                 <div className='mdc-typography--display2'><b>Staff Management</b></div><br />
+                <Link to='/staff/invite' className='link'>Add Staffer</Link>
 
                 {this.renderUserList()}
 

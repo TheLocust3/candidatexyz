@@ -11,6 +11,7 @@ Misc To-Do's:
 - Javascript form validation
 - Allow text of buttons to be editable
 - Optimize store to not pull full postTypes and other pulls like that (also don't pull user repeatedly)
+- Delete old tokens
 
 Bugs:
 - Clicking anywhere inside slideshow content will trigger editor (when editing)

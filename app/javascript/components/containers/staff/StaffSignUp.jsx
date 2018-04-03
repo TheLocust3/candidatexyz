@@ -5,21 +5,21 @@ import { connect } from 'react-redux';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
-import MailForm from '../../components/staff/MailForm';
+import StaffSignUpForm from '../../components/staff/StaffSignUpForm';
 
-class Mail extends React.Component {
+class StaffSignUp extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch(setDocumentTitle('Mail'));
+        this.props.dispatch(setDocumentTitle('Invite Staff'));
         this.props.dispatch(setBlankNavbar(true));
     }
 
     render() {
         return (
             <div className='staff-form'>
-                <div className='mdc-typography--display2'><b>Mail Everyone</b></div><br />
+                <div className='mdc-typography--display2'><b>Staff Sign Up</b></div><br />
 
-                <MailForm />
+                <StaffSignUpForm token={this.props.match.params.token} />
                 
                 <MDCAutoInit />
             </div>
@@ -27,4 +27,4 @@ class Mail extends React.Component {
     }
 }
 
-export default connect()(Mail);
+export default connect()(StaffSignUp);

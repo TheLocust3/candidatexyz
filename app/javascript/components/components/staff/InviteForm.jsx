@@ -5,14 +5,14 @@ import { MDCSelect } from '@material/select';
 import MDCAutoInit from '../global/MDCAutoInit';
 
 import { history } from '../../../constants';
-import MailApi from '../../../api/mail-api';
+import StaffApi from '../../../api/staff-api';
 
-export default class MailForm extends React.Component {
+export default class InviteForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { subject: '', body: '', errors: [] };
+        this.state = { email: '', errors: [] };
     }
 
     handleChange(event) {
@@ -24,8 +24,8 @@ export default class MailForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        MailApi.sendToContacts(this.state.subject, this.state.body).then(() => {
-            history.push('/home');
+        StaffApi.createToken(this.state.email).then(() => {
+            history.push('/staff-management');
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors
@@ -55,14 +55,8 @@ export default class MailForm extends React.Component {
                 {this.renderErrors()}
 
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='text' id='subject' className='mdc-text-field__input' name='subject' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='subject'>Subject</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-
-                <div className='mdc-text-field mdc-text-field--textarea' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <textarea type='text' id='body' name='body' className='mdc-text-field__input' rows={40} onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='body'>Body</label>
+                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} required />
+                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
                     <div className='mdc-line-ripple'></div>
                 </div>
 

@@ -12,6 +12,7 @@ import EditCurrentUserContainer from '../components/containers/users/EditCurrent
 import StaffManagement from '../components/containers/users/StaffManagement';
 import MasterEditUserForm from '../components/containers/users/EditUser';
 import Mail from '../components/containers/staff/Mail';
+import InviteStaff from '../components/containers/staff/InviteStaff';
 
 class StaffRoutes extends React.Component {
 
@@ -29,6 +30,7 @@ class StaffRoutes extends React.Component {
                 <Route exact path='/staff-management' component={StaffManagement} />
                 <Route exact path='/staff-management/:id/edit' component={MasterEditUserForm} />
                 <Route exact path='/staff/mail' component={Mail} />
+                <Route exact path='/staff/invite' component={InviteStaff} />
 
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
                 <Route exact path='/posts/:postType/new' component={CreatePost} />

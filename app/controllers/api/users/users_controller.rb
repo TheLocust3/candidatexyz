@@ -16,15 +16,18 @@ class Api::Users::UsersController < Api::ApiController
     end
 
     def create_invite
-        token = Token.create_good_until_tomorrow(current_user.id)
+        token = PerishableToken.create_good_until_tomorrow(current_user.id)
 
-        Mailer.staff_invite(params[:email], token.encode)
+        Mailer.staff_invite(params[:email], token.encode).deliver_later
+
+        render_success
     end
 
     def create
-        token = Token.decode(params[:token])
+        token = PerishableToken.decode(params[:token])
 
         if DateTime.now < token.good_until && User.find(token.data).admin
+            token.destroy
             user = User.new(create_params(params))
 
             if user.save
@@ -56,7 +59,7 @@ class Api::Users::UsersController < Api::ApiController
 
     private
     def create_params(params)
-        params.permit(:email, :first_name, :last_name)
+        params.permit(:email, :first_name, :last_name, :password, :password_confirmation)
     end
 
     def update_params(params)

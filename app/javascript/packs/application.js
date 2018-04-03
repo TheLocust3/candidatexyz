@@ -27,6 +27,7 @@ import News from '../components/containers/news/News';
 import ShowNews from '../components/containers/news/ShowNews';
 import Issues from '../components/containers/issues/Issues';
 import ShowIssue from '../components/containers/issues/ShowIssue';
+import StaffSignUp from '../components/containers/staff/StaffSignUp';
 
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
@@ -86,6 +87,7 @@ class Base extends React.Component {
                                 <Route exact path='/issues/:url' component={ShowIssue} />
                                 
                                 <Route exact path='/unsubscribe/:token' component={Unsubscribe} />
+                                <Route exact path='/staff/sign-up/:token' component={StaffSignUp} />
                                 
                                 <StaffRoutes />
                             </Switch>

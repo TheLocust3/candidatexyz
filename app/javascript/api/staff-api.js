@@ -43,11 +43,11 @@ let StaffApi = {
         });
     },
 
-    create(token, email, firstName, lastName, admin) {
+    create(token, email, firstName, lastName, password, passwordConfirmation) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/staff`, {
                 type: 'post',
-                data: { token: token, email: email, first_name: firstName, last_name: lastName, admin: admin },
+                data: { token: token, email: email, first_name: firstName, last_name: lastName, password: password, password_confirmation: passwordConfirmation },
                 success: resolve,
                 error: reject
             });
