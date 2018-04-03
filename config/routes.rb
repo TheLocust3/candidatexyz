@@ -19,7 +19,10 @@ Rails.application.routes.draw do
     get 'current_user' => 'users/users#get_current_user'
     get 'staff' => 'users/users#index'
     get 'staff/:id' => 'users/users#show'
+    post 'staff' => 'users/users#create'
+    post 'staff/create_invite' => 'users/users#create_invite'
     patch 'staff/:id' => 'users/users#update'
+    delete 'staff/:id' => 'users/users#destroy'
 
     delete 'contacts/unsubscribe' => 'contacts#unsubscribe'
     resources :contacts
