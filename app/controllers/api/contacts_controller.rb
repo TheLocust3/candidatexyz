@@ -40,7 +40,10 @@ class Api::ContactsController < Api::ApiController
     def unsubscribe
         token = Rails.application.message_verifier(:unsubscribe).verify(params[:token])
         contact = Contact.find(token)
-        contact.destroy
+
+        Contact.where( email: contact.email ).map { |contact|
+            contact.destroy
+        }
 
         render_success
     end

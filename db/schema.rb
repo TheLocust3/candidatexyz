@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402005616) do
+ActiveRecord::Schema.define(version: 20180403000531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 20180402005616) do
     t.string "email"
     t.string "subject"
     t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "perishable_tokens", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "data"
+    t.datetime "good_until"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

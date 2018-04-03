@@ -32,6 +32,28 @@ let StaffApi = {
         });
     },
 
+    createToken(email) {
+        return new Promise((resolve, reject) => {
+            $.ajax(`/api/staff/create_invite`, {
+                type: 'post',
+                data: { email: email },
+                success: resolve,
+                error: reject
+            });
+        });
+    },
+
+    create(token, email, firstName, lastName, admin) {
+        return new Promise((resolve, reject) => {
+            $.ajax(`/api/staff`, {
+                type: 'post',
+                data: { token: token, email: email, first_name: firstName, last_name: lastName, admin: admin },
+                success: resolve,
+                error: reject
+            });
+        });
+    },
+
     update(id, email, firstName, lastName, admin) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/staff/${id}`, {

@@ -1,7 +1,6 @@
 import _ from 'lodash'
 import React from 'react';
 
-import { history } from '../../../constants';
 import ContactApi from '../../../api/contact-api';
 
 export default class JoinUsForm extends React.Component {
@@ -22,7 +21,7 @@ export default class JoinUsForm extends React.Component {
         event.preventDefault();
 
         ContactApi.create(this.state.email, this.state.zipCode).then(() => {
-            history.push('/home');
+            location.reload();
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors

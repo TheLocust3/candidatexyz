@@ -15,6 +15,10 @@ class Api::ApiController < ApplicationController
         render :json => { 'errors': model.errors.messages }, :status => 400
     end
 
+    def render_unauthorized
+        render :json => {}, :status => 401
+    end
+
     private
     def not_found
         render :json => {}, :status => 404
