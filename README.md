@@ -15,6 +15,8 @@ Bugs:
 - After editing, screen doesn't shrink back to normal size
 - Little white line on left of parallax header after some window resizes
 - Fix position of mail button
+- Dropdowns have the wrong color
+- Volunteer help blurb dropdown truncates some text
 
 Cleanup:
 - Create form superclass (things like renderErrors)

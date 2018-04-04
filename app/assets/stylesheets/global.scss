@@ -62,6 +62,33 @@ body {
     @extend %link-hover-shared;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 1%;
+}
+
+thead {
+    background-color: #cccccc;
+}
+
+.selectable-row {
+    cursor: pointer;
+}
+
+.selectable-row:hover {
+    background-color: #e5e5e5;
+}
+
 .approved-by {
     text-align: center;
     color: $link-hover-color;
@@ -166,4 +193,10 @@ body {
 
 .edit-raw-content-button {
     margin-left: 3%;
+}
+
+.volunteer-table {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 15%;
 }

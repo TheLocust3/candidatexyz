@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 const initialState = {
     isReady: false,
     volunteer: {},
-    volunteers: {},
+    volunteers: []
 };
 
 export function volunteerReducer(state = initialState, action) {
@@ -18,12 +18,12 @@ export function volunteerReducer(state = initialState, action) {
         case VolunteerActions.RECEIVE_VOLUNTEER:
             return Object.assign({}, state, {
                 isReady: true,
-                contact: action.data
+                volunteer: action.data
             });
-        case VolunteerActions.REQUEST_ALL_VOLUNTEERS:
+        case VolunteerActions.RECEIVE_ALL_VOLUNTEERS:
             return Object.assign({}, state, {
                 isReady: true,
-                contacts: action.data
+                volunteers: action.data
             });
         default:
             return state;
