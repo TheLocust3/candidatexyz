@@ -26,3 +26,4 @@ Cleanup:
 - Add forms folder
 - Clean up action names (content)
 - Use redux actions (don't know name, used on PipeDream)
+- Clean up margin classes
