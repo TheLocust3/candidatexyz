@@ -1,7 +1,6 @@
 class Volunteer < ApplicationRecord
   before_validation :sanitize_phone_number
 
-  default_scope { order(:created_at) }
   belongs_to :contact
 
   validates :email, presence: true, email: true

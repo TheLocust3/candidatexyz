@@ -6,14 +6,13 @@ class Api::VolunteersController < Api::ApiController
         if (params[:page_number].nil?)
             render :json => Volunteer.all
         else
-            records_per_page = params[:records_per_page].nil? ? 10 : params[:records_per_page].to_i
-            render :json => Volunteer.all[(params[:page_number].to_i) * records_per_page, (params[:page_number].to_i + 1) * records_per_page]
+            render :json => filter
         end
     end
 
     def get_number_of_pages
         records_per_page = params[:records_per_page].nil? ? 10 : params[:records_per_page].to_i
-        render :json => (Volunteer.count / records_per_page.to_f).ceil
+        render :json => (filter.length / records_per_page.to_f).ceil
     end
 
     def show
@@ -54,6 +53,14 @@ class Api::VolunteersController < Api::ApiController
 
     def update_params(params)
         params.permit(:email, :home_number, :mobile_number, :first_name, :last_name, :address1, :address2, :zipcode, :city, :state, :help_blurb)
+    end
+
+    def filter
+        records_per_page = params[:records_per_page].nil? ? 10 : params[:records_per_page].to_i
+        order = params[:order].nil? ? 'created_at' : params[:order]
+        descending = params[:descending] == 'true' ? 'desc' : 'asc'
+        
+        Volunteer.all.order(order => descending)[(params[:page_number].to_i) * records_per_page, (params[:page_number].to_i + 1) * records_per_page]
     end
   end
   

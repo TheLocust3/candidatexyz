@@ -42,12 +42,12 @@ export function fetchAllVolunteers() {
     }
 }
 
-export function fetchAllVolunteersBy(pageNumber, recordsPerPage) {
+export function fetchAllVolunteersBy(pageNumber, recordsPerPage, order, descending) {
 
     return function (dispatch) {
         dispatch(requestAllVolunteersAction());
 
-        VolunteerApi.getAllBy(pageNumber, recordsPerPage).then( data => {
+        VolunteerApi.getAllBy(pageNumber, recordsPerPage, order, descending).then( data => {
             dispatch(receiveAllVolunteersAction(data));
         });
     }

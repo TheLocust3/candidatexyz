@@ -12,9 +12,9 @@ let VolunteerApi = {
         });
     },
 
-    getAllBy(pageNumber, recordsPerPage) {
+    getAllBy(pageNumber, recordsPerPage, order, descending) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/volunteers?page_number=${pageNumber}&records_per_page=${recordsPerPage}`, {
+            $.ajax(`/api/volunteers?page_number=${pageNumber}&records_per_page=${recordsPerPage}&order=${order}&descending=${descending}`, {
                 type: 'get',
                 success: resolve,
                 error: reject

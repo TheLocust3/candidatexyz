@@ -38,14 +38,20 @@ class VolunteerOverview extends React.Component {
         });
     }
 
-    setPage(location) {
+    setPage(location, sort, reverse) {
+        sort = _.isEmpty(sort) ? 'first_name' : sort
+
         let parsed = queryString.parse(location.search);
         let page = _.isEmpty(parsed.page) ? 0 : Number(parsed.page);
         this.setState({
             page: page
         });
 
-        this.props.dispatch(fetchAllVolunteersBy(page, VOLUNTEERS_PER_PAGE));
+        this.props.dispatch(fetchAllVolunteersBy(page, VOLUNTEERS_PER_PAGE, sort, reverse));
+    }
+
+    onHeaderClick(event, reverse) {
+        this.setPage(this.props.location, event.target.id, reverse)
     }
 
     render() {
@@ -53,7 +59,7 @@ class VolunteerOverview extends React.Component {
             <div className='volunteer-table'>
                 <div className='mdc-typography--display2'><b>Volunteer Overview</b></div><br />
 
-                <VolunteerTable volunteers={this.props.volunteers} /><br />
+                <VolunteerTable volunteers={this.props.volunteers} onHeaderClick={(event, reverse) => this.onHeaderClick(event, reverse)} /><br />
 
                 <Pager numberOfPages={this.state.numberOfPages} page={this.state.page} url='/staff/volunteers' />
                 
