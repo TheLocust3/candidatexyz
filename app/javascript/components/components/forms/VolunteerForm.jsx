@@ -206,11 +206,12 @@ export default class VolunteerForm extends React.Component {
                     <input type='text' id='mobile-number' className='mdc-text-field__input' name='mobileNumber' onChange={this.handleChange.bind(this)} />
                     <label className='mdc-text-field__label' htmlFor='mobile-number'>Mobile Phone</label>
                     <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                </div>
 
                 {this.renderHelpOptionsDropdown()}<br />
                 {this.renderOtherHelp()}
 
+                <br />
                 <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
 
                 <button className='mdc-button mdc-button--raised sign-up-form-button'data-mdc-auto-init='MDCRipple'>Submit</button>

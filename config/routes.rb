@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     delete 'contacts/unsubscribe' => 'contacts#unsubscribe'
     resources :contacts
 
+    get 'volunteers/number_of_pages' => 'volunteers#get_number_of_pages'
     resources :volunteers
+
     resources :messages
     resources :content, param: :identifier
     

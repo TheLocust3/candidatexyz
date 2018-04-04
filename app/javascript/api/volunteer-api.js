@@ -12,6 +12,26 @@ let VolunteerApi = {
         });
     },
 
+    getAllBy(pageNumber, recordsPerPage) {
+        return new Promise((resolve, reject) => {
+            $.ajax(`/api/volunteers?page_number=${pageNumber}&records_per_page=${recordsPerPage}`, {
+                type: 'get',
+                success: resolve,
+                error: reject
+            });
+        });
+    },
+
+    getNumberOfPages(recordsPerPage) {
+        return new Promise((resolve, reject) => {
+            $.ajax(`/api/volunteers/number_of_pages?records_per_page=${recordsPerPage}`, {
+                type: 'get',
+                success: resolve,
+                error: reject
+            });
+        });
+    },
+
     get(id) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/volunteers/${id}`, {

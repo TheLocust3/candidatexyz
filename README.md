@@ -9,6 +9,7 @@ Misc To-Do's:
 - Allow text of buttons to be editable
 - Optimize store to not pull full postTypes and other pulls like that (also don't pull user repeatedly)
 - Delete old tokens
+- Limit number of pages viewed in the pager
 
 Bugs:
 - Clicking anywhere inside slideshow content will trigger editor (when editing)
@@ -17,6 +18,7 @@ Bugs:
 - Fix position of mail button
 - Dropdowns have the wrong color
 - Volunteer help blurb dropdown truncates some text
+- Don't pull all volunteers (query just a piece)
 
 Cleanup:
 - Create form superclass (things like renderErrors)

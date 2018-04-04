@@ -3,7 +3,17 @@ class Api::VolunteersController < Api::ApiController
     before_action :authenticate_user!, only: [ :index, :show, :update, :destroy ]
 
     def index
-        render :json => Volunteer.all
+        if (params[:page_number].nil?)
+            render :json => Volunteer.all
+        else
+            records_per_page = params[:records_per_page].nil? ? 10 : params[:records_per_page].to_i
+            render :json => Volunteer.all[(params[:page_number].to_i) * records_per_page, (params[:page_number].to_i + 1) * records_per_page]
+        end
+    end
+
+    def get_number_of_pages
+        records_per_page = params[:records_per_page].nil? ? 10 : params[:records_per_page].to_i
+        render :json => (Volunteer.count / records_per_page.to_f).ceil
     end
 
     def show

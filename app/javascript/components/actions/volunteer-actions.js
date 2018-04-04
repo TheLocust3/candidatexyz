@@ -42,6 +42,17 @@ export function fetchAllVolunteers() {
     }
 }
 
+export function fetchAllVolunteersBy(pageNumber, recordsPerPage) {
+
+    return function (dispatch) {
+        dispatch(requestAllVolunteersAction());
+
+        VolunteerApi.getAllBy(pageNumber, recordsPerPage).then( data => {
+            dispatch(receiveAllVolunteersAction(data));
+        });
+    }
+}
+
 export function fetchVolunteer(id) {
 
     return function (dispatch) {
