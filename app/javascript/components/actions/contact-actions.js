@@ -5,26 +5,26 @@ export const RECEIVE_CONTACT = 'RECEIVE_CONTACT';
 export const REQUEST_ALL_CONTACTS = 'REQUEST_ALL_CONTACTS';
 export const RECEIVE_ALL_CONTACTS = 'RECEIVE_ALL_CONTACTS';
 
-export function requestContactAction() {
+export function requestContact() {
     return {
         type: REQUEST_CONTACT
     }
 }
 
-export function receiveContactAction(data) {
+export function receiveContact(data) {
     return {
         type: RECEIVE_CONTACT,
         data: data
     }
 }
 
-export function requestAllContactsAction() {
+export function requestAllContacts() {
     return {
         type: REQUEST_ALL_CONTACTS
     }
 }
 
-export function receiveAllContactsAction(data) {
+export function receiveAllContacts(data) {
     return {
         type: RECEIVE_ALL_CONTACTS,
         data: data
@@ -34,10 +34,10 @@ export function receiveAllContactsAction(data) {
 export function fetchAllContacts() {
 
     return function (dispatch) {
-        dispatch(requestAllContactsAction());
+        dispatch(requestAllContacts());
 
         ContactApi.getAll().then( data => {
-            dispatch(receiveAllContactsAction(data));
+            dispatch(receiveAllContacts(data));
         });
     }
 }
@@ -45,10 +45,10 @@ export function fetchAllContacts() {
 export function fetchContact(id) {
 
     return function (dispatch) {
-        dispatch(requestContactAction());
+        dispatch(requestContact());
 
         ContactApi.get(id).then( data => {
-            dispatch(receiveContactAction(data));
+            dispatch(receiveContact(data));
         });
     }
 }

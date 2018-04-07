@@ -8,26 +8,26 @@ export const SET_EDIT = 'SET_EDIT';
 export const SET_EDIT_OVERLAY_OPEN = 'SET_EDIT_OVERLAY_OPEN';
 export const SET_EDITING_CONTENT = 'SET_EDIT_CONTENT';
 
-export function requestContentAction() {
+export function requestContent() {
     return {
         type: REQUEST_CONTENT
     }
 }
 
-export function receiveContentAction(data) {
+export function receiveContent(data) {
     return {
         type: RECEIVE_CONTENT,
         data: data
     }
 }
 
-export function requestAllContentAction() {
+export function requestAllContent() {
     return {
         type: REQUEST_ALL_CONTENT
     }
 }
 
-export function receiveAllContentAction(data) {
+export function receiveAllContent(data) {
     return {
         type: RECEIVE_ALL_CONTENT,
         data: data
@@ -37,10 +37,10 @@ export function receiveAllContentAction(data) {
 export function fetchAllContent() {
 
     return function (dispatch) {
-        dispatch(requestAllContentAction());
+        dispatch(requestAllContent());
 
         ContentApi.getAll().then( data => {
-            dispatch(receiveAllContentAction(data));
+            dispatch(receiveAllContent(data));
         });
     }
 }
@@ -48,10 +48,10 @@ export function fetchAllContent() {
 export function fetchContent(identifier) {
 
     return function (dispatch) {
-        dispatch(requestContentAction());
+        dispatch(requestContent());
 
         ContentApi.get(identifier).then( data => {
-            dispatch(receiveContentAction(data));
+            dispatch(receiveContent(data));
         });
     }
 }

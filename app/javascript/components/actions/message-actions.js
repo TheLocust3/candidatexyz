@@ -5,26 +5,26 @@ export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const REQUEST_ALL_MESSAGES = 'REQUEST_ALL_MESSAGES';
 export const RECEIVE_ALL_MESSAGES = 'RECEIVE_ALL_MESSAGES';
 
-export function requestMessageAction() {
+export function requestMessage() {
     return {
         type: REQUEST_MESSAGE
     }
 }
 
-export function receiveMessageAction(data) {
+export function receiveMessage(data) {
     return {
         type: RECEIVE_MESSAGE,
         data: data
     }
 }
 
-export function requestAllMessagesAction() {
+export function requestAllMessages() {
     return {
         type: REQUEST_ALL_MESSAGES
     }
 }
 
-export function receiveAllMessagesAction(data) {
+export function receiveAllMessages(data) {
     return {
         type: RECEIVE_ALL_MESSAGES,
         data: data
@@ -34,10 +34,10 @@ export function receiveAllMessagesAction(data) {
 export function fetchAllMessages() {
 
     return function (dispatch) {
-        dispatch(requestAllMessagesAction());
+        dispatch(requestAllMessages());
 
         MessageApi.getAll().then( data => {
-            dispatch(receiveAllMessagesAction(data));
+            dispatch(receiveAllMessages(data));
         });
     }
 }
@@ -45,10 +45,10 @@ export function fetchAllMessages() {
 export function fetchMessage(id) {
 
     return function (dispatch) {
-        dispatch(requestMessageAction());
+        dispatch(requestMessage());
 
         MessageApi.get(id).then( data => {
-            dispatch(receiveMessageAction(data));
+            dispatch(receiveMessage(data));
         });
     }
 }

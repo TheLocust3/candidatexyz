@@ -5,26 +5,26 @@ export const RECEIVE_VOLUNTEER = 'RECEIVE_VOLUNTEER';
 export const REQUEST_ALL_VOLUNTEERS = 'REQUEST_ALL_VOLUNTEERS';
 export const RECEIVE_ALL_VOLUNTEERS = 'RECEIVE_ALL_VOLUNTEERS';
 
-export function requestVolunteerAction() {
+export function requestVolunteer() {
     return {
         type: REQUEST_VOLUNTEER
     }
 }
 
-export function receiveVolunteerAction(data) {
+export function receiveVolunteer(data) {
     return {
         type: RECEIVE_VOLUNTEER,
         data: data
     }
 }
 
-export function requestAllVolunteersAction() {
+export function requestAllVolunteers() {
     return {
         type: REQUEST_ALL_VOLUNTEERS
     }
 }
 
-export function receiveAllVolunteersAction(data) {
+export function receiveAllVolunteers(data) {
     return {
         type: RECEIVE_ALL_VOLUNTEERS,
         data: data
@@ -34,10 +34,10 @@ export function receiveAllVolunteersAction(data) {
 export function fetchAllVolunteers() {
 
     return function (dispatch) {
-        dispatch(requestAllVolunteersAction());
+        dispatch(requestAllVolunteers());
 
         VolunteerApi.getAll().then( data => {
-            dispatch(receiveAllVolunteersAction(data));
+            dispatch(receiveAllVolunteers(data));
         });
     }
 }
@@ -45,10 +45,10 @@ export function fetchAllVolunteers() {
 export function fetchAllVolunteersBy(pageNumber, recordsPerPage, order, descending) {
 
     return function (dispatch) {
-        dispatch(requestAllVolunteersAction());
+        dispatch(requestAllVolunteers());
 
         VolunteerApi.getAllBy(pageNumber, recordsPerPage, order, descending).then( data => {
-            dispatch(receiveAllVolunteersAction(data));
+            dispatch(receiveAllVolunteers(data));
         });
     }
 }
@@ -56,7 +56,7 @@ export function fetchAllVolunteersBy(pageNumber, recordsPerPage, order, descendi
 export function fetchVolunteer(id) {
 
     return function (dispatch) {
-        dispatch(requestVolunteerAction());
+        dispatch(requestVolunteer());
 
         VolunteerApi.get(id).then( data => {
             dispatch(receiveVolunteerAction(data));

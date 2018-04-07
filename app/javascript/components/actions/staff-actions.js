@@ -33,13 +33,13 @@ export function receiveAllUsers(data) {
     }
 }
 
-export function requestCurrentUserAction() {
+export function requestCurrentUser() {
     return {
         type: REQUEST_CURRENT_USER
     }
 }
 
-export function receiveCurrentUserAction(data) {
+export function receiveCurrentUser(data) {
     return {
         type: RECEIVE_CURRENT_USER,
         data: data
@@ -72,10 +72,10 @@ export function fetchAllUsers() {
 export function fetchCurrentUser() {
 
     return function (dispatch) {
-        dispatch(requestCurrentUserAction());
+        dispatch(requestCurrentUser());
 
         StaffApi.getCurrentUser().then( data => {
-            dispatch(receiveCurrentUserAction(data));
+            dispatch(receiveCurrentUser(data));
         });
     }
 }

@@ -5,26 +5,26 @@ export const RECEIVE_POST = 'RECEIVE_POST';
 export const REQUEST_ALL_POST_TYPE = 'REQUEST_ALL_POST_TYPE';
 export const RECEIVE_ALL_POST_TYPE = 'RECEIVE_ALL_POST_TYPE';
 
-export function requestPostAction() {
+export function requestPost() {
     return {
         type: REQUEST_POST
     }
 }
 
-export function receivePostAction(data) {
+export function receivePost(data) {
     return {
         type: RECEIVE_POST,
         data: data
     }
 }
 
-export function requestAllPostTypeAction() {
+export function requestAllPostType() {
     return {
         type: REQUEST_ALL_POST_TYPE
     }
 }
 
-export function receiveAllPostTypeAction(data) {
+export function receiveAllPostType(data) {
     return {
         type: RECEIVE_ALL_POST_TYPE,
         data: data
@@ -34,10 +34,10 @@ export function receiveAllPostTypeAction(data) {
 export function fetchPostType(postType) {
 
     return function (dispatch) {
-        dispatch(requestAllPostTypeAction());
+        dispatch(requestAllPostType());
 
         PostApi.getType(postType).then( data => {
-            dispatch(receiveAllPostTypeAction(data));
+            dispatch(receiveAllPostType(data));
         });
     }
 }
@@ -45,10 +45,10 @@ export function fetchPostType(postType) {
 export function fetchPost(postType, url) {
 
     return function (dispatch) {
-        dispatch(requestPostAction());
+        dispatch(requestPost());
 
         PostApi.get(postType, url).then( data => {
-            dispatch(receivePostAction(data));
+            dispatch(receivePost(data));
         });
     }
 }
