@@ -6,7 +6,7 @@ class Api::VolunteersController < Api::ApiController
         if (params[:page_number].nil?)
             render :json => Volunteer.all
         else
-            render :json => filter
+            render :json => filter_by_page
         end
     end
 
@@ -55,12 +55,17 @@ class Api::VolunteersController < Api::ApiController
         params.permit(:email, :phone_number, :first_name, :last_name, :address, :zipcode, :city, :state, :help_blurb)
     end
 
-    def filter
+    def filter_by_page
         records_per_page = params[:records_per_page].nil? ? 10 : params[:records_per_page].to_i
+
+        filter[(params[:page_number].to_i) * records_per_page, records_per_page]
+    end
+
+    def filter
         order = params[:order].nil? ? 'created_at' : params[:order]
         descending = params[:descending] == 'true' ? 'desc' : 'asc'
         
-        Volunteer.all.order(order => descending)[(params[:page_number].to_i) * records_per_page, (params[:page_number].to_i + 1) * records_per_page]
+        Volunteer.all.order(order => descending)
     end
   end
   

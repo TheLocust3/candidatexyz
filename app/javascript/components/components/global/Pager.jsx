@@ -26,26 +26,32 @@ class Pager extends React.Component {
         );
     }
 
+    renderPageList() {
+        return (
+            _.range(0, this.props.numberOfPages).map((number) => {
+                if (this.props.page == number) {
+                    return (
+                        <span key={number} className='page-number page-number-selected'>
+                            {number + 1}
+                        </span>
+                    )
+                }
+
+                return (
+                    <Link to={`${this.props.url}?page=${number}`} key={number} className='page-number'>
+                        {number + 1}
+                    </Link>
+                )
+            })
+        )
+    }
+
     render() {
         return (
             <div className='pager'>
                 {this.renderLeft()}
 
-                {_.range(0, this.props.numberOfPages).map((number) => {
-                    if (this.props.page == number) {
-                        return (
-                            <span key={number} className='page-number page-number-selected'>
-                                {number + 1}
-                            </span>
-                        )
-                    }
-
-                    return (
-                        <Link to={`${this.props.url}?page=${number}`} key={number} className='page-number'>
-                            {number + 1}
-                        </Link>
-                    )
-                })}
+                {this.renderPageList()}
 
                 {this.renderRight()}
             </div>

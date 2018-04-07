@@ -48,6 +48,8 @@ class VolunteerTable extends React.Component {
         });
 
         this.props.onHeaderClick(event, descending);
+
+        history.push(`/staff/volunteers?page=0`)
     }
 
     renderArrow(sort) {
