@@ -59,7 +59,7 @@ export function fetchVolunteer(id) {
         dispatch(requestVolunteer());
 
         VolunteerApi.get(id).then( data => {
-            dispatch(receiveVolunteerAction(data));
+            dispatch(receiveVolunteer(data));
         });
     }
 }
