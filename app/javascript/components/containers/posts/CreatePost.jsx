@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
-import PostForm from '../../components/posts/PostForm';
+import PostForm from '../../components/forms/PostForm';
 
 class CreatePost extends React.Component {
 

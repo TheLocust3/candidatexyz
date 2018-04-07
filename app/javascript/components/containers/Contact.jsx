@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from './content/TextContent';
-import MessageForm from '../components/common/MessageForm';
+import MessageForm from '../components/forms/MessageForm';
 
 class Contact extends React.Component {
 

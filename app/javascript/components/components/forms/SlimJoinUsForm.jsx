@@ -3,7 +3,7 @@ import React from 'react';
 
 import ContactApi from '../../../api/contact-api';
 
-export default class JoinUsForm extends React.Component {
+export default class SlimJoinUsForm extends React.Component {
 
     constructor(props) {
         super(props);

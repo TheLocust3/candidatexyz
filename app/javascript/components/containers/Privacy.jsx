@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from '../containers/content/TextContent';
-import JoinTeamPanel from '../components/common/JoinTeamPanel';
+import JoinTeamPanel from '../components/panels/JoinTeamPanel';
 
 class Privacy extends React.Component {
 

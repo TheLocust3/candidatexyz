@@ -9,7 +9,7 @@ import { MAX_MOBILE_WIDTH } from '../../../constants';
 import ImageContent from '../content/ImageContent';
 import SimpleLinkContent from '../content/SimpleLinkContent';
 import ExternalLinkContent from '../content/ExternalLinkContent';
-import JoinTeamPanel from '../../components/common/JoinTeamPanel';
+import JoinTeamPanel from '../../components/panels/JoinTeamPanel';
 
 class Navbar extends React.Component {
 

@@ -6,8 +6,8 @@ import MDCAutoInit from '../components/global/MDCAutoInit';
 
 import TextContent from '../containers/content/TextContent';
 import ImageContent from '../containers/content/ImageContent';
-import JoinTeamPanel from '../components/common/JoinTeamPanel';
-import VolunteerPanel from '../components/common/VolunteerPanel';
+import JoinTeamPanel from '../components/panels/JoinTeamPanel';
+import VolunteerPanel from '../components/panels/VolunteerPanel';
 
 class Action extends React.Component {
 

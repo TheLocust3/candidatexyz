@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 import TextContent from '../containers/content/TextContent';
-import JoinUsForm from '../components/common/JoinUsForm';
+import JoinUsForm from '../components/forms/JoinUsForm';
 
 class SignUp extends React.Component {
 

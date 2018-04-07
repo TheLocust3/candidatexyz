@@ -7,7 +7,7 @@ import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchPost } from '../../actions/post-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
-import PostForm from '../../components/posts/PostForm';
+import PostForm from '../../components/forms/PostForm';
 
 class EditPost extends React.Component {
 
