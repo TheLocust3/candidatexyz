@@ -42,22 +42,22 @@ let VolunteerApi = {
         });
     },
 
-    create(email, homeNumber, mobileNumber, firstName, lastName, address1, address2, zipCode, city, state, helpBlurb) {
+    create(email, phoneNumber, firstName, lastName, address, zipCode, city, state, helpBlurb) {
         return new Promise((resolve, reject) => {
             $.ajax('/api/volunteers', {
                 type: 'post',
-                data: { email: email, home_number: homeNumber, mobile_number: mobileNumber, first_name: firstName, last_name: lastName, address1: address1, address2: address2, zipcode: zipCode, city: city, state: state, help_blurb: helpBlurb },
+                data: { email: email, phone_number: phoneNumber, first_name: firstName, last_name: lastName, address: address, zipcode: zipCode, city: city, state: state, help_blurb: helpBlurb },
                 success: resolve,
                 error: reject
             });
         });
     },
 
-    update(id, email, homeNumber, mobileNumber, firstName, lastName, address1, address2, zipCode, city, state, helpBlurb) {
+    update(id, email, phoneNumber, firstName, lastName, address1, address2, zipCode, city, state, helpBlurb) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/volunteers/${id}`, {
                 type: 'patch',
-                data: { email: email, home_number: homeNumber, mobile_number: mobileNumber, first_name: firstName, last_name: lastName, address1: address1, address2: address2, zipcode: zipCode, city: city, state: state, help_blurb: helpBlurb },
+                data: { email: email, phone_number: phoneNumber, first_name: firstName, last_name: lastName, address: address, zipcode: zipCode, city: city, state: state, help_blurb: helpBlurb },
                 success: resolve,
                 error: reject
             });

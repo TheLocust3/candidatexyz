@@ -13,7 +13,7 @@ export default class VolunteerForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { email: '', homeNumber: '', mobileNumber: '', firstName: '', lastName: '', address1: '', address2: '', zipCode: '', city: '', state: '', helpBlurb: '', errors: [], helpOptions: [], otherOpened: false };
+        this.state = { email: '', phoneNumber: '', firstName: '', lastName: '', address: '', zipCode: '', city: '', state: '', helpBlurb: '', errors: [], helpOptions: [], otherOpened: false };
     }
 
     componentDidMount() {
@@ -56,7 +56,7 @@ export default class VolunteerForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        VolunteerApi.create(this.state.email, this.state.homeNumber, this.state.mobileNumber, this.state.firstName, this.state.lastName, this.state.address1, this.state.address2, this.state.zipCode, this.state.city, this.state.state, this.state.helpBlurb).then(() => {
+        VolunteerApi.create(this.state.email, this.state.phoneNumber, this.state.firstName, this.state.lastName, this.state.address, this.state.zipCode, this.state.city, this.state.state, this.state.helpBlurb).then(() => {
             history.push('/home');
         }).catch((response) => {
             this.setState({
@@ -163,15 +163,9 @@ export default class VolunteerForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div><br /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
-                    <input type='text' id='address1' className='mdc-text-field__input' name='address1' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='address1'>Address 1</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
-                    <input type='text' id='address2' className='mdc-text-field__input' name='address2' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='address2'>Address 2</label>
+                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
+                    <input type='text' id='address' className='mdc-text-field__input' name='address' onChange={this.handleChange.bind(this)} />
+                    <label className='mdc-text-field__label' htmlFor='address'>Address</label>
                     <div className='mdc-line-ripple'></div>
                 </div><br /><br />
 
@@ -190,21 +184,15 @@ export default class VolunteerForm extends React.Component {
 
                 {this.renderStateDropdown()}
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '30%', marginRight: '5%' }}>
+                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
                     <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} required />
                     <label className='mdc-text-field__label' htmlFor='email'>Email</label>
                     <div className='mdc-line-ripple'></div>
                 </div>
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '30%', marginRight: '5%' }}>
-                    <input type='text' id='home-number' className='mdc-text-field__input' name='homeNumber' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='home-number'>Home Phone</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '30%' }}>
-                    <input type='text' id='mobile-number' className='mdc-text-field__input' name='mobileNumber' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='mobile-number'>Mobile Phone</label>
+                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
+                    <input type='text' id='phone-number' className='mdc-text-field__input' name='phoneNumber' onChange={this.handleChange.bind(this)} />
+                    <label className='mdc-text-field__label' htmlFor='phone-number'>Phone Number</label>
                     <div className='mdc-line-ripple'></div>
                 </div>
 

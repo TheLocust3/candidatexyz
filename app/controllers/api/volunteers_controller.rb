@@ -48,11 +48,11 @@ class Api::VolunteersController < Api::ApiController
 
     private
     def create_params(params)
-        params.permit(:email, :home_number, :mobile_number, :first_name, :last_name, :address1, :address2, :zipcode, :city, :state, :help_blurb)
+        params.permit(:email, :phone_number, :first_name, :last_name, :address, :zipcode, :city, :state, :help_blurb)
     end
 
     def update_params(params)
-        params.permit(:email, :home_number, :mobile_number, :first_name, :last_name, :address1, :address2, :zipcode, :city, :state, :help_blurb)
+        params.permit(:email, :phone_number, :first_name, :last_name, :address, :zipcode, :city, :state, :help_blurb)
     end
 
     def filter

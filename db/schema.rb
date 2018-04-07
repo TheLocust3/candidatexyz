@@ -83,12 +83,10 @@ ActiveRecord::Schema.define(version: 20180403000531) do
 
   create_table "volunteers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "email"
-    t.string "home_number"
-    t.string "mobile_number"
+    t.string "phone_number"
     t.string "first_name"
     t.string "last_name"
-    t.string "address1"
-    t.string "address2"
+    t.string "address"
     t.string "zipcode"
     t.string "city"
     t.string "state"
