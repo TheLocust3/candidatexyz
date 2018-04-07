@@ -23,7 +23,7 @@ class EditPost extends React.Component {
     }
 
     findPost() {
-        let post = _.find(this.props.posts, { post_type: this.props.match.params.postType, url: this.props.match.params.url })
+        let post = _.find(this.props.posts, { postType: this.props.match.params.postType, url: this.props.match.params.url })
 
         if (_.isEmpty(post)) {
             return { }

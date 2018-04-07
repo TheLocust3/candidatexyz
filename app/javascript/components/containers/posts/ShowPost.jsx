@@ -49,7 +49,7 @@ class ShowPost extends React.Component {
     }
 
     findPost(props) {
-        let post = _.find(props.posts, { post_type: props.postType, url: props.url })
+        let post = _.find(props.posts, { postType: props.postType, url: props.url })
 
         if (_.isEmpty(post)) {
             return { }
@@ -75,7 +75,7 @@ class ShowPost extends React.Component {
 
         return (
             <div>
-                <div className='post-created-at'>{moment(this.state.post.created_at).format('MMMM D, YYYY')}</div><br />
+                <div className='post-created-at'>{moment(this.state.post.createdAt).format('MMMM D, YYYY')}</div><br />
 
                 <img className='post-image' src={this.state.post.image} /><br /><br />
             </div>

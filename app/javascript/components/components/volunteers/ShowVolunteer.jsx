@@ -10,7 +10,7 @@ class ShowVolunteer extends React.Component {
         return (
             <div>
                 <div className='mdc-typography--headline'><b>Name</b></div>
-                {this.props.volunteer.first_name} {this.props.volunteer.last_name}<br /><br />
+                {this.props.volunteer.firstName} {this.props.volunteer.lastName}<br /><br />
 
                 <div className='mdc-typography--headline'><b>Address 1</b></div>
                 {this.props.volunteer.address1}<br /><br />
@@ -24,12 +24,12 @@ class ShowVolunteer extends React.Component {
                 {this.props.volunteer.state}<br /><br />
 
                 <div className='mdc-typography--headline'><b>Home Number</b></div>
-                {this.props.volunteer.home_number}<br /><br />
+                {this.props.volunteer.homeNumber}<br /><br />
                 <div className='mdc-typography--headline'><b>Mobile Number</b></div>
-                {this.props.volunteer.mobile_number}<br /><br />
+                {this.props.volunteer.mobileNumber}<br /><br />
 
                 <div className='mdc-typography--headline'><b>Help Type</b></div>
-                {this.props.volunteer.help_blurb}<br /><br />
+                {this.props.volunteer.helpBlurb}<br /><br />
             </div>
         );
     }

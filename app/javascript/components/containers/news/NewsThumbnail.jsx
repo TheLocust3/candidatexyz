@@ -16,7 +16,7 @@ class NewsThumbnail extends React.Component {
     renderCreatedAt() {
         if (this.props.small) return;
 
-        return <div className='post-created-at news-thumbnail-created-at'>{moment(this.props.post.created_at).format('MMMM D, YYYY')}</div>;
+        return <div className='post-created-at news-thumbnail-created-at'>{moment(this.props.post.createdAt).format('MMMM D, YYYY')}</div>;
     }
 
     render() {

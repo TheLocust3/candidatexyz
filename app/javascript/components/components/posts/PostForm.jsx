@@ -11,7 +11,7 @@ class PostForm extends React.Component {
         super(props);
 
         if (_.isEmpty(this.props.post)) {
-            this.state = { post: { title: '', url: '', body: '', image: '' }, errors: [] };
+            this.state = { post: { postType: this.props.postType, url: this.props.url }, errors: [] };
         } else {
             this.state = { post: this.props.post, errors: [] };
         }
@@ -30,7 +30,7 @@ class PostForm extends React.Component {
         event.preventDefault();
 
         if (_.isEmpty(this.props.post)) {
-            PostApi.create(this.props.postType, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
+            PostApi.create(this.state.post).then(() => {
                 history.push('/home');
             }).catch((response) => {
                 this.setState({
@@ -38,7 +38,7 @@ class PostForm extends React.Component {
                 });
             });
         } else {
-            PostApi.update(this.state.post.post_type, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
+            PostApi.update(this.state.post).then(() => {
                 history.push('/home');
             }).catch((response) => {
                 this.setState({
@@ -49,7 +49,7 @@ class PostForm extends React.Component {
     }
 
     onDeleteClick() {
-        PostApi.destroy(this.state.post.post_type, this.state.post.url).then(() => {
+        PostApi.destroy(this.state.post.postType, this.state.post.url).then(() => {
             history.push('/home');
         });
     }

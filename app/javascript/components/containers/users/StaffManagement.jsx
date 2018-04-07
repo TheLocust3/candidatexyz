@@ -25,7 +25,7 @@ class StaffManagement extends React.Component {
                         <Link className='unstyled-link' key={user.id} to={link}>
                             <li className='mdc-list-item'>
                                 <span className='mdc-list-item__text'>
-                                    {user.first_name} {user.last_name}
+                                    {user.firstName} {user.lastName}
 
                                     <span className='mdc-list-item__secondary-text'>
                                         {user.email}

@@ -26,7 +26,7 @@ class News extends React.Component {
     }
     
     renderNewsList() {
-        let posts = _.reverse(_.sortBy(this.props.posts, [(post) => { return post.created_at }]));
+        let posts = _.reverse(_.sortBy(this.props.posts, [(post) => { return post.createdAt }]));
 
         return (
             <div className='news-list'>

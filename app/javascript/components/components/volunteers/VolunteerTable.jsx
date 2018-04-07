@@ -25,11 +25,11 @@ class VolunteerTable extends React.Component {
             this.props.volunteers.map((volunteer) => {
                 return (
                     <tr key={volunteer.id} className='selectable-row' onClick={this.onVolunteerClick.bind(this, volunteer.id)}>
-                        <td>{volunteer.first_name}</td>
-                        <td>{volunteer.last_name}</td>
+                        <td>{volunteer.firstName}</td>
+                        <td>{volunteer.lastName}</td>
                         <td>{volunteer.email}</td>
                         <td>{_.isEmpty(volunteer.address2) ? volunteer.address1 : volunteer.address2}, {volunteer.city}, {volunteer.state}, {volunteer.zipcode}</td>
-                        <td>{volunteer.help_blurb.substring(0, HELP_BLURB_LENGTH)}</td>
+                        <td>{_.isEmpty(volunteer.helpBlurb) ? '' : volunteer.helpBlurb.substring(0, HELP_BLURB_LENGTH)}</td>
                     </tr>
                 );
             })

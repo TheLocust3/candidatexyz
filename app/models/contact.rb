@@ -2,6 +2,8 @@ class Contact < ApplicationRecord
   before_validation :sanitize_phone_number
 
   validates :email, presence: true, email: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :zipcode, presence: true, zipcode: true
   validates :phone_number, number: true
 

@@ -43,7 +43,7 @@ class EditContent extends React.Component {
     }
 
     renderEditor() {
-        switch (this.props.content.content_type) {
+        switch (this.props.content.contentType) {
             case 'text':
                 return <TextContentEditor content={this.props.content} />
             case 'image':
