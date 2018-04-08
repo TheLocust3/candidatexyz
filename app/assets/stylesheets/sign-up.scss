@@ -5,17 +5,6 @@
     margin-bottom: 15vh;
 }
 
-.sign-up-form {
-    padding-left: 25%;
-    padding-right: 25%;
-    text-align: left;
-
-    @media (max-width: $mobile-width) {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-}
-
 .sign-up-form-button {
     margin-top: 3%;
     float: right;

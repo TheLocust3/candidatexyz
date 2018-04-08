@@ -12,7 +12,7 @@ class ShowIssue extends React.Component {
     render() {
         return (
             <div className='content'>
-                <div className='issues'>
+                <div className='content-20 issues'>
                     <ShowPost postType='issues' url={this.props.match.params.url} renderAsIssue={true} />
                 </div>
 

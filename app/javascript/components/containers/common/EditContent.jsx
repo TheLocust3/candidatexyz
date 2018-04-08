@@ -61,7 +61,7 @@ class EditContent extends React.Component {
         let visibility = this.props.edit && this.props.editOverlayOpen ? 'visible' : 'hidden';
 
         return (
-            <div className='editContentWrapper' style={{ visibility: visibility, ...this.setPosition() }}>
+            <div className='edit-content-wrapper' style={{ visibility: visibility, ...this.setPosition() }}>
                 {this.renderEditor()}
             </div>
         );

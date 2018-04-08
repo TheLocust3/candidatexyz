@@ -22,7 +22,7 @@ class Unsubscribe extends React.Component {
 
     render() {
         return (
-            <div className='mail-form'>
+            <div className='content-15'>
                 <div className='mdc-typography--display2'><b>Unsubscribe</b></div><br />
 
                 <button className='mdc-button mdc-button--raised' data-mdc-auto-init='MDCRipple' onClick={this.onUnsubscribeClick.bind(this)}>Unsubscribe</button>

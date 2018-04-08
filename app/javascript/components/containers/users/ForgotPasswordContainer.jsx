@@ -15,7 +15,7 @@ class ForgotPasswordContainer extends React.Component {
 
     render() {
         return (
-            <div className='content signInForm'>
+            <div className='content sign-in-form'>
                 <ForgotPasswordForm redirectUrl="/" /><br />
                 <Link to="/sign-in">Sign in</Link>
 

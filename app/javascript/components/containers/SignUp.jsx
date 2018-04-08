@@ -16,10 +16,10 @@ class SignUp extends React.Component {
     render() {
         return (
             <div>
-                <div className='sign-up'>
-                    <div className='mdc-typography--headline'><b><TextContent identifier='signUpHeader' /></b></div><br />
+                <div className='content sign-up'>
+                    <div className='mdc-typography--display1'><b><TextContent identifier='signUpHeader' /></b></div><br />
                     
-                    <div className='sign-up-form'>
+                    <div className='content-25'>
                         <div className='mdc-typography--title'><b><TextContent identifier='signUpSubtitle' /></b></div><br />
 
                         <JoinUsForm />

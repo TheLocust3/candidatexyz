@@ -23,7 +23,7 @@ class Action extends React.Component {
                     <div className='mdc-typography--display3'><b><TextContent identifier='actionHeader' /></b></div><br />
                     <div className='mdc-typography--headline'><TextContent identifier='actionSubtitle' /></div><br />
 
-                    <p className='take-action-text'>
+                    <p className='content-20 take-action-text'>
                         <TextContent identifier='actionBody' /><br /><br />
 
                         <TextContent identifier='actionEnding' /><br />

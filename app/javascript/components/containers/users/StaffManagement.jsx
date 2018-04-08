@@ -43,7 +43,7 @@ class StaffManagement extends React.Component {
         if (!this.props.isReady) return null;
 
         return (
-            <div className='content editUserForm'>
+            <div className='content edit-user-form'>
                 <div className='mdc-typography--display2'><b>Staff Management</b></div><br />
                 <Link to='/staff/invite' className='link'>Add Staffer</Link>
 

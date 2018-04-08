@@ -18,7 +18,7 @@ class ResetPasswordContainer extends React.Component {
         let parsed = queryString.parse(location.search);
 
         return (
-            <div className='content signInForm'>
+            <div className='content sign-in-form'>
                 <ResetPasswordForm redirectUrl="/" token={parsed.reset_password_token} /><br />
                 <Link to="/sign-in">Sign in</Link>
 

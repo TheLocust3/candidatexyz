@@ -10,16 +10,6 @@
     color: white;
 }
 
-.about {
-    margin-left: 20%;
-    margin-right: 20%;
-
-    @media (max-width: $mobile-width) {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-}
-
 .about img {
     display: inline;
     width: 50%;

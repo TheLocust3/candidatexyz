@@ -28,7 +28,7 @@ class EditUser extends React.Component {
         if (!this.props.isReady || _.isEmpty(this.props.user)) return null;
 
         return (
-            <div className='content editUserForm'>
+            <div className='content sign-in-form'>
                 <div className='mdc-typography--display2'><b>Edit User</b></div><br />
                 <a href='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</a>
 

@@ -1,0 +1,115 @@
+@import 'global';
+@import 'theme';
+
+.pager {
+    width: 100%;
+    text-align: center;
+}
+
+.page-number {
+    margin-left: 1%;
+    margin-right: 1%;
+
+    color: lighten( $mdc-theme-primary, 10% );
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.page-number-selected {
+    color: black;
+}
+
+.approved-by {
+    text-align: center;
+    color: $link-hover-color;
+    border: $link-hover-color solid 1px;
+    display: inline-block;
+    padding: 0.5%;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.icon-row {
+    text-align: center;
+    padding-top: 2%;
+}
+
+.icon-cell {
+    padding-left: 1%;
+    padding-right: 1%;
+    color: white;
+}
+
+.media-photo {
+    width: 100%;
+    height: auto;
+}
+
+.map-container {
+    @media (max-width: $mobile-width) {
+        margin-bottom: 30vh;
+    }
+}
+
+.map {
+    padding-left: 5%;
+    width: 60%;
+
+    @media (max-width: $mobile-width) {
+        width: 90%;
+        padding-right: 5%;
+    }
+}
+
+.map-blurb {
+    width: 30%;
+    float: right;
+
+    @media (max-width: $mobile-width) {
+        width: 100%;
+        float: left;
+        padding-top: 3%;
+        padding-left: 3%;
+    }
+}
+
+.sign-in-form {
+    padding-left: 3%;
+    padding-right: 40%;
+    padding-bottom: 3%;
+
+    @media (max-width: $mobile-width) {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+
+.edit-user-form {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+
+    @media (max-width: $mobile-width) {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+
+.checkboxLabel {
+    position: absolute;
+    padding-top: 1vh;
+}
+
+.edit-raw-content {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 5%;
+}
+
+.edit-raw-content-button {
+    margin-left: 3%;
+}
+
+.volunteer-table {
+    margin-bottom: 15%;
+}

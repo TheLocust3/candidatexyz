@@ -16,7 +16,7 @@ class ShowIssue extends React.Component {
     render() {
         return (
             <div>
-                <div className='news'>
+                <div className='content-15 news'>
                     <span className='mdc-typography--headline'><b>News</b></span><br />
 
                     <ShowPost postType='news' url={this.props.match.params.url} renderAsNews={true} />

@@ -28,7 +28,7 @@ class Volunteer extends React.Component {
         if (_.isEmpty(this.props.volunteer)) return null;
 
         return (
-            <div className='staff-form'>
+            <div className='content-15 staff-form'>
                 <div className='mdc-typography--display2'><b>Volunteer</b></div><br />
                 <a href='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</a><br /><br />
 

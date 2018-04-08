@@ -19,7 +19,7 @@ class ShowMessage extends React.Component {
 
     render() {
         return (
-            <div className='staff-overview'>
+            <div className='content-15'>
                 <div className='mdc-typography--display3'>Show Message</div><br />
 
                 <div className='mdc-typography--headline'>Name</div>

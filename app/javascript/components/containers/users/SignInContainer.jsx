@@ -15,7 +15,7 @@ class SignInContainer extends React.Component {
 
     render() {
         return (
-            <div className='content signInForm'>
+            <div className='content sign-in-form'>
                 <SignInForm redirectUrl='/home' /><br />
 
                 <Link className='link-small' to='/forgot-password'>Forgot password?</Link>

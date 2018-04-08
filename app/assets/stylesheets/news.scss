@@ -1,16 +1,6 @@
 @import 'theme.scss';
 @import 'global';
 
-.news {
-    margin-left: 15%;
-    margin-right: 15%;
-
-    @media (max-width: $mobile-width) {
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-}
-
 .news-list {
     margin-left: 5%;
     margin-right: 5%;

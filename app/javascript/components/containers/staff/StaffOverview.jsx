@@ -15,7 +15,7 @@ class StaffOverview extends React.Component {
 
     render() {
         return (
-            <div className='staff-overview'>
+            <div className='content-15'>
                 <div className='mdc-typography--display3'>Staff Overview</div><br />
 
                 <div style={{ marginLeft: '5%' }}>
