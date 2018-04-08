@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
+import FormWrapper from '../forms/FormWrapper';
+
 export default class ResetPasswordForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { password: '', passwordConfirmation: '', errors: [] };
+        this.state = { password: '', passwordConfirmation: '', errors: {} };
     }
 
     handleChange(event) {
@@ -19,8 +21,6 @@ export default class ResetPasswordForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         AuthApi.resetPassword(this.props.token, this.state.password, this.state.passwordConfirmation).then( response => {
             history.push(this.props.redirectUrl);
         }).catch( response => {
@@ -28,22 +28,6 @@ export default class ResetPasswordForm extends React.Component {
                 errors: response.responseJSON.errors
             });
         });
-    }
-
-    renderErrors() {
-        if (_.isEmpty(this.state.errors)) return;
-
-        return (
-            <div className='mdc-typography--caption'>
-                {_.map(this.state.errors, (errorMessage, errorName) => {
-                    return (
-                        <div key={errorName}>
-                            {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
-                        </div>
-                    )
-                })}
-            </div>
-        )
     }
 
     renderInputs() {
@@ -66,13 +50,11 @@ export default class ResetPasswordForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 {this.renderInputs()}<br />
 
                 <button className='mdc-button mdc-button--raised'>Reset Password</button><br />
-
-                {this.renderErrors()}
-            </form>
+            </FormWrapper>
         );
     }
 }

@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
+import FormWrapper from '../forms/FormWrapper';
+
 export default class EditUserForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { email: this.props.user.email, firstName: this.props.user.first_name, lastName: this.props.user.last_name, errors: [] };
+        this.state = { email: this.props.user.email, firstName: this.props.user.first_name, lastName: this.props.user.last_name, errors: {} };
     }
 
     handleChange(event) {
@@ -19,8 +21,6 @@ export default class EditUserForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         AuthApi.editUser(this.state.email, this.state.currentPassword, this.state.password, this.state.passwordConfirmation, this.state.firstName, this.state.lastName).then( response => {
             history.push(this.props.redirectUrl);
         }).catch( response => {
@@ -28,22 +28,6 @@ export default class EditUserForm extends React.Component {
                 errors: response.responseJSON.errors
             });
         });
-    }
-
-    renderErrors() {
-        if (_.isEmpty(this.state.errors)) return;
-
-        return (
-            <div className='mdc-typography--caption'>
-                {_.map(this.state.errors, (errorMessage, errorName) => {
-                    return (
-                        <div key={errorName}>
-                            {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
-                        </div>
-                    );
-                })}
-            </div>
-        )
     }
 
     renderInputs() {
@@ -90,13 +74,11 @@ export default class EditUserForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 {this.renderInputs()}
 
                 <button className='mdc-button mdc-button--raised'>Submit</button><br /><br />
-
-                {this.renderErrors()}
-            </form>
+            </FormWrapper>
         );
     }
 }

@@ -7,6 +7,8 @@ import { MDCTextField } from '@material/textfield';
 import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen } from '../../../actions/content-actions';
 
+import FormWrapper from '../../forms/FormWrapper';
+
 class LinkContentEditor extends React.Component {
 
     constructor(props) {
@@ -50,8 +52,6 @@ class LinkContentEditor extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         ContentApi.update(this.props.content.identifier, this.state.content.content).then(() => {
             location.reload();
         });
@@ -61,7 +61,7 @@ class LinkContentEditor extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)}>
                 <div id='link-text-content' className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
                     <input type='text' id='link-text-content' className='mdc-text-field__input' onChange={this.handleTextChange.bind(this)} size={40} />
                     <label className='mdc-text-field__label' htmlFor='link-text-content'>Link Text</label>
@@ -75,7 +75,7 @@ class LinkContentEditor extends React.Component {
                 </div>
 
                 <button className='mdc-button mdc-button--raised edit-content-button button'>Save</button>
-            </form>
+            </FormWrapper>
         );
     }
 }

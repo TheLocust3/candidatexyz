@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
+import FormWrapper from '../forms/FormWrapper';
+
 export default class SignInForm extends React.Component {
 
     constructor(props) {
@@ -26,8 +28,6 @@ export default class SignInForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         AuthApi.signIn(this.state.email, this.state.password, this.state.rememberMe).then( response => {
             window.location.href = '/home';
         }).catch( response => {
@@ -35,16 +35,6 @@ export default class SignInForm extends React.Component {
                 error: response.responseJSON.error
             });
         });
-    }
-
-    renderError() {
-        if (_.isEmpty(this.state.error)) return;
-
-        return (
-            <div>
-                {this.state.error}
-            </div>
-        )
     }
 
     renderInputs() {
@@ -67,15 +57,13 @@ export default class SignInForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <div className='mdc-typography--display3'><b>Staff Login</b></div><br />
 
                 {this.renderInputs()}<br />
 
                 <button className='mdc-button mdc-button--raised'>Submit</button><br />
-
-                {this.renderError()}
-            </form>
+            </FormWrapper>
         );
     }
 }

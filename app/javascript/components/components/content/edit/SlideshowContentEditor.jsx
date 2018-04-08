@@ -7,6 +7,8 @@ import { MDCTextField } from '@material/textfield';
 import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen } from '../../../actions/content-actions';
 
+import FormWrapper from '../../forms/FormWrapper';
+
 class SlideshowContentEditor extends React.Component {
 
     constructor(props) {
@@ -67,11 +69,11 @@ class SlideshowContentEditor extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)}>
                 {this.renderSlideshowFields()}
 
                 <button className='mdc-button mdc-button--raised edit-content-button button'>Save</button>
-            </form>
+            </FormWrapper>
         );
     }
 }

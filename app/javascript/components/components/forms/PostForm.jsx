@@ -5,15 +5,17 @@ import PropTypes from 'prop-types';
 import { history } from '../../../constants';
 import PostApi from '../../../api/post-api';
 
+import FormWrapper from './FormWrapper';
+
 class PostForm extends React.Component {
     
     constructor(props) {
         super(props);
 
         if (_.isEmpty(this.props.post)) {
-            this.state = { post: { postType: this.props.postType, url: this.props.url }, errors: [] };
+            this.state = { post: { postType: this.props.postType, url: this.props.url }, errors: {} };
         } else {
-            this.state = { post: this.props.post, errors: [] };
+            this.state = { post: this.props.post, errors: {} };
         }
     }
 
@@ -27,10 +29,8 @@ class PostForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         if (_.isEmpty(this.props.post)) {
-            PostApi.create(this.state.post).then(() => {
+            PostApi.create(this.state.post.postType, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
                 history.push('/home');
             }).catch((response) => {
                 this.setState({
@@ -38,7 +38,7 @@ class PostForm extends React.Component {
                 });
             });
         } else {
-            PostApi.update(this.state.post).then(() => {
+            PostApi.update(this.state.post.postType, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
                 history.push('/home');
             }).catch((response) => {
                 this.setState({
@@ -62,27 +62,9 @@ class PostForm extends React.Component {
         )
     }
 
-    renderErrors() {
-        if (_.isEmpty(this.state.errors)) return;
-
-        return (
-            <div className='mdc-typography--caption'>
-                {_.map(this.state.errors, (errorMessage, errorName) => {
-                    return (
-                        <div key={errorName}>
-                            {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
-
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)} className='issues'>
-                {this.renderErrors()}
-                
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='issues'>                
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
                     <input type='text' id='title' name='title' className='mdc-text-field__input' defaultValue={this.state.post.title} />
                     <label className='mdc-text-field__label' htmlFor='title'>Title</label>
@@ -109,7 +91,7 @@ class PostForm extends React.Component {
 
                 <button className='mdc-button mdc-button--raised button' style={{ float: 'right' }}>Save</button>
                 {this.renderDeleteButton()}
-            </form>
+            </FormWrapper>
         );
     }
 }

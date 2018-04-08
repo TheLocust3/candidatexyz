@@ -4,12 +4,14 @@ import React from 'react';
 import { history } from '../../../constants';
 import ContactApi from '../../../api/contact-api';
 
+import FormWrapper from './FormWrapper';
+
 export default class JoinUsForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { firstName: '', lastName: '', zipCode: '', email: '', phoneNumber: '', errors: [] };
+        this.state = { firstName: '', lastName: '', zipCode: '', email: '', phoneNumber: '', errors: {} };
     }
 
     handleChange(event) {
@@ -19,8 +21,6 @@ export default class JoinUsForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         ContactApi.create(this.state.email, this.state.zipCode, this.state.firstName, this.state.lastName, this.state.phoneNumber).then(() => {
             history.push('/home');
         }).catch((response) => {
@@ -30,27 +30,9 @@ export default class JoinUsForm extends React.Component {
         });
     }
 
-    renderErrors() {
-        if (_.isEmpty(this.state.errors)) return;
-
-        return (
-            <div className='mdc-typography--caption'>
-                {_.map(this.state.errors, (errorMessage, errorName) => {
-                    return (
-                        <div key={errorName}>
-                            {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
-
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                {this.renderErrors()}
-
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
                     <input type='text' id='first-name' className='mdc-text-field__input' name='firstName' onChange={this.handleChange.bind(this)} required />
                     <label className='mdc-text-field__label' htmlFor='first-name'>First name</label>
@@ -86,7 +68,7 @@ export default class JoinUsForm extends React.Component {
                 <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
 
                 <button className='mdc-button mdc-button--raised sign-up-form-button'data-mdc-auto-init='MDCRipple'>Subscribe</button>
-            </form>
+            </FormWrapper>
         );
     }
 }

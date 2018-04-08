@@ -8,12 +8,14 @@ import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
 
+import FormWrapper from '../forms/FormWrapper';
+
 export default class StaffSignUpForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { email: '', firstName: '', lastName: '', password: '', passwordConfirmation: '', errors: [] };
+        this.state = { email: '', firstName: '', lastName: '', password: '', passwordConfirmation: '', errors: {} };
     }
 
     handleChange(event) {
@@ -23,8 +25,6 @@ export default class StaffSignUpForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         StaffApi.create(this.props.token, this.state.email, this.state.firstName, this.state.lastName, this.state.password, this.state.passwordConfirmation).then(() => {
             history.push('/home');
         }).catch((response) => {
@@ -34,27 +34,9 @@ export default class StaffSignUpForm extends React.Component {
         });
     }
 
-    renderErrors() {
-        if (_.isEmpty(this.state.errors)) return;
-
-        return (
-            <div className='mdc-typography--caption'>
-                {_.map(this.state.errors, (errorMessage, errorName) => {
-                    return (
-                        <div key={errorName}>
-                            {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
-                        </div>
-                    );
-                })}
-            </div>
-        )
-    }
-
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                {this.renderErrors()}
-
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
                     <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} defaultValue={this.state.email} />
                     <label className='mdc-text-field__label' htmlFor='email'>Email</label>
@@ -88,7 +70,7 @@ export default class StaffSignUpForm extends React.Component {
                 <button className='mdc-button mdc-button--raised' data-mdc-auto-init='MDCRipple' style={{ float: 'right' }}>Submit</button>
 
                 <MDCAutoInit />
-            </form>
+            </FormWrapper>
         );
     }
 }

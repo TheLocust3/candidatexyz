@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
+import FormWrapper from '../forms/FormWrapper';
+
 export default class ForgotPasswordForm extends React.Component {
 
     constructor(props) {
@@ -19,8 +21,6 @@ export default class ForgotPasswordForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         AuthApi.forgotPassword(this.state.email).then( response => {
             history.push(this.props.redirectUrl);
         }).catch( response => {
@@ -44,13 +44,11 @@ export default class ForgotPasswordForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 {this.renderInputs()}<br />
 
                 <button className='mdc-button mdc-button--raised'>Reset Password</button><br />
-
-                {this.state.errors.email}
-            </form>
+            </FormWrapper>
         );
     }
 }

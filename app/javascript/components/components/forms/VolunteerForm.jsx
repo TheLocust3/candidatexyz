@@ -4,16 +4,17 @@ import { MDCSelect } from '@material/select';
 
 import ContentApi from '../../../api/content-api';
 import MDCAutoInit from '../global/MDCAutoInit';
-
 import { history, STATES } from '../../../constants';
 import VolunteerApi from '../../../api/volunteer-api';
+
+import FormWrapper from './FormWrapper';
 
 export default class VolunteerForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { email: '', phoneNumber: '', firstName: '', lastName: '', address: '', zipCode: '', city: '', state: '', helpBlurb: '', errors: [], helpOptions: [], otherOpened: false };
+        this.state = { email: '', phoneNumber: '', firstName: '', lastName: '', address: '', zipCode: '', city: '', state: '', helpBlurb: '', errors: {}, helpOptions: [], otherOpened: false };
     }
 
     componentDidMount() {
@@ -54,8 +55,6 @@ export default class VolunteerForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         VolunteerApi.create(this.state.email, this.state.phoneNumber, this.state.firstName, this.state.lastName, this.state.address, this.state.zipCode, this.state.city, this.state.state, this.state.helpBlurb).then(() => {
             history.push('/home');
         }).catch((response) => {
@@ -63,22 +62,6 @@ export default class VolunteerForm extends React.Component {
                 errors: response.responseJSON.errors
             });
         });
-    }
-
-    renderErrors() {
-        if (_.isEmpty(this.state.errors)) return;
-
-        return (
-            <div className='mdc-typography--caption'>
-                {_.map(this.state.errors, (errorMessage, errorName) => {
-                    return (
-                        <div key={errorName}>
-                            {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
-                        </div>
-                    );
-                })}
-            </div>
-        )
     }
 
     renderStateDropdown() {
@@ -146,9 +129,7 @@ export default class VolunteerForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                {this.renderErrors()}
-
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <b>Contact Information</b><br />
 
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
@@ -205,7 +186,7 @@ export default class VolunteerForm extends React.Component {
                 <button className='mdc-button mdc-button--raised sign-up-form-button'data-mdc-auto-init='MDCRipple'>Submit</button>
 
                 <MDCAutoInit />
-            </form>
+            </FormWrapper>
         );
     }
 }

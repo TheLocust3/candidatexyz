@@ -7,12 +7,14 @@ import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
 import MailApi from '../../../api/mail-api';
 
+import FormWrapper from '../forms/FormWrapper';
+
 export default class MailForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { subject: '', body: '', errors: [] };
+        this.state = { subject: '', body: '', errors: {} };
     }
 
     handleChange(event) {
@@ -22,8 +24,6 @@ export default class MailForm extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         MailApi.sendToContacts(this.state.subject, this.state.body).then(() => {
             history.push('/home');
         }).catch((response) => {
@@ -33,27 +33,9 @@ export default class MailForm extends React.Component {
         });
     }
 
-    renderErrors() {
-        if (_.isEmpty(this.state.errors)) return;
-
-        return (
-            <div className='mdc-typography--caption'>
-                {_.map(this.state.errors, (errorMessage, errorName) => {
-                    return (
-                        <div key={errorName}>
-                            {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
-                        </div>
-                    );
-                })}
-            </div>
-        )
-    }
-
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                {this.renderErrors()}
-
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
                     <input type='text' id='subject' className='mdc-text-field__input' name='subject' onChange={this.handleChange.bind(this)} required />
                     <label className='mdc-text-field__label' htmlFor='subject'>Subject</label>
@@ -69,7 +51,7 @@ export default class MailForm extends React.Component {
                 <button className='mdc-button mdc-button--raised' data-mdc-auto-init='MDCRipple' style={{ float: 'right' }}>Send</button>
 
                 <MDCAutoInit />
-            </form>
+            </FormWrapper>
         );
     }
 }
