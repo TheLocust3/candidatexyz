@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { MDCSelect } from '@material/select';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
@@ -37,35 +38,14 @@ export default class StaffSignUpForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} defaultValue={this.state.email} />
-                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
-                    <input type='text' id='first-name' className='mdc-text-field__input' name='firstName' onChange={this.handleChange.bind(this)} defaultValue={this.state.firstName} />
-                    <label className='mdc-text-field__label' htmlFor='first-name'>First name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField label='First Name' name='firstName' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
+                <TextField label='Last Name' name='lastName' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%' }} /><br /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
-                    <input type='text' id='last-name' className='mdc-text-field__input' name='lastName' onChange={this.handleChange.bind(this)} defaultValue={this.state.lastName} />
-                    <label className='mdc-text-field__label' htmlFor='last-name'>Last name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <TextField type='password' label='Password' name='password' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='password' id='password' className='mdc-text-field__input' name='password' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='password'>Password</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='password' id='password-confirmation' className='mdc-text-field__input' name='passwordConfirmation' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='password-confirmation'>Confirm Password</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField type='password' label='Confirm Password' name='passwordConfirmation' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
                 <Button style={{ float: 'right' }}>Submit</Button>
 

@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import { history } from '../../../constants';
 import PostApi from '../../../api/post-api';
 
@@ -66,23 +67,11 @@ class PostForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content-bottom content-15'>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
-                    <input type='text' id='title' name='title' className='mdc-text-field__input' defaultValue={this.state.post.title} />
-                    <label className='mdc-text-field__label' htmlFor='title'>Title</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <TextField label='Title' name='title' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.title} style={{ width: '100%' }} /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
-                    <input type='text' id='url' name='url' className='mdc-text-field__input' defaultValue={this.state.post.url} />
-                    <label className='mdc-text-field__label' htmlFor='url'>URL</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br />
+                <TextField label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
-                    <input type='text' id='image' name='image' className='mdc-text-field__input' defaultValue={this.state.post.image} />
-                    <label className='mdc-text-field__label' htmlFor='image'>Image URL</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br />
+                <TextField label='Image URL' name='image' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} /><br />
 
                 <div className='mdc-text-field mdc-text-field--textarea' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
                     <textarea type='text' id='body' name='body' className='mdc-text-field__input' defaultValue={this.state.post.body} rows={40} onChange={this.handleChange.bind(this)} />

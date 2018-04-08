@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
@@ -31,52 +32,19 @@ export default class EditUserForm extends React.Component {
         });
     }
 
-    renderInputs() {
-        return (
-            <div>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} defaultValue={this.state.email} />
-                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
-                    <input type='text' id='first-name' className='mdc-text-field__input' name='firstName' onChange={this.handleChange.bind(this)} defaultValue={this.state.firstName} />
-                    <label className='mdc-text-field__label' htmlFor='first-name'>First name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
-                    <input type='text' id='last-name' className='mdc-text-field__input' name='lastName' onChange={this.handleChange.bind(this)} defaultValue={this.state.lastName} />
-                    <label className='mdc-text-field__label' htmlFor='last-name'>Last name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='password' id='current-password' className='mdc-text-field__input' name='currentPassword' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='current-password'>Current Password</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='password' id='password' className='mdc-text-field__input' name='password' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='password'>New Password</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='password' id='password-confirmation' className='mdc-text-field__input' name='passwordConfirmation' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='password-confirmation'>Confirm New Password</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-            </div>
-        );
-    }
-
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
-                {this.renderInputs()}
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} defaultValue={this.state.email} style={{ width: '100%' }} /><br /><br />
+
+                <TextField label='First name' name='firstName' onChange={(event) => this.handleChange(event)} defaultValue={this.state.firstName} style={{ width: '47.5%', marginRight: '5%' }} />
+                <TextField label='Last name' name='lastName' onChange={(event) => this.handleChange(event)} defaultValue={this.state.lastName} style={{ width: '47.5%' }} /><br /><br />
+
+                <TextField type='password' label='Current Password' name='currentPassword' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
+
+                <TextField type='password' label='New Password' name='password' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} /><br /><br />
+
+                <TextField type='password' label='Confirm New Password' name='passwordConfirmation' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} />
 
                 <Button>Submit</Button><br /><br />
             </FormWrapper>

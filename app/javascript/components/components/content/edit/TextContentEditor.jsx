@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { MDCTextField } from '@material/textfield';
 
 import Button from '../../base/Button';
+import TextField from '../../base/TextField';
 import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
 
@@ -29,8 +30,10 @@ class TextContentEditor extends React.Component {
     }
 
     setDefaultFieldValues() {
-        let textField = new MDCTextField(document.querySelector('#text-content'));
-        textField.value = this.props.content.content.text;
+        if (this.props.content.content.text.length > TEXT_FIELD_CUTOFF) {
+            let textField = new MDCTextField(document.querySelector('#text-content'));
+            textField.value = this.props.content.content.text;
+        }
     }
 
     handleContentChange(event) {
@@ -52,11 +55,7 @@ class TextContentEditor extends React.Component {
     renderTextField() {
         if (this.props.content.content.text.length < TEXT_FIELD_CUTOFF) {
             return (
-                <div id='text-content' className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
-                    <input type='text' id='text-content' className='mdc-text-field__input' onChange={this.handleContentChange.bind(this)} size={40} />
-                    <label className='mdc-text-field__label' htmlFor='text-content'>Text Content</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField label='Text Content' onChange={(event) => this.handleContentChange(event)} defaultValue={this.props.content.content.text} size={40} />
             )
         } else {
             return (

@@ -2,6 +2,7 @@ import _ from 'lodash'
 import React from 'react';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import { history } from '../../../constants';
 import ContactApi from '../../../api/contact-api';
 
@@ -34,37 +35,13 @@ export default class JoinUsForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
-                    <input type='text' id='first-name' className='mdc-text-field__input' name='firstName' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='first-name'>First name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField label='First Name' name='firstName' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
+                <TextField label='Last Name' name='lastName' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%' }} /><br /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
-                    <input type='text' id='last-name' className='mdc-text-field__input' name='lastName' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='last-name'>Last name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <TextField label='Zipcode' name='zipCode' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='text' id='zip-code' className='mdc-text-field__input' name='zipCode' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='zip-code'>Zip code</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
-
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
-                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
-                    <input type='text' id='phone-number' className='mdc-text-field__input' name='phoneNumber' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='phone-number'>Phone number</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
+                <TextField label='Phone number' name='phoneNumber' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%' }} />
 
                 <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
 

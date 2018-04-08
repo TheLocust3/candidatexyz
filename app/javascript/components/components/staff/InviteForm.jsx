@@ -3,6 +3,7 @@ import React from 'react';
 import { MDCSelect } from '@material/select';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
@@ -36,11 +37,7 @@ export default class InviteForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} />
 
                 <Button style={{ float: 'right' }}>Send</Button>
 

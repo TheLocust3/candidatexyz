@@ -2,9 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { MDCTextField } from '@material/textfield';
 
 import Button from '../../base/Button';
+import TextField from '../../base/TextField';
 import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
 
@@ -16,21 +16,6 @@ class SlideshowContentEditor extends React.Component {
         super(props);
 
         this.state = { content: props.content, oldContent: _.cloneDeep(this.props.content) };
-    }
-
-    setTextFields() {
-        this.props.content.content.map((image, index) => {
-            let textField = new MDCTextField(document.querySelector(`#image-${index}-content`));
-            textField.value = image;
-        });
-    }
-
-    componentDidMount() {
-        this.setTextFields();
-    }
-
-    componentDidUpdate() {
-        this.setTextFields();
     }
 
     handleContentChange(event) {
@@ -54,11 +39,7 @@ class SlideshowContentEditor extends React.Component {
             this.props.content.content.map((image, index) => {
                 return (
                     <div key={index}>
-                        <div id={`image-${index}-content`} className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
-                            <input type='text' id={`image-${index}-content`} name={index} className='mdc-text-field__input' onChange={this.handleContentChange.bind(this)} size={40} />
-                            <label className='mdc-text-field__label' htmlFor={`image-${index}-content`}>Image {index + 1}</label>
-                            <div className='mdc-line-ripple'></div>
-                        </div><br />
+                        <TextField name={`image${index + 1}`} label={`Image ${index + 1}`} onChange={(event) => this.handleContentChange(event)} defaultValue={image} size={40} /><br />
                     </div>
                 )
             })

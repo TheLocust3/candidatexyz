@@ -2,6 +2,7 @@ import _ from 'lodash'
 import React from 'react';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import { history } from '../../../constants';
 import MessageApi from '../../../api/message-api';
 
@@ -34,29 +35,12 @@ export default class MessageForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content-bottom content-15'>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
-                    <input type='text' id='first-name' className='mdc-text-field__input' name='firstName' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='first-name'>First name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField label='First name' name='firstName' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
+                <TextField label='Last name' name='lastName' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%' }} /><br /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
-                    <input type='text' id='last-name' className='mdc-text-field__input' name='lastName' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='last-name'>Last name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='text' id='subject' className='mdc-text-field__input' name='subject' onChange={this.handleChange.bind(this)} required />
-                    <label className='mdc-text-field__label' htmlFor='subject'>Subject</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <TextField label='Subject' name='subject' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
                 <div id='text-content' className='mdc-text-field mdc-text-field--textarea' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
                     <textarea type='text' id='message' className='mdc-text-field__input' name='message' onChange={this.handleChange.bind(this)} rows='20' />

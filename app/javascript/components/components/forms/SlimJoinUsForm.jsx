@@ -2,6 +2,7 @@ import _ from 'lodash'
 import React from 'react';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import ContactApi from '../../../api/contact-api';
 
 import FormWrapper from './FormWrapper';
@@ -33,17 +34,9 @@ export default class SlimJoinUsForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='text' id='join-email' className='mdc-text-field__input' name='zipCode' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='join-email'>Zip Code</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br />
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='email' id='join-email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='join-email'>Email</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField label='Zipcode' name='zipCode' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} /><br />
+            
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} />
 
                 <Button className='sign-up-form-button'>Sign Up</Button>
             </FormWrapper>

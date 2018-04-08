@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
@@ -38,30 +39,14 @@ export default class SignInForm extends React.Component {
         });
     }
 
-    renderInputs() {
-        return (
-            <div>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='password' id='password' className='mdc-text-field__input' name='password' onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='password'>Password</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-            </div>
-        );
-    }
-
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <div className='mdc-typography--display3'><b>Staff Login</b></div><br />
 
-                {this.renderInputs()}<br />
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} />
+
+                <TextField type='password' label='Password' name='password' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} />
 
                 <Button>Submit</Button><br />
             </FormWrapper>

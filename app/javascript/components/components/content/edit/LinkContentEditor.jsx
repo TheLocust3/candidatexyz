@@ -2,9 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { MDCTextField } from '@material/textfield';
 
 import Button from '../../base/Button';
+import TextField from '../../base/TextField';
 import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
 
@@ -16,22 +16,6 @@ class LinkContentEditor extends React.Component {
         super(props);
 
         this.state = { content: props.content, oldContent: _.cloneDeep(this.props.content) };
-    }
-    
-    componentDidMount() {
-        this.setDefaultFieldValues();
-    }
-
-    componentDidUpdate() {
-        this.setDefaultFieldValues();
-    }
-
-    setDefaultFieldValues() {
-        let textField = new MDCTextField(document.querySelector('#link-text-content'));
-        textField.value = this.props.content.content.text;
-
-        textField = new MDCTextField(document.querySelector('#link-url-content'));
-        textField.value = this.props.content.content.url;
     }
 
     handleTextChange(event) {
@@ -62,17 +46,8 @@ class LinkContentEditor extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)}>
-                <div id='link-text-content' className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
-                    <input type='text' id='link-text-content' className='mdc-text-field__input' onChange={this.handleTextChange.bind(this)} size={40} />
-                    <label className='mdc-text-field__label' htmlFor='link-text-content'>Link Text</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br />
-
-                <div id='link-url-content' className='mdc-text-field' data-mdc-auto-init='MDCTextField'>
-                    <input type='text' id='link-url-content' className='mdc-text-field__input' onChange={this.handleURLChange.bind(this)} size={40} />
-                    <label className='mdc-text-field__label' htmlFor='link-url-content'>URL</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextField label='Link Text' onChange={(event) => this.handleTextChange(event)} defaultValue={this.props.content.content.text} size={40} /><br />
+                <TextField label='URL' onChange={(event) => this.handleURLChange(event)} defaultValue={this.props.content.content.url} size={40} />
 
                 <Button className='edit-content-button'>Save</Button>
             </FormWrapper>

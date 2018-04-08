@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../base/Button';
+import TextField from '../base/TextField';
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
 
@@ -40,23 +41,10 @@ export default class MasterEditUserForm extends React.Component {
     renderInputs() {
         return (
             <div>
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <input type='email' id='email' className='mdc-text-field__input' name='email' onChange={this.handleChange.bind(this)} defaultValue={this.state.email} />
-                    <label className='mdc-text-field__label' htmlFor='email'>Email</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} defaultValue={this.state.email} style={{ width: '100%' }} /><br /><br />
 
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
-                    <input type='text' id='first-name' className='mdc-text-field__input' name='firstName' onChange={this.handleChange.bind(this)} defaultValue={this.state.firstName} />
-                    <label className='mdc-text-field__label' htmlFor='first-name'>First name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
-
-                <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%' }}>
-                    <input type='text' id='last-name' className='mdc-text-field__input' name='lastName' onChange={this.handleChange.bind(this)} defaultValue={this.state.lastName} />
-                    <label className='mdc-text-field__label' htmlFor='last-name'>Last name</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br />
+                <TextField label='First name' name='firstName' onChange={(event) => this.handleChange(event)} defaultValue={this.state.firstName} style={{ width: '47.5%', marginRight: '5%' }} />
+                <TextField label='Last name' name='lastName' onChange={(event) => this.handleChange(event)} defaultValue={this.state.lastName} style={{ width: '47.5%' }} /><br />
 
                 <div className='mdc-checkbox'>
                     <input type='checkbox' className='mdc-checkbox__native-control' onChange={this.handleAdminCheck.bind(this)} defaultChecked={this.state.admin} />
