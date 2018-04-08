@@ -16,6 +16,8 @@ import InviteStaff from '../components/containers/staff/InviteStaff';
 import VolunteerOverview from '../components/containers/volunteers/VolunteerOverview';
 import Volunteer from '../components/containers/volunteers/Volunteer';
 import StaffOverview from '../components/containers/staff/StaffOverview';
+import MessageOverview from '../components/containers/staff/MessageOverview';
+import ShowMessage from '../components/containers/staff/ShowMessage';
 
 class StaffRoutes extends React.Component {
 
@@ -33,6 +35,8 @@ class StaffRoutes extends React.Component {
                 <Route exact path='/staff-management' component={StaffManagement} />
                 <Route exact path='/staff-management/:id/edit' component={MasterEditUserForm} />
                 <Route exact path='/staff' component={StaffOverview} />
+                <Route exact path='/staff/messages' component={MessageOverview} />
+                <Route exact path='/staff/messages/:id' component={ShowMessage} />
                 <Route exact path='/staff/mail' component={Mail} />
                 <Route exact path='/staff/invite' component={InviteStaff} />
                 <Route exact path='/staff/volunteers' component={VolunteerOverview} />

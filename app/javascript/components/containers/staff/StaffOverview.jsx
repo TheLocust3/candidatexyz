@@ -9,7 +9,7 @@ import MDCAutoInit from '../../components/global/MDCAutoInit';
 class StaffOverview extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch(setDocumentTitle('Invite Staff'));
+        this.props.dispatch(setDocumentTitle('Staff Overview'));
         this.props.dispatch(setBlankNavbar(true));
     }
 
@@ -20,6 +20,7 @@ class StaffOverview extends React.Component {
 
                 <div style={{ marginLeft: '5%' }}>
                     <Link className='link' to='/staff-management'>Staff Management</Link><br />
+                    <Link className='link' to='/staff/messages'>Messages</Link><br />
                     <Link className='link' to='/staff/volunteers'>Volunteers</Link><br />
                     <Link className='link' to='/edit-content'>Edit Miscellaneous Content</Link><br />
                     <Link className='link' to='/edit-user'>User Settings</Link><br />
