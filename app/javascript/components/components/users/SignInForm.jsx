@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '../base/Button';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
@@ -62,7 +63,7 @@ export default class SignInForm extends React.Component {
 
                 {this.renderInputs()}<br />
 
-                <button className='mdc-button mdc-button--raised'>Submit</button><br />
+                <Button>Submit</Button><br />
             </FormWrapper>
         );
     }

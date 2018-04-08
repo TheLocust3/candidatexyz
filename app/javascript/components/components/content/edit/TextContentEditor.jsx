@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MDCTextField } from '@material/textfield';
 
+import Button from '../../base/Button';
 import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
 
@@ -75,7 +76,7 @@ class TextContentEditor extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)}>
                 {this.renderTextField()}
 
-                <button className='mdc-button mdc-button--raised edit-content-button button'>Save</button>
+                <Button className='edit-content-button'>Save</Button>
             </FormWrapper>
         );
     }

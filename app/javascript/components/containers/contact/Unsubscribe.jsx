@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Button from '../../components/base/Button';
 import { history } from '../../../constants';
 import ContactApi from '../../../api/contact-api';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
@@ -25,7 +26,7 @@ class Unsubscribe extends React.Component {
             <div className='content-15'>
                 <div className='mdc-typography--display2'><b>Unsubscribe</b></div><br />
 
-                <button className='mdc-button mdc-button--raised' data-mdc-auto-init='MDCRipple' onClick={this.onUnsubscribeClick.bind(this)}>Unsubscribe</button>
+                <Button onClick={this.onUnsubscribeClick.bind(this)}>Unsubscribe</Button>
                 
                 <MDCAutoInit />
             </div>

@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDCSelect } from '@material/select';
 
+import Button from '../base/Button';
 import MDCAutoInit from '../global/MDCAutoInit';
-
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
 
@@ -67,7 +67,7 @@ export default class StaffSignUpForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div>
 
-                <button className='mdc-button mdc-button--raised' data-mdc-auto-init='MDCRipple' style={{ float: 'right' }}>Submit</button>
+                <Button style={{ float: 'right' }}>Submit</Button>
 
                 <MDCAutoInit />
             </FormWrapper>

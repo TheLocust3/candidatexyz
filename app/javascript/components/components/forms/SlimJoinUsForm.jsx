@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 
+import Button from '../base/Button';
 import ContactApi from '../../../api/contact-api';
 
 import FormWrapper from './FormWrapper';
@@ -44,7 +45,7 @@ export default class SlimJoinUsForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div>
 
-                <button className='mdc-button mdc-button--raised sign-up-form-button button'>Sign Up</button>
+                <Button className='sign-up-form-button'>Sign Up</Button>
             </FormWrapper>
         );
     }

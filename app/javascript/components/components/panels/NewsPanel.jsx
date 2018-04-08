@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Button from '../base/Button';
 import { fetchPostType } from '../../actions/post-actions';
 import TextContent from '../../containers/content/TextContent';
 import NewsThumbnail from '../../containers/news/NewsThumbnail';
@@ -35,7 +36,7 @@ class NewsPanel extends React.Component {
 
                 {this.renderNewsList()}
 
-                <center><Link to='/news'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'><TextContent identifier='newsPanelButton' /></button></Link></center>
+                <center><Link to='/news'><Button><TextContent identifier='newsPanelButton' /></Button></Link></center>
             </PanelWrapper>
         );
     }

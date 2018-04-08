@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Parallax, Background } from 'react-parallax';
 
+import Button from '../base/Button';
 import ContentApi from '../../../api/content-api';
 import TextContent from '../../containers/content/TextContent';
 import ExternalLinkContent from '../../containers/content/ExternalLinkContent';
@@ -40,8 +41,8 @@ export default class JoinTeamPanel extends React.Component {
                         </div>
 
                         <div className='join-team-panel-actions mdc-typography--headline'>
-                            <Link to='/sign_up'><button className='mdc-button mdc-button--raised button join-team-panel-color' data-mdc-auto-init='MDCRipple'>Sign Up</button></Link>
-                            <ExternalLinkContent identifier='joinTeamPanelDonateLink'><button className='mdc-button mdc-button--raised button join-team-panel-color' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent>
+                            <Link to='/sign_up'><Button className='join-team-panel-color'>Sign Up</Button></Link>
+                            <ExternalLinkContent identifier='joinTeamPanelDonateLink'><Button className='join-team-panel-color'>Donate</Button></ExternalLinkContent>
                         </div>
                     </div>
                 </Parallax>

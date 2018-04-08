@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Button from '../components/base/Button';
 import { setFullscreen, setDocumentTitle } from '../actions/global-actions';
 import ContentApi from '../../api/content-api';
 import MDCAutoInit from '../components/global/MDCAutoInit';
@@ -47,7 +48,7 @@ class SplashPage extends React.Component {
 
                 <JoinCard top='45%' right='60%' />
 
-                <Link to='/home'><button className='mdc-button mdc-button--raised button splash-page-button' data-mdc-auto-init='MDCRipple'><TextContent identifier='splashPageButton' /></button></Link>
+                <Link to='/home'><Button className='splash-page-button'><TextContent identifier='splashPageButton' /></Button></Link>
 
                 <MDCAutoInit />
             </div>

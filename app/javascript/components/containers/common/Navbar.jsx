@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Parallax, Background } from 'react-parallax';
 import { MDCTemporaryDrawer } from '@material/drawer';
 
+import Button from '../../components/base/Button';
 import { MAX_MOBILE_WIDTH } from '../../../constants';
 import ImageContent from '../content/ImageContent';
 import SimpleLinkContent from '../content/SimpleLinkContent';
@@ -75,7 +76,7 @@ class Navbar extends React.Component {
                         <div><SimpleLinkContent identifier='navLink2' className={`link ${invertedLink}`} /></div>
                         <div><SimpleLinkContent identifier='navLink3' className={`link ${invertedLink}`} /></div>
 
-                        <div><ExternalLinkContent identifier='navButton'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'>Donate</button></ExternalLinkContent></div>
+                        <div><ExternalLinkContent identifier='navButton'><Button >Donate</Button></ExternalLinkContent></div>
                     </div>
                 </div>
             </Parallax>

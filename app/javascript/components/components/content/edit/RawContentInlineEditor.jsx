@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MDCTextField } from '@material/textfield';
 
+import Button from '../../base/Button';
 import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
 
@@ -52,7 +53,7 @@ class RawContentInlineEditor extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div>
 
-                <button className='mdc-button mdc-button--raised button edit-raw-content-button'>Save</button>
+                <Button className='edit-raw-content-button'>Save</Button>
             </FormWrapper>
         );
     }

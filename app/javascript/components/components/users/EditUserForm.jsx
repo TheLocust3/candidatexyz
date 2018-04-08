@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '../base/Button';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
@@ -77,7 +78,7 @@ export default class EditUserForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 {this.renderInputs()}
 
-                <button className='mdc-button mdc-button--raised'>Submit</button><br /><br />
+                <Button>Submit</Button><br /><br />
             </FormWrapper>
         );
     }

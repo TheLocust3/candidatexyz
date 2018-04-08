@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '../base/Button';
 import { history } from '../../../constants';
 import PostApi from '../../../api/post-api';
 
@@ -58,7 +59,7 @@ class PostForm extends React.Component {
         if (_.isEmpty(this.props.post)) return;
 
         return (
-            <button className='mdc-button mdc-button--raised button' style={{ float: 'right', marginRight: '3%' }} onClick={this.onDeleteClick.bind(this)}>Delete</button>
+            <Button style={{ float: 'right', marginRight: '3%' }} onClick={this.onDeleteClick.bind(this)}>Delete</Button>
         )
     }
 
@@ -89,7 +90,7 @@ class PostForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div>
 
-                <button className='mdc-button mdc-button--raised button' style={{ float: 'right' }}>Save</button>
+                <Button style={{ float: 'right' }}>Save</Button>
                 {this.renderDeleteButton()}
             </FormWrapper>
         );

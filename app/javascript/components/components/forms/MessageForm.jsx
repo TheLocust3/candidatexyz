@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 
+import Button from '../base/Button';
 import { history } from '../../../constants';
 import MessageApi from '../../../api/message-api';
 
@@ -63,7 +64,7 @@ export default class MessageForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div><br /><br />
 
-                <button className='mdc-button mdc-button--raised sign-up-form-button'>Submit</button>
+                <Button className='sign-up-form-button'>Submit</Button>
             </FormWrapper>
         );
     }

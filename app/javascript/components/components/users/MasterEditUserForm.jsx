@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '../base/Button';
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
 
@@ -78,7 +79,7 @@ export default class MasterEditUserForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 {this.renderInputs()}<br />
 
-                <button className='mdc-button mdc-button--raised'>Save</button><br /><br />
+                <Button>Save</Button><br /><br />
             </FormWrapper>
         );
     }

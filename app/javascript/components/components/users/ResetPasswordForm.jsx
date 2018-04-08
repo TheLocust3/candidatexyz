@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '../base/Button';
 import { history } from '../../../constants';
 import AuthApi from '../../../api/auth-api';
 
@@ -53,7 +54,7 @@ export default class ResetPasswordForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 {this.renderInputs()}<br />
 
-                <button className='mdc-button mdc-button--raised'>Reset Password</button><br />
+                <Button>Reset Password</Button><br />
             </FormWrapper>
         );
     }

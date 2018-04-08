@@ -2,6 +2,7 @@ import _ from 'lodash'
 import React from 'react';
 import { MDCSelect } from '@material/select';
 
+import Button from '../base/Button';
 import ContentApi from '../../../api/content-api';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history, STATES } from '../../../constants';
@@ -183,7 +184,7 @@ export default class VolunteerForm extends React.Component {
                 <br />
                 <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
 
-                <button className='mdc-button mdc-button--raised sign-up-form-button'data-mdc-auto-init='MDCRipple'>Submit</button>
+                <Button className='sign-up-form-button'>Submit</Button>
 
                 <MDCAutoInit />
             </FormWrapper>

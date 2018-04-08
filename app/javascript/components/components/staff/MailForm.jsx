@@ -2,8 +2,8 @@ import _ from 'lodash'
 import React from 'react';
 import { MDCSelect } from '@material/select';
 
+import Button from '../base/Button';
 import MDCAutoInit from '../global/MDCAutoInit';
-
 import { history } from '../../../constants';
 import MailApi from '../../../api/mail-api';
 
@@ -48,7 +48,7 @@ export default class MailForm extends React.Component {
                     <div className='mdc-line-ripple'></div>
                 </div>
 
-                <button className='mdc-button mdc-button--raised' data-mdc-auto-init='MDCRipple' style={{ float: 'right' }}>Send</button>
+                <Button style={{ float: 'right' }}>Send</Button>
 
                 <MDCAutoInit />
             </FormWrapper>
