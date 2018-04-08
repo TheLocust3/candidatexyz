@@ -29,7 +29,7 @@ export default class SignInForm extends React.Component {
 
     handleSubmit(event) {
         AuthApi.signIn(this.state.email, this.state.password, this.state.rememberMe).then( response => {
-            window.location.href = '/home';
+            window.location.href = '/staff';
         }).catch( response => {
             this.setState({
                 error: response.responseJSON.error
