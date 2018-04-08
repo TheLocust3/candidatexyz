@@ -6,6 +6,8 @@ import { fetchPostType } from '../../actions/post-actions';
 import TextContent from '../../containers/content/TextContent';
 import NewsThumbnail from '../../containers/news/NewsThumbnail';
 
+import PanelWrapper from './PanelWrapper';
+
 class NewsPanel extends React.Component {
 
     componentDidMount() {
@@ -28,13 +30,13 @@ class NewsPanel extends React.Component {
 
     render() {
         return (
-            <div className='news-panel'>
+            <PanelWrapper className='news-panel' height='50vh'>
                 <div className='mdc-typography--display1 news-panel-headline'><b><TextContent identifier='newsPanelHeadline' /></b></div>
 
                 {this.renderNewsList()}
 
                 <center><Link to='/news'><button className='mdc-button mdc-button--raised button' data-mdc-auto-init='MDCRipple'><TextContent identifier='newsPanelButton' /></button></Link></center>
-            </div>
+            </PanelWrapper>
         );
     }
 }

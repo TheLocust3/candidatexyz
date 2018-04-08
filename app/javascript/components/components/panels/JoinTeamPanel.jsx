@@ -6,6 +6,8 @@ import ContentApi from '../../../api/content-api';
 import TextContent from '../../containers/content/TextContent';
 import ExternalLinkContent from '../../containers/content/ExternalLinkContent';
 
+import PanelWrapper from './PanelWrapper';
+
 export default class JoinTeamPanel extends React.Component {
 
     constructor(props) {
@@ -26,7 +28,7 @@ export default class JoinTeamPanel extends React.Component {
         if (_.isEmpty(this.state.imageUrl)) return null;
         
         return (
-            <div className='join-team-panel'>
+            <PanelWrapper className='join-team-panel'>
                 <Parallax strength={300} style={{ height: '60vh' }} bgStyle={{ width: '100%' }}>
                     <Background>
                         <img src={this.state.imageUrl} style={{ width: '100%', height: '100vh', objectFit: 'cover' }} />
@@ -43,7 +45,7 @@ export default class JoinTeamPanel extends React.Component {
                         </div>
                     </div>
                 </Parallax>
-            </div>
+            </PanelWrapper>
         );
     }
 }

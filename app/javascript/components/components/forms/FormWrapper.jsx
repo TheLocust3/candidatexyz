@@ -42,5 +42,8 @@ export default class FormWrapper extends React.Component {
 FormWrapper.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     errors: PropTypes.object,
-    children: PropTypes.arrayOf(PropTypes.element).isRequired
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.element),
+        PropTypes.element
+    ]).isRequired,
 };
