@@ -3,6 +3,7 @@ import React from 'react';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
+import TextArea from '../base/TextArea';
 import { history } from '../../../constants';
 import MessageApi from '../../../api/message-api';
 
@@ -42,11 +43,7 @@ export default class MessageForm extends React.Component {
 
                 <TextField label='Subject' name='subject' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
-                <div id='text-content' className='mdc-text-field mdc-text-field--textarea' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <textarea type='text' id='message' className='mdc-text-field__input' name='message' onChange={this.handleChange.bind(this)} rows='20' />
-                    <label className='mdc-text-field__label' htmlFor='message'>Message</label>
-                    <div className='mdc-line-ripple'></div>
-                </div><br /><br />
+                <TextArea label='Message' name='message' onChange={(event) => this.handleChange(event)} rows={20} style={{ width: '100%' }} /><br /><br />
 
                 <Button className='sign-up-form-button'>Submit</Button>
             </FormWrapper>

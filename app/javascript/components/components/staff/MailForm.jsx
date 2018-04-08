@@ -4,6 +4,7 @@ import { MDCSelect } from '@material/select';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
+import TextArea from '../base/TextArea';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
 import MailApi from '../../../api/mail-api';
@@ -39,11 +40,7 @@ export default class MailForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <TextField label='Subject' name='subject' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} />
 
-                <div className='mdc-text-field mdc-text-field--textarea' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <textarea type='text' id='body' name='body' className='mdc-text-field__input' rows={40} onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='body'>Body</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextArea label='Body' name='body' onChange={(event) => this.handleChange(event)} rows={40} style={{ width: '100%' }} />
 
                 <Button style={{ float: 'right' }}>Send</Button>
 

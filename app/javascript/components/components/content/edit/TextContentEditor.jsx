@@ -6,6 +6,7 @@ import { MDCTextField } from '@material/textfield';
 
 import Button from '../../base/Button';
 import TextField from '../../base/TextField';
+import TextArea from '../../base/TextArea';
 import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
 
@@ -19,21 +20,6 @@ class TextContentEditor extends React.Component {
         super(props);
 
         this.state = { content: props.content, oldContent: _.cloneDeep(this.props.content) };
-    }
-    
-    componentDidMount() {
-        this.setDefaultFieldValues();
-    }
-
-    componentDidUpdate() {
-        this.setDefaultFieldValues();
-    }
-
-    setDefaultFieldValues() {
-        if (this.props.content.content.text.length > TEXT_FIELD_CUTOFF) {
-            let textField = new MDCTextField(document.querySelector('#text-content'));
-            textField.value = this.props.content.content.text;
-        }
     }
 
     handleContentChange(event) {
@@ -60,11 +46,7 @@ class TextContentEditor extends React.Component {
         } else {
             return (
                 <div>
-                    <div id='text-content' className='mdc-text-field mdc-text-field--textarea' data-mdc-auto-init='MDCTextField' style={{ marginBottom: '-10vh' }}>
-                        <textarea type='text' id='text-content' className='mdc-text-field__input' onChange={this.handleContentChange.bind(this)} rows='20' cols='100' />
-                        <label className='mdc-text-field__label' htmlFor='text-content'>Text Content</label>
-                        <div className='mdc-line-ripple'></div>
-                    </div><br />
+                    <TextArea label='Text Content' onChange={(event) => this.handleContentChange(event)} defaultValue={this.props.content.content.text} rows={20} cols={100} style={{ marginBottom: '-10vh' }} /><br />
                 </div>
             )
         }

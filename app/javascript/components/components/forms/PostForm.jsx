@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
+import TextArea from '../base/TextArea';
 import { history } from '../../../constants';
 import PostApi from '../../../api/post-api';
 
@@ -73,11 +74,7 @@ class PostForm extends React.Component {
 
                 <TextField label='Image URL' name='image' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} /><br />
 
-                <div className='mdc-text-field mdc-text-field--textarea' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }}>
-                    <textarea type='text' id='body' name='body' className='mdc-text-field__input' defaultValue={this.state.post.body} rows={40} onChange={this.handleChange.bind(this)} />
-                    <label className='mdc-text-field__label' htmlFor='body'>Body</label>
-                    <div className='mdc-line-ripple'></div>
-                </div>
+                <TextArea label='Body' name='body' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.body} rows={40} style={{ width: '100%' }} />
 
                 <Button style={{ float: 'right' }}>Save</Button>
                 {this.renderDeleteButton()}
