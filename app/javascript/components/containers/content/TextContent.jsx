@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchContent, setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
+import { fetchContent, setEditingContent } from '../../actions/content-actions';
 
 class TextContent extends React.Component {
     
@@ -30,11 +30,10 @@ class TextContent extends React.Component {
         event.preventDefault();
 
         this.props.dispatch(setEditingContent(this.findContent()));
-        this.props.dispatch(setEditOverlayOpen(true));
     }
 
     render() {
-        let { identifier, contents, edit, dispatch, ...props } = this.props;
+        let { identifier, contents, edit, editOverlayOpen, isReady, dispatch, ...props } = this.props;
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
@@ -51,7 +50,9 @@ TextContent.propTypes = {
 function mapStateToProps(state) {
     return {
         contents: state.content.contents,
-        edit: state.content.edit
+        edit: state.content.edit,
+        editOverlayOpen: state.content.editOverlayOpen, // forces content to update whenever the edit dialog closes
+        isReady: state.content.isReady // same as above
     };
 }
 

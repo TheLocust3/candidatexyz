@@ -2,12 +2,9 @@ import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Switch } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
 
-import reducer from '../components/reducers/root-reducer';
-import { history } from '../constants';
+import { history, store } from '../constants';
 
 import Navbar from '../components/containers/common/Navbar';
 import Footer from '../components/components/Footer';
@@ -43,8 +40,6 @@ $.ajaxSetup({
     },
     dataType: 'json'
 });
-
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
 // Always start navigation at the top of the page
 const ScrollToTop = () => {

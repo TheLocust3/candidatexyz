@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { MDCTextField } from '@material/textfield';
 
 import ContentApi from '../../../../api/content-api';
-import { setEditOverlayOpen } from '../../../actions/content-actions';
+import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
 
 import FormWrapper from '../../forms/FormWrapper';
 
@@ -16,7 +16,7 @@ class TextContentEditor extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: props.content };
+        this.state = { content: props.content, oldContent: _.cloneDeep(this.props.content) };
     }
     
     componentDidMount() {
@@ -42,11 +42,8 @@ class TextContentEditor extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
-        ContentApi.update(this.props.content.identifier, this.state.content.content).then(() => {
-            location.reload();
-        });
+        this.props.dispatch(pushContentHistory(this.state.oldContent));
+        ContentApi.update(this.props.content.identifier, this.state.content.content);
 
         this.props.dispatch(setEditOverlayOpen(false));
     }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchContent, setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
+import { fetchContent, setEditingContent } from '../../actions/content-actions';
 
 class SimpleLinkContent extends React.Component {
 
@@ -31,7 +31,6 @@ class SimpleLinkContent extends React.Component {
         event.preventDefault();
 
         this.props.dispatch(setEditingContent(this.findContent()));
-        this.props.dispatch(setEditOverlayOpen(true));
     }
 
     render() {

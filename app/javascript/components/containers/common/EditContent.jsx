@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setEditOverlayOpen } from '../../actions/content-actions';
+import { setEditOverlayOpen, fetchAllContent } from '../../actions/content-actions';
 import TextContentEditor from '../../components/content/edit/TextContentEditor';
 import ImageContentEditor from '../../components/content/edit/ImageContentEditor';
 import LinkContentEditor from '../../components/content/edit/LinkContentEditor';
@@ -21,9 +21,10 @@ class EditContent extends React.Component {
         $(document).click((event) => { // TODO: find a better way to do this
             let target = event.target;
 
-            if (!$(event.target).parents().is(`#${this.props.content.identifier}`) && !$(event.target).parents().is('.editContentWrapper') && this.props.edit) {
+            if (!$(event.target).parents().is(`#${this.props.content.identifier}`) && !$(event.target).parents().is('.edit-content-wrapper') && this.props.edit) {
                 this.props.dispatch(setEditOverlayOpen(false));
-            } else if (!$(event.target).parents().is('.editContentWrapper')) {
+                this.props.dispatch(fetchAllContent());
+            } else if (!$(event.target).parents().is('.edit-content-wrapper')) {
                 this.setState({
                     top: event.pageY + 5,
                     left: event.pageX
@@ -43,6 +44,8 @@ class EditContent extends React.Component {
     }
 
     renderEditor() {
+        if (!this.props.editOverlayOpen) return;
+
         switch (this.props.content.contentType) {
             case 'text':
                 return <TextContentEditor content={this.props.content} />

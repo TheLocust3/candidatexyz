@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import * as ContentActions from '../actions/content-actions';
 
 const initialState = {
@@ -5,11 +7,13 @@ const initialState = {
     contents: [],
     edit: false,
     editOverlayOpen: false,
-    editingContent: { content: {} }
+    editingContent: { content: {} },
+    contentHistory: []
 };
 
 export function contentReducer(state = initialState, action) {
     switch (action.type) {
+        case ContentActions.REQUEST_POP_CONTENT_HISTORY:
         case ContentActions.REQUEST_ALL_CONTENT:
         case ContentActions.REQUEST_CONTENT:
             return Object.assign({}, state, {
@@ -35,7 +39,19 @@ export function contentReducer(state = initialState, action) {
             });
         case ContentActions.SET_EDITING_CONTENT:
             return Object.assign({}, state, {
-                editingContent: action.data
+                editingContent: action.data,
+                editOverlayOpen: true
+            });
+        case ContentActions.PUSH_CONTENT_HISTORY:
+            return Object.assign({}, state, {
+                contentHistory: [...state.contentHistory, action.data]
+            });
+        case ContentActions.POP_CONTENT_HISTORY:
+            let contentHistory = _.slice(state.contentHistory, 0, state.contentHistory.length - 1);
+
+            return Object.assign({}, state, {
+                contentHistory: contentHistory,
+                isReady: true
             });
         default:
             return state;

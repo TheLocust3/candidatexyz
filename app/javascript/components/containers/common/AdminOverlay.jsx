@@ -9,7 +9,7 @@ import { MDCMenu } from '@material/menu';
 
 import { history } from '../../../constants';
 import { fetchCurrentUser } from '../../actions/staff-actions';
-import { setEdit } from '../../actions/content-actions';
+import { setEdit, popContentHistory } from '../../actions/content-actions';
 import AuthApi from '../../../api/auth-api';
 
 import EditContent from './EditContent';
@@ -35,6 +35,10 @@ class AdminOverlay extends React.Component {
         
         const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
         snackbar.show({ message: 'Edit Mode', timeout: 999999999, actionText: 'Done', actionHandler: this.onDoneClick.bind(this) }); // TODO: bit of a hack
+    }
+
+    onUndoClick(event) {
+        this.props.dispatch(popContentHistory());
     }
 
     onDoneClick(event) {
@@ -67,11 +71,21 @@ class AdminOverlay extends React.Component {
     }
 
     renderButtons() {
-        if (this.props.edit) return;
+        if (this.props.edit) {
+            return (
+                <div>
+                    <button className='mdc-fab material-icons overlay-action-icon' aria-label='Undo' onClick={this.onUndoClick.bind(this)} data-mdc-auto-init='MDCRipple'>
+                        <span className='mdc-fab__icon'>
+                            undo
+                        </span>
+                    </button>
+                </div>
+            )
+        }
 
         return (
             <div>
-                <button className='mdc-fab material-icons overlayActionIcon' aria-label='Edit' onClick={this.onEditClick.bind(this)} data-mdc-auto-init='MDCRipple'>
+                <button className='mdc-fab material-icons overlay-action-icon' aria-label='Edit' onClick={this.onEditClick.bind(this)} data-mdc-auto-init='MDCRipple'>
                     <span className='mdc-fab__icon'>
                         edit
                     </span>
@@ -89,11 +103,11 @@ class AdminOverlay extends React.Component {
 
                 {this.renderEditSnackbar()}
 
-                <div className='overlayActionsLeft'>
+                <div className='overlay-actions-left'>
                     {this.renderButtons()}
                 </div>
 
-                <div className='overlayActionsRight'>
+                <div className='overlay-actions-right'>
                     <Link to='/staff/mail' style={{ marginRight: '5%' }}>
                         <button className='mdc-fab material-icons' aria-label='Mail' data-mdc-auto-init='MDCRipple'>
                             <span className='mdc-fab__icon'>
@@ -158,6 +172,7 @@ function mapStateToProps(state) {
         isReady: state.staff.isReady,
         user: state.staff.currentUser,
         edit: state.content.edit,
+        contentHistory: state.content.contentHistory
     };
 }
 

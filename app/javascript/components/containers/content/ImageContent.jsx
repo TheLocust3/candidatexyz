@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchContent, setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
+import { fetchContent, setEditingContent } from '../../actions/content-actions';
 
 class ImageContent extends React.Component {
 
@@ -30,7 +30,6 @@ class ImageContent extends React.Component {
         event.preventDefault();
 
         this.props.dispatch(setEditingContent(this.findContent()));
-        this.props.dispatch(setEditOverlayOpen(true));
     }
 
     render() {

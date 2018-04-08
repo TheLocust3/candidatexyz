@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Slideshow from '../../components/common/Slideshow';
-import { fetchContent, setEditingContent, setEditOverlayOpen } from '../../actions/content-actions';
+import { fetchContent, setEditingContent } from '../../actions/content-actions';
 
 class SlideshowContent extends React.Component {
 
@@ -37,7 +37,6 @@ class SlideshowContent extends React.Component {
         event.preventDefault();
 
         this.props.dispatch(setEditingContent(this.findContent()));
-        this.props.dispatch(setEditOverlayOpen(true));
     }
 
     render() {
