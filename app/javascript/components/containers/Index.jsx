@@ -5,12 +5,10 @@ import { connect } from 'react-redux';
 import { fetchHeaderImage, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 
-import TextContent from './content/TextContent';
-import SlideshowContent from './content/SlideshowContent';
 import JoinCard from '../components/common/JoinCard';
 import NewsPanel from '../components/panels/NewsPanel';
 import JoinTeamPanel from '../components/panels/JoinTeamPanel';
-import Slideshow from '../components/common/Slideshow';
+import SlideshowPanel from '../components/panels/SlideshowPanel';
 
 class Index extends React.Component {
 
@@ -31,13 +29,7 @@ class Index extends React.Component {
                 <JoinCard />
 
                 <div className='content'>
-                    <SlideshowContent identifier='indexSlideshow'>
-                        <div className='mdc-typography--headline'>
-                            <b><TextContent identifier='slideshowBlurb' /></b>
-                        </div><br />
-
-                        <Link to='/meet' className='link'><div className='mdc-typography--headline'><TextContent identifier='slideshowLink' /></div></Link>
-                    </SlideshowContent>
+                    <SlideshowPanel />
 
                     <NewsPanel />
                     <JoinTeamPanel />

@@ -64,7 +64,7 @@ class PostForm extends React.Component {
 
     render() {
         return (
-            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='issues'>                
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content-bottom content-15'>
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
                     <input type='text' id='title' name='title' className='mdc-text-field__input' defaultValue={this.state.post.title} />
                     <label className='mdc-text-field__label' htmlFor='title'>Title</label>

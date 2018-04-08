@@ -32,7 +32,7 @@ export default class MessageForm extends React.Component {
 
     render() {
         return (
-            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='message-form'>
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content-bottom content-15'>
                 <div className='mdc-text-field' data-mdc-auto-init='MDCTextField' style={{ width: '47.5%', marginRight: '5%' }}>
                     <input type='text' id='first-name' className='mdc-text-field__input' name='firstName' onChange={this.handleChange.bind(this)} required />
                     <label className='mdc-text-field__label' htmlFor='first-name'>First name</label>
