@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../base/Button';
+import Checkbox from '../base/Checkbox';
 import TextField from '../base/TextField';
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
@@ -46,18 +47,7 @@ export default class MasterEditUserForm extends React.Component {
                 <TextField label='First name' name='firstName' onChange={(event) => this.handleChange(event)} defaultValue={this.state.firstName} style={{ width: '47.5%', marginRight: '5%' }} />
                 <TextField label='Last name' name='lastName' onChange={(event) => this.handleChange(event)} defaultValue={this.state.lastName} style={{ width: '47.5%' }} /><br />
 
-                <div className='mdc-checkbox'>
-                    <input type='checkbox' className='mdc-checkbox__native-control' onChange={this.handleAdminCheck.bind(this)} defaultChecked={this.state.admin} />
-                    <div className='mdc-checkbox__background'>
-                        <svg className='mdc-checkbox__checkmark' viewBox='0 0 24 24'>
-                            <path className='mdc-checkbox__checkmark-path' fill='none' stroke='white' d='M1.73,12.91 8.1,19.28 22.79,4.59' />
-                        </svg>
-
-                        <div className='mdc-checkbox__mixedmark' />
-                    </div>
-                </div>
-
-                <label className='checkboxLabel'>Admin</label>
+                <Checkbox label='Admin' onChange={this.handleAdminCheck.bind(this)} defaultChecked={this.state.admin} />
             </div>
         );
     }
