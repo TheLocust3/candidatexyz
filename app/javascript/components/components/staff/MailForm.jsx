@@ -4,7 +4,7 @@ import { MDCSelect } from '@material/select';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
-import TextArea from '../base/TextArea';
+import TextEditor from '../base/TextEditor';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
 import MailApi from '../../../api/mail-api';
@@ -25,6 +25,12 @@ export default class MailForm extends React.Component {
         });
     }
 
+    handleEditorChange(body) {
+        this.setState({
+            body: body
+        });
+    }
+
     handleSubmit(event) {
         MailApi.sendToContacts(this.state.subject, this.state.body).then(() => {
             history.push('/home');
@@ -40,7 +46,7 @@ export default class MailForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <TextField label='Subject' name='subject' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} />
 
-                <TextArea label='Body' name='body' onChange={(event) => this.handleChange(event)} rows={40} style={{ width: '100%' }} />
+                <TextEditor header='Body' onChange={(text) => { this.handleEditorChange(text) }} />
 
                 <Button style={{ float: 'right' }}>Send</Button>
 

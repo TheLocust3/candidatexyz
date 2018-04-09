@@ -1,0 +1,27 @@
+.editor {
+    margin-top: 3%;
+}
+
+.editor-editor {
+    height: 40vh;
+    margin-bottom: 3%;
+
+    border: 1px solid grey;
+    cursor: text;
+}
+
+.editor-buttons {
+    width: 100%;
+}
+
+.editor-button {
+    margin-left: 1%;
+    margin-right: 1%;
+
+    color: grey;
+    cursor: pointer;
+}
+
+.editor-button:hover {
+    color: black;
+}

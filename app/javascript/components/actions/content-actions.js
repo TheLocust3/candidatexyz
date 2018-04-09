@@ -83,7 +83,6 @@ export function popContentHistory() {
     return function (dispatch) {
         dispatch(requestPopContent());
 
-        console.log(store.getState().content.contentHistory)
         let content = store.getState().content.contentHistory[store.getState().content.contentHistory.length - 1];
         ContentApi.update(content.identifier, content.content).then(() => {
             dispatch(updatePoppedContent());

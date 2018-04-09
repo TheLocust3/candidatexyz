@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Button from '../base/Button';
 import TextField from '../base/TextField';
 import TextArea from '../base/TextArea';
+import TextEditor from '../base/TextEditor';
 import { history } from '../../../constants';
 import PostApi from '../../../api/post-api';
 
@@ -25,6 +26,15 @@ class PostForm extends React.Component {
     handleChange(event) {
         let post = this.state.post;
         post[event.target.name] = event.target.value;
+
+        this.setState({
+            post: post
+        });
+    }
+
+    handleEditorChange(body) {
+        let post = this.state.post;
+        post.body = body;
 
         this.setState({
             post: post
@@ -72,9 +82,9 @@ class PostForm extends React.Component {
 
                 <TextField label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} /><br />
 
-                <TextField label='Image URL' name='image' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} /><br />
+                <TextField label='Image URL' name='image' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.image} style={{ width: '100%' }} /><br />
 
-                <TextArea label='Body' name='body' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.body} rows={40} style={{ width: '100%' }} />
+                <TextEditor header='Body' onChange={(text) => { this.handleEditorChange(text) }} />
 
                 <Button style={{ float: 'right' }}>Save</Button>
                 {this.renderDeleteButton()}
