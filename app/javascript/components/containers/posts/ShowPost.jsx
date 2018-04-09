@@ -49,7 +49,7 @@ class ShowPost extends React.Component {
     }
 
     findPost(props) {
-        let post = _.find(props.posts, { postType: props.postType, url: props.url })
+        let post = _.find(props.posts, { postType: props.postType, url: props.url });
 
         if (_.isEmpty(post)) {
             return { }
@@ -85,7 +85,7 @@ class ShowPost extends React.Component {
     renderTitle() {
         if (_.isEmpty(this.state.post.title)) return;
 
-        let titleClassName = this.props.renderAsIssue ? 'floating-title' : '';
+        let titleClassName = this.props.renderAsIssue && !_.isEmpty(this.state.post.image) ? 'floating-title' : '';
 
         return (
             <div className={titleClassName}>

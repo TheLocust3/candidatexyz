@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 import { MDCSelect } from '@material/select';
+import { Editor } from 'react-draft-wysiwyg';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
@@ -46,7 +47,7 @@ export default class MailForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <TextField label='Subject' name='subject' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} />
 
-                <TextEditor header='Body' onChange={(text) => { this.handleEditorChange(text) }} />
+                <TextEditor label='Body' onChange={(text) => { this.handleEditorChange(text) }} />
 
                 <Button style={{ float: 'right' }}>Send</Button>
 

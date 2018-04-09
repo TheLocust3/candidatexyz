@@ -15,15 +15,29 @@ class Select extends React.Component {
         select.listen('MDCSelect:change', () => {
             this.props.onChange(select);
         });
+
+        if (this.props.selectedIndex != null) {
+            select.selectedIndex = this.props.selectedIndex;
+        }
+    }
+
+    renderLabel() {
+        let floatClassName = this.props.selectedIndex == null ? '' : 'mdc-select__label--float-above';
+
+        return (
+            <div className={`mdc-select__label ${floatClassName}`}>
+                {this.props.label}
+            </div>
+        )
     }
 
     render() {
-        let { className, label, onChange, children, ...props } = this.props;
+        let { className, label, onChange, selectedIndex, children, ...props } = this.props;
 
         return (
             <div className={`mdc-select ${className}`} id={this.state.uuid} role='listbox' data-mdc-auto-init='MDCSelect' {...props}>
                 <div className='mdc-select__surface' tabIndex='0'>
-                    <div className='mdc-select__label'>{label}</div>
+                    {this.renderLabel()}
                     <div className='mdc-select__selected-text' />
                     <div className='mdc-select__bottom-line' />
                 </div>
@@ -42,6 +56,7 @@ Select.propTypes = {
     className: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func.isRequired,
+    selectedIndex: PropTypes.number,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.element),
         PropTypes.element
