@@ -4,6 +4,8 @@ import { MDCSelect } from '@material/select';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
+import Select from '../base/Select';
+import SelectItem from '../base/SelectItem';
 import ContentApi from '../../../api/content-api';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history, STATES } from '../../../constants';
@@ -20,26 +22,6 @@ export default class VolunteerForm extends React.Component {
     }
 
     componentDidMount() {
-        const stateSelect = new MDCSelect(document.querySelector('#state-select'));
-        stateSelect.listen('MDCSelect:change', () => {
-            this.setState({
-                state: stateSelect.value
-            });
-        });
-
-        const helpSelect = new MDCSelect(document.querySelector('#help-select'));
-        helpSelect.listen('MDCSelect:change', () => {
-            let otherOpened = false;
-            if (helpSelect.value == 'Other') {
-                otherOpened = true;
-            }
-
-            this.setState({
-                helpBlurb: helpSelect.value,
-                otherOpened: otherOpened
-            });
-        });
-
         ContentApi.get('voluneteerHelpOptions').then((response) => {
             let helpOptions = _.split(response.content, ',');
             helpOptions.push('Other');
@@ -47,6 +29,24 @@ export default class VolunteerForm extends React.Component {
             this.setState({
                 helpOptions: helpOptions
             });
+        });
+    }
+
+    handleStateChange(select) {
+        this.setState({
+            state: select.value
+        });
+    }
+
+    handleHelpChange(select) {
+        let otherOpened = false;
+        if (select.value == 'Other') {
+            otherOpened = true;
+        }
+
+        this.setState({
+            helpBlurb: select.value,
+            otherOpened: otherOpened
         });
     }
 
@@ -68,49 +68,29 @@ export default class VolunteerForm extends React.Component {
 
     renderStateDropdown() {
         return (
-            <div className='mdc-select' id='state-select' role='listbox' style={{ width: '30%' }} data-mdc-auto-init='MDCSelect'>
-                <div className='mdc-select__surface' tabIndex='0'>
-                    <div className='mdc-select__label'>State</div>
-                    <div className='mdc-select__selected-text' />
-                    <div className='mdc-select__bottom-line' />
-                </div>
-
-                <div className='mdc-menu mdc-select__menu'>
-                    <ul className='mdc-list mdc-menu__items'>
-                        {STATES.map((state) => {
-                            return (
-                                <li key={state} className='mdc-list-item' role='option' tabIndex='0'>
-                                    {state}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-            </div>
+            <Select label='State' onChange={(select) => this.handleStateChange(select)} style={{ width: '30%' }}>
+                {STATES.map((state) => {
+                    return (
+                        <SelectItem key={state}>
+                            {state}
+                        </SelectItem>
+                    );
+                })}
+            </Select>
         )
     }
 
     renderHelpOptionsDropdown() {
         return (
-            <div className='mdc-select' id='help-select' role='listbox' style={{ width: '30%' }} data-mdc-auto-init='MDCSelect'>
-                <div className='mdc-select__surface' tabIndex='0'>
-                    <div className='mdc-select__label'>How can you help?</div>
-                    <div className='mdc-select__selected-text' />
-                    <div className='mdc-select__bottom-line' />
-                </div>
-
-                <div className='mdc-menu mdc-select__menu'>
-                    <ul className='mdc-list mdc-menu__items'>
-                        {this.state.helpOptions.map((help) => {
-                            return (
-                                <li key={help} className='mdc-list-item' role='option' tabIndex='0'>
-                                    {help}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-            </div>
+            <Select label='How can you help?' onChange={(select) => this.handleHelpChange(select)} style={{ width: '30%' }}>
+                {this.state.helpOptions.map((help) => {
+                    return (
+                        <SelectItem key={help}>
+                            {help}
+                        </SelectItem>
+                    );
+                })}
+            </Select>
         )
     }
 
