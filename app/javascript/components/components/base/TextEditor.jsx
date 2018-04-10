@@ -22,6 +22,14 @@ class TextEditor extends React.Component {
         }
     }
 
+    setEditorReference(ref) {
+        this.editorReference = ref;
+    }
+
+    onEditorClick() {
+        this.editorReference.focus();
+    }
+
     handleChange(editorState) {
         this.setState({
             editorState: editorState
@@ -37,7 +45,12 @@ class TextEditor extends React.Component {
             <div className='editor'>
                 <div className='mdc-typography--headline'>{label}</div><br />
 
-                <Editor wrapperClassName='editor-wrapper' editorClassName='editor-editor' toolbarClassName='editor-toolbar' editorState={this.state.editorState} onEditorStateChange={(editorState) => this.handleChange(editorState)} toolbar={{ options: [ 'inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'link', 'image', 'history' ] }} {...props}  />
+                <div onClick={this.onEditorClick.bind(this)}>
+                    <Editor wrapperClassName='editor-wrapper' editorClassName='editor-editor' toolbarClassName='editor-toolbar'
+                        editorState={this.state.editorState} onEditorStateChange={(editorState) => this.handleChange(editorState)}
+                        toolbar={{ options: [ 'inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'link', 'image', 'history' ] }}
+                        editorRef={(ref) => this.setEditorReference(ref)} {...props} />
+                </div>
             </div>
         );
     }
