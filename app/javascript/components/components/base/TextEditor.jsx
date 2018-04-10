@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, ContentState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
 
 class TextEditor extends React.Component {
@@ -9,7 +10,16 @@ class TextEditor extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { editorState: EditorState.createEmpty() };
+        if (_.isEmpty(this.props.content)) {
+            this.state = { editorState: EditorState.createEmpty() };
+        } else {
+            let blocksFromHtml = htmlToDraft(props.content);
+            let { contentBlocks, entityMap } = blocksFromHtml;
+            let contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
+            let editorState = EditorState.createWithContent(contentState);
+
+            this.state = { editorState: editorState };
+        }
     }
 
     handleChange(editorState) {
@@ -35,7 +45,8 @@ class TextEditor extends React.Component {
 
 TextEditor.propTypes = {
     label: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    content: PropTypes.string
 };
 
 export default TextEditor;

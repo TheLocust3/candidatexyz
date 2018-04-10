@@ -84,7 +84,7 @@ class PostForm extends React.Component {
 
                 <TextField label='Image URL' name='image' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.image} style={{ width: '100%' }} /><br />
 
-                <TextEditor label='Body' onChange={(text) => { this.handleEditorChange(text) }} />
+                <TextEditor label='Body' content={this.state.post.body} onChange={(text) => { this.handleEditorChange(text) }} />
 
                 <Button style={{ float: 'right' }}>Save</Button>
                 {this.renderDeleteButton()}

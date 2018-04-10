@@ -17,3 +17,21 @@
 .editor-toolbar {
     border-bottom: 1px solid grey;
 }
+
+// react-draft-wsysiwyg styling
+
+.rdw-option-wrapper {
+    border: 1px solid grey;
+}
+
+.rdw-option-wrapper:hover {
+    box-shadow: 2px 2px 0px #BFBDBD;
+}
+
+.rdw-dropdown-wrapper {
+    border: 1px solid grey;
+}
+
+.rdw-dropdown-wrapper:hover {
+    box-shadow: 2px 2px 0px #BFBDBD;
+}
