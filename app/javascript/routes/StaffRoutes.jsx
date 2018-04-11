@@ -18,6 +18,7 @@ import Volunteer from '../components/containers/volunteers/Volunteer';
 import StaffOverview from '../components/containers/staff/StaffOverview';
 import MessageOverview from '../components/containers/staff/MessageOverview';
 import ShowMessage from '../components/containers/staff/ShowMessage';
+import UploadImage from '../components/containers/staff/UploadImage';
 
 class StaffRoutes extends React.Component {
 
@@ -41,6 +42,7 @@ class StaffRoutes extends React.Component {
                 <Route exact path='/staff/invite' component={InviteStaff} />
                 <Route exact path='/staff/volunteers' component={VolunteerOverview} />
                 <Route exact path='/staff/volunteers/:id' component={Volunteer} />
+                <Route exact path='/staff/images' component={UploadImage} />
 
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
                 <Route exact path='/posts/:postType/new' component={CreatePost} />
