@@ -6,6 +6,7 @@ import { volunteerReducer } from './volunteer-reducer';
 import { contentReducer } from './content-reducer';
 import { messageReducer } from './message-reducer';
 import { postReducer } from './post-reducer';
+import { imageReducer } from './image-reducer';
 import { globalReducer } from './global-reducer';
 
 const reducer = combineReducers({
@@ -15,6 +16,7 @@ const reducer = combineReducers({
     content: contentReducer,
     messages: messageReducer,
     posts: postReducer,
+    images: imageReducer,
     global: globalReducer
 });
 

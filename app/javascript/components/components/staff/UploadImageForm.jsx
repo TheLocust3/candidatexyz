@@ -4,6 +4,7 @@ import React from 'react';
 import Button from '../base/Button';
 import TextField from '../base/TextField';
 import { history } from '../../../constants';
+import ImageApi from '../../../api/image-api';
 
 import FormWrapper from '../forms/FormWrapper';
 
@@ -27,13 +28,19 @@ export default class MessageForm extends React.Component {
 
         reader.onload = (file) => {
             this.setState({
-                image: file.target.result
+                image: file.target.result.replace(/^data:image\/(png|jpg|jpeg|gif);base64,/, '')
             });
         };
     }
 
     handleSubmit(event) {
-        console.log(this.state);
+        ImageApi.create(this.state.identifier, this.state.image).then(() => {
+            history.push('/staff/images');
+        }).catch((response) => {
+            this.setState({
+                errors: response.responseJSON.errors
+            });
+        });
     }
 
     render() {

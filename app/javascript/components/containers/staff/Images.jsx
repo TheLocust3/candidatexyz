@@ -3,23 +3,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
+import { fetchAllImages } from '../../actions/image-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
-import UploadImageForm from '../../components/staff/UploadImageForm';
+import ImageList from '../../components/staff/ImageList';
 
-class UploadImage extends React.Component {
+class Images extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Upload Image'));
         this.props.dispatch(setBlankNavbar(true));
+        this.props.dispatch(fetchAllImages());
     }
-    
+
     render() {
         return (
             <div className='content-bottom content-10'>
-                <div className='mdc-typography--display2'>Upload Image</div><br />
+                <div className='mdc-typography--display2'>Image List</div><br />
                 
-                <UploadImageForm />
+                <ImageList images={this.props.images} />
 
                 <MDCAutoInit />
             </div>
@@ -27,4 +29,10 @@ class UploadImage extends React.Component {
     }
 }
 
-export default connect()(UploadImage);
+function mapStateToProps(state) {
+    return {
+        images: state.images.images,
+    };
+}
+
+export default connect(mapStateToProps)(Images);

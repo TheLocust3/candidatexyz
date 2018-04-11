@@ -13,7 +13,7 @@ class Api::ImagesController < Api::ApiController
     def create
         image = Image.new(create_params(params))
 
-        # TODO: Image upload code
+        File.open("#{Rails.root}/public/images/#{image.identifier}", 'wb') { |file| file.write(Base64.decode64(params[:image])) }
 
         if image.save
             render :json => Image.find(image.id)
@@ -25,7 +25,7 @@ class Api::ImagesController < Api::ApiController
     def update
         image = Image.where( :identifier => params[:identifier] ).first
 
-        # TODO: Image upload code
+        File.open("#{Rails.root}/public/images/#{image.identifier}", 'wb') { |file| file.write(Base64.decode64(params[:image])) }
 
         if image.update(update_params(params))
             render :json => Image.find(image.id)
