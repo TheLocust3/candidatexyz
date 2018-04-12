@@ -199,4 +199,4 @@ Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales
 <p>")
 
 # default themes
-Theme.create(name: 'Material', class_name_prefix: 'mdc')
+Theme.create(name: 'Material', class_name_prefix: 'mdc-')

@@ -12,9 +12,9 @@ let ThemeApi = {
         });
     },
 
-    get(id) {
+    get(name) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/themes/${id}`, {
+            $.ajax(`/api/themes/${name}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -33,9 +33,9 @@ let ThemeApi = {
         });
     },
 
-    update(id, name, styling) {
+    update(name, styling) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/themes/${id}`, {
+            $.ajax(`/api/themes/${name}`, {
                 type: 'patch',
                 data: { name: name, styling: styling },
                 success: resolve,
@@ -44,9 +44,9 @@ let ThemeApi = {
         });
     },
 
-    destroy(id) {
+    destroy(name) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/themes/${id}`, {
+            $.ajax(`/api/themes/${name}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject

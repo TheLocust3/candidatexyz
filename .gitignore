@@ -24,3 +24,5 @@ tmp/
 terraform.tfstate*
 
 /public/images
+
+.DS_Store

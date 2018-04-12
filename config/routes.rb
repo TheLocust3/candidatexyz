@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     patch 'staff/:id' => 'users/users#update'
     delete 'staff/:id' => 'users/users#destroy'
 
-    resources :themes
+    resources :themes, param: :name
 
     delete 'contacts/unsubscribe' => 'contacts#unsubscribe'
     resources :contacts

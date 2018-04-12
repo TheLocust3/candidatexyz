@@ -7,7 +7,7 @@ class Api::ThemesController < Api::ApiController
     end
 
     def show
-        render :json => Theme.find(params[:id])
+        render :json => Theme.where( name: params[:name]).first
     end
 
     def create
@@ -21,7 +21,7 @@ class Api::ThemesController < Api::ApiController
     end
 
     def update
-        theme = Theme.find(params[:id])
+        theme = Theme.where( name: params[:name]).first
 
         if theme.save
             render :json => Theme.find(theme.id)
@@ -31,7 +31,7 @@ class Api::ThemesController < Api::ApiController
     end
 
     def destroy
-        theme = Theme.find(params[:id])
+        theme = Theme.where( name: params[:name]).first
         theme.destroy
 
         render_success

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Button extends React.Component {
 
     render() {
-        let { className, condensed, children, ...props } = this.props;
+        let { className, condensed, children, theme, dispatch, ...props } = this.props;
 
         let buttonDenseClassName = condensed ? 'mdc-button--dense' : '';
 
@@ -23,7 +24,13 @@ Button.propTypes = {
         PropTypes.arrayOf(PropTypes.element),
         PropTypes.element,
         PropTypes.string
-    ]).isRequired,
+    ]).isRequired
 };
 
-export default Button;
+function mapStateToProps(state) {
+    return {
+        theme: state.themes.globalTheme,
+    };
+}
+
+export default connect(mapStateToProps)(Button);
