@@ -34,9 +34,12 @@ let ImageApi = {
 
         return new Promise((resolve, reject) => {
             reader.onload = (file) => {
+                let image = file.target.result;
+                image = image.substring(image.indexOf('base64,') + 7, image.length);
+                
                 $.ajax('/api/images', {
                     type: 'post',
-                    data: { identifier: readId, image: file.target.result.replace(/^data:image\/(png|jpg|jpeg|gif);base64,/, '') },
+                    data: { identifier: readId, image: image },
                     success: resolve,
                     error: reject
                 });
