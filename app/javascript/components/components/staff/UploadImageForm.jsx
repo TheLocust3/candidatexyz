@@ -23,14 +23,9 @@ export default class MessageForm extends React.Component {
     }
 
     handleImageUpload(event) {
-        let reader = new FileReader();
-        reader.readAsDataURL(event.target.files[0])
-
-        reader.onload = (file) => {
-            this.setState({
-                image: file.target.result.replace(/^data:image\/(png|jpg|jpeg|gif);base64,/, '')
-            });
-        };
+        this.setState({
+            image: event.target.files[0]
+        });
     }
 
     handleSubmit(event) {

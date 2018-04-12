@@ -4,6 +4,11 @@
     margin-bottom: 5%;
 }
 
+.post img {
+    width: 100% !important; // override draft-js-to-html styling
+    height: auto;
+}
+
 .post-image {
     width: 100%;
 }

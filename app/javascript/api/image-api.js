@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import $ from 'jquery';
 
 let ImageApi = {
@@ -22,14 +23,24 @@ let ImageApi = {
         });
     },
 
-    create(identifier, image) {
+    create(identifier, file) {
+        let readId = identifier;
+        if (_.isEmpty(readId)) {
+            readId = Math.round(Math.random() * 1000000) // TODO: Find a better way to do this
+        }
+        
+        let reader = new FileReader();
+        reader.readAsDataURL(file)
+
         return new Promise((resolve, reject) => {
-            $.ajax('/api/images', {
-                type: 'post',
-                data: { identifier: identifier, image: image },
-                success: resolve,
-                error: reject
-            });
+            reader.onload = (file) => {
+                $.ajax('/api/images', {
+                    type: 'post',
+                    data: { identifier: readId, image: file.target.result.replace(/^data:image\/(png|jpg|jpeg|gif);base64,/, '') },
+                    success: resolve,
+                    error: reject
+                });
+            };
         });
     },
 

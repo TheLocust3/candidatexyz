@@ -5,6 +5,8 @@ import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
 
+import ImageApi from '../../../api/image-api';
+
 class TextEditor extends React.Component {
 
     constructor(props) {
@@ -24,6 +26,16 @@ class TextEditor extends React.Component {
 
     setEditorReference(ref) {
         this.editorReference = ref;
+    }
+
+    uploadImage(file) {
+        return ImageApi.create(null, file).then((image) => {
+            return { data: { link: `/images/${image.identifier}` } }
+        }).catch((response) => {
+            this.setState({
+                errors: response.responseJSON.errors
+            });
+        });
     }
 
     onEditorClick() {
@@ -48,7 +60,7 @@ class TextEditor extends React.Component {
                 <div onClick={this.onEditorClick.bind(this)}>
                     <Editor wrapperClassName='editor-wrapper' editorClassName='editor-editor' toolbarClassName='editor-toolbar'
                         editorState={this.state.editorState} onEditorStateChange={(editorState) => this.handleChange(editorState)}
-                        toolbar={{ options: [ 'inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'link', 'image', 'history' ] }}
+                        toolbar={{ options: [ 'inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'link', 'image', 'history' ], image: { uploadEnabled: true, uploadCallback: (image) => { return this.uploadImage(image) } } }}
                         editorRef={(ref) => this.setEditorReference(ref)} {...props} />
                 </div>
             </div>
