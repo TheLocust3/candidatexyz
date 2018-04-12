@@ -7,6 +7,7 @@ import { contentReducer } from './content-reducer';
 import { messageReducer } from './message-reducer';
 import { postReducer } from './post-reducer';
 import { imageReducer } from './image-reducer';
+import { themeReducer } from './theme-reducer';
 import { globalReducer } from './global-reducer';
 
 const reducer = combineReducers({
@@ -17,6 +18,7 @@ const reducer = combineReducers({
     messages: messageReducer,
     posts: postReducer,
     images: imageReducer,
+    themes: themeReducer,
     global: globalReducer
 });
 
