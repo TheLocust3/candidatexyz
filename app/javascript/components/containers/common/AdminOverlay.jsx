@@ -7,7 +7,7 @@ import { MDCSnackbar } from '@material/snackbar';
 import { Link } from 'react-router-dom';
 import { MDCMenu } from '@material/menu';
 
-import Button from '../../components/base/Button';
+import Fab from '../../components/base/Fab';
 import { history } from '../../../constants';
 import { fetchCurrentUser } from '../../actions/staff-actions';
 import { setEdit, popContentHistory } from '../../actions/content-actions';
@@ -75,22 +75,22 @@ class AdminOverlay extends React.Component {
         if (this.props.edit) {
             return (
                 <div>
-                    <Button className='material-icons overlay-action-icon' fab={true} aria-label='Undo' onClick={this.onUndoClick.bind(this)}>
+                    <Fab className='material-icons overlay-action-icon' aria-label='Undo' onClick={this.onUndoClick.bind(this)}>
                         <span className='mdc-fab__icon'>
                             undo
                         </span>
-                    </Button>
+                    </Fab>
                 </div>
             )
         }
 
         return (
             <div>
-                <Button className='material-icons overlay-action-icon' fab={true} aria-label='Edit' onClick={this.onEditClick.bind(this)}>
+                <Fab className='material-icons overlay-action-icon' aria-label='Edit' onClick={this.onEditClick.bind(this)}>
                     <span className='mdc-fab__icon'>
                         edit
                     </span>
-                </Button>
+                </Fab>
             </div>
         )
     }
@@ -110,18 +110,18 @@ class AdminOverlay extends React.Component {
 
                 <div className='overlay-actions-right'>
                     <Link to='/staff/mail' style={{ marginRight: '5%' }}>
-                        <Button className='material-icons' fab={true} aria-label='Mail'>
+                        <Fab className='material-icons' aria-label='Mail'>
                             <span className='mdc-fab__icon'>
                                 mail
                             </span>
-                        </Button>
+                        </Fab>
                     </Link>
 
-                    <Button className='material-icons' fab={true} aria-label='Settings' onClick={this.onSettingsClick.bind(this)}>
+                    <Fab className='material-icons' aria-label='Settings' onClick={this.onSettingsClick.bind(this)}>
                         <span className='mdc-fab__icon'>
                             settings
                         </span>
-                    </Button>
+                    </Fab>
 
                     <div className='mdc-menu-anchor'>
                         <div id='admin-overlay-settings' className='mdc-menu' tabIndex='-1'>

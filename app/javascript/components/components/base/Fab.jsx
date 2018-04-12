@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Button extends React.Component {
+class Fab extends React.Component {
 
     render() {
         let { className, condensed, children, ...props } = this.props;
 
-        let buttonDenseClassName = condensed ? 'mdc-button--dense' : '';
+        let fabMiniClassName = condensed ? 'mdc-fab--mini' : '';
 
         return (
-            <button className={`mdc-button mdc-button--raised button ${buttonDenseClassName} ${className}`} data-mdc-auto-init='MDCRipple' {...props}>
+            <button className={`mdc-fab ${fabMiniClassName} ${className}`} data-mdc-auto-init='MDCRipple' {...props}>
                 {children}
             </button>
         );
     }
 }
 
-Button.propTypes = {
+Fab.propTypes = {
     className: PropTypes.string,
     condensed: PropTypes.bool,
     children: PropTypes.oneOfType([
@@ -26,4 +26,4 @@ Button.propTypes = {
     ]).isRequired,
 };
 
-export default Button;
+export default Fab;

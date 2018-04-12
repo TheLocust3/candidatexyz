@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20180412215715) do
     t.string "image"
   end
 
-  create_table "themes", force: :cascade do |t|
+  create_table "themes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "name"
     t.json "styling"
     t.datetime "created_at", null: false
