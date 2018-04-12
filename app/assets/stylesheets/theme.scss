@@ -14,4 +14,8 @@ $mdc-theme-secondary: #00427c;
     z-index: 9999;
 }
 
+.mdc-list-item:hover {
+    background-color: #f2f2f2
+}
+
 @import '@material/theme/mdc-theme';

@@ -4,26 +4,26 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
-import { fetchAllImages } from '../../actions/image-actions';
+import { fetchAllThemes } from '../../actions/theme-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
-import ImageList from '../../components/staff/ImageList';
+import ThemeList from '../../components/staff/ThemeList';
 
-class Images extends React.Component {
+class Themes extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch(setDocumentTitle('Upload Image'));
+        this.props.dispatch(setDocumentTitle('Themes'));
         this.props.dispatch(setBlankNavbar(true));
-        this.props.dispatch(fetchAllImages());
+        this.props.dispatch(fetchAllThemes());
     }
 
     render() {
         return (
             <div className='content-bottom content-10'>
-                <div className='mdc-typography--display2'>Image List</div><br />
-                <Link className='link' to='/staff/images/new'>Upload Image</Link><br />
+                <div className='mdc-typography--display2'>Theme List</div><br />
+                <Link className='link' to='/staff/themes/new'>New theme</Link><br />
                 
-                <ImageList images={this.props.images} />
+                <ThemeList themes={this.props.themes} />
 
                 <MDCAutoInit />
             </div>
@@ -33,8 +33,8 @@ class Images extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        images: state.images.images,
+        themes: state.themes.themes,
     };
 }
 
-export default connect(mapStateToProps)(Images);
+export default connect(mapStateToProps)(Themes);

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import * as ThemeActions from '../actions/theme-actions';
 
 const initialState = {
@@ -10,8 +8,8 @@ const initialState = {
 
 export function themeReducer(state = initialState, action) {
     switch (action.type) {
-        case ThemeActions.RECEIVE_ALL_THEMES:
-        case ThemeActions.RECEIVE_THEME:
+        case ThemeActions.REQUEST_ALL_THEMES:
+        case ThemeActions.REQUEST_THEME:
             return Object.assign({}, state, {
                 isReady: false
             });

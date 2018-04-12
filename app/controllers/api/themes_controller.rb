@@ -16,7 +16,7 @@ class Api::ThemesController < Api::ApiController
         if theme.save
             render :json => Theme.find(theme.id)
         else
-            render_errors(theme.)
+            render_errors(theme)
         end
     end
 

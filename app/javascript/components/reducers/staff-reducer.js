@@ -1,7 +1,5 @@
 import * as StaffActions from '../actions/staff-actions';
 
-import { combineReducers } from 'redux';
-
 const initialState = {
     isReady: false,
     currentUser: {},
