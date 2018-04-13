@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class SelectItem extends React.Component {
 
+    themedClassName(className) {
+        return `${this.props.theme.classNamePrefix}${className}`
+    }
+
     render() {
-        let { className, children, ...props } = this.props;
+        let { className, children, theme, dispatch, ...props } = this.props;
 
         return (
-            <li className={`mdc-list-item ${className}`} role='option' tabIndex='0' {...props}>
+            <li className={`${this.themedClassName('list-item')} ${className}`} role='option' tabIndex='0' {...props}>
                 {children}
             </li>
         );
@@ -23,4 +28,10 @@ SelectItem.propTypes = {
     ]).isRequired,
 };
 
-export default SelectItem;
+function mapStateToProps(state) {
+    return {
+        theme: state.themes.globalTheme,
+    };
+}
+
+export default connect(mapStateToProps)(SelectItem);

@@ -1,4 +1,6 @@
+import _ from 'lodash';
 import React from 'react';
+import { connect } from 'react-redux';
 import mdcAutoInit from '@material/auto-init';
 import { MDCRipple } from '@material/ripple';
 import { MDCTextField } from '@material/textfield';
@@ -6,9 +8,11 @@ import { MDCCheckbox } from '@material/checkbox';
 import { MDCSelect } from '@material/select';
 
 // TODO: Find better way to do this
-export default class MDCAutoInit extends React.Component {
+class MDCAutoInit extends React.Component {
 
     autoInit() {
+        if (this.props.theme.name != 'Material') return;
+
         mdcAutoInit.deregisterAll();
 
         mdcAutoInit.register('MDCRipple', MDCRipple);
@@ -28,3 +32,11 @@ export default class MDCAutoInit extends React.Component {
         return null;
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        theme: state.themes.globalTheme,
+    };
+}
+
+export default connect(mapStateToProps)(MDCAutoInit);

@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Fab extends React.Component {
 
-    render() {
-        let { className, condensed, children, ...props } = this.props;
+    themedClassName(className) {
+        return `${this.props.theme.classNamePrefix}${className}`
+    }
 
-        let fabMiniClassName = condensed ? 'mdc-fab--mini' : '';
+    render() {
+        let { className, condensed, children, theme, dispatch, ...props } = this.props;
+
+        let fabMiniClassName = condensed ? this.themedClassName('fab--mini') : '';
 
         return (
-            <button className={`mdc-fab ${fabMiniClassName} ${className}`} data-mdc-auto-init='MDCRipple' {...props}>
+            <button className={`${this.themedClassName('fab')} ${fabMiniClassName} ${className}`} data-mdc-auto-init='MDCRipple' {...props}>
                 {children}
             </button>
         );
@@ -26,4 +31,10 @@ Fab.propTypes = {
     ]).isRequired,
 };
 
-export default Fab;
+function mapStateToProps(state) {
+    return {
+        theme: state.themes.globalTheme,
+    };
+}
+
+export default connect(mapStateToProps)(Fab);

@@ -23,12 +23,6 @@ export default class SignInForm extends React.Component {
         });
     }
 
-    handleCheckbox(event) {
-        this.setState({
-            [event.target.name]: !this.state[event.target.name]
-        });
-    }
-
     handleSubmit(event) {
         AuthApi.signIn(this.state.email, this.state.password, this.state.rememberMe).then( response => {
             window.location.href = '/staff';

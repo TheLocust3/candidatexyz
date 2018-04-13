@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Checkbox extends React.Component {
 
+    themedClassName(className) {
+        return `${this.props.theme.classNamePrefix}${className}`
+    }
+
     render() {
-        let { className, label, onChange, defaultChecked, ...props } = this.props;
+        let { className, label, onChange, defaultChecked, theme, dispatch, ...props } = this.props;
 
         return (
             <div>
@@ -32,4 +37,11 @@ Checkbox.propTypes = {
     defaultChecked: PropTypes.bool
 };
 
-export default Checkbox;
+function mapStateToProps(state) {
+    return {
+        theme: state.themes.globalTheme,
+    };
+}
+
+export default connect(mapStateToProps)(Checkbox);
+

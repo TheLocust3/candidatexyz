@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MDCTextField } from '@material/textfield';
+import { connect } from 'react-redux';
 
 class TextArea extends React.Component {
 
@@ -9,6 +10,10 @@ class TextArea extends React.Component {
         super(props);
 
         this.state = { defaultValue: props.defaultValue, uuid: `textfield-${Math.round(Math.random() * 1000000)}` };
+    }
+
+    themedClassName(className) {
+        return `${this.props.theme.classNamePrefix}${className}`
     }
 
     componentDidMount() {
@@ -32,13 +37,13 @@ class TextArea extends React.Component {
     }
 
     render() {
-        let { className, label, name, onChange, required, defaultValue, rows, cols, ...props } = this.props;
+        let { className, label, name, onChange, required, defaultValue, rows, cols, theme, dispatch, ...props } = this.props;
 
         return (
-            <div id={this.state.uuid} className={`mdc-text-field mdc-text-field--textarea ${className}`} data-mdc-auto-init='MDCTextField' {...props}>
-                <textarea type='text' name={name} className='mdc-text-field__input' onChange={onChange} rows={rows} cols={cols} required={required} />
-                <label className='mdc-text-field__label'>{label}</label>
-                <div className='mdc-line-ripple' />
+            <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${this.themedClassName('text-field--textarea')} ${className}`} data-mdc-auto-init='MDCTextField' {...props}>
+                <textarea type='text' name={name} className={this.themedClassName('text-field__input')} onChange={onChange} rows={rows} cols={cols} required={required} />
+                <label className={this.themedClassName('text-field__label')}>{label}</label>
+                <div className={this.themedClassName('line-ripple')} />
             </div>
         );
     }
@@ -55,4 +60,10 @@ TextArea.propTypes = {
     cols: PropTypes.number
 };
 
-export default TextArea;
+function mapStateToProps(state) {
+    return {
+        theme: state.themes.globalTheme,
+    };
+}
+
+export default connect(mapStateToProps)(TextArea);

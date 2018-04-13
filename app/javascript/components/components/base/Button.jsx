@@ -4,13 +4,17 @@ import { connect } from 'react-redux';
 
 class Button extends React.Component {
 
+    themedClassName(className) {
+        return `${this.props.theme.classNamePrefix}${className}`
+    }
+
     render() {
         let { className, condensed, children, theme, dispatch, ...props } = this.props;
 
-        let buttonDenseClassName = condensed ? 'mdc-button--dense' : '';
+        let buttonDenseClassName = condensed ? this.themedClassName('button--dense') : '';
 
         return (
-            <button className={`mdc-button mdc-button--raised button ${buttonDenseClassName} ${className}`} data-mdc-auto-init='MDCRipple' {...props}>
+            <button className={`${this.themedClassName('button')} ${this.themedClassName('button--raised')} button ${buttonDenseClassName} ${className}`} data-mdc-auto-init='MDCRipple' {...props}>
                 {children}
             </button>
         );

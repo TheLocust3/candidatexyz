@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MDCSelect } from '@material/select';
+import { connect } from 'react-redux';
 
 class Select extends React.Component {
 
@@ -8,6 +9,10 @@ class Select extends React.Component {
         super(props);
 
         this.state = { uuid: `select-${Math.round(Math.random() * 1000000)}` }; // TODO: find better way to do this
+    }
+
+    themedClassName(className) {
+        return `${this.props.theme.classNamePrefix}${className}`
     }
 
     componentDidMount() {
@@ -22,28 +27,28 @@ class Select extends React.Component {
     }
 
     renderLabel() {
-        let floatClassName = this.props.selectedIndex == null ? '' : 'mdc-select__label--float-above';
+        let floatClassName = this.props.selectedIndex == null ? '' : this.themedClassName('select__label--float-above');
 
         return (
-            <div className={`mdc-select__label ${floatClassName}`}>
+            <div className={`${this.themedClassName('select__label')} ${floatClassName}`}>
                 {this.props.label}
             </div>
         )
     }
 
     render() {
-        let { className, label, onChange, selectedIndex, children, ...props } = this.props;
+        let { className, label, onChange, selectedIndex, children, theme, dispatch, ...props } = this.props;
 
         return (
-            <div className={`mdc-select ${className}`} id={this.state.uuid} role='listbox' data-mdc-auto-init='MDCSelect' {...props}>
-                <div className='mdc-select__surface' tabIndex='0'>
+            <div className={`${this.themedClassName('select')} ${className}`} id={this.state.uuid} role='listbox' data-mdc-auto-init='MDCSelect' {...props}>
+                <div className={this.themedClassName('select__surface')} tabIndex='0'>
                     {this.renderLabel()}
-                    <div className='mdc-select__selected-text' />
-                    <div className='mdc-select__bottom-line' />
+                    <div className={this.themedClassName('select__selected-text')} />
+                    <div className={this.themedClassName('select__bottom-line')} />
                 </div>
 
-                <div className='mdc-menu mdc-select__menu'>
-                    <ul className='mdc-list mdc-menu__items'>
+                <div className={`${this.themedClassName('menu')} ${this.themedClassName('select__menu')}`}>
+                    <ul className={`${this.themedClassName('list')} ${this.themedClassName('menu__items')}`}>
                         {children}
                     </ul>
                 </div>
@@ -63,4 +68,10 @@ Select.propTypes = {
     ]).isRequired
 };
 
-export default Select;
+function mapStateToProps(state) {
+    return {
+        theme: state.themes.globalTheme,
+    };
+}
+
+export default connect(mapStateToProps)(Select);
