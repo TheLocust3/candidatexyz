@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -11,6 +12,7 @@ class Fab extends React.Component {
     render() {
         let { className, condensed, children, theme, dispatch, ...props } = this.props;
 
+        className = _.isEmpty(className) ? '' : className;
         let fabMiniClassName = condensed ? this.themedClassName('fab--mini') : '';
 
         return (

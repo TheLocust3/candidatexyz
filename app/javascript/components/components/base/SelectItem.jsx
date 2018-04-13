@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -10,6 +11,8 @@ class SelectItem extends React.Component {
 
     render() {
         let { className, children, theme, dispatch, ...props } = this.props;
+        
+        className = _.isEmpty(className) ? '' : className;
 
         return (
             <li className={`${this.themedClassName('list-item')} ${className}`} role='option' tabIndex='0' {...props}>

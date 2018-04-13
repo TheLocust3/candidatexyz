@@ -38,6 +38,8 @@ class TextField extends React.Component {
 
     render() {
         let { className, label, name, onChange, required, defaultValue, type, size, dense, theme, dispatch, ...props } = this.props;
+
+        className = _.isEmpty(className) ? '' : className;
         let denseClassName = dense ? this.themedClassName('text-field--dense') : '';
 
         type = _.isEmpty(type) ? 'text' : type;

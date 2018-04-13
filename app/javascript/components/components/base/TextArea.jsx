@@ -39,6 +39,8 @@ class TextArea extends React.Component {
     render() {
         let { className, label, name, onChange, required, defaultValue, rows, cols, theme, dispatch, ...props } = this.props;
 
+        className = _.isEmpty(className) ? '' : className;
+
         return (
             <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${this.themedClassName('text-field--textarea')} ${className}`} data-mdc-auto-init='MDCTextField' {...props}>
                 <textarea type='text' name={name} className={this.themedClassName('text-field__input')} onChange={onChange} rows={rows} cols={cols} required={required} />

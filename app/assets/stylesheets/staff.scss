@@ -6,3 +6,13 @@
     width: 35vh;
     height: auto;
 }
+
+.color-picker-wrapper {
+    position: relative;
+}
+
+.color-picker {
+    position: absolute;
+
+    z-index: 99999;
+}

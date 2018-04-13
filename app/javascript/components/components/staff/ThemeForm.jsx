@@ -1,5 +1,7 @@
-import _ from 'lodash'
+import _ from 'lodash';
+import $ from 'jquery';
 import React from 'react';
+import { BlockPicker } from 'react-color';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
@@ -8,12 +10,27 @@ import ThemeApi from '../../../api/theme-api';
 
 import FormWrapper from '../forms/FormWrapper';
 
+const COLORS = ['#00427c', '#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#dce775', '#ff8a65', '#ba68c8'];
+
 export default class ThemeForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { name: '', description: '', global: {}, button: {}, errors: {} };
+        this.state = { name: '', description: '', global: { backgroundColor: COLORS[0] }, button: {}, errors: {} };
+    }
+
+    componentDidMount() {
+        $(document).click((event) => { // TODO: find a better way to do this
+            let target = event.target;
+
+            if (!$(event.target).parents().is('.color-picker-wrapper')) {
+                this.setState({
+                    globalColorPicker: false,
+                    buttonColorPicker: false
+                });
+            }
+        });
     }
 
     handleChange(event) {
@@ -22,22 +39,75 @@ export default class ThemeForm extends React.Component {
         });
     }
 
+    handleColorChange(color, event, style, name) {
+        if (name == 'global') {
+            let global = { ...this.state[name], [style]: color.hex };
+            let button = this.state.button;
+            if (_.isEmpty(button)) {
+                button = global
+            }
+
+            this.setState({
+                global: global,
+                button: button
+            });
+        } else {
+            this.setState({
+                [name]: { ...this.state[name], [style]: color.hex }
+            });
+        }
+    }
+
     handleSubmit(event) {
         console.log(this.state);
     }
 
+    onColorPickerOpen(event) {
+        event.preventDefault();
+
+        this.setState({
+            [event.target.name]: !this.state[event.target.name]
+        });
+    }
+
+    onSampleClick(event) {
+        event.preventDefault();
+    }
+
     renderGlobalStyling() {
+        let displayPicker = this.state.globalColorPicker ? 'visible' : 'hidden';
+
         return (
             <div>
-                Global Stylings
+                <div className='mdc-typography--title'>Primary Color</div>
+                <i>Global default fallback color</i><br />
+
+                <div className='color-picker-wrapper'>
+                    <Button condensed={true} onClick={this.onColorPickerOpen.bind(this)} name='globalColorPicker' style={this.state.global}>Pick Color</Button><br /><br />
+                    
+                    <div className='color-picker' style={{ visibility: displayPicker }}>
+                        <BlockPicker color={this.state.global.backgroundColor} onChangeComplete={(color, event) => this.handleColorChange(color, event, 'backgroundColor', 'global')} colors={COLORS} />
+                    </div>
+                </div>
             </div>
         );
     }
 
     renderButtonStyling() {
+        let displayPicker = this.state.buttonColorPicker ? 'visible' : 'hidden';
+
         return (
             <div>
-                Button Stylings
+                <div className='mdc-typography--title'>Button Color</div>
+                <Button onClick={this.onSampleClick.bind(this)} style={this.state.button}>Sample Button</Button><br /><br />
+
+                <div className='color-picker-wrapper'>
+                    <Button condensed={true} onClick={this.onColorPickerOpen.bind(this)} name='buttonColorPicker'>Pick Color</Button><br /><br />
+                    
+                    <div className='color-picker' style={{ visibility: displayPicker }}>
+                        <BlockPicker color={this.state.button.backgroundColor} onChangeComplete={(color, event) => this.handleColorChange(color, event, 'backgroundColor', 'button')} colors={COLORS} />
+                    </div>
+                </div>
             </div>
         );
     }
@@ -54,7 +124,7 @@ export default class ThemeForm extends React.Component {
                 <div className='mdc-typography--display1'>Button Styling</div><br />
                 {this.renderButtonStyling()}<br />
 
-                <Button className='sign-up-form-button'>Subscribe</Button>
+                <Button className='sign-up-form-button'>Save</Button>
             </FormWrapper>
         );
     }

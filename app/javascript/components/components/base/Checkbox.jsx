@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -11,6 +12,8 @@ class Checkbox extends React.Component {
     render() {
         let { className, label, onChange, defaultChecked, theme, dispatch, ...props } = this.props;
 
+        className = _.isEmpty(className) ? '' : className;
+        
         return (
             <div>
                 <div className={`mdc-checkbox ${className}`} {...props}>

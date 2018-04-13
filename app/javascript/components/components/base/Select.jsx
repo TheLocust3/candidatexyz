@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MDCSelect } from '@material/select';
@@ -38,6 +39,8 @@ class Select extends React.Component {
 
     render() {
         let { className, label, onChange, selectedIndex, children, theme, dispatch, ...props } = this.props;
+
+        className = _.isEmpty(className) ? '' : className;
 
         return (
             <div className={`${this.themedClassName('select')} ${className}`} id={this.state.uuid} role='listbox' data-mdc-auto-init='MDCSelect' {...props}>
