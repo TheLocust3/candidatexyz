@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 20180412215715) do
 
   create_table "themes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "name"
+    t.string "description"
+    t.boolean "editable", default: true
     t.json "styling"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

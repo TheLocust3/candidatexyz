@@ -6,17 +6,33 @@ import { Link } from 'react-router-dom';
 
 class ThemeList extends React.Component {
 
+    renderEditButton(theme) {
+        if (!theme.editable) return;
+
+        return (
+            <span className='mdc-list-item__meta material-icons' aria-label='Edit'>
+                <Link className='unstyled-link' to={`/staff/themes/${theme.id}`}>
+                    edit
+                </Link>
+            </span>
+        )
+    }
+
     renderThemeList() {
         return (
             this.props.themes.map((theme) => {
                 return (
-                    <Link className='unstyled-link' key={theme.id} to={`/staff/themes/${theme.id}`}>
-                        <li className='mdc-list-item'>
-                            <span className='mdc-list-item__text'>
-                                {theme.name}
+                    <li key={theme.id} className='mdc-list-item'>
+                        <span className='mdc-list-item__text'>
+                            {theme.name}
+
+                            <span className='mdc-list-item__secondary-text'>
+                                {theme.description}
                             </span>
-                        </li>
-                    </Link>
+                        </span>
+
+                        {this.renderEditButton(theme)}
+                    </li>
                 );
             })
         )
