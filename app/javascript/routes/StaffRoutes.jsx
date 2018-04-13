@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchCurrentUser } from '../components/actions/staff-actions';
@@ -21,6 +21,7 @@ import ShowMessage from '../components/containers/staff/ShowMessage';
 import Images from '../components/containers/staff/Images';
 import UploadImage from '../components/containers/staff/UploadImage';
 import Themes from '../components/containers/staff/Themes';
+import ThemeEditor from '../components/containers/staff/ThemeEditor';
 
 class StaffRoutes extends React.Component {
 
@@ -32,7 +33,7 @@ class StaffRoutes extends React.Component {
         if (_.isEmpty(this.props.user)) return null;
 
         return (
-            <div>
+            <Switch>
                 <Route exact path='/edit-content' component={EditRawContent} />
                 <Route exact path='/edit-user' component={EditCurrentUserContainer} />
                 <Route exact path='/staff-management' component={StaffManagement} />
@@ -47,10 +48,12 @@ class StaffRoutes extends React.Component {
                 <Route exact path='/staff/images' component={Images} />
                 <Route exact path='/staff/images/new' component={UploadImage} />
                 <Route exact path='/staff/themes' component={Themes} />
+                <Route exact path='/staff/themes/new' component={ThemeEditor} />
+                <Route exact path='/staff/themes/:id' component={ThemeEditor} />
 
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
                 <Route exact path='/posts/:postType/new' component={CreatePost} />
-            </div>
+            </Switch>
         );
     }
 }
