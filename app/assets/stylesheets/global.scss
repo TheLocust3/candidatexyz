@@ -147,3 +147,15 @@ thead {
 .selectable-row:hover {
     background-color: #e5e5e5;
 }
+
+.list-meta-items {
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+
+.list-meta-item {
+    float: right;
+    margin-left: 1%;
+    margin-right: 1%;
+}

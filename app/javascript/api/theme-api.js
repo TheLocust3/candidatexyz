@@ -22,7 +22,7 @@ let ThemeApi = {
         });
     },
 
-    create(name, styling) {
+    create(name, description, styling) {
         return new Promise((resolve, reject) => {
             $.ajax('/api/themes', {
                 type: 'post',
@@ -33,7 +33,7 @@ let ThemeApi = {
         });
     },
 
-    update(name, styling) {
+    update(name, description, styling) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/themes/${name}`, {
                 type: 'patch',

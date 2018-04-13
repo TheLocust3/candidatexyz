@@ -10,7 +10,7 @@ import ThemeApi from '../../../api/theme-api';
 
 import FormWrapper from '../forms/FormWrapper';
 
-const COLORS = ['#00427c', '#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#dce775', '#ff8a65', '#ba68c8'];
+const COLORS = ['#00427c', '#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#DCE775', '#FF8A65', '#BA68C8'];
 
 export default class ThemeForm extends React.Component {
 
@@ -59,7 +59,13 @@ export default class ThemeForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state);
+        ThemeApi.create(this.state.name, this.state.description, { global: this.state.global, button: this.state.button }).then(() => {
+            history.push('/staff/themes');
+        }).catch((response) => {
+            this.setState({
+                errors: response.responseJSON.errors
+            });
+        });
     }
 
     onColorPickerOpen(event) {

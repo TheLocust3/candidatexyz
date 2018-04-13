@@ -39,11 +39,11 @@ class Api::ThemesController < Api::ApiController
 
     private
     def create_params(params)
-        params.permit(:name, :styling)
+        params.permit(:name, :description, :styling)
     end
 
     def update_params(params)
-        params.permit(:name, :styling)
+        params.permit(:name, :description, :styling)
     end
 end
   
