@@ -2,16 +2,18 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { MDCRipple } from '@material/ripple';
 
 class Button extends React.Component {
 
     constructor(props) {
         super(props);
 
+        this.state = { uuid: `button-${Math.round(Math.random() * 1000000)}` }
         if (_.isEmpty(this.props.themeOverride)) {
-            this.state = { theme: this.props.theme };
+            this.state.theme = this.props.theme;
         } else {
-            this.state = { theme: this.props.themeOverride };
+            this.state.theme = this.props.themeOverride;
         }
     }
 
@@ -21,6 +23,10 @@ class Button extends React.Component {
                 theme: nextProps.themeOverride
             });
         }
+    }
+
+    componentDidMount() {
+        MDCRipple.attachTo(document.querySelector(`#${this.state.uuid}`));
     }
 
     themedClassName(className) {
@@ -46,7 +52,7 @@ class Button extends React.Component {
         let flatClassName = flat ? '' : this.themedClassName('button--raised');
 
         return (
-            <button className={`${this.themedClassName('button')} ${flatClassName} button ${buttonDenseClassName} ${className}`} data-mdc-auto-init='MDCRipple' style={{...this.themedStyle(), ...style}} {...props}>
+            <button id={this.state.uuid} className={`${this.themedClassName('button')} ${flatClassName} button ${buttonDenseClassName} ${className}`} style={{...this.themedStyle(), ...style}} {...props}>
                 {children}
             </button>
         );

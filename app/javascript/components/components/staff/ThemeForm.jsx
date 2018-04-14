@@ -111,7 +111,7 @@ class ThemeForm extends React.Component {
                 <ButtonThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('button', data)} /><br />
 
                 <div className='mdc-typography--display1'>Checkbox</div><br />
-                <CheckboxThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('checkbox', checkbox)} /><br />
+                <CheckboxThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('checkbox', data)} /><br />
 
                 <div className='mdc-typography--display1'>Checkbox</div><br />
                 <FabThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('fab', data)} /><br />

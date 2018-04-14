@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { history } from '../constants';
 import { fetchGlobalTheme } from '../components/actions/theme-actions';
 
+import MDCAutoInit from '../components/components/global/MDCAutoInit';
 import Navbar from '../components/containers/common/Navbar';
 import Footer from '../components/components/Footer';
 import AdminOverlay from '../components/containers/common/AdminOverlay';
@@ -85,6 +86,8 @@ class Routes extends React.Component {
                     </Switch>
 
                     <Footer />
+
+                    <MDCAutoInit />
                 </div>
             </Router>
         );

@@ -2,17 +2,23 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { MDCRipple } from '@material/ripple';
 
 class Fab extends React.Component {
 
     constructor(props) {
         super(props);
 
+        this.state = { uuid: `fab-${Math.round(Math.random() * 1000000)}` }
         if (_.isEmpty(this.props.themeOverride)) {
-            this.state = { theme: this.props.theme };
+            this.state.theme = this.props.theme;
         } else {
-            this.state = { theme: this.props.themeOverride };
+            this.state.theme = this.props.themeOverride;
         }
+    }
+
+    componentDidMount() {
+        MDCRipple.attachTo(document.querySelector(`#${this.state.uuid}`));
     }
 
     componentWillReceiveProps(nextProps) {
@@ -44,7 +50,7 @@ class Fab extends React.Component {
         let fabMiniClassName = condensed ? this.themedClassName('fab--mini') : '';
 
         return (
-            <button className={`${this.themedClassName('fab')} ${fabMiniClassName} ${className}`} data-mdc-auto-init='MDCRipple' style={{  ...this.themedStyle(), ...style }} {...props}>
+            <button id={this.state.uuid} className={`${this.themedClassName('fab')} ${fabMiniClassName} ${className}`} style={{  ...this.themedStyle(), ...style }} {...props}>
                 {children}
             </button>
         );
