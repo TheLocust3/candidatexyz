@@ -20,6 +20,8 @@ class ThemeEditor extends React.Component {
     }
 
     render() {
+        if (!this.props.isReady) return null;
+
         return (
             <div className='content-bottom content-10'>
                 <div className='mdc-typography--display2'>Theme Editor</div><br />
@@ -34,6 +36,7 @@ class ThemeEditor extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        isReady: state.themes.isReady,
         theme: state.themes.theme
     };
 }
