@@ -19,7 +19,7 @@ import TextFieldThemeForm from './theme-forms/TextFieldThemeForm';
 import TextAreaThemeForm from './theme-forms/TextAreaThemeForm';
 
 const COLORS = ['#00427c', '#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#DCE775', '#FF8A65', '#BA68C8'];
-const EXTENDS = { 'Material': 'mdc-', 'None': '' };
+const EXTENDS = [{ label: 'Material', value: 'mdc-' }, { label: 'None', value: '' }];
 
 class ThemeForm extends React.Component {
 
@@ -31,7 +31,7 @@ class ThemeForm extends React.Component {
         } else {
             this.state = {
                 name: this.props.theme.name,
-                classNamePrefix: 'mdc-',
+                classNamePrefix: this.props.theme.classNamePrefix,
                 description: this.props.theme.description,
                 button: _.isEmpty(this.props.theme.styling.button) ? {} : this.props.theme.styling.button,
                 checkbox: _.isEmpty(this.props.theme.styling.checkbox) ? {} : this.props.theme.styling.checkbox,
@@ -43,10 +43,6 @@ class ThemeForm extends React.Component {
         }
     }
 
-    componentWillUnmount() {
-        $(document).off('click');
-    }
-
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -55,7 +51,7 @@ class ThemeForm extends React.Component {
 
     handleExtendsChange(select) {
         this.setState({
-            classNamePrefix: EXTENDS[select.value]
+            classNamePrefix: _.find(EXTENDS, { label: select.value }).value
         });
     }
 
@@ -95,11 +91,11 @@ class ThemeForm extends React.Component {
 
     renderExtends() {
         return (
-            <Select label='Extend Packaged Theme' onChange={(select) => this.handleExtendsChange(select)} selectedIndex={0} style={{ width: '50%' }}>
-                {_.map(EXTENDS, ((value, label) => {
+            <Select label='Extend Packaged Theme' onChange={(select) => this.handleExtendsChange(select)} selectedIndex={_.findIndex(EXTENDS, { value: this.state.classNamePrefix })} style={{ width: '50%' }}>
+                {_.map(EXTENDS, ((theme) => {
                     return (
-                        <SelectItem key={value}>
-                            {label}
+                        <SelectItem key={theme.value}>
+                            {theme.label}
                         </SelectItem>
                     );
                 }))}

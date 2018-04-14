@@ -56,9 +56,10 @@ class TextArea extends React.Component {
         let { className, label, name, onChange, required, defaultValue, rows, cols, theme, themeOverride, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
+        let autoInit = this.theme().classNamePrefix != 'mdc-' ? {} : { 'data-mdc-auto-init': 'MDCTextField' };
 
         return (
-            <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${this.themedClassName('text-field--textarea')} ${className}`} data-mdc-auto-init='MDCTextField' {...props}>
+            <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${this.themedClassName('text-field--textarea')} ${className}`} {...autoInit} {...props}>
                 <textarea type='text' name={name} className={this.themedClassName('text-field__input')} onChange={onChange} rows={rows} cols={cols} required={required} />
                 <label className={this.themedClassName('text-field__label')} style={{ color: this.themedStyle().color }}>{label}</label>
                 <div className={this.themedClassName('line-ripple')} />

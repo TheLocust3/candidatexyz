@@ -57,11 +57,12 @@ class TextField extends React.Component {
 
         className = _.isEmpty(className) ? '' : className;
         let denseClassName = dense ? this.themedClassName('text-field--dense') : '';
+        let autoInit = this.theme().classNamePrefix != 'mdc-' ? {} : { 'data-mdc-auto-init': 'MDCTextField' };
 
         type = _.isEmpty(type) ? 'text' : type;
 
         return (
-            <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${denseClassName} ${className}`} data-mdc-auto-init='MDCTextField' {...props}>
+            <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${denseClassName} ${className}`} {...autoInit} {...props}>
                 <input type={type} className={this.themedClassName('text-field__input')} name={name} onChange={onChange} size={size} required={required} />
                 <label className={this.themedClassName('text-field__label')} style={{ color: this.themedStyle().color }}>{label}</label>
                 
