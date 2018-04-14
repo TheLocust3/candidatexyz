@@ -10,23 +10,6 @@ class TextArea extends React.Component {
         super(props);
 
         this.state = { defaultValue: props.defaultValue, uuid: `textfield-${Math.round(Math.random() * 1000000)}` };
-        if (_.isEmpty(this.props.themeOverride)) {
-            this.state.theme = this.props.theme;
-        } else {
-            this.state.theme = this.props.themeOverride;
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (!_.isEmpty(nextProps.themeOverride)) {
-            this.setState({
-                theme: nextProps.themeOverride
-            });
-        }
-    }
-
-    themedClassName(className) {
-        return `${this.props.theme.classNamePrefix}${className}`
     }
 
     componentDidMount() {
@@ -49,13 +32,23 @@ class TextArea extends React.Component {
         }
     }
 
-    themedStyle() {
-        if (_.isEmpty(this.state.theme.styling)) return {};
+    theme() {
+        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+    }
 
-        if (_.isEmpty(this.state.theme.styling.textArea)) {
-            return { backgroundColor: this.state.theme.styling.global.backgroundColor };
+    themedClassName(className) {
+        let theme = this.theme();
+
+        return `${theme.classNamePrefix}${className}`
+    }
+
+    themedStyle() {
+        let theme = this.theme();
+
+        if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.textArea)) {
+            return {};
         } else {
-            return this.state.theme.styling.textArea;
+            return theme.styling.textArea;
         }
     }
 

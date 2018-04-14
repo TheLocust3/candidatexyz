@@ -10,36 +10,29 @@ class Fab extends React.Component {
         super(props);
 
         this.state = { uuid: `fab-${Math.round(Math.random() * 1000000)}` }
-        if (_.isEmpty(this.props.themeOverride)) {
-            this.state.theme = this.props.theme;
-        } else {
-            this.state.theme = this.props.themeOverride;
-        }
     }
 
     componentDidMount() {
         MDCRipple.attachTo(document.querySelector(`#${this.state.uuid}`));
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (!_.isEmpty(nextProps.themeOverride)) {
-            this.setState({
-                theme: nextProps.themeOverride
-            });
-        }
+    theme() {
+        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
     }
 
     themedClassName(className) {
-        return `${this.props.theme.classNamePrefix}${className}`
+        let theme = this.theme();
+
+        return `${theme.classNamePrefix}${className}`
     }
 
     themedStyle() {
-        if (_.isEmpty(this.state.theme.styling)) return {};
+        let theme = this.theme();
 
-        if (_.isEmpty(this.state.theme.styling.fab)) {
-            return { backgroundColor: this.state.theme.styling.global.backgroundColor };
+        if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.fab)) {
+            return {};
         } else {
-            return this.state.theme.styling.fab;
+            return theme.styling.fab;
         }
     }
 

@@ -10,19 +10,6 @@ class TextField extends React.Component {
         super(props);
 
         this.state = { defaultValue: props.defaultValue, uuid: `textfield-${Math.round(Math.random() * 1000000)}` }; // TODO: find better way to do this
-        if (_.isEmpty(this.props.themeOverride)) {
-            this.state.theme = this.props.theme ;
-        } else {
-            this.state.theme = this.props.themeOverride;
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (!_.isEmpty(nextProps.themeOverride)) {
-            this.setState({
-                theme: nextProps.themeOverride
-            });
-        }
     }
 
     componentDidMount() {
@@ -45,17 +32,23 @@ class TextField extends React.Component {
         }
     }
 
+    theme() {
+        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+    }
+
     themedClassName(className) {
-        return `${this.props.theme.classNamePrefix}${className}`
+        let theme = this.theme();
+
+        return `${theme.classNamePrefix}${className}`
     }
 
     themedStyle() {
-        if (_.isEmpty(this.state.theme.styling)) return {};
+        let theme = this.theme();
 
-        if (_.isEmpty(this.state.theme.styling.textField)) {
-            return { color: this.state.theme.styling.global.backgroundColor };
+        if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.textField)) {
+            return {};
         } else {
-            return this.state.theme.styling.textField;
+            return theme.styling.textField;
         }
     }
 

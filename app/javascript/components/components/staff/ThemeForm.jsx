@@ -10,7 +10,6 @@ import { history } from '../../../constants';
 import ThemeApi from '../../../api/theme-api';
 
 import FormWrapper from '../forms/FormWrapper';
-import GlobalThemeForm from './theme-forms/GlobalThemeForm';
 import ButtonThemeForm from './theme-forms/ButtonThemeForm';
 import CheckboxThemeForm from './theme-forms/CheckboxThemeForm';
 import FabThemeForm from './theme-forms/FabThemeForm';
@@ -25,13 +24,12 @@ class ThemeForm extends React.Component {
         super(props);
 
         if (_.isEmpty(this.props.theme)) {
-            this.state = { name: '', description: '', classNamePrefix: 'mdc-', global: { backgroundColor: COLORS[0] }, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, errors: {} };
+            this.state = { name: '', description: '', classNamePrefix: 'mdc-', button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, errors: {} };
         } else {
             this.state = {
                 name: this.props.theme.name,
                 classNamePrefix: 'mdc-',
                 description: this.props.theme.description,
-                global: _.isEmpty(this.props.theme.styling.global) ? {} : this.props.theme.styling.global,
                 button: _.isEmpty(this.props.theme.styling.button) ? {} : this.props.theme.styling.button,
                 checkbox: _.isEmpty(this.props.theme.styling.checkbox) ? {} : this.props.theme.styling.checkbox,
                 fab: _.isEmpty(this.props.theme.styling.fab) ? {} : this.props.theme.styling.fab,
@@ -76,18 +74,6 @@ class ThemeForm extends React.Component {
         event.preventDefault();
     }
 
-    updateGlobalTheme(global) {
-        let button = this.state.button;
-        if (_.isEmpty(button)) {
-            button = global
-        }
-
-        this.setState({
-            global: global,
-            button: button
-        });
-    }
-
     updateTheme(name, styling) {
         this.setState({
             [name]: styling
@@ -95,7 +81,7 @@ class ThemeForm extends React.Component {
     }
 
     theme() {
-        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { global: this.state.global, button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea } };
+        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea } };
     }
 
     render() {
@@ -103,9 +89,6 @@ class ThemeForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <TextField label='Theme Name' name='name' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} defaultValue={this.state.name} /><br />
                 <TextField label='Theme Description' name='description' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} defaultValue={this.state.description} /><br /><br />
-
-                <div className='mdc-typography--display1'>Global</div><br />
-                <GlobalThemeForm theme={this.theme()} colors={COLORS} updateTheme={(global) => this.updateGlobalTheme(global)} /><br />
 
                 <div className='mdc-typography--display1'>Button</div><br />
                 <ButtonThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('button', data)} /><br />

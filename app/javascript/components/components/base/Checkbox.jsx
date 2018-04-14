@@ -5,35 +5,23 @@ import { connect } from 'react-redux';
 
 class Checkbox extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        if (_.isEmpty(this.props.themeOverride)) {
-            this.state = { theme: this.props.theme };
-        } else {
-            this.state = { theme: this.props.themeOverride };
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (!_.isEmpty(nextProps.themeOverride)) {
-            this.setState({
-                theme: nextProps.themeOverride
-            });
-        }
+    theme() {
+        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
     }
 
     themedClassName(className) {
-        return `${this.props.theme.classNamePrefix}${className}`
+        let theme = this.theme();
+
+        return `${theme.classNamePrefix}${className}`
     }
 
     themedStyle() {
-        if (_.isEmpty(this.state.theme.styling)) return {};
+        let theme = this.theme();
 
-        if (_.isEmpty(this.state.theme.styling.checkbox)) {
-            return { backgroundColor: this.state.theme.styling.global.backgroundColor };
+        if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.checkbox)) {
+            return {};
         } else {
-            return this.state.theme.styling.checkbox;
+            return theme.styling.checkbox;
         }
     }
 

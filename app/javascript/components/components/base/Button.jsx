@@ -10,37 +10,30 @@ class Button extends React.Component {
         super(props);
 
         this.state = { uuid: `button-${Math.round(Math.random() * 1000000)}` }
-        if (_.isEmpty(this.props.themeOverride)) {
-            this.state.theme = this.props.theme;
-        } else {
-            this.state.theme = this.props.themeOverride;
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (!_.isEmpty(nextProps.themeOverride)) {
-            this.setState({
-                theme: nextProps.themeOverride
-            });
-        }
     }
 
     componentDidMount() {
         MDCRipple.attachTo(document.querySelector(`#${this.state.uuid}`));
     }
 
+    theme() {
+        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+    }
+
     themedClassName(className) {
-        return `${this.state.theme.classNamePrefix}${className}`
+        let theme = this.theme();
+
+        return `${theme.classNamePrefix}${className}`
     }
 
     themedStyle() {
-        if (_.isEmpty(this.state.theme.styling)) return {};
+        let theme = this.theme();
 
-        if (_.isEmpty(this.state.theme.styling.button)) {
-            return { backgroundColor: this.state.theme.styling.global.backgroundColor };
+        if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.button)) {
+            return {};
         } else {
             let buttonType = this.props.flat ? 'flat' : 'raised';
-            return this.state.theme.styling.button[buttonType];
+            return theme.styling.button[buttonType];
         }
     }
 
