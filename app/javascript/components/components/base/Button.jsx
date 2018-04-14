@@ -33,18 +33,20 @@ class Button extends React.Component {
         if (_.isEmpty(this.state.theme.styling.button)) {
             return { backgroundColor: this.state.theme.styling.global.backgroundColor };
         } else {
-            return { backgroundColor: this.state.theme.styling.button.backgroundColor };
+            let buttonType = this.props.flat ? 'flat' : 'raised';
+            return this.state.theme.styling.button[buttonType];
         }
     }
 
     render() {
-        let { className, style, condensed, children, theme, themeOverride, dispatch, ...props } = this.props;
+        let { className, style, flat, condensed, children, theme, themeOverride, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let buttonDenseClassName = condensed ? this.themedClassName('button--dense') : '';
+        let flatClassName = flat ? '' : this.themedClassName('button--raised');
 
         return (
-            <button className={`${this.themedClassName('button')} ${this.themedClassName('button--raised')} button ${buttonDenseClassName} ${className}`} data-mdc-auto-init='MDCRipple' style={{...this.themedStyle(), ...style}} {...props}>
+            <button className={`${this.themedClassName('button')} ${flatClassName} button ${buttonDenseClassName} ${className}`} data-mdc-auto-init='MDCRipple' style={{...this.themedStyle(), ...style}} {...props}>
                 {children}
             </button>
         );
@@ -54,6 +56,7 @@ class Button extends React.Component {
 Button.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    flat: PropTypes.bool,
     condensed: PropTypes.bool,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.element),

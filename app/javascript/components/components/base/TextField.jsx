@@ -10,10 +10,19 @@ class TextField extends React.Component {
         super(props);
 
         this.state = { defaultValue: props.defaultValue, uuid: `textfield-${Math.round(Math.random() * 1000000)}` }; // TODO: find better way to do this
+        if (_.isEmpty(this.props.themeOverride)) {
+            this.state.theme = this.props.theme ;
+        } else {
+            this.state.theme = this.props.themeOverride;
+        }
     }
 
-    themedClassName(className) {
-        return `${this.props.theme.classNamePrefix}${className}`
+    componentWillReceiveProps(nextProps) {
+        if (!_.isEmpty(nextProps.themeOverride)) {
+            this.setState({
+                theme: nextProps.themeOverride
+            });
+        }
     }
 
     componentDidMount() {
@@ -36,8 +45,22 @@ class TextField extends React.Component {
         }
     }
 
+    themedClassName(className) {
+        return `${this.props.theme.classNamePrefix}${className}`
+    }
+
+    themedStyle() {
+        if (_.isEmpty(this.state.theme.styling)) return {};
+
+        if (_.isEmpty(this.state.theme.styling.textField)) {
+            return { color: this.state.theme.styling.global.backgroundColor };
+        } else {
+            return this.state.theme.styling.textField;
+        }
+    }
+
     render() {
-        let { className, label, name, onChange, required, defaultValue, type, size, dense, theme, dispatch, ...props } = this.props;
+        let { className, label, name, onChange, required, defaultValue, type, size, dense, theme, dispatch, themeOverride, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let denseClassName = dense ? this.themedClassName('text-field--dense') : '';
@@ -47,7 +70,8 @@ class TextField extends React.Component {
         return (
             <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${denseClassName} ${className}`} data-mdc-auto-init='MDCTextField' {...props}>
                 <input type={type} className={this.themedClassName('text-field__input')} name={name} onChange={onChange} size={size} required={required} />
-                <label className={this.themedClassName('text-field__label')}>{label}</label>
+                <label className={this.themedClassName('text-field__label')} style={{ color: this.themedStyle().color }}>{label}</label>
+                
                 <div className={this.themedClassName('line-ripple')} />
             </div>
         );
@@ -63,7 +87,8 @@ TextField.propTypes = {
     defaultValue: PropTypes.string,
     type: PropTypes.string,
     size: PropTypes.number,
-    dense: PropTypes.bool
+    dense: PropTypes.bool,
+    themeOverride: PropTypes.object
 };
 
 function mapStateToProps(state) {

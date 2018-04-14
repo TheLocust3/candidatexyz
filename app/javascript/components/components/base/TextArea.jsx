@@ -10,6 +10,19 @@ class TextArea extends React.Component {
         super(props);
 
         this.state = { defaultValue: props.defaultValue, uuid: `textfield-${Math.round(Math.random() * 1000000)}` };
+        if (_.isEmpty(this.props.themeOverride)) {
+            this.state.theme = this.props.theme;
+        } else {
+            this.state.theme = this.props.themeOverride;
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!_.isEmpty(nextProps.themeOverride)) {
+            this.setState({
+                theme: nextProps.themeOverride
+            });
+        }
     }
 
     themedClassName(className) {
@@ -36,15 +49,25 @@ class TextArea extends React.Component {
         }
     }
 
+    themedStyle() {
+        if (_.isEmpty(this.state.theme.styling)) return {};
+
+        if (_.isEmpty(this.state.theme.styling.textArea)) {
+            return { backgroundColor: this.state.theme.styling.global.backgroundColor };
+        } else {
+            return this.state.theme.styling.textArea;
+        }
+    }
+
     render() {
-        let { className, label, name, onChange, required, defaultValue, rows, cols, theme, dispatch, ...props } = this.props;
+        let { className, label, name, onChange, required, defaultValue, rows, cols, theme, themeOverride, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
 
         return (
             <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${this.themedClassName('text-field--textarea')} ${className}`} data-mdc-auto-init='MDCTextField' {...props}>
                 <textarea type='text' name={name} className={this.themedClassName('text-field__input')} onChange={onChange} rows={rows} cols={cols} required={required} />
-                <label className={this.themedClassName('text-field__label')}>{label}</label>
+                <label className={this.themedClassName('text-field__label')} style={{ color: this.themedStyle().color }}>{label}</label>
                 <div className={this.themedClassName('line-ripple')} />
             </div>
         );
@@ -59,7 +82,8 @@ TextArea.propTypes = {
     required: PropTypes.bool,
     defaultValue: PropTypes.string,
     rows: PropTypes.number,
-    cols: PropTypes.number
+    cols: PropTypes.number,
+    themeOverride: PropTypes.object
 };
 
 function mapStateToProps(state) {
