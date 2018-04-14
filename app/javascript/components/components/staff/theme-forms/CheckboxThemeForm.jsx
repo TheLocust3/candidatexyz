@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BlockPicker } from 'react-color';
 
-import Button from '../../base/Button';
+import ColorPicker from '../../global/ColorPicker';
 import Checkbox from '../../base/Checkbox';
 
 class CheckboxThemeForm extends React.Component {
@@ -15,20 +15,7 @@ class CheckboxThemeForm extends React.Component {
         this.state = { checkbox: _.isEmpty(this.props.theme.styling.checkbox) ? { backgroundColor: this.props.colors[0], borderColor: this.props.colors[0] } : this.props.theme.styling.checkbox };
     }
 
-    componentDidMount() {
-        $(document).click((event) => { // TODO: find a better way to do this
-            let target = event.target;
-
-            if (!$(event.target).parents().is('.color-picker-wrapper')) {
-                this.setState({
-                    colorPickerOpen: false,
-                    borderColorPickerOpen: false
-                });
-            }
-        });
-    }
-
-    handleColorChange(color, event, style) {
+    handleColorChange(color, style) {
         let checkbox = { ...this.state.checkbox, [style]: color.hex };
         this.setState({
             checkbox: checkbox
@@ -37,37 +24,14 @@ class CheckboxThemeForm extends React.Component {
         this.props.updateTheme(checkbox);
     }
 
-    onColorPickerOpen(event) {
-        event.preventDefault();
-
-        this.setState({
-            [event.target.name]: !this.state[event.target.name]
-        });
-    }
-
     render() {
-        let displayColorPicker = this.state.colorPickerOpen ? 'visible' : 'hidden';
-        let displayBorderColorPicker = this.state.borderColorPickerOpen ? 'visible' : 'hidden';
-
         return (
             <div>
                 <Checkbox label='Sample Checkbox' onChange={() => {}} themeOverride={this.props.theme} /><br />
 
-                <div className='color-picker-wrapper'>
-                    <Button condensed={true} name='colorPickerOpen' onClick={this.onColorPickerOpen.bind(this)}>Pick Color</Button><br /><br />
-                    
-                    <div className='color-picker' style={{ visibility: displayColorPicker }}>
-                        <BlockPicker color={this.state.checkbox.backgroundColor} onChangeComplete={(color, event) => this.handleColorChange(color, event, 'backgroundColor')} colors={this.props.colors} />
-                    </div>
-                </div>
+                <ColorPicker label='Pick Color' color={this.state.checkbox.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor')}  />
 
-                <div className='color-picker-wrapper'>
-                    <Button condensed={true} name='borderColorPickerOpen' onClick={this.onColorPickerOpen.bind(this)}>Pick Border Color</Button><br /><br />
-                    
-                    <div className='color-picker' style={{ visibility: displayBorderColorPicker }}>
-                        <BlockPicker color={this.state.checkbox.borderColor} onChangeComplete={(color, event) => this.handleColorChange(color, event, 'borderColor')} colors={this.props.colors} />
-                    </div>
-                </div>
+                <ColorPicker label='Pick Border Color' color={this.state.checkbox.borderColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'borderColor')}  />
             </div>
         );
     }

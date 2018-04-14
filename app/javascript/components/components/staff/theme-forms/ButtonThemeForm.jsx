@@ -2,8 +2,8 @@ import _ from 'lodash';
 import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BlockPicker } from 'react-color';
 
+import ColorPicker from '../../global/ColorPicker';
 import Button from '../../base/Button';
 
 class ThemeForm extends React.Component {
@@ -12,21 +12,12 @@ class ThemeForm extends React.Component {
         super(props);
 
         this.state = { button: _.isEmpty(this.props.theme.styling.button) ? { raised: {}, flat: {} } : this.props.theme.styling.button };
+
+        this.state.button.raised = _.isEmpty(this.state.button.raised) ? {} : this.state.button.raised;
+        this.state.button.flat = _.isEmpty(this.state.button.flat) ? {} : this.state.button.flat;
     }
 
-    componentDidMount() {
-        $(document).click((event) => { // TODO: find a better way to do this
-            let target = event.target;
-
-            if (!$(event.target).parents().is('.color-picker-wrapper')) {
-                this.setState({
-                    colorPickerOpen: false
-                });
-            }
-        });
-    }
-
-    handleColorChange(color, event, style, name) {
+    handleColorChange(color, style, name) {
         let button = { ...this.state.button, [name]: { ...this.state.button[name], [style]: color.hex } };
         this.setState({
             button: button
@@ -35,34 +26,18 @@ class ThemeForm extends React.Component {
         this.props.updateTheme(button);
     }
 
-    onColorPickerOpen(event) {
-        event.preventDefault();
-
-        this.setState({
-            colorPickerOpen: !this.state.colorPickerOpen
-        });
-    }
-
     onSampleClick(event) {
         event.preventDefault();
     }
 
     renderRaisedButtonPanel() {
-        let displayPicker = this.state.colorPickerOpen ? 'visible' : 'hidden';
-
         return (
             <div>
                 <center>
                     <Button onClick={this.onSampleClick.bind(this)} themeOverride={this.props.theme}>Sample Raised Button</Button>
                 </center><br /><br />
 
-                <div className='color-picker-wrapper'>
-                    <Button condensed={true} onClick={this.onColorPickerOpen.bind(this)}>Pick Color</Button><br /><br />
-                    
-                    <div className='color-picker' style={{ visibility: displayPicker }}>
-                        <BlockPicker color={this.state.button.raised.backgroundColor} onChangeComplete={(color, event) => this.handleColorChange(color, event, 'backgroundColor', 'raised')} colors={this.props.colors} />
-                    </div>
-                </div>
+                <ColorPicker label='Pick Color' color={this.state.button.raised.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor', 'raised')} />
             </div>
         )
     }
@@ -76,13 +51,7 @@ class ThemeForm extends React.Component {
                     <Button flat={true} onClick={this.onSampleClick.bind(this)} themeOverride={this.props.theme}>Sample Raised Button</Button>
                 </center><br /><br />
 
-                <div className='color-picker-wrapper'>
-                    <Button condensed={true} onClick={this.onColorPickerOpen.bind(this)}>Pick Color</Button><br /><br />
-                    
-                    <div className='color-picker' style={{ visibility: displayPicker }}>
-                        <BlockPicker color={this.state.button.flat.backgroundColor} onChangeComplete={(color, event) => this.handleColorChange(color, event, 'color', 'flat')} colors={this.props.colors} />
-                    </div>
-                </div>
+                <ColorPicker label='Pick Color' color={this.state.button.raised.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
             </div>
         )
     }
