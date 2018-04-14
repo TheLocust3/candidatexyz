@@ -65,7 +65,7 @@ Button.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        theme: state.themes.globalTheme,
+        theme: state.themes.globalTheme
     };
 }
 

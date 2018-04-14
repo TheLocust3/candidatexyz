@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import ContentApi from '../../../api/content-api';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchAllThemes } from '../../actions/theme-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
@@ -17,13 +18,21 @@ class Themes extends React.Component {
         this.props.dispatch(fetchAllThemes());
     }
 
+    onSetDefaultClick(event) {
+        ContentApi.update('globalTheme', event.target.name).then(() => {
+            location.reload();
+        });
+    }
+
     render() {
         return (
             <div className='content-bottom content-10'>
                 <div className='mdc-typography--display2'>Theme List</div><br />
                 <Link className='link' to='/staff/themes/new'>New theme</Link><br />
+
+                <div className='mdc-typography--title'>Current Theme: {this.props.globalTheme.name}</div><br />
                 
-                <ThemeList themes={this.props.themes} />
+                <ThemeList themes={this.props.themes} globalTheme={this.props.globalTheme} onSetDefaultClick={this.onSetDefaultClick} />
 
                 <MDCAutoInit />
             </div>
@@ -34,6 +43,7 @@ class Themes extends React.Component {
 function mapStateToProps(state) {
     return {
         themes: state.themes.themes,
+        globalTheme: state.themes.globalTheme
     };
 }
 

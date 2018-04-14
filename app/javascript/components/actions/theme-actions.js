@@ -1,4 +1,5 @@
 import ThemeApi from '../../api/theme-api';
+import ContentApi from '../../api/content-api';
 
 export const REQUEST_THEME = 'REQUEST_THEME';
 export const RECEIVE_THEME = 'RECEIVE_THEME';
@@ -66,8 +67,10 @@ export function fetchGlobalTheme() {
     return function (dispatch) {
         dispatch(requestTheme());
 
-        ThemeApi.get('Material').then( data => {
-            dispatch(receiveGlobalTheme(data));
+        ContentApi.get('globalTheme').then((content) => {
+            ThemeApi.get(content.content).then( data => {
+                dispatch(receiveGlobalTheme(data));
+            });
         });
     }
 }

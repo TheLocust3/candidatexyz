@@ -13,11 +13,15 @@ class ThemeList extends React.Component {
         });
     }
 
+    onSetDefaultClick(event) {
+        this.props.onSetDefaultClick(event);
+    }
+
     renderEditButtons(theme) {
         if (!theme.editable) return;
 
         return (
-            <span className='list-meta-items'>
+            <span>
                 <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Delete'>
                     <a href='#' className='unstyled-link' name={theme.name} onClick={this.onDeleteClick.bind(this)}>
                         delete
@@ -36,6 +40,8 @@ class ThemeList extends React.Component {
     renderThemeList() {
         return (
             this.props.themes.map((theme) => {
+                let starColor = theme.name == this.props.globalTheme.name ? '#FFEA00' : 'black';
+
                 return (
                     <li key={theme.id} className='mdc-list-item theme-list'>
                         <span className='mdc-list-item__text'>
@@ -46,7 +52,14 @@ class ThemeList extends React.Component {
                             </span>
                         </span>
 
-                        {this.renderEditButtons(theme)}
+                        <span className='list-meta-items'>
+                            {this.renderEditButtons(theme)}
+                            <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Set Default'>
+                                <a href='#' className='unstyled-link' name={theme.name} onClick={this.onSetDefaultClick.bind(this)} style={{ color: starColor }}>
+                                    grade
+                                </a>
+                            </span>
+                        </span>
                     </li>
                 );
             })
@@ -63,7 +76,8 @@ class ThemeList extends React.Component {
 }
 
 ThemeList.propTypes = {
-    themes: PropTypes.arrayOf(PropTypes.object)
+    themes: PropTypes.arrayOf(PropTypes.object),
+    globalTheme: PropTypes.object
 };
 
 export default ThemeList;

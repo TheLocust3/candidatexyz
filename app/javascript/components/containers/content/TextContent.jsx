@@ -14,7 +14,7 @@ class TextContent extends React.Component {
     }
 
     findContent() {
-        let content = _.find(this.props.contents, { identifier: this.props.identifier })
+        let content = _.find(this.props.contents, { identifier: this.props.identifier });
 
         if (_.isEmpty(content)) {
             return { content: {} }

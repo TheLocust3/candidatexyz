@@ -200,3 +200,4 @@ Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales
 
 # default themes
 Theme.create(name: 'Material', description: "A modern theme based on Google's Material Design", editable: false, class_name_prefix: 'mdc-')
+Content.create(content_type: 'raw', identifier: 'globalTheme', content: 'Material')
