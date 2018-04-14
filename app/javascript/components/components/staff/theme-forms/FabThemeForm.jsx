@@ -34,6 +34,8 @@ class FabThemeForm extends React.Component {
                 </Fab><br /><br />
 
                 <ColorPicker label='Pick Color' color={this.state.fab.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor')}  />
+
+                <ColorPicker label='Pick Icon Color' color={this.state.fab.color} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color')}  />
             </div>
         );
     }

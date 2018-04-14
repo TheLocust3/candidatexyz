@@ -6,6 +6,8 @@ import { BlockPicker } from 'react-color';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
+import Select from '../base/Select';
+import SelectItem from '../base/SelectItem';
 import { history } from '../../../constants';
 import ThemeApi from '../../../api/theme-api';
 
@@ -17,6 +19,7 @@ import TextFieldThemeForm from './theme-forms/TextFieldThemeForm';
 import TextAreaThemeForm from './theme-forms/TextAreaThemeForm';
 
 const COLORS = ['#00427c', '#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#DCE775', '#FF8A65', '#BA68C8'];
+const EXTENDS = { 'Material': 'mdc-', 'None': '' };
 
 class ThemeForm extends React.Component {
 
@@ -47,6 +50,12 @@ class ThemeForm extends React.Component {
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
+        });
+    }
+
+    handleExtendsChange(select) {
+        this.setState({
+            classNamePrefix: EXTENDS[select.value]
         });
     }
 
@@ -84,11 +93,27 @@ class ThemeForm extends React.Component {
         return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea } };
     }
 
+    renderExtends() {
+        return (
+            <Select label='Extend Packaged Theme' onChange={(select) => this.handleExtendsChange(select)} selectedIndex={0} style={{ width: '50%' }}>
+                {_.map(EXTENDS, ((value, label) => {
+                    return (
+                        <SelectItem key={value}>
+                            {label}
+                        </SelectItem>
+                    );
+                }))}
+            </Select>
+        )
+    }
+
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <TextField label='Theme Name' name='name' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} defaultValue={this.state.name} /><br />
                 <TextField label='Theme Description' name='description' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} defaultValue={this.state.description} /><br /><br />
+
+                {this.renderExtends()}<br /><br />
 
                 <div className='mdc-typography--display1'>Button</div><br />
                 <ButtonThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('button', data)} /><br />
