@@ -12,6 +12,7 @@ class Api::ThemesController < Api::ApiController
 
     def create
         theme = Theme.new(create_params(params))
+        theme.styling = params[:styling]
 
         if theme.save
             render :json => Theme.find(theme.id)
@@ -21,9 +22,10 @@ class Api::ThemesController < Api::ApiController
     end
 
     def update
-        theme = Theme.where( name: params[:name]).first
+        theme = Theme.find(params[:id])
+        theme.styling = params[:styling]
 
-        if theme.save
+        if theme.update(update_params(params))
             render :json => Theme.find(theme.id)
         else
             render_errors(theme)
@@ -39,11 +41,11 @@ class Api::ThemesController < Api::ApiController
 
     private
     def create_params(params)
-        params.permit(:name, :description, :styling)
+        params.permit(:name, :description, :class_name_prefix)
     end
 
     def update_params(params)
-        params.permit(:name, :description, :styling)
+        params.permit(:name, :description, :class_name_prefix)
     end
 end
   

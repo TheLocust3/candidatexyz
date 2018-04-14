@@ -49,7 +49,7 @@ class StaffRoutes extends React.Component {
                 <Route exact path='/staff/images/new' component={UploadImage} />
                 <Route exact path='/staff/themes' component={Themes} />
                 <Route exact path='/staff/themes/new' component={ThemeEditor} />
-                <Route exact path='/staff/themes/:id' component={ThemeEditor} />
+                <Route exact path='/staff/themes/:name' component={ThemeEditor} />
 
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
                 <Route exact path='/posts/:postType/new' component={CreatePost} />

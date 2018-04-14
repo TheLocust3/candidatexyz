@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import $ from 'jquery';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BlockPicker } from 'react-color';
 
 import Button from '../base/Button';
@@ -12,12 +13,24 @@ import FormWrapper from '../forms/FormWrapper';
 
 const COLORS = ['#00427c', '#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#DCE775', '#FF8A65', '#BA68C8'];
 
-export default class ThemeForm extends React.Component {
+class ThemeForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { name: '', description: '', global: { backgroundColor: COLORS[0] }, button: {}, errors: {} };
+        this.state = { name: '', description: '', classNamePrefix: 'mdc-', global: { backgroundColor: COLORS[0] }, button: {}, errors: {} };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!_.isEmpty(nextProps.theme)) {
+            this.setState({
+                name: nextProps.theme.name,
+                description: nextProps.theme.description,
+                global: _.isEmpty(nextProps.theme.styling.global) ? {} : nextProps.theme.styling.global,
+                button: _.isEmpty(nextProps.theme.styling.button) ? {} : nextProps.theme.styling.button,
+                update: true
+            });
+        }
     }
 
     componentDidMount() {
@@ -59,13 +72,23 @@ export default class ThemeForm extends React.Component {
     }
 
     handleSubmit(event) {
-        ThemeApi.create(this.state.name, this.state.description, { global: this.state.global, button: this.state.button }).then(() => {
-            history.push('/staff/themes');
-        }).catch((response) => {
-            this.setState({
-                errors: response.responseJSON.errors
+        if (!this.state.update) {
+            ThemeApi.create(this.theme().name, this.theme().description, this.theme().classNamePrefix,  this.theme().styling).then((theme) => {
+                history.push('/staff/themes');
+            }).catch((response) => {
+                this.setState({
+                    errors: response.responseJSON.errors
+                });
             });
-        });
+        } else {
+            ThemeApi.update(this.props.theme.id, this.theme().name, this.theme().description, this.theme().classNamePrefix,  this.theme().styling).then((theme) => {
+                history.push('/staff/themes');
+            }).catch((response) => {
+                this.setState({
+                    errors: response.responseJSON.errors
+                });
+            });
+        }
     }
 
     onColorPickerOpen(event) {
@@ -78,6 +101,10 @@ export default class ThemeForm extends React.Component {
 
     onSampleClick(event) {
         event.preventDefault();
+    }
+
+    theme() {
+        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { global: this.state.global, button: this.state.button } };
     }
 
     renderGlobalStyling() {
@@ -105,7 +132,7 @@ export default class ThemeForm extends React.Component {
         return (
             <div>
                 <div className='mdc-typography--title'>Button Color</div>
-                <Button onClick={this.onSampleClick.bind(this)} style={this.state.button}>Sample Button</Button><br /><br />
+                <Button onClick={this.onSampleClick.bind(this)} themeOverride={this.theme()}>Sample Button</Button><br /><br />
 
                 <div className='color-picker-wrapper'>
                     <Button condensed={true} onClick={this.onColorPickerOpen.bind(this)} name='buttonColorPicker'>Pick Color</Button><br /><br />
@@ -121,8 +148,8 @@ export default class ThemeForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
-                <TextField label='Theme Name' name='name' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br />
-                <TextField label='Theme Description' name='description' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} /><br /><br />
+                <TextField label='Theme Name' name='name' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} defaultValue={this.state.name} /><br />
+                <TextField label='Theme Description' name='description' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} defaultValue={this.state.description} /><br /><br />
 
                 <div className='mdc-typography--display1'>Global Styling</div><br />
                 {this.renderGlobalStyling()}<br />
@@ -135,3 +162,9 @@ export default class ThemeForm extends React.Component {
         );
     }
 }
+
+ThemeForm.propTypes = {
+    theme: PropTypes.object
+};
+
+export default ThemeForm;

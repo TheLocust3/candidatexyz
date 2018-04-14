@@ -25,7 +25,7 @@ class ThemeList extends React.Component {
                 </span>
 
                 <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Edit'>
-                    <Link className='unstyled-link' to={`/staff/themes/${theme.id}`}>
+                    <Link className='unstyled-link' to={`/staff/themes/${theme.name}`}>
                         edit
                     </Link>
                 </span>

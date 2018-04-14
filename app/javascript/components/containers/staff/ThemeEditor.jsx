@@ -14,8 +14,8 @@ class ThemeEditor extends React.Component {
         this.props.dispatch(setDocumentTitle('Theme Editor'));
         this.props.dispatch(setBlankNavbar(true));
 
-        if (!_.isEmpty(this.props.match.params.id)) {
-            this.props.dispatch(fetchTheme(this.props.match.params.id));
+        if (!_.isEmpty(this.props.match.params.name)) {
+            this.props.dispatch(fetchTheme(this.props.match.params.name));
         }
     }
 
@@ -24,7 +24,7 @@ class ThemeEditor extends React.Component {
             <div className='content-bottom content-10'>
                 <div className='mdc-typography--display2'>Theme Editor</div><br />
                 
-                <ThemeForm />
+                <ThemeForm theme={this.props.theme} />
 
                 <MDCAutoInit />
             </div>

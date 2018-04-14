@@ -22,22 +22,22 @@ let ThemeApi = {
         });
     },
 
-    create(name, description, styling) {
+    create(name, description, classNamePrefix, styling) {
         return new Promise((resolve, reject) => {
             $.ajax('/api/themes', {
                 type: 'post',
-                data: { name: name, styling: styling },
+                data: { name: name, description: description, class_name_prefix: classNamePrefix, styling: styling },
                 success: resolve,
                 error: reject
             });
         });
     },
 
-    update(name, description, styling) {
+    update(id, name, description, classNamePrefix, styling) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/themes/${name}`, {
+            $.ajax(`/api/themes/${id}`, {
                 type: 'patch',
-                data: { name: name, styling: styling },
+                data: { name: name, description: description, class_name_prefix: classNamePrefix, styling: styling },
                 success: resolve,
                 error: reject
             });
