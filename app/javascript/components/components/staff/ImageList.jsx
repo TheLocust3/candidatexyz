@@ -2,7 +2,16 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ImageApi from '../../../api/image-api';
+import Fab from '../base/Fab';
+
 class ImageList extends React.Component {
+
+    onDeleteClick(event, name) {
+        ImageApi.destroy(name).then(() => {
+            location.href = '/staff/images';
+        });
+    }
 
     renderImageList() {
         return (
@@ -13,7 +22,13 @@ class ImageList extends React.Component {
                             <b>Path:</b> <code>images/{image.identifier}</code>
                         </p>
 
-                        <img className='image-thumbnail' src={`/images/${image.identifier}`} />
+                        <div className='relative'>
+                            <img className='image-thumbnail' src={`/images/${image.identifier}`} />
+
+                            <Fab className='middle' condensed={true} onClick={(event) => this.onDeleteClick(event, image.id)} style={{ marginLeft: '5%' }}>
+                                <i className='material-icons'>delete</i>
+                            </Fab>
+                        </div>
                     </div>
                 );
             })

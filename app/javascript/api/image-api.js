@@ -60,9 +60,9 @@ let ImageApi = {
         });
     },
 
-    destroy(identifier) {
+    destroy(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/images/${identifier}`, {
+            $.ajax(`/api/images/${id}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject
