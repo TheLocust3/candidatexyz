@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     patch 'themes/:id' => 'themes#update'
     resources :themes, param: :name
 
+    patch 'panels/:id' => 'panels#update'
+    resources :panels, param: :name
+
     delete 'contacts/unsubscribe' => 'contacts#unsubscribe'
     resources :contacts
 

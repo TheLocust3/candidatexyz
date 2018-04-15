@@ -7,7 +7,7 @@ class Api::ThemesController < Api::ApiController
     end
 
     def show
-        render :json => Theme.where( name: params[:name]).first
+        render :json => Theme.where(name: params[:name]).first
     end
 
     def create
