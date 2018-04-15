@@ -21,7 +21,6 @@ class ThemeForm extends React.Component {
 
     handleChange(event, type, suffix) {
         let button = this.state.button;
-
         button[type][event.target.name] = event.target.value + suffix;
 
         this.setState({
@@ -40,6 +39,20 @@ class ThemeForm extends React.Component {
         this.props.updateTheme(button);
     }
 
+    handleDimensionChange(event, type) {
+        let button = this.state.button;
+
+        if (_.isEmpty(event.target.value)) {
+            button[type][event.target.name] = 'auto';
+        } else {
+            button[type][event.target.name] = event.target.value + 'px';
+        }
+
+        this.setState({
+            button: button
+        });
+    }
+
     onSampleClick(event) {
         event.preventDefault();
     }
@@ -55,7 +68,10 @@ class ThemeForm extends React.Component {
                 <ColorPicker label='Pick Text Color' color={this.state.button.raised.color} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'raised')} />
 
                 <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'raised', '') }} fontFamily={this.state.button.raised.fontFamily} />
-                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'raised', 'px') }} defaultValue={_.replace(this.state.button.raised.fontSize, 'px', '')} />
+                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'raised', 'px') }} defaultValue={_.replace(this.state.button.raised.fontSize, 'px', '')} /><br />
+
+                <TextField type='number' label='Height' name='height' onChange={(event) => { this.handleDimensionChange(event, 'raised') }} defaultValue={_.replace(this.state.button.raised.height, 'px', '')} style={{ marginRight: '5%' }} />
+                <TextField type='number' label='Width' name='width' onChange={(event) => { this.handleDimensionChange(event, 'raised') }} defaultValue={_.replace(this.state.button.raised.width, 'px', '')} />
             </div>
         )
     }
@@ -72,7 +88,10 @@ class ThemeForm extends React.Component {
                 <ColorPicker label='Pick Color' color={this.state.button.flat.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
 
                 <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'flat', '') }} fontFamily={this.state.button.flat.fontFamily} />
-                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'flat', 'px') }} defaultValue={_.replace(this.state.button.flat.fontSize, 'px', '')} />
+                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'flat', 'px') }} defaultValue={_.replace(this.state.button.flat.fontSize, 'px', '')} /><br />
+
+                <TextField type='number' label='Height' name='height' onChange={(event) => { this.handleDimensionChange(event, 'flat') }} defaultValue={_.replace(this.state.button.flat.height, 'px', '')} style={{ marginRight: '5%' }} />
+                <TextField type='number' label='Width' name='width' onChange={(event) => { this.handleDimensionChange(event, 'flat') }} defaultValue={_.replace(this.state.button.flat.width, 'px', '')} />
             </div>
         )
     }
