@@ -95,9 +95,14 @@
     }
 }
 
+.checkbox-wrapper {
+    position: relative;
+}
+
 .checkbox-label {
     position: absolute;
-    padding-top: 1vh;
+    top: 50%;
+    transform: translate(0, -50%)
 }
 
 .edit-raw-content {

@@ -5,16 +5,28 @@ import PropTypes from 'prop-types';
 
 import ColorPicker from '../../global/ColorPicker';
 import Button from '../../base/Button';
+import TextField from '../../base/TextField';
 
 class ThemeForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { button: _.isEmpty(this.props.theme.styling.button) ? { raised: {}, flat: {} } : this.props.theme.styling.button };
+        this.state = { button: _.isEmpty(this.props.theme.styling.button) ? { raised: { fontSize: '24px' }, flat: { fontSize: '24px' } } : this.props.theme.styling.button };
 
         this.state.button.raised = _.isEmpty(this.state.button.raised) ? {} : this.state.button.raised;
         this.state.button.flat = _.isEmpty(this.state.button.flat) ? {} : this.state.button.flat;
+    }
+
+    handleChange(event, type, suffix) {
+        let button = this.state.button;
+        button[type][event.target.name] = event.target.value + suffix;
+
+        this.setState({
+            button: button
+        });
+
+        this.props.updateTheme(button);
     }
 
     handleColorChange(color, style, name) {
@@ -38,8 +50,9 @@ class ThemeForm extends React.Component {
                 </center><br /><br />
 
                 <ColorPicker label='Pick Color' color={this.state.button.raised.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor', 'raised')} />
-
                 <ColorPicker label='Pick Text Color' color={this.state.button.raised.color} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'raised')} />
+
+                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'raised', 'px') }} defaultValue={_.replace(this.state.button.raised.fontSize, 'px', '')} />
             </div>
         )
     }
@@ -54,6 +67,8 @@ class ThemeForm extends React.Component {
                 </center><br /><br />
 
                 <ColorPicker label='Pick Color' color={this.state.button.flat.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
+
+                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'flat', 'px') }} defaultValue={_.replace(this.state.button.flat.fontSize, 'px', '')} />
             </div>
         )
     }

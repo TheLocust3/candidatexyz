@@ -32,7 +32,7 @@ class Checkbox extends React.Component {
         let themedStyle = this.themedStyle();
         
         return (
-            <div>
+            <div className='checkbox-wrapper'>
                 <div className={`${this.themedClassName('checkbox')} ${className}`} {...props}>
                     <input type='checkbox' className={this.themedClassName('checkbox__native-control')} onChange={onChange} defaultChecked={defaultChecked} />
                     <div className={this.themedClassName('checkbox__background')} style={{ borderColor: themedStyle.borderColor }}>
@@ -44,7 +44,7 @@ class Checkbox extends React.Component {
                     </div>
                     </div>
 
-                <label className='checkbox-label' >{label}</label>
+                <label className='checkbox-label' style={{ fontSize: themedStyle.fontSize }}>{label}</label>
             </div>
         );
     }

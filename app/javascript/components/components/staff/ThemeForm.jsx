@@ -111,19 +111,19 @@ class ThemeForm extends React.Component {
 
                 {this.renderExtends()}<br /><br />
 
-                <div className='mdc-typography--display1'>Button</div><br />
+                <div className='mdc-typography--display1'>Button</div>
                 <ButtonThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('button', data)} /><br />
 
-                <div className='mdc-typography--display1'>Checkbox</div><br />
+                <div className='mdc-typography--display1'>Checkbox</div>
                 <CheckboxThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('checkbox', data)} /><br />
 
-                <div className='mdc-typography--display1'>Fab Button</div><br />
+                <div className='mdc-typography--display1'>Fab Button</div>
                 <FabThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('fab', data)} /><br />
 
-                <div className='mdc-typography--display1'>TextField</div><br />
+                <div className='mdc-typography--display1'>TextField</div>
                 <TextFieldThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textField', data)} /><br />
 
-                <div className='mdc-typography--display1'>TextArea</div><br />
+                <div className='mdc-typography--display1'>TextArea</div>
                 <TextAreaThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textArea', data)} /><br />
 
                 <Button className='sign-up-form-button'>Save</Button>

@@ -6,13 +6,25 @@ import { BlockPicker } from 'react-color';
 
 import ColorPicker from '../../global/ColorPicker';
 import Checkbox from '../../base/Checkbox';
+import TextField from '../../base/TextField';
 
 class CheckboxThemeForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { checkbox: _.isEmpty(this.props.theme.styling.checkbox) ? { backgroundColor: this.props.colors[0], borderColor: this.props.colors[0] } : this.props.theme.styling.checkbox };
+        this.state = { checkbox: _.isEmpty(this.props.theme.styling.checkbox) ? { backgroundColor: this.props.colors[0], borderColor: this.props.colors[0], fontSize: '16px' } : this.props.theme.styling.checkbox };
+    }
+
+    handleChange(event, suffix) {
+        let checkbox = this.state.checkbox;
+        checkbox[event.target.name] = event.target.value + suffix;
+
+        this.setState({
+            checkbox: checkbox
+        });
+
+        this.props.updateTheme(checkbox);
     }
 
     handleColorChange(color, style) {
@@ -30,8 +42,9 @@ class CheckboxThemeForm extends React.Component {
                 <Checkbox label='Sample Checkbox' onChange={() => {}} themeOverride={this.props.theme} /><br />
 
                 <ColorPicker label='Pick Color' color={this.state.checkbox.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor')}  />
-
                 <ColorPicker label='Pick Border Color' color={this.state.checkbox.borderColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'borderColor')}  />
+
+                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'px') }} defaultValue={_.replace(this.state.checkbox.fontSize, 'px', '')} />
             </div>
         );
     }
