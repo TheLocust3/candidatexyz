@@ -12,10 +12,6 @@ class Select extends React.Component {
         this.state = { uuid: `select-${Math.round(Math.random() * 1000000)}` }; // TODO: find better way to do this
     }
 
-    themedClassName(className) {
-        return `${this.props.theme.classNamePrefix}${className}`
-    }
-
     componentDidMount() {
         const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
         select.listen('MDCSelect:change', () => {
@@ -27,18 +23,36 @@ class Select extends React.Component {
         }
     }
 
+    theme() {
+        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+    }
+
+    themedClassName(className) {
+        return `${this.props.theme.classNamePrefix}${className}`
+    }
+
+    themedStyle() {
+        let theme = this.theme();
+
+        if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.select)) {
+            return {};
+        } else {
+            return theme.styling.select;
+        }
+    }
+
     renderLabel() {
         let floatClassName = this.props.selectedIndex == null ? '' : this.themedClassName('select__label--float-above');
 
         return (
-            <div className={`${this.themedClassName('select__label')} ${floatClassName}`}>
+            <div className={`${this.themedClassName('select__label')} ${floatClassName}`} style={{ ...this.themedStyle() }}>
                 {this.props.label}
             </div>
         )
     }
 
     render() {
-        let { className, label, onChange, selectedIndex, children, theme, dispatch, ...props } = this.props;
+        let { className, label, onChange, selectedIndex, children, theme, themeOverride, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
 
@@ -68,7 +82,8 @@ Select.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.element),
         PropTypes.element
-    ]).isRequired
+    ]).isRequired,
+    themeOverride: PropTypes.object
 };
 
 function mapStateToProps(state) {

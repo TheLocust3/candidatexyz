@@ -17,6 +17,7 @@ import CheckboxThemeForm from './theme-forms/CheckboxThemeForm';
 import FabThemeForm from './theme-forms/FabThemeForm';
 import TextFieldThemeForm from './theme-forms/TextFieldThemeForm';
 import TextAreaThemeForm from './theme-forms/TextAreaThemeForm';
+import SelectThemeForm from './theme-forms/SelectThemeForm';
 
 const COLORS = ['#00427c', '#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#DCE775', '#FF8A65', '#BA68C8'];
 const EXTENDS = [{ label: 'Material', value: 'mdc-' }, { label: 'None', value: '' }];
@@ -27,7 +28,7 @@ class ThemeForm extends React.Component {
         super(props);
 
         if (_.isEmpty(this.props.theme)) {
-            this.state = { name: '', description: '', classNamePrefix: 'mdc-', button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, errors: {} };
+            this.state = { name: '', description: '', classNamePrefix: 'mdc-', button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
         } else {
             this.state = {
                 name: this.props.theme.name,
@@ -38,6 +39,7 @@ class ThemeForm extends React.Component {
                 fab: _.isEmpty(this.props.theme.styling.fab) ? {} : this.props.theme.styling.fab,
                 textField: _.isEmpty(this.props.theme.styling.textField) ? {} : this.props.theme.styling.textField,
                 textArea: _.isEmpty(this.props.theme.styling.textArea) ? {} : this.props.theme.styling.textArea,
+                select: _.isEmpty(this.props.theme.styling.select) ? {} : this.props.theme.styling.select,
                 update: true
             };
         }
@@ -86,7 +88,7 @@ class ThemeForm extends React.Component {
     }
 
     theme() {
-        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea } };
+        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea, select: this.state.select } };
     }
 
     renderExtends() {
@@ -125,6 +127,9 @@ class ThemeForm extends React.Component {
 
                 <div className='mdc-typography--display1'>TextArea</div>
                 <TextAreaThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textArea', data)} /><br />
+
+                <div className='mdc-typography--display1'>Select</div>
+                <SelectThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('select', data)} /><br />
 
                 <Button className='sign-up-form-button'>Save</Button>
             </FormWrapper>
