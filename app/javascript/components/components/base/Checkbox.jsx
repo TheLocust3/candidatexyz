@@ -44,7 +44,7 @@ class Checkbox extends React.Component {
                     </div>
                     </div>
 
-                <label className='checkbox-label' style={{ fontSize: themedStyle.fontSize }}>{label}</label>
+                <label className='checkbox-label' style={{ fontFamily: themedStyle.fontFamily, fontSize: themedStyle.fontSize }}>{label}</label>
             </div>
         );
     }

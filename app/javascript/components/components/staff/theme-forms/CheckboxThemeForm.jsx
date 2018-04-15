@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { BlockPicker } from 'react-color';
 
 import ColorPicker from '../../global/ColorPicker';
+import FontPicker from '../../global/FontPicker';
 import Checkbox from '../../base/Checkbox';
 import TextField from '../../base/TextField';
 
@@ -44,6 +45,7 @@ class CheckboxThemeForm extends React.Component {
                 <ColorPicker label='Pick Color' color={this.state.checkbox.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor')}  />
                 <ColorPicker label='Pick Border Color' color={this.state.checkbox.borderColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'borderColor')}  />
 
+                <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, '') }} fontFamily={this.state.checkbox.fontFamily} />
                 <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'px') }} defaultValue={_.replace(this.state.checkbox.fontSize, 'px', '')} />
             </div>
         );

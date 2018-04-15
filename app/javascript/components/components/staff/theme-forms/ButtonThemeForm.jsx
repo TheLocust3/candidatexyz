@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ColorPicker from '../../global/ColorPicker';
+import FontPicker from '../../global/FontPicker';
 import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 
@@ -20,6 +21,7 @@ class ThemeForm extends React.Component {
 
     handleChange(event, type, suffix) {
         let button = this.state.button;
+
         button[type][event.target.name] = event.target.value + suffix;
 
         this.setState({
@@ -52,6 +54,7 @@ class ThemeForm extends React.Component {
                 <ColorPicker label='Pick Color' color={this.state.button.raised.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor', 'raised')} />
                 <ColorPicker label='Pick Text Color' color={this.state.button.raised.color} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'raised')} />
 
+                <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'raised', '') }} fontFamily={this.state.button.raised.fontFamily} />
                 <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'raised', 'px') }} defaultValue={_.replace(this.state.button.raised.fontSize, 'px', '')} />
             </div>
         )

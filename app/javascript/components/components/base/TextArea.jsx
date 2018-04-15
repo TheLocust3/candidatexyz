@@ -61,7 +61,7 @@ class TextArea extends React.Component {
         return (
             <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${this.themedClassName('text-field--textarea')} ${className}`} {...autoInit} {...props}>
                 <textarea type='text' name={name} className={this.themedClassName('text-field__input')} onChange={onChange} rows={rows} cols={cols} required={required} />
-                <label className={this.themedClassName('text-field__label')} style={{ color: this.themedStyle().color }}>{label}</label>
+                <label className={this.themedClassName('text-field__label')} style={{ color: this.themedStyle().color, fontFamily: this.themedStyle().fontFamily }}>{label}</label>
                 <div className={this.themedClassName('line-ripple')} />
             </div>
         );
