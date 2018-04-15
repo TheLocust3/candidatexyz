@@ -34,7 +34,7 @@ class Checkbox extends React.Component {
         return (
             <div>
                 <div className={`${this.themedClassName('checkbox')} ${className}`} {...props}>
-                    <input type='checkbox' className={this.themedClassName('__native-control')} onChange={onChange} defaultChecked={defaultChecked} />
+                    <input type='checkbox' className={this.themedClassName('checkbox__native-control')} onChange={onChange} defaultChecked={defaultChecked} />
                     <div className={this.themedClassName('checkbox__background')} style={{ borderColor: themedStyle.borderColor }}>
                         <svg className={this.themedClassName('checkbox__checkmark')} viewBox='0 0 24 24' style={{ backgroundColor: themedStyle.backgroundColor }}>
                             <path className={this.themedClassName('checkbox__checkmark-path')} fill='none' stroke='white' d='M1.73,12.91 8.1,19.28 22.79,4.59' />
@@ -42,7 +42,7 @@ class Checkbox extends React.Component {
 
                         <div className={this.themedClassName('checkbox__mixedmark')} />
                     </div>
-                </div>
+                    </div>
 
                 <label className='checkbox-label' >{label}</label>
             </div>
