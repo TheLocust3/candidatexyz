@@ -64,11 +64,13 @@ class ThemeForm extends React.Component {
                     <Button onClick={this.onSampleClick.bind(this)} themeOverride={this.props.theme}>Sample Raised Button</Button>
                 </center><br /><br />
 
-                <ColorPicker label='Pick Color' color={this.state.button.raised.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor', 'raised')} />
+                <ColorPicker label='Pick Color' color={this.state.button.raised.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor', 'raised')} style={{ display: 'inline', float: 'left', marginRight: '5%' }} />
                 <ColorPicker label='Pick Text Color' color={this.state.button.raised.color} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'raised')} />
 
-                <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'raised', '') }} fontFamily={this.state.button.raised.fontFamily} />
-                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'raised', 'px') }} defaultValue={_.replace(this.state.button.raised.fontSize, 'px', '')} /><br />
+                <div style={{ position: 'relative' }}>
+                    <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'raised', '') }} fontFamily={this.state.button.raised.fontFamily} style={{ marginTop: '0.75em' }} />
+                    <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'raised', 'px') }} defaultValue={_.replace(this.state.button.raised.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
+                </div>
 
                 <TextField type='number' label='Height' name='height' onChange={(event) => { this.handleDimensionChange(event, 'raised') }} defaultValue={_.replace(this.state.button.raised.height, 'px', '')} style={{ marginRight: '5%' }} />
                 <TextField type='number' label='Width' name='width' onChange={(event) => { this.handleDimensionChange(event, 'raised') }} defaultValue={_.replace(this.state.button.raised.width, 'px', '')} />
@@ -85,10 +87,12 @@ class ThemeForm extends React.Component {
                     <Button flat={true} onClick={this.onSampleClick.bind(this)} themeOverride={this.props.theme}>Sample Raised Button</Button>
                 </center><br /><br />
 
-                <ColorPicker label='Pick Color' color={this.state.button.flat.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
+                <ColorPicker className='color-picker-left' label='Pick Color' color={this.state.button.flat.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
 
-                <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'flat', '') }} fontFamily={this.state.button.flat.fontFamily} />
-                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'flat', 'px') }} defaultValue={_.replace(this.state.button.flat.fontSize, 'px', '')} /><br />
+                <div style={{ position: 'relative' }}>
+                    <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'flat', '') }} fontFamily={this.state.button.flat.fontFamily} style={{ marginTop: '0.75em' }} />
+                    <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'flat', 'px') }} defaultValue={_.replace(this.state.button.flat.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
+                </div>
 
                 <TextField type='number' label='Height' name='height' onChange={(event) => { this.handleDimensionChange(event, 'flat') }} defaultValue={_.replace(this.state.button.flat.height, 'px', '')} style={{ marginRight: '5%' }} />
                 <TextField type='number' label='Width' name='width' onChange={(event) => { this.handleDimensionChange(event, 'flat') }} defaultValue={_.replace(this.state.button.flat.width, 'px', '')} />

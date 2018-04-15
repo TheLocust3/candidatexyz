@@ -13,8 +13,15 @@
 
 .color-picker {
     position: absolute;
+    left: 0;
 
     z-index: 99999;
+}
+
+.color-picker-left {
+    display: inline;
+    float: left;
+    margin-right: 5%;
 }
 
 .theme-list {

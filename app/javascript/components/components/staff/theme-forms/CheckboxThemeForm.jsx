@@ -42,11 +42,13 @@ class CheckboxThemeForm extends React.Component {
             <div>
                 <Checkbox label='Sample Checkbox' onChange={() => {}} themeOverride={this.props.theme} /><br />
 
-                <ColorPicker label='Pick Color' color={this.state.checkbox.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor')}  />
-                <ColorPicker label='Pick Border Color' color={this.state.checkbox.borderColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'borderColor')}  />
+                <ColorPicker className='color-picker-left' label='Pick Color' color={this.state.checkbox.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor')} />
+                <ColorPicker label='Pick Border Color' color={this.state.checkbox.borderColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'borderColor')} />
 
-                <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, '') }} fontFamily={this.state.checkbox.fontFamily} />
-                <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'px') }} defaultValue={_.replace(this.state.checkbox.fontSize, 'px', '')} />
+                <div style={{ position: 'relative' }}>
+                    <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, '') }} fontFamily={this.state.checkbox.fontFamily} style={{ marginTop: '0.75em' }} />
+                    <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'px') }} defaultValue={_.replace(this.state.checkbox.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} />
+                </div>
             </div>
         );
     }

@@ -50,8 +50,8 @@ class ColorPicker extends React.Component {
         let displayPicker = this.state.colorPickerOpen ? 'visible' : 'hidden';
         
         return (
-            <span className='color-picker-wrapper'>
-                <Button condensed={true} onClick={this.onColorPickerOpen.bind(this)} style={this.props.style}>{this.props.label}</Button><br /><br />
+            <span className={`color-picker-wrapper ${this.props.className}`} style={this.props.style}>
+                <Button condensed={true} onClick={this.onColorPickerOpen.bind(this)}>{this.props.label}</Button><br /><br />
                 
                 <div className='color-picker' style={{ visibility: displayPicker }}>
                     <BlockPicker color={this.state.color} onChangeComplete={(color, event) => this.handleColorChange(color, event)} colors={this.props.colors} />
@@ -66,7 +66,8 @@ ColorPicker.propTypes = {
     color: PropTypes.string,
     colors: PropTypes.array,
     onChange: PropTypes.func,
-    style: PropTypes.object
+    style: PropTypes.object,
+    className: PropTypes.string
 };
 
 export default ColorPicker;

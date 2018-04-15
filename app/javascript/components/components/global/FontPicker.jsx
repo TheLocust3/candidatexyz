@@ -22,7 +22,7 @@ class FontPicker extends React.Component {
 
         return (
             <div>
-                <Select label='Font' onChange={(select) => this.handleFontChange(select)} selectedIndex={_.findIndex(FONTS, { value: fontFamily })} style={{ width: '30%' }}>
+                <Select label='Font' onChange={(select) => this.handleFontChange(select)} selectedIndex={_.findIndex(FONTS, { value: fontFamily })} style={{ width: '30%', ...this.props.style }}>
                     {FONTS.map((font) => {
                         return (
                             <SelectItem key={font.name}>
@@ -38,7 +38,8 @@ class FontPicker extends React.Component {
 
 FontPicker.propTypes = {
     fontFamily: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    style: PropTypes.object
 };
 
 export default FontPicker;
