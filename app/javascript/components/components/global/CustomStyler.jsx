@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { dashesToCamel, camelToDashes } from '../../../helpers';
 import TextField from '../base/TextField';
 import Fab from '../base/Fab';
 import MDCAutoInit from '../global/MDCAutoInit';
@@ -14,7 +15,7 @@ class CustomStyler extends React.Component {
         let custom = [];
         if (!_.isEmpty(this.props.custom)) {
             custom = _.map(this.props.custom, (value, key) => {
-                return { name: key, value: value };
+                return { name: camelToDashes(key), value: value };
             });
         }
 
@@ -24,7 +25,7 @@ class CustomStyler extends React.Component {
     customToProps(custom) {
         let propsCustom = {};
         _.forEach(custom, (style) => {
-            propsCustom[style.name] = style.value;
+            propsCustom[dashesToCamel(style.name)] = style.value;
         });
 
         return propsCustom;

@@ -1,7 +1,14 @@
 // Stolen from https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 export function uuid() {
     return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
     )
 }
-  
+
+export function dashesToCamel(str) {
+    return str.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+}
+
+export function camelToDashes(str) {
+    return str.replace(/\W+/g, '-').replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
+}
