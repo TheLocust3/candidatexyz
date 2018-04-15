@@ -105,6 +105,14 @@
     transform: translate(0, -50%)
 }
 
+.none-checkbox {
+    display: inline;
+    padding: 3px;
+
+    border: 1px solid;
+    border-color: white;
+}
+
 .edit-raw-content {
     padding-left: 3%;
     padding-right: 3%;

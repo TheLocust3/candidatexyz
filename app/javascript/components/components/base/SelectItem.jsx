@@ -5,13 +5,26 @@ import { connect } from 'react-redux';
 
 class SelectItem extends React.Component {
 
-    themedClassName(className) {
-        return `${this.props.theme.classNamePrefix}${className}`
+    theme() {
+        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
     }
 
-    render() {
-        let { className, children, theme, dispatch, ...props } = this.props;
-        
+    themedClassName(className) {
+        return `${this.theme().classNamePrefix}${className}`
+    }
+
+    renderNone() {
+        let { children, theme, dispatch, themeOverride, ...props } = this.props;
+
+        return (
+            <option value={children} {...props}>
+                {children}
+            </option>
+        );        
+    }
+
+    renderMdc() {
+        let { className, children, theme, dispatch, themeOverride, ...props } = this.props;
         className = _.isEmpty(className) ? '' : className;
 
         return (
@@ -19,6 +32,14 @@ class SelectItem extends React.Component {
                 {children}
             </li>
         );
+    }
+
+    render() {
+        if (this.theme().classNamePrefix == 'mdc-') {
+            return this.renderMdc();
+        } else {
+            return this.renderNone();
+        }
     }
 }
 
@@ -29,6 +50,7 @@ SelectItem.propTypes = {
         PropTypes.element,
         PropTypes.string
     ]).isRequired,
+    themeOverride: PropTypes.object
 };
 
 function mapStateToProps(state) {

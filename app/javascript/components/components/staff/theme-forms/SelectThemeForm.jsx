@@ -41,11 +41,11 @@ class FabThemeForm extends React.Component {
         return (
             <div>
                 <Select label='Sample Select' onChange={() => {}} themeOverride={this.props.theme}>
-                    <SelectItem>
+                    <SelectItem themeOverride={this.props.theme}>
                         A sample item
                     </SelectItem>
 
-                    <SelectItem>
+                    <SelectItem themeOverride={this.props.theme}>
                         A second sample item
                     </SelectItem>
                 </Select>

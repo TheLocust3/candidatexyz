@@ -13,13 +13,15 @@ class Select extends React.Component {
     }
 
     componentDidMount() {
-        const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
-        select.listen('MDCSelect:change', () => {
-            this.props.onChange(select);
-        });
+        if (this.theme().classNamePrefix == 'mdc-') {
+            const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
+            select.listen('MDCSelect:change', () => {
+                this.props.onChange(select);
+            });
 
-        if (this.props.selectedIndex != null) {
-            select.selectedIndex = this.props.selectedIndex;
+            if (this.props.selectedIndex != null) {
+                select.selectedIndex = this.props.selectedIndex;
+            }
         }
     }
 
@@ -28,7 +30,7 @@ class Select extends React.Component {
     }
 
     themedClassName(className) {
-        return `${this.props.theme.classNamePrefix}${className}`
+        return `${this.theme().classNamePrefix}${className}`
     }
 
     themedStyle() {
@@ -41,6 +43,22 @@ class Select extends React.Component {
         }
     }
 
+    renderNone() {
+        let { label, onChange, selectedIndex, children, theme, themeOverride, dispatch, ...props } = this.props;
+
+        return (
+            <div>
+                <div style={{ ...this.themedStyle() }}>
+                    {label}
+                </div>
+
+                <select onChange={(event) => { this.props.onChange(event.target.value) }} {...props}>
+                    {children}
+                </select>
+            </div>
+        )
+    }
+
     renderLabel() {
         let floatClassName = this.props.selectedIndex == null ? '' : this.themedClassName('select__label--float-above');
 
@@ -51,9 +69,8 @@ class Select extends React.Component {
         )
     }
 
-    render() {
+    renderMdc() {
         let { className, label, onChange, selectedIndex, children, theme, themeOverride, dispatch, ...props } = this.props;
-
         className = _.isEmpty(className) ? '' : className;
 
         return (
@@ -71,6 +88,14 @@ class Select extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    render() {
+        if (this.theme().classNamePrefix == 'mdc-') {
+            return this.renderMdc();
+        } else {
+            return this.renderNone();
+        }
     }
 }
 

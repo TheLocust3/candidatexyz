@@ -25,14 +25,31 @@ class Checkbox extends React.Component {
         }
     }
 
-    render() {
-        let { className, label, onChange, defaultChecked, theme, dispatch, themeOverride, ...props } = this.props;
+    renderNone() {
+        if (this.theme().classNamePrefix == 'mdc-') return;
 
+        let { className, label, onChange, defaultChecked, theme, dispatch, themeOverride, ...props } = this.props;
         className = _.isEmpty(className) ? '' : className;
         let themedStyle = this.themedStyle();
-        
+
         return (
-            <div className='checkbox-wrapper'>
+            <div className='none-checkbox' style={{ borderColor: themedStyle.borderColor }}>
+                <input type='checkbox' className={`${this.themedClassName('checkbox')} ${className}`} onChange={onChange} defaultChecked={defaultChecked} {...props} />
+
+                <label style={{ color: themedStyle.backgroundColor, fontFamily: themedStyle.fontFamily, fontSize: themedStyle.fontSize }}>{label}</label>
+            </div>
+        );
+    }
+
+    renderMdc() {
+        if (this.theme().classNamePrefix != 'mdc-') return;
+
+        let { className, label, onChange, defaultChecked, theme, dispatch, themeOverride, ...props } = this.props;
+        className = _.isEmpty(className) ? '' : className;
+        let themedStyle = this.themedStyle();
+
+        return (
+            <div>
                 <div className={`${this.themedClassName('checkbox')} ${className}`} {...props}>
                     <input type='checkbox' className={this.themedClassName('checkbox__native-control')} onChange={onChange} defaultChecked={defaultChecked} />
                     <div className={this.themedClassName('checkbox__background')} style={{ borderColor: themedStyle.borderColor }}>
@@ -42,9 +59,20 @@ class Checkbox extends React.Component {
 
                         <div className={this.themedClassName('checkbox__mixedmark')} />
                     </div>
-                    </div>
+                </div>
 
                 <label className='checkbox-label' style={{ fontFamily: themedStyle.fontFamily, fontSize: themedStyle.fontSize }}>{label}</label>
+            </div>
+        );
+    }
+
+    render() {
+        let themedStyle = this.themedStyle();
+        
+        return (
+            <div className='checkbox-wrapper'>
+                {this.renderMdc()}
+                {this.renderNone()}
             </div>
         );
     }
