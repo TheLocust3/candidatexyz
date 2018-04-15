@@ -71,6 +71,7 @@ class ThemeForm extends React.Component {
 
                 <ColorPicker label='Pick Color' color={this.state.button.flat.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
 
+                <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'flat', '') }} fontFamily={this.state.button.flat.fontFamily} />
                 <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'flat', 'px') }} defaultValue={_.replace(this.state.button.flat.fontSize, 'px', '')} />
             </div>
         )
