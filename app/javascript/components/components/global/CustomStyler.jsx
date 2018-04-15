@@ -21,6 +21,15 @@ class CustomStyler extends React.Component {
         this.state = { custom: custom };
     }
 
+    customToProps(custom) {
+        let propsCustom = {};
+        _.forEach(custom, (style) => {
+            propsCustom[style.name] = style.value;
+        });
+
+        return propsCustom;
+    }
+
     handleNameChange(event, id) {
         let custom = this.state.custom;
         custom[id] = { name: event.target.value, value: custom[id].value };
@@ -28,13 +37,8 @@ class CustomStyler extends React.Component {
         this.setState({
             custom: custom
         });
-        
-        let propsCustom = {};
-        _.forEach(custom, (style) => {
-            propsCustom[style.name] = style.value;
-        });
 
-        this.props.onChange(propsCustom);
+        this.props.onChange(this.customToProps(custom));
     }
 
     handleValueChange(event, id) {
@@ -45,12 +49,7 @@ class CustomStyler extends React.Component {
             custom: custom
         });
 
-        let propsCustom = {};
-        _.forEach(custom, (style) => {
-            propsCustom[style.name] = style.value;
-        });
-
-        this.props.onChange(propsCustom);
+        this.props.onChange(this.customToProps(custom));
     }
 
     onAddClick(event) {
@@ -61,6 +60,19 @@ class CustomStyler extends React.Component {
         });
     }
 
+    onDeleteClick(event, index) {
+        event.preventDefault();
+
+        let custom = this.state.custom;
+        custom.splice(index, 1)
+        
+        this.setState({
+            custom: custom
+        });
+
+        this.props.onChange(this.customToProps(custom));
+    }
+
     renderCustomStyles() {
         return (
             this.state.custom.map((style, index) => {
@@ -68,6 +80,10 @@ class CustomStyler extends React.Component {
                     <div key={index}>
                         <TextField label='Name' onChange={(event) => { this.handleNameChange(event, index) }} defaultValue={style.name} style={{ marginRight: '5%' }} />
                         <TextField label='Value' onChange={(event) => { this.handleValueChange(event, index) }} defaultValue={style.value} />
+
+                        <Fab condensed={true} onClick={(event) => this.onDeleteClick(event, index)} style={{ marginLeft: '3%' }}>
+                            <i className='material-icons'>delete</i>
+                        </Fab>
 
                         <MDCAutoInit />
                     </div>
@@ -85,6 +101,7 @@ class CustomStyler extends React.Component {
                         <i className='material-icons'>add</i>
                     </Fab>
                 </div>
+                <i>For advanced users only</i>
 
                 <div>
                     {this.renderCustomStyles()}
