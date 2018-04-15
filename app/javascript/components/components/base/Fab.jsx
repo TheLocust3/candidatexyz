@@ -32,7 +32,10 @@ class Fab extends React.Component {
         if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.fab)) {
             return {};
         } else {
-            return theme.styling.fab;
+            let styles =  theme.styling.fab;
+            styles = { ...styles, ...styles.custom };
+            
+            return styles;
         }
     }
 

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import ColorPicker from '../../global/ColorPicker';
 import FontPicker from '../../global/FontPicker';
+import CustomStyler from '../../global/CustomStyler';
 import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 
@@ -51,6 +52,19 @@ class ThemeForm extends React.Component {
         this.setState({
             button: button
         });
+
+        this.props.updateTheme(button);
+    }
+
+    handleCustomChange(custom, type) {
+        let button = this.state.button;
+        button[type].custom = custom;
+
+        this.setState({
+            button: button
+        });
+
+        this.props.updateTheme(button);
     }
 
     onSampleClick(event) {
@@ -74,6 +88,9 @@ class ThemeForm extends React.Component {
 
                 <TextField type='number' label='Height' name='height' onChange={(event) => { this.handleDimensionChange(event, 'raised') }} defaultValue={_.replace(this.state.button.raised.height, 'px', '')} style={{ marginRight: '5%' }} />
                 <TextField type='number' label='Width' name='width' onChange={(event) => { this.handleDimensionChange(event, 'raised') }} defaultValue={_.replace(this.state.button.raised.width, 'px', '')} />
+                <br /><br />
+
+                <CustomStyler custom={this.state.button.raised.custom} onChange={(custom) => { this.handleCustomChange(custom, 'raised') }} />
             </div>
         )
     }
@@ -87,7 +104,7 @@ class ThemeForm extends React.Component {
                     <Button flat={true} onClick={this.onSampleClick.bind(this)} themeOverride={this.props.theme}>Sample Raised Button</Button>
                 </center><br /><br />
 
-                <ColorPicker className='color-picker-left' label='Pick Color' color={this.state.button.flat.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
+                <ColorPicker label='Pick Color' color={this.state.button.flat.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
 
                 <div style={{ position: 'relative' }}>
                     <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'flat', '') }} fontFamily={this.state.button.flat.fontFamily} style={{ marginTop: '0.75em' }} />
@@ -96,6 +113,10 @@ class ThemeForm extends React.Component {
 
                 <TextField type='number' label='Height' name='height' onChange={(event) => { this.handleDimensionChange(event, 'flat') }} defaultValue={_.replace(this.state.button.flat.height, 'px', '')} style={{ marginRight: '5%' }} />
                 <TextField type='number' label='Width' name='width' onChange={(event) => { this.handleDimensionChange(event, 'flat') }} defaultValue={_.replace(this.state.button.flat.width, 'px', '')} />
+
+                <br /><br />
+
+                <CustomStyler custom={this.state.button.flat.custom} onChange={(custom) => { this.handleCustomChange(custom, 'flat') }} />
             </div>
         )
     }

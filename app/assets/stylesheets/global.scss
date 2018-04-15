@@ -64,6 +64,12 @@ body {
     margin-bottom: 10vh;
 }
 
+.middle {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%)
+}
+
 @mixin parallax($image) {
     background-image: url($image);
     background-attachment: fixed;
