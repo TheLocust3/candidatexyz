@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MDCRipple } from '@material/ripple';
 
+import { uuid } from '../../../helpers';
+
 class Fab extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { uuid: `fab-${Math.round(Math.random() * 1000000)}` }
+        this.state = { uuid: `fab-${uuid()}` }
     }
 
     componentDidMount() {

@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { MDCSelect } from '@material/select';
 import { connect } from 'react-redux';
 
+import { uuid } from '../../../helpers';
+
 class Select extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { uuid: `select-${Math.round(Math.random() * 1000000)}` }; // TODO: find better way to do this
+        this.state = { uuid: `select-${uuid()}` };
     }
 
     componentDidMount() {

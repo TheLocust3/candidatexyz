@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { MDCTextField } from '@material/textfield';
 import { connect } from 'react-redux';
 
+import { uuid } from '../../../helpers';
+
 class TextField extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { defaultValue: props.defaultValue, uuid: `textfield-${Math.round(Math.random() * 1000000)}` }; // TODO: find better way to do this
+        this.state = { defaultValue: props.defaultValue, uuid: `textfield-${uuid()}` }; // TODO: find better way to do this
     }
 
     componentDidMount() {

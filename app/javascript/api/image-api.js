@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import $ from 'jquery';
 
+import { uuid } from '../helpers';
+
 let ImageApi = {
 
     getAll() {
@@ -26,7 +28,7 @@ let ImageApi = {
     create(identifier, file) {
         let readId = identifier;
         if (_.isEmpty(readId)) {
-            readId = Math.round(Math.random() * 1000000) // TODO: Find a better way to do this
+            readId = uuid();
         }
         
         let reader = new FileReader();
