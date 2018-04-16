@@ -76,11 +76,11 @@ class PanelForm extends React.Component {
 
     totalHeight() {
         let height = 0;
-        this.props.panel.elements.map((element) => {
+        this.state.panel.elements.map((element) => {
             height += Number(element.height);
         });
 
-        return height == 0 ? '25' : height;
+        return height == 0 || _.isNaN(height) ? 25 : height;
     }
 
     render() {
@@ -91,7 +91,7 @@ class PanelForm extends React.Component {
 
                 <TextField type='number' label='Panel Height (%)' name='height' onChange={(event) => this.handleChange(event)} defaultValue={String(this.state.height)} /><br /><br />
 
-                <PanelPreview panel={this.state.panel} onChange={(elements) => this.handleElementsChange(elements)} height={Number(this.state.height)} /><br />
+                <PanelPreview panel={this.state.panel} onChange={(elements) => this.handleElementsChange(elements)} height={this.state.height} /><br />
 
                 <Button>Save</Button>
             </FormWrapper>

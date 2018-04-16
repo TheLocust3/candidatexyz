@@ -2,6 +2,8 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { uuid } from '../../../../helpers';
+
 class PanelRow extends React.Component {
 
     constructor(props) {
@@ -9,6 +11,10 @@ class PanelRow extends React.Component {
 
         this.state = { elements: this.props.elements, element: this.props.element };
         this.state.element.height = this.props.totalHeight / this.state.elements.length;
+
+        if (_.isEmpty(this.state.element.uuid)) { // element is uninitialized
+            this.state.element.uuid = `row-${uuid()}`;
+        }
     }
 
     componentDidMount() {
@@ -43,7 +49,7 @@ class PanelRow extends React.Component {
         }
 
         return (
-            <div className='panel-row' style={{ height: `${this.state.element.height}vh`, borderWidth: borderWidth }}>
+            <div id={this.state.element.uuid} className='panel-row' style={{ height: `${this.state.element.height}vh`, borderWidth: borderWidth }}>
                 <span className='middle-center'>
                     Row
                 </span>
