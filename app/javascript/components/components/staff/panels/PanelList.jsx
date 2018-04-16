@@ -34,7 +34,7 @@ class PanelList extends React.Component {
 
                         <span className='list-meta-items'>
                             <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Delete'>
-                                <a href='#' className='unstyled-link' name={panel.name} onClick={this.onDeleteClick.bind(this)}>
+                                <a href='#' className='unstyled-link delete-icon' name={panel.name} onClick={this.onDeleteClick.bind(this)}>
                                     delete
                                 </a>
                             </span>

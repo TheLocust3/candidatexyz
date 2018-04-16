@@ -23,7 +23,7 @@ class ThemeList extends React.Component {
         return (
             <span>
                 <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Delete'>
-                    <a href='#' className='unstyled-link' name={theme.name} onClick={this.onDeleteClick.bind(this)}>
+                    <a href='#' className='unstyled-link delete-icon' name={theme.name} onClick={this.onDeleteClick.bind(this)}>
                         delete
                     </a>
                 </span>
