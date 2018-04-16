@@ -44,6 +44,7 @@ FormWrapper.propTypes = {
     errors: PropTypes.object,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.element),
-        PropTypes.element
+        PropTypes.element,
+        PropTypes.string
     ]).isRequired,
 };

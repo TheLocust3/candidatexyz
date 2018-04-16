@@ -22,6 +22,8 @@ import Images from '../components/containers/staff/Images';
 import UploadImage from '../components/containers/staff/UploadImage';
 import Themes from '../components/containers/staff/Themes';
 import ThemeEditor from '../components/containers/staff/ThemeEditor';
+import Panels from '../components/containers/staff/panels/Panels';
+import PanelEditor from '../components/containers/staff/panels/PanelEditor';
 
 class StaffRoutes extends React.Component {
 
@@ -43,13 +45,20 @@ class StaffRoutes extends React.Component {
                 <Route exact path='/staff/messages/:id' component={ShowMessage} />
                 <Route exact path='/staff/mail' component={Mail} />
                 <Route exact path='/staff/invite' component={InviteStaff} />
+
                 <Route exact path='/staff/volunteers' component={VolunteerOverview} />
                 <Route exact path='/staff/volunteers/:id' component={Volunteer} />
+
                 <Route exact path='/staff/images' component={Images} />
                 <Route exact path='/staff/images/new' component={UploadImage} />
+
                 <Route exact path='/staff/themes' component={Themes} />
                 <Route exact path='/staff/themes/new' component={ThemeEditor} />
                 <Route exact path='/staff/themes/:name' component={ThemeEditor} />
+
+                <Route exact path='/staff/panels' component={Panels} />
+                <Route exact path='/staff/panels/new' component={PanelEditor} />
+                <Route exact path='/staff/panels/:name' component={PanelEditor} />
 
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
                 <Route exact path='/posts/:postType/new' component={CreatePost} />

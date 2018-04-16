@@ -22,11 +22,11 @@ let PanelApi = {
         });
     },
 
-    create(name, description, elements, styling) {
+    create(name, description, elements) {
         return new Promise((resolve, reject) => {
             $.ajax('/api/panels', {
                 type: 'post',
-                data: { name: name, description: description, elements: elements, styling: styling },
+                data: { name: name, description: description, elements: elements },
                 success: resolve,
                 error: reject
             });
@@ -37,7 +37,7 @@ let PanelApi = {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/panels/${id}`, {
                 type: 'patch',
-                data: { name: name, description: description, elements: elements, styling: styling },
+                data: { name: name, description: description, elements: elements },
                 success: resolve,
                 error: reject
             });
