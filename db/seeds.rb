@@ -199,5 +199,5 @@ Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales
 <p>")
 
 # default themes
-Theme.create(name: 'Material', description: "A modern theme based on Google's Material Design", editable: false, class_name_prefix: 'mdc-')
+Theme.create(name: 'Material', description: "A modern theme based on Google's Material Design", editable: false, class_name_prefix: 'mdc-', styling: { 'textField': { 'color': '#00427c' }, 'textArea': { 'color': '#00427c' }, 'select': { 'color': '#00427c' } })
 Content.create(content_type: 'raw', identifier: 'globalTheme', content: 'Material')

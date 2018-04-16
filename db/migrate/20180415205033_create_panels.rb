@@ -4,7 +4,6 @@ class CreatePanels < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.json :elements
-      t.json :styling
 
       t.timestamps
     end
