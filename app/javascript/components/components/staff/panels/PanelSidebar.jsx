@@ -19,7 +19,7 @@ class PanelSidebar extends React.Component {
             <div className='panel-preview-sidebar'>
                 <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(this.props.element.type)} Options</div>
                 
-                <RowSidebar element={this.props.element} updateElement={(element) => this.updateElement(element)} />
+                <RowSidebar elements={this.props.elements} element={this.props.element} updateElement={(element) => this.updateElement(element)} recalculateHeight={this.props.recalculateHeight} />
             </div>
         );
     }
@@ -28,7 +28,8 @@ class PanelSidebar extends React.Component {
 PanelSidebar.propTypes = {
     element: PropTypes.object,
     elements: PropTypes.array,
-    updateElements: PropTypes.func
+    updateElements: PropTypes.func,
+    recalculateHeight: PropTypes.func
 };
 
 export default PanelSidebar;

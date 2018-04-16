@@ -68,7 +68,7 @@ class PanelPreview extends React.Component {
                         {this.renderElements()}
                     </div>
 
-                    <PanelSidebar elements={this.props.panel.elements} element={this.state.selectedElement} updateElements={(elements) => this.updateElements(elements)} />
+                    <PanelSidebar elements={this.props.panel.elements} element={this.state.selectedElement} updateElements={(elements) => this.updateElements(elements)} recalculateHeight={this.props.recalculateHeight} />
                 </div>
             </div>
         );
@@ -77,7 +77,8 @@ class PanelPreview extends React.Component {
 
 PanelPreview.propTypes = {
     panel: PropTypes.object,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    recalculateHeight: PropTypes.func
 };
 
 export default PanelPreview;

@@ -65,7 +65,7 @@ class CustomStyler extends React.Component {
         event.preventDefault();
 
         let custom = this.state.custom;
-        custom.splice(index, 1)
+        custom.splice(index, 1);
         
         this.setState({
             custom: custom

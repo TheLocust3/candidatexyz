@@ -41,6 +41,12 @@ class PanelForm extends React.Component {
         let panel = this.state.panel;
         panel.settings.height = Number(event.target.value);
 
+        this.recalculateHeight();
+    }
+
+    // TODO: Cleanup recalculateHeight, this is passed down like four components before use
+    recalculateHeight() {
+        let panel = this.state.panel;
         panel.elements = panel.elements.map((element) => {
             return { ...element, height: panel.settings.height / panel.elements.length }
         });
@@ -98,7 +104,7 @@ class PanelForm extends React.Component {
 
                 <TextField type='number' label='Panel Height (%)' onChange={(event) => this.handleHeightChange(event)} defaultValue={String(this.state.panel.settings.height)} /><br /><br />
 
-                <PanelPreview panel={this.state.panel} onChange={(elements) => this.handleElementsChange(elements)} /><br />
+                <PanelPreview panel={this.state.panel} onChange={(elements) => this.handleElementsChange(elements)} recalculateHeight={() => this.recalculateHeight()} /><br />
 
                 <Button>Save</Button>
             </FormWrapper>
