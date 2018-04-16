@@ -7,7 +7,7 @@ import { uuid } from '../../../../helpers';
 class PanelRow extends React.Component {
 
     static elementStructure(index) {
-        return { index: index }
+        return { index: index, type: 'row' }
     }
 
     constructor(props) {
@@ -45,7 +45,7 @@ class PanelRow extends React.Component {
         }
 
         return (
-            <div id={this.state.element.uuid} className='panel-row selectable' style={{ height: `${this.state.element.height}vh`, borderWidth: borderWidth }}>
+            <div id={this.state.element.uuid} className='panel-row selectable' style={{ height: `${this.state.element.height}vh`, borderWidth: borderWidth }} onClick={() => this.props.onClick(this.props.element)}>
                 <span className='middle-center'>
                     Row
                 </span>
@@ -59,6 +59,7 @@ PanelRow.propTypes = {
     element: PropTypes.object,
     draggedItem: PropTypes.string,
     updateElements: PropTypes.func,
+    onClick: PropTypes.func
 };
 
 export default PanelRow;

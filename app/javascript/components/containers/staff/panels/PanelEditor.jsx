@@ -23,7 +23,7 @@ class PanelEditor extends React.Component {
         if (!_.isEmpty(this.props.match.params.name) && !this.props.isReady) return null;
 
         return (
-            <div className='content-bottom content-10'>
+            <div className='content-bottom content-5'>
                 <div className='mdc-typography--display2'>Panel Editor</div><br />
                 
                 <PanelForm panel={this.props.panel} />

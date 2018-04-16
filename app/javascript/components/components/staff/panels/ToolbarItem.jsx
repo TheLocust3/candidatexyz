@@ -4,16 +4,6 @@ import PropTypes from 'prop-types';
 
 class ToolbarItem extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = { elements: this.props.elements, errors: {} };
-    }
-
-    handleChange(event) {
-        this.props.onChange(this.props.elements);
-    }
-
     handleDrag(event) {
         this.props.onDrag(event.target.id);
     }

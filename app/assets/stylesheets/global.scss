@@ -150,6 +150,14 @@ thead {
     -o-user-select: none;
 }
 
+.selectable:hover {
+    background-color: #F5F5F5;
+}
+
+.selectable:active {
+    background-color: #E0E0E0;
+}
+
 .selectable-header {
     cursor: pointer;
     user-select: none;

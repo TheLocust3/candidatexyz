@@ -4,16 +4,15 @@ import PropTypes from 'prop-types';
 
 import { uuid } from '../../../../helpers';
 import ToolbarItem from './ToolbarItem';
+import PanelSidebar from './PanelSidebar';
 import PanelRow from './PanelRow';
-
-const COLORS = [];
 
 class PanelPreview extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { draggedItem: '' };
+        this.state = { draggedItem: '', selectedElement: this.props.panel.elements[0] };
     }
 
     handleDrag(name) {
@@ -34,6 +33,12 @@ class PanelPreview extends React.Component {
         this.props.onChange(elements);
     }
 
+    onClick(element) {
+        this.setState({
+            selectedElement: element
+        });
+    }
+
     updateElements(elements) {
         this.props.onChange(elements);
     }
@@ -43,7 +48,7 @@ class PanelPreview extends React.Component {
             this.props.panel.elements.map((element, index) => {
                 return (
                     <div key={uuid()}>
-                        <PanelRow elements={this.props.panel.elements} settings={this.props.panel.settings} element={element} draggedItem={this.state.draggedItem} updateElements={(elements) => this.updateElements(elements)} />
+                        <PanelRow elements={this.props.panel.elements} settings={this.props.panel.settings} element={element} draggedItem={this.state.draggedItem} updateElements={(elements) => this.updateElements(elements)} onClick={(element) => this.onClick(element)} />
                     </div>
                 )
             })
@@ -57,8 +62,12 @@ class PanelPreview extends React.Component {
                     <ToolbarItem name='row' label='Row' icon='view_agenda' onDrag={(name) => this.handleDrag(name)} />
                 </div>
 
-                <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${this.props.panel.settings.height}vh` }}>
-                    {this.renderElements()}
+                <div className='panel-preview-editor'>
+                    <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${this.props.panel.settings.height}vh` }}>
+                        {this.renderElements()}
+                    </div>
+
+                    <PanelSidebar elements={this.props.panel.elements} element={this.state.selectedElement} />
                 </div>
             </div>
         );

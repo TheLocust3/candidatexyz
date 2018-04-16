@@ -12,12 +12,25 @@
     margin-bottom: 20vh;
 }
 
-.panel-preview {
+.panel-preview-editor {
     position: relative;
     width: 100%;
+}
+
+.panel-preview {
+    display: inline-block;
+    width: 70%;
 
     border: 2px dashed;
     border-color: #BDBDBD;
+}
+
+.panel-preview-sidebar {
+    display: inline-block;
+    width: 27%;
+    margin-left: 2%;
+
+    vertical-align: top;
 }
 
 .toolbar-item {
