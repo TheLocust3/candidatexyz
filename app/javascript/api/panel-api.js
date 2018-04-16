@@ -22,22 +22,22 @@ let PanelApi = {
         });
     },
 
-    create(name, description, elements) {
+    create(name, description, elements, settings) {
         return new Promise((resolve, reject) => {
             $.ajax('/api/panels', {
                 type: 'post',
-                data: { name: name, description: description, elements: elements },
+                data: { name: name, description: description, elements: elements, settings: settings },
                 success: resolve,
                 error: reject
             });
         });
     },
 
-    update(id, name, description, elements, styling) {
+    update(id, name, description, elements, settings) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/panels/${id}`, {
                 type: 'patch',
-                data: { name: name, description: description, elements: elements },
+                data: { name: name, description: description, elements: elements, settings: settings },
                 success: resolve,
                 error: reject
             });

@@ -13,6 +13,7 @@ class Api::PanelsController < Api::ApiController
     def create
         panel = Panel.new(create_params(params))
         panel.elements = params[:elements]
+        panel.settings = params[:settings]
 
         if panel.save
             render :json => Panel.find(panel.id)
@@ -24,6 +25,7 @@ class Api::PanelsController < Api::ApiController
     def update
         panel = Panel.find(params[:id])
         panel.elements = params[:elements]
+        panel.settings = params[:settings]
 
         if panel.update(update_params(params))
             render :json => Panel.find(panel.id)

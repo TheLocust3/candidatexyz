@@ -13,7 +13,7 @@ class PanelPreview extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { elements: this.props.panel.elements, draggedItem: '' };
+        this.state = { draggedItem: '' };
     }
 
     handleDrag(name) {
@@ -25,29 +25,25 @@ class PanelPreview extends React.Component {
     handleDrop(event) {
         event.stopPropagation();
 
-        let elements = this.state.elements;
+        let elements = this.props.panel.elements;
         elements.push(PanelRow.elementStructure(this.props.panel.elements.length));
-        this.setState({
-            elements: elements
+        elements = elements.map((element) => {
+            return { ...element, height: this.props.panel.settings.height / elements.length }
         });
 
         this.props.onChange(elements);
     }
 
     updateElements(elements) {
-        this.setState({
-            elements: elements
-        });
-
         this.props.onChange(elements);
     }
 
     renderElements() {
         return (
-            this.state.elements.map((element, index) => {
+            this.props.panel.elements.map((element, index) => {
                 return (
                     <div key={uuid()}>
-                        <PanelRow elements={this.state.elements} element={element} draggedItem={this.state.draggedItem} totalHeight={this.props.height} updateElements={(elements) => this.updateElements(elements)} />
+                        <PanelRow elements={this.props.panel.elements} settings={this.props.panel.settings} element={element} draggedItem={this.state.draggedItem} updateElements={(elements) => this.updateElements(elements)} />
                     </div>
                 )
             })
@@ -61,7 +57,7 @@ class PanelPreview extends React.Component {
                     <ToolbarItem name='row' label='Row' icon='view_agenda' onDrag={(name) => this.handleDrag(name)} />
                 </div>
 
-                <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()}>
+                <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${this.props.panel.settings.height}vh` }}>
                     {this.renderElements()}
                 </div>
             </div>
@@ -71,8 +67,7 @@ class PanelPreview extends React.Component {
 
 PanelPreview.propTypes = {
     panel: PropTypes.object,
-    onChange: PropTypes.func.isRequired,
-    height: PropTypes.number
+    onChange: PropTypes.func.isRequired
 };
 
 export default PanelPreview;

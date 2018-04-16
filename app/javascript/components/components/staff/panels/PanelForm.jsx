@@ -19,7 +19,7 @@ class PanelForm extends React.Component {
 
         this.state = { errors: {} };
         if (_.isEmpty(this.props.panel)) {
-            this.state.panel = { name: '', description: '', elements: [ PanelRow.elementStructure(0) ] };
+            this.state.panel = { name: '', description: '', elements: [ PanelRow.elementStructure(0) ], settings: { } };
         } else {
             this.state.panel = this.props.panel;
             this.state.panel.elements = _.range(0, Object.keys(this.props.panel.elements).length).map((index) => { // ruby saves json arrays as { '0' => ..., '1' => ... }, convert it to []
@@ -28,12 +28,27 @@ class PanelForm extends React.Component {
             this.state.update = true;
         }
 
-        this.state.height = this.totalHeight();
+        this.state.panel.settings.height = this.totalHeight();
     }
 
-    handleChange(event) {
+    componentDidUpdate() {
+        if (this.state.updateRowHeight) {
+            this.setState({
+                updateRowHeight: false
+            });
+        }
+    }
+
+    handleHeightChange(event) {
+        let panel = this.state.panel;
+        panel.settings.height = Number(event.target.value);
+
+        panel.elements = panel.elements.map((element) => {
+            return { ...element, height: panel.settings.height / panel.elements.length }
+        });
+
         this.setState({
-            [event.target.name]: event.target.value
+            panel: panel
         });
     }
 
@@ -47,8 +62,10 @@ class PanelForm extends React.Component {
     }
 
     handleElementsChange(elements) {
+        let panel = this.state.panel
+        panel.elements = elements;
         this.setState({
-            elements: elements
+            panel: panel
         });
     }
 
@@ -56,7 +73,7 @@ class PanelForm extends React.Component {
         event.preventDefault();
 
         if (!this.state.update) {
-            PanelApi.create(this.state.panel.name, this.state.panel.description, this.state.panel.elements).then((theme) => {
+            PanelApi.create(this.state.panel.name, this.state.panel.description, this.state.panel.elements, this.state.panel.settings).then((theme) => {
                 history.push('/staff/panels');
             }).catch((response) => {
                 this.setState({
@@ -64,7 +81,7 @@ class PanelForm extends React.Component {
                 });
             });
         } else {
-            PanelApi.update(this.state.panel.id, this.state.panel.name, this.state.panel.description, this.state.panel.elements).then((theme) => {
+            PanelApi.update(this.state.panel.id, this.state.panel.name, this.state.panel.description, this.state.panel.elements, this.state.panel.settings).then((theme) => {
                 history.push('/staff/panels');
             }).catch((response) => {
                 this.setState({
@@ -89,9 +106,9 @@ class PanelForm extends React.Component {
                 <TextField label='Panel Name' name='name' onChange={(event) => this.handlePanelChange(event)} required={true} style={{ width: '100%' }} defaultValue={this.state.panel.name} /><br />
                 <TextField label='Panel Description' name='description' onChange={(event) => this.handlePanelChange(event)} style={{ width: '100%' }} defaultValue={this.state.panel.description} /><br /><br />
 
-                <TextField type='number' label='Panel Height (%)' name='height' onChange={(event) => this.handleChange(event)} defaultValue={String(this.state.height)} /><br /><br />
+                <TextField type='number' label='Panel Height (%)' onChange={(event) => this.handleHeightChange(event)} defaultValue={String(this.state.panel.settings.height)} /><br /><br />
 
-                <PanelPreview panel={this.state.panel} onChange={(elements) => this.handleElementsChange(elements)} height={this.state.height} /><br />
+                <PanelPreview panel={this.state.panel} onChange={(elements) => this.handleElementsChange(elements)} /><br />
 
                 <Button>Save</Button>
             </FormWrapper>
