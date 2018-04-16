@@ -46,9 +46,10 @@ class PanelPreview extends React.Component {
     renderElements() {
         return (
             this.props.panel.elements.map((element, index) => {
+                let selected = this.state.selectedElement == element ? true : false;
                 return (
                     <div key={uuid()}>
-                        <PanelRow elements={this.props.panel.elements} settings={this.props.panel.settings} element={element} draggedItem={this.state.draggedItem} updateElements={(elements) => this.updateElements(elements)} onClick={(element) => this.onClick(element)} />
+                        <PanelRow elements={this.props.panel.elements} settings={this.props.panel.settings} element={element} draggedItem={this.state.draggedItem} updateElements={(elements) => this.updateElements(elements)} onClick={(element) => this.onClick(element)} selected={selected} />
                     </div>
                 )
             })

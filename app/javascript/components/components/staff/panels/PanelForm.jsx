@@ -28,7 +28,7 @@ class PanelForm extends React.Component {
             this.state.update = true;
         }
 
-        this.state.panel.settings.height = this.totalHeight();
+        this.state.panel.settings.height = this.state.panel.settings.height == null ? 25 : this.state.panel.settings.height;
     }
 
     componentWillMount() {
@@ -62,6 +62,7 @@ class PanelForm extends React.Component {
     handleElementsChange(elements) {
         let panel = this.state.panel
         panel.elements = elements;
+
         this.setState({
             panel: panel
         });
@@ -87,15 +88,6 @@ class PanelForm extends React.Component {
                 });
             });
         }
-    }
-
-    totalHeight() {
-        let height = 0;
-        this.state.panel.elements.map((element) => {
-            height += Number(element.height);
-        });
-
-        return height == 0 || _.isNaN(height) ? 25 : height;
     }
 
     render() {
