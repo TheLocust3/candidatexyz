@@ -67,7 +67,7 @@ class PanelPreview extends React.Component {
                         {this.renderElements()}
                     </div>
 
-                    <PanelSidebar elements={this.props.panel.elements} element={this.state.selectedElement} />
+                    <PanelSidebar elements={this.props.panel.elements} element={this.state.selectedElement} updateElements={(elements) => this.updateElements(elements)} />
                 </div>
             </div>
         );

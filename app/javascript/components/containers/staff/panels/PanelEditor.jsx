@@ -21,12 +21,13 @@ class PanelEditor extends React.Component {
 
     render() {
         if (!_.isEmpty(this.props.match.params.name) && !this.props.isReady) return null;
+        let panel = _.isEmpty(this.props.match.params.name) ? {} : this.props.panel;
 
         return (
             <div className='content-bottom content-5'>
                 <div className='mdc-typography--display2'>Panel Editor</div><br />
                 
-                <PanelForm panel={this.props.panel} />
+                <PanelForm panel={panel} />
 
                 <MDCAutoInit />
             </div>

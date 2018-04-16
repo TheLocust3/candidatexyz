@@ -29,6 +29,8 @@ class ThemeForm extends React.Component {
 
         if (_.isEmpty(this.props.theme)) {
             this.state = { name: '', description: '', classNamePrefix: 'mdc-', button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
+        } else if (_.isEmpty(this.props.theme.styling)) {
+            this.state = { name: this.props.theme.name, description: this.props.theme.description, classNamePrefix: this.props.theme.classNamePrefix, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
         } else {
             this.state = {
                 name: this.props.theme.name,

@@ -21,12 +21,13 @@ class ThemeEditor extends React.Component {
 
     render() {
         if (!this.props.isReady) return null;
+        let theme = _.isEmpty(this.props.match.params.name) ? {} : this.props.theme;
 
         return (
             <div className='content-bottom content-10'>
                 <div className='mdc-typography--display2'>Theme Editor</div><br />
                 
-                <ThemeForm theme={this.props.theme} />
+                <ThemeForm theme={theme} />
 
                 <MDCAutoInit />
             </div>

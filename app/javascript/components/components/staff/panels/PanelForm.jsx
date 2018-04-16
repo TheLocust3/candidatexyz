@@ -31,8 +31,10 @@ class PanelForm extends React.Component {
         this.state.panel.settings.height = this.totalHeight();
     }
 
-    componentDidMount() {
-        this.handleHeightChange({ target: { value: this.state.panel.settings.height } });
+    componentWillMount() {
+        if (_.isEmpty(this.state.panel.elements[0].height)) {
+            this.handleHeightChange({ target: { value: this.state.panel.settings.height } });
+        }
     }
 
     handleHeightChange(event) {
