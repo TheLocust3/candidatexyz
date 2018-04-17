@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Button from '../../../base/Button';
 import ButtonSidebar from './ButtonSidebar';
 import FabSidebar from './FabSidebar';
+import CheckboxSidebar from './CheckboxSidebar';
 
 class CellSidebar extends React.Component {
 
@@ -49,6 +50,14 @@ class CellSidebar extends React.Component {
                     <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
 
                     <FabSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
+                </div>
+            )
+        } else if (element.type == 'checkbox') {
+            return (
+                <div>
+                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+
+                    <CheckboxSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
                 </div>
             )
         }

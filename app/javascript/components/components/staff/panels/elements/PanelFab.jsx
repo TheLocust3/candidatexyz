@@ -8,7 +8,7 @@ import Fab from '../../../base/Fab';
 class PanelFab extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, uuid: `button-${uuid()}`, type: 'fab', icon: 'settings' };
+        return { index: index, uuid: `fab-${uuid()}`, type: 'fab', icon: 'settings' };
     }
 
     render() {
