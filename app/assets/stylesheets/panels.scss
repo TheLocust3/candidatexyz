@@ -68,12 +68,17 @@
     border-color: #2196F3;
 }
 
+.panel-row-blank {
+    width: 100%;
+    height: 100%;
+}
+
 .panel-row-selected-resizable {
     resize: vertical;
     overflow: auto;
 }
 
-.panel-row-selected {
+.panel-selected {
     background-color: #F5F5F5;
 
     cursor: default;

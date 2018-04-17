@@ -39,6 +39,17 @@ class PanelRow extends React.Component {
         this.updateElements(element);
     }
 
+    onClick(elements) {
+        let selectedElements = [];
+        if (_.isEmpty(elements)) {
+            selectedElements = [this.props.element];
+        } else {
+            selectedElements = [this.props.element, ...elements];
+        }
+
+        this.props.onClick(selectedElements);
+    }
+
     onResizeRelease() {
         if (this.props.selected) {
             let elements = this.props.elements;
@@ -58,7 +69,9 @@ class PanelRow extends React.Component {
     
             this.props.updateElements(elements);
         } else {
-            this.props.onClick(this.props.element)
+            if (_.isEmpty(this.props.element.elements)) {
+                this.onClick();
+            }
         }
     }
 
@@ -80,17 +93,23 @@ class PanelRow extends React.Component {
 
     renderElements() {
         if (_.isEmpty(this.props.element.elements) || this.props.element.elements.length == 0) {
+            let selected = this.props.selectedElements[0] == this.props.element;
+            let selectedClassName = selected ? '' : 'selectable';
+
             return (
-                <span className='middle-center'>
-                    Row
-                </span>
+                <div className={`panel-row-blank ${selectedClassName}`}>
+                    <span className={`middle-center`}>
+                        Row
+                    </span>
+                </div>
             )
         } else {
+            let selectedElements = _.clone(this.props.selectedElements).splice(1, 1);
             return (
                 this.props.element.elements.map((element) => {
                     return (
                         <span key={element.uuid}>
-                            <PanelCell elements={this.props.element.elements} element={element} draggedItem={this.props.draggedItem} updateElements={(innerElements) => this.updateInnerElements(innerElements)} />
+                            <PanelCell elements={this.props.element.elements} element={element} draggedItem={this.props.draggedItem} updateElements={(innerElements) => this.updateInnerElements(innerElements)} onClick={(element) => this.onClick(element)} selectedElements={selectedElements} />
                         </span>
                     );
                 })
@@ -110,11 +129,11 @@ class PanelRow extends React.Component {
             borderWidth = '1px 0 0 0';
         }
 
-        let selectedClassName = this.props.selected ? 'panel-row-selected' : 'selectable';
-        let lastSelectedClassName =  this.props.selected && this.props.element.index != this.props.elements.length - 1 ? 'panel-row-selected-resizable' : '';
+        let selected = this.props.selectedElements[0] == this.props.element;
+        let lastSelectedClassName = selected && this.props.element.index != this.props.elements.length - 1 ? 'panel-row-selected-resizable' : '';
 
         return (
-            <div id={this.props.element.uuid} className={`panel-row ${selectedClassName} ${lastSelectedClassName}`}
+            <div id={this.props.element.uuid} className={`panel-row ${lastSelectedClassName}`}
                 style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth }} onMouseUp={this.onResizeRelease.bind(this)}
                 onDrop={(event) => this.handleDrop(event)}>
                 
@@ -130,7 +149,7 @@ PanelRow.propTypes = {
     draggedItem: PropTypes.string,
     updateElements: PropTypes.func,
     onClick: PropTypes.func,
-    selected: PropTypes.bool
+    selectedElements: PropTypes.array
 };
 
 export default PanelRow;

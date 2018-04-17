@@ -12,7 +12,7 @@ class PanelPreview extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { draggedItem: '', selectedElement: this.props.panel.elements[0] };
+        this.state = { draggedItem: '', selectedElements: [this.props.panel.elements[0]] };
     }
 
     handleDrag(name) {
@@ -33,9 +33,9 @@ class PanelPreview extends React.Component {
         this.props.onChange(elements);
     }
 
-    onClick(element) {
+    onClick(elements) {
         this.setState({
-            selectedElement: element
+            selectedElements: elements
         });
     }
 
@@ -46,10 +46,9 @@ class PanelPreview extends React.Component {
     renderElements() {
         return (
             this.props.panel.elements.map((element, index) => {
-                let selected = this.state.selectedElement == element ? true : false;
                 return (
                     <div key={uuid()}>
-                        <PanelRow elements={this.props.panel.elements} settings={this.props.panel.settings} element={element} draggedItem={this.state.draggedItem} updateElements={(elements) => this.updateElements(elements)} onClick={(element) => this.onClick(element)} selected={selected} />
+                        <PanelRow elements={this.props.panel.elements} settings={this.props.panel.settings} element={element} draggedItem={this.state.draggedItem} updateElements={(elements) => this.updateElements(elements)} onClick={(element) => this.onClick(element)} selectedElements={this.state.selectedElements} />
                     </div>
                 )
             })
@@ -69,7 +68,7 @@ class PanelPreview extends React.Component {
                         {this.renderElements()}
                     </div>
 
-                    <PanelSidebar elements={this.props.panel.elements} element={this.state.selectedElement} updateElements={(elements) => this.updateElements(elements)} recalculateHeight={this.props.recalculateHeight} />
+                    <PanelSidebar elements={this.props.panel.elements} selectedElements={this.state.selectedElements} updateElements={(elements) => this.updateElements(elements)} recalculateHeight={this.props.recalculateHeight} />
                 </div>
             </div>
         );

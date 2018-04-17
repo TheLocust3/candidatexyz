@@ -37,8 +37,11 @@ class PanelCell extends React.Component {
             borderWidth = '0 1px 0 0';
         }
 
+        let selected = this.props.selectedElements[0] == this.props.element;
+        let selectedClassName = selected ? 'panel-selected' : 'selectable';
+
         return (
-            <div id={this.props.element.uuid} className='panel-cell' style={{ width: `${this.props.element.width}%` }}>
+            <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%` }} onClick={() => this.props.onClick([this.props.element])}>
                 <div className='panel-cell-inner' style={{ borderWidth: borderWidth }}>
                     <span className='middle-center'>
                         Cell
@@ -53,7 +56,9 @@ PanelCell.propTypes = {
     elements: PropTypes.array,
     element: PropTypes.object,
     draggedItem: PropTypes.string,
-    updateElements: PropTypes.func
+    updateElements: PropTypes.func,
+    onClick: PropTypes.func,
+    selectedElements: PropTypes.array
 };
 
 export default PanelCell;
