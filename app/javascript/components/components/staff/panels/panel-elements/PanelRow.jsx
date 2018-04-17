@@ -3,7 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { uuid } from '../../../../helpers';
+import { uuid } from '../../../../../helpers';
 import PanelCell from './PanelCell';
 
 class PanelRow extends React.Component {

@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CellSidebar from './CellSidebar';
-import TextField from '../../base/TextField';
-import Button from '../../base/Button';
+import TextField from '../../../base/TextField';
+import Button from '../../../base/Button';
 
 class RowSidebar extends React.Component {
 

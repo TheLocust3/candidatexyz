@@ -2,7 +2,8 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { uuid } from '../../../../helpers';
+import { uuid } from '../../../../../helpers';
+import PanelButton from './PanelButton';
 
 class PanelCell extends React.Component {
 
@@ -18,6 +19,20 @@ class PanelCell extends React.Component {
         this.updateElements(element);
     }
 
+    handleDrop(event) {
+        let elements = this.props.elements;
+        let element = this.props.element;
+        if (this.props.draggedItem == 'button') {
+            if (_.isEmpty(element.elements)) {
+                element.elements = [];
+            }
+
+            element.elements.push(PanelButton.elementStructure(element.elements.length));
+        }
+
+        this.updateElements(element);
+    }
+
     updateElements(element) {
         if (this.props.element == element) return;
 
@@ -25,6 +40,20 @@ class PanelCell extends React.Component {
         elements[element.index] = element;
 
         this.props.updateElements(elements);
+    }
+
+    renderElements() {
+        if (_.isEmpty(this.props.element.elements)) {
+            return (
+                <span className='middle-center'>
+                    Cell
+                </span>
+            );
+        } else if (this.props.element.elements[0].type == 'button') {
+            return (
+                <PanelButton parentElement={this.props.element} element={this.props.element.elements[0]} />
+            );
+        }
     }
 
     render() {
@@ -41,11 +70,10 @@ class PanelCell extends React.Component {
         let selectedClassName = selected ? 'panel-selected' : 'selectable';
 
         return (
-            <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%` }} onClick={() => this.props.onClick([this.props.element])}>
+            <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%` }}
+                onClick={() => this.props.onClick([this.props.element])} onDrop={(event) => this.handleDrop(event)}>
                 <div className='panel-cell-inner' style={{ borderWidth: borderWidth }}>
-                    <span className='middle-center'>
-                        Cell
-                    </span>
+                    {this.renderElements()}
                 </div>
             </div>
         );

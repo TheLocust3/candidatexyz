@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import { uuid } from '../../../../helpers';
 import ToolbarItem from './ToolbarItem';
-import PanelSidebar from './PanelSidebar';
-import PanelRow from './PanelRow';
+import PanelSidebar from './sidebar/PanelSidebar';
+import PanelRow from './panel-elements/PanelRow';
 
 class PanelPreview extends React.Component {
 
@@ -61,6 +61,7 @@ class PanelPreview extends React.Component {
                 <div className='panel-preview-toolbar'>
                     <ToolbarItem name='row' label='Row' icon='view_agenda' onDrag={(name) => this.handleDrag(name)} />
                     <ToolbarItem name='cell' label='Cell' icon='view_module' onDrag={(name) => this.handleDrag(name)} />
+                    <ToolbarItem name='button' label='Button' icon='check_box_outline_blank' onDrag={(name) => this.handleDrag(name)} />
                 </div>
 
                 <div className='panel-preview-editor'>

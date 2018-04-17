@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import RowSidebar from './RowSidebar';
-import TextField from '../../base/TextField';
+import TextField from '../../../base/TextField';
 
 class PanelSidebar extends React.Component {
 
