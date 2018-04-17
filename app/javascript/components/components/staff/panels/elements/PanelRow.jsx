@@ -50,8 +50,10 @@ class PanelRow extends React.Component {
         this.props.onClick(selectedElements);
     }
 
-    onResizeRelease() {
-        if (this.props.selected) {
+    onResizeRelease(event) {
+        let selected = this.props.selectedElements[0] == this.props.element;
+
+        if (selected) {
             let elements = this.props.elements;
             let element = this.props.element;
             let index = Number(element.index);
@@ -134,7 +136,7 @@ class PanelRow extends React.Component {
 
         return (
             <div id={this.props.element.uuid} className={`panel-row ${lastSelectedClassName}`}
-                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth }} onMouseUp={this.onResizeRelease.bind(this)}
+                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth, paddingBottom: '1vh' }} onMouseUp={this.onResizeRelease.bind(this)}
                 onDrop={(event) => this.handleDrop(event)}>
                 
                 {this.renderElements()}
