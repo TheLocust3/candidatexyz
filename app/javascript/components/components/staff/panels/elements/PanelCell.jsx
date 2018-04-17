@@ -7,6 +7,7 @@ import PanelButton from './PanelButton';
 import PanelFab from './PanelFab';
 import PanelCheckbox from './PanelCheckbox';
 import PanelTextField from './PanelTextField';
+import PanelTextArea from './PanelTextArea';
 
 class PanelCell extends React.Component {
 
@@ -47,6 +48,8 @@ class PanelCell extends React.Component {
             element.elements.push(PanelCheckbox.elementStructure(element.elements.length));
         } else if (this.props.draggedItem == 'textField') {
             element.elements.push(PanelTextField.elementStructure(element.elements.length));
+        } else if (this.props.draggedItem == 'textArea') {
+            element.elements.push(PanelTextArea.elementStructure(element.elements.length));
         }
 
         this.updateElements(element);
@@ -93,6 +96,8 @@ class PanelCell extends React.Component {
             return <PanelCheckbox parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'textField') {
             return <PanelTextField parentElement={this.props.element} element={this.props.element.elements[0]} />;
+        } else if (this.props.element.elements[0].type == 'textArea') {
+            return <PanelTextArea parentElement={this.props.element} element={this.props.element.elements[0]} />;
         }
     }
 

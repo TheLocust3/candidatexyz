@@ -7,6 +7,7 @@ import ButtonSidebar from './ButtonSidebar';
 import FabSidebar from './FabSidebar';
 import CheckboxSidebar from './CheckboxSidebar';
 import TextFieldSidebar from './TextFieldSidebar';
+import TextAreaSidebar from './TextAreaSidebar';
 
 class CellSidebar extends React.Component {
 
@@ -67,6 +68,14 @@ class CellSidebar extends React.Component {
                     <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
 
                     <TextFieldSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
+                </div>
+            )
+        } else if (element.type == 'textArea') {
+            return (
+                <div>
+                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+
+                    <TextAreaSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
                 </div>
             )
         }
