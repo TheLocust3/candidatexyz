@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { uuid } from '../../../../../helpers';
 import PanelButton from './PanelButton';
+import PanelFab from './PanelFab';
 
 class PanelCell extends React.Component {
 
@@ -31,12 +32,15 @@ class PanelCell extends React.Component {
     handleDrop(event) {
         let elements = this.props.elements;
         let element = this.props.element;
-        if (this.props.draggedItem == 'button') {
-            if (_.isEmpty(element.elements)) {
-                element.elements = [];
-            }
 
+        if (_.isEmpty(element.elements)) {
+            element.elements = [];
+        }
+
+        if (this.props.draggedItem == 'button') {
             element.elements.push(PanelButton.elementStructure(element.elements.length));
+        } else if (this.props.draggedItem == 'fab') {
+            element.elements.push(PanelFab.elementStructure(element.elements.length));
         }
 
         this.updateElements(element);
@@ -78,6 +82,10 @@ class PanelCell extends React.Component {
         } else if (this.props.element.elements[0].type == 'button') {
             return (
                 <PanelButton parentElement={this.props.element} element={this.props.element.elements[0]} />
+            );
+        } else if (this.props.element.elements[0].type == 'fab') {
+            return (
+                <PanelFab parentElement={this.props.element} element={this.props.element.elements[0]} />
             );
         }
     }

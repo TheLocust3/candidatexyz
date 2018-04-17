@@ -62,6 +62,7 @@ class PanelPreview extends React.Component {
                     <ToolbarItem name='row' label='Row' icon='view_agenda' onDrag={(name) => this.handleDrag(name)} />
                     <ToolbarItem name='cell' label='Cell' icon='view_module' onDrag={(name) => this.handleDrag(name)} />
                     <ToolbarItem name='button' label='Button' icon='check_box_outline_blank' onDrag={(name) => this.handleDrag(name)} />
+                    <ToolbarItem name='fab' label='Fab' icon='check_box_outline_blank' onDrag={(name) => this.handleDrag(name)} />
                 </div>
 
                 <div className='panel-preview-editor'>

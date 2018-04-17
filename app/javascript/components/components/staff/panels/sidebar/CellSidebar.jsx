@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Button from '../../../base/Button';
 import ButtonSidebar from './ButtonSidebar';
+import FabSidebar from './FabSidebar';
 
 class CellSidebar extends React.Component {
 
@@ -34,14 +35,25 @@ class CellSidebar extends React.Component {
         let element = this.props.selectedElements[1];
         if (_.isEmpty(element)) return;
 
-        return (
-            <div>
-                <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+        if (element.type == 'button') {
+            return (
+                <div>
+                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
 
-                <ButtonSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-            </div>
-        )
+                    <ButtonSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
+                </div>
+            )
+        } else if (element.type == 'fab') {
+            return (
+                <div>
+                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+
+                    <FabSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
+                </div>
+            )
+        }
     }
+    
 
     render() {
         let element = this.props.selectedElements[0];
