@@ -4,20 +4,39 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { uuid } from '../../../../helpers';
+import PanelCell from './PanelCell';
 
 class PanelRow extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, type: 'row' }
+        return { index: index, uuid: `row-${uuid()}`, type: 'row', elements: [] };
     }
 
     constructor(props) {
         super(props);
 
-        if (_.isEmpty(this.props.element.uuid)) { // element is uninitialized
-            this.props.element.uuid = `row-${uuid()}`;
-            this.updateElements(this.props.element);
+        if (!_.isEmpty(this.props.element.elements)) {
+            let element = this.props.element;
+            element.elements = _.range(0, Object.keys(element.elements).length).map((index) => {
+                return element.elements[index];
+            });
+
+            this.updateElements(element);
         }
+    }
+
+    handleDrop(event) {
+        let elements = this.props.elements;
+        let element = this.props.element;
+        if (this.props.draggedItem == 'cell') {
+            if (_.isEmpty(element.elements)) {
+                element.elements = [];
+            }
+
+            element.elements.push(PanelCell.elementStructure(element.elements.length));
+        }
+
+        this.updateElements(element);
     }
 
     onResizeRelease() {
@@ -43,11 +62,40 @@ class PanelRow extends React.Component {
         }
     }
 
+    updateInnerElements(innerElements) {
+        let element = this.props.element;
+        element.elements = innerElements;
+
+        this.updateElements(element);
+    }
+
     updateElements(element) {
+        if (this.props.element == element) return;
+
         let elements = this.props.elements;
         elements[element.index] = element;
 
         this.props.updateElements(elements);
+    }
+
+    renderElements() {
+        if (_.isEmpty(this.props.element.elements) || this.props.element.elements.length == 0) {
+            return (
+                <span className='middle-center'>
+                    Row
+                </span>
+            )
+        } else {
+            return (
+                this.props.element.elements.map((element) => {
+                    return (
+                        <span key={element.uuid}>
+                            <PanelCell elements={this.props.element.elements} element={element} draggedItem={this.props.draggedItem} updateElements={(innerElements) => this.updateInnerElements(innerElements)} />
+                        </span>
+                    );
+                })
+            )
+        }
     }
 
     render() {
@@ -66,11 +114,11 @@ class PanelRow extends React.Component {
         let lastSelectedClassName =  this.props.selected && this.props.element.index != this.props.elements.length - 1 ? 'panel-row-selected-resizable' : '';
 
         return (
-            <div id={this.props.element.uuid} className={`panel-row ${selectedClassName} ${lastSelectedClassName}`} style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth }} onMouseUp={this.onResizeRelease.bind(this)}>
+            <div id={this.props.element.uuid} className={`panel-row ${selectedClassName} ${lastSelectedClassName}`}
+                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth }} onMouseUp={this.onResizeRelease.bind(this)}
+                onDrop={(event) => this.handleDrop(event)}>
                 
-                <span className='middle-center'>
-                    Row
-                </span>
+                {this.renderElements()}
             </div>
         );
     }

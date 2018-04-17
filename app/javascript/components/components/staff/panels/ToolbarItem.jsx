@@ -10,7 +10,7 @@ class ToolbarItem extends React.Component {
 
     render() {
         return (
-            <div id={this.props.name} className='toolbar-item' onDragStart={this.handleDrag.bind(this)}  draggable={true}>
+            <div id={this.props.name} className='toolbar-item' onDragStart={this.handleDrag.bind(this)} draggable={true}>
                 <i className='material-icons'>{this.props.icon}</i>
 
                 <div>

@@ -34,6 +34,7 @@
 }
 
 .toolbar-item {
+    display: inline-block;
     width: 10%;
     text-align: center;
 
@@ -64,7 +65,6 @@
     width: 100%;
 
     border: 1px dashed;
-    border-width: 1px 0 1px 0;
     border-color: #2196F3;
 }
 
@@ -82,4 +82,19 @@
     -khtml-user-select: none;
     -webkit-user-select: none;
     -o-user-select: none;
+}
+
+.panel-cell {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.panel-cell-inner {
+    height: 100%;
+    width: 100%;
+
+    border: 1px dashed;
+    border-color: #81C784;
 }

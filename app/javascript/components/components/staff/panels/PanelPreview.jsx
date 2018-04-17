@@ -22,13 +22,13 @@ class PanelPreview extends React.Component {
     }
 
     handleDrop(event) {
-        event.stopPropagation();
-
         let elements = this.props.panel.elements;
-        elements.push(PanelRow.elementStructure(this.props.panel.elements.length));
-        elements = elements.map((element) => {
-            return { ...element, height: this.props.panel.settings.height / elements.length }
-        });
+        if (this.state.draggedItem == 'row') {
+            elements.push(PanelRow.elementStructure(this.props.panel.elements.length));
+            elements = elements.map((element) => {
+                return { ...element, height: this.props.panel.settings.height / elements.length }
+            });
+        }
 
         this.props.onChange(elements);
     }
@@ -61,6 +61,7 @@ class PanelPreview extends React.Component {
             <div>
                 <div className='panel-preview-toolbar'>
                     <ToolbarItem name='row' label='Row' icon='view_agenda' onDrag={(name) => this.handleDrag(name)} />
+                    <ToolbarItem name='cell' label='Cell' icon='view_module' onDrag={(name) => this.handleDrag(name)} />
                 </div>
 
                 <div className='panel-preview-editor'>
