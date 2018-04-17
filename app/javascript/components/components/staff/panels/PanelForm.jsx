@@ -10,7 +10,7 @@ import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 
 import PanelPreview from './PanelPreview';
-import PanelRow from './panel-elements/PanelRow';
+import PanelRow from './elements/PanelRow';
 
 class PanelForm extends React.Component {
 

@@ -33,6 +33,23 @@ class PanelCell extends React.Component {
         this.updateElements(element);
     }
 
+    onClick(element) {
+        if (_.isEmpty(this.props.element.elements)) {
+            this.props.onClick([this.props.element]);
+            
+            return;
+        }
+
+        let selectedElements = [];
+        if (_.isEmpty(element)) {
+            selectedElements = [this.props.element];
+        } else {
+            selectedElements = [this.props.element, element];
+        }
+        
+        this.props.onClick(selectedElements);
+    }
+
     updateElements(element) {
         if (this.props.element == element) return;
 
@@ -71,7 +88,7 @@ class PanelCell extends React.Component {
 
         return (
             <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%` }}
-                onClick={() => this.props.onClick([this.props.element])} onDrop={(event) => this.handleDrop(event)}>
+                onClick={() => this.onClick(...this.props.element.elements)} onDrop={(event) => this.handleDrop(event)}>
                 <div className='panel-cell-inner' style={{ borderWidth: borderWidth }}>
                     {this.renderElements()}
                 </div>

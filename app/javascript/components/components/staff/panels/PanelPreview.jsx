@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { uuid } from '../../../../helpers';
 import ToolbarItem from './ToolbarItem';
 import PanelSidebar from './sidebar/PanelSidebar';
-import PanelRow from './panel-elements/PanelRow';
+import PanelRow from './elements/PanelRow';
 
 class PanelPreview extends React.Component {
 

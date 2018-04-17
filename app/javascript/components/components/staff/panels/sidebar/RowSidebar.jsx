@@ -32,20 +32,16 @@ class RowSidebar extends React.Component {
     }
 
     renderSelectedCell() {
-        let element = this.props.selectedElements[1];
-        if (_.isEmpty(element)) return;
+        let selectedElements = _.clone(this.props.selectedElements).splice(1, this.props.selectedElements.length - 1);
+        if (_.isEmpty(selectedElements)) return;
 
         return (
-            <div>
-                <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                <CellSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(element) => this.updateInnerElements(element)} />
-            </div>
+            <CellSidebar elements={this.props.selectedElements[0].elements} selectedElements={selectedElements} updateInnerElements={(element) => this.updateInnerElements(element)} />
         )
     }
 
     render() {
-        let element = this.props.selectedElements[0]; // TODO: Won't be able to go deeper than one level
+        let element = this.props.selectedElements[0];
         return (
             <div>
                 {this.renderSelectedCell()}
