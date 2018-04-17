@@ -6,6 +6,7 @@ import { uuid } from '../../../../../helpers';
 import PanelButton from './PanelButton';
 import PanelFab from './PanelFab';
 import PanelCheckbox from './PanelCheckbox';
+import PanelTextField from './PanelTextField';
 
 class PanelCell extends React.Component {
 
@@ -44,6 +45,8 @@ class PanelCell extends React.Component {
             element.elements.push(PanelFab.elementStructure(element.elements.length));
         } else if (this.props.draggedItem == 'checkbox') {
             element.elements.push(PanelCheckbox.elementStructure(element.elements.length));
+        } else if (this.props.draggedItem == 'textField') {
+            element.elements.push(PanelTextField.elementStructure(element.elements.length));
         }
 
         this.updateElements(element);
@@ -83,17 +86,13 @@ class PanelCell extends React.Component {
                 </span>
             );
         } else if (this.props.element.elements[0].type == 'button') {
-            return (
-                <PanelButton parentElement={this.props.element} element={this.props.element.elements[0]} />
-            );
+            return <PanelButton parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'fab') {
-            return (
-                <PanelFab parentElement={this.props.element} element={this.props.element.elements[0]} />
-            );
+            return <PanelFab parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'checkbox') {
-            return (
-                <PanelCheckbox parentElement={this.props.element} element={this.props.element.elements[0]} />
-            );
+            return <PanelCheckbox parentElement={this.props.element} element={this.props.element.elements[0]} />;
+        } else if (this.props.element.elements[0].type == 'textField') {
+            return <PanelTextField parentElement={this.props.element} element={this.props.element.elements[0]} />;
         }
     }
 
