@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TextField from '../../../base/TextField';
 import Button from '../../../base/Button';
 import ButtonSidebar from './ButtonSidebar';
 

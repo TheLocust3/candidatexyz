@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import MDCAutoInit from '../../../global/MDCAutoInit';
 import TextField from '../../../base/TextField';
 import Button from '../../../base/Button';
 
@@ -21,6 +22,17 @@ class ButtonSidebar extends React.Component {
         this.props.updateInnerElements(elements);
     }
 
+    handleChange(event) {
+        let elements = this.props.elements;
+
+        let element = this.props.element;
+        element[event.target.name] = event.target.value;
+
+        elements[element.index] = element;
+
+        this.props.updateInnerElements(elements);
+    }
+
     render() {
         let element = this.props.element;
 
@@ -28,9 +40,13 @@ class ButtonSidebar extends React.Component {
             <div>
                 <center><Button className='red-button' condensed={true} onClick={this.onDeleteClick.bind(this)}>Trash</Button></center><br />
 
-                <div className='mdc-typography--body1'>
+                <span className='mdc-typography--body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
-                </div>
+                </span>
+
+                <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} />
+                
+                <MDCAutoInit />
             </div>
         );
     }

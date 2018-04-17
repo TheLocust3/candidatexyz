@@ -17,6 +17,15 @@ class PanelCell extends React.Component {
         let element = this.props.element;
         element.width = 100.0 / this.props.elements.length;
         this.updateElements(element);
+
+        if (!_.isEmpty(this.props.element.elements)) {
+            let element = this.props.element;
+            element.elements = _.range(0, Object.keys(element.elements).length).map((index) => {
+                return element.elements[index];
+            });
+
+            this.updateElements(element);
+        }
     }
 
     handleDrop(event) {
