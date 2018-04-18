@@ -8,13 +8,13 @@ import Button from '../../../base/Button';
 class PanelButton extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, uuid: `button-${uuid()}`, type: 'button', text: 'Button' };
+        return { index: index, uuid: `button-${uuid()}`, type: 'button', text: 'Button', theme: {} };
     }
 
     render() {
         return (
             <div id={this.props.element.uuid} className='middle-center'>
-                <Button onClick={(event) => event.preventDefault()}>
+                <Button onClick={(event) => event.preventDefault()} customPanelTheme={this.props.element.theme}>
                     {this.props.element.text}
                 </Button>
             </div>

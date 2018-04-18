@@ -32,18 +32,22 @@ class Button extends React.Component {
         let theme = this.theme();
 
         if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.button)) {
-            return {};
-        } else {
-            let buttonType = this.props.flat ? 'flat' : 'raised';
-            let styles =  theme.styling.button[buttonType];
-            styles = { ...styles, ...styles.custom };
-
-            return styles;
+            theme.styling = { button: { raised: {}, flat: {} } };
         }
+
+        let buttonType = this.props.flat ? 'flat' : 'raised';
+        let styles = theme.styling.button[buttonType];
+        styles = { ...styles, ...styles.custom };
+
+        if (!_.isEmpty(this.props.customPanelTheme)) {
+            styles = { ...styles, ...this.props.customPanelTheme };
+        }
+
+        return styles;
     }
 
     render() {
-        let { className, style, flat, condensed, children, theme, themeOverride, dispatch, ...props } = this.props;
+        let { className, style, flat, condensed, children, theme, themeOverride, dispatch, customPanelTheme, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let buttonDenseClassName = condensed ? this.themedClassName('button--dense') : '';
@@ -67,7 +71,8 @@ Button.propTypes = {
         PropTypes.element,
         PropTypes.string
     ]).isRequired,
-    themeOverride: PropTypes.object
+    themeOverride: PropTypes.object,
+    customPanelTheme: PropTypes.object
 };
 
 function mapStateToProps(state) {
