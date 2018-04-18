@@ -39,10 +39,14 @@ class Select extends React.Component {
         let theme = this.theme();
 
         if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.select)) {
-            return {};
-        } else {
-            return theme.styling.select;
+            theme.styling = { select: {} };
         }
+
+        let styles = theme.styling.select;
+        let customPanelTheme = _.isEmpty(this.props.customPanelTheme) ? {} : this.props.customPanelTheme;
+        styles = { ...styles, ...styles.custom, ...customPanelTheme, ...customPanelTheme.custom };
+
+        return styles;
     }
 
     renderNone() {

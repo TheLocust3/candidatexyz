@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import ColorPicker from '../../../global/ColorPicker';
+import CustomStyler from '../../../global/CustomStyler';
 import TextField from '../../../base/TextField';
 import Button from '../../../base/Button';
 
@@ -62,6 +63,8 @@ class FabSidebar extends React.Component {
             <div>
                 <ColorPicker className='color-picker-left' label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')}  />
                 <ColorPicker label='Pick Icon Color' color={theme.color} onChange={(color) => this.handleThemeChange(color.hex, 'color')}  />
+
+                <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
             </div>
         )
     }

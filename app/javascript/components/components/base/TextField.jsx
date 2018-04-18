@@ -52,7 +52,8 @@ class TextField extends React.Component {
         }
 
         let styles = theme.styling.textField;
-        styles = { ...styles, ...styles.custom, ...this.props.customPanelTheme };
+        let customPanelTheme = _.isEmpty(this.props.customPanelTheme) ? {} : this.props.customPanelTheme;
+        styles = { ...styles, ...styles.custom, ...customPanelTheme, ...customPanelTheme.custom };
 
         return styles;
     }
