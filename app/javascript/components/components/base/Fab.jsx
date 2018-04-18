@@ -32,17 +32,21 @@ class Fab extends React.Component {
         let theme = this.theme();
 
         if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.fab)) {
-            return {};
-        } else {
-            let styles =  theme.styling.fab;
-            styles = { ...styles, ...styles.custom };
-            
-            return styles;
+            theme.styling = { fab: {} };
         }
+
+        let styles = theme.styling.fab;
+        styles = { ...styles, ...styles.custom };
+
+        if (!_.isEmpty(this.props.customPanelTheme)) {
+            styles = { ...styles, ...this.props.customPanelTheme };
+        }
+
+        return styles;
     }
 
     render() {
-        let { className, style, condensed, children, theme, themeOverride, dispatch, ...props } = this.props;
+        let { className, style, condensed, children, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let fabMiniClassName = condensed ? this.themedClassName('fab--mini') : '';
@@ -64,7 +68,8 @@ Fab.propTypes = {
         PropTypes.element,
         PropTypes.string
     ]).isRequired,
-    themeOverride: PropTypes.object
+    themeOverride: PropTypes.object,
+    customPanelTheme: PropTypes.object
 };
 
 function mapStateToProps(state) {

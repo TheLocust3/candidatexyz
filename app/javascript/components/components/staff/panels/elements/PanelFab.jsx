@@ -8,13 +8,13 @@ import Fab from '../../../base/Fab';
 class PanelFab extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, uuid: `fab-${uuid()}`, type: 'fab', icon: 'settings' };
+        return { index: index, uuid: `fab-${uuid()}`, type: 'fab', icon: 'settings', theme: {} };
     }
 
     render() {
         return (
             <div id={this.props.element.uuid} className='middle-center'>
-                <Fab className='material-icons middle-center' onClick={(event) => event.preventDefault()}>
+                <Fab className='material-icons middle-center' onClick={(event) => event.preventDefault()} customPanelTheme={this.props.element.theme}>
                     <span className='mdc-fab__icon'>
                         {this.props.element.icon}
                     </span>

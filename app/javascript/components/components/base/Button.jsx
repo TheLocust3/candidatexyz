@@ -47,7 +47,7 @@ class Button extends React.Component {
     }
 
     render() {
-        let { className, style, flat, condensed, children, theme, themeOverride, dispatch, customPanelTheme, ...props } = this.props;
+        let { className, style, flat, condensed, children, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let buttonDenseClassName = condensed ? this.themedClassName('button--dense') : '';
