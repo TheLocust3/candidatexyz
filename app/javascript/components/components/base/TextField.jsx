@@ -48,14 +48,17 @@ class TextField extends React.Component {
         let theme = this.theme();
 
         if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.textField)) {
-            return {};
-        } else {
-            return theme.styling.textField;
+            theme.styling = { textField: {} };
         }
+
+        let styles = theme.styling.textField;
+        styles = { ...styles, ...styles.custom, ...this.props.customPanelTheme };
+
+        return styles;
     }
 
     render() {
-        let { className, label, name, onChange, required, defaultValue, type, size, dense, theme, dispatch, themeOverride, ...props } = this.props;
+        let { className, label, name, onChange, required, defaultValue, type, size, dense, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let denseClassName = dense ? this.themedClassName('text-field--dense') : '';
@@ -84,7 +87,8 @@ TextField.propTypes = {
     type: PropTypes.string,
     size: PropTypes.number,
     dense: PropTypes.bool,
-    themeOverride: PropTypes.object
+    themeOverride: PropTypes.object,
+    customPanelTheme: PropTypes.object
 };
 
 function mapStateToProps(state) {
