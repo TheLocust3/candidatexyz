@@ -8,6 +8,7 @@ import PanelFab from './PanelFab';
 import PanelCheckbox from './PanelCheckbox';
 import PanelTextField from './PanelTextField';
 import PanelTextArea from './PanelTextArea';
+import PanelSelect from './PanelSelect';
 
 class PanelCell extends React.Component {
 
@@ -50,6 +51,8 @@ class PanelCell extends React.Component {
             element.elements.push(PanelTextField.elementStructure(element.elements.length));
         } else if (this.props.draggedItem == 'textArea') {
             element.elements.push(PanelTextArea.elementStructure(element.elements.length));
+        } else if (this.props.draggedItem == 'select') {
+            element.elements.push(PanelSelect.elementStructure(element.elements.length));
         }
 
         this.updateElements(element);
@@ -98,6 +101,8 @@ class PanelCell extends React.Component {
             return <PanelTextField parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'textArea') {
             return <PanelTextArea parentElement={this.props.element} element={this.props.element.elements[0]} />;
+        } else if (this.props.element.elements[0].type == 'select') {
+            return <PanelSelect parentElement={this.props.element} element={this.props.element.elements[0]} />;
         }
     }
 

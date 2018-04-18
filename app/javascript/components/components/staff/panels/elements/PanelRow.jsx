@@ -41,6 +41,7 @@ class PanelRow extends React.Component {
 
     onClick(elements) {
         let selectedElements = [];
+        
         if (_.isEmpty(elements)) {
             selectedElements = [this.props.element];
         } else {
@@ -137,8 +138,8 @@ class PanelRow extends React.Component {
 
         return (
             <div id={this.props.element.uuid} className={`panel-row ${lastSelectedClassName}`}
-                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth, paddingBottom: selectPaddingBottom }} onMouseUp={this.onResizeRelease.bind(this)}
-                onDrop={(event) => this.handleDrop(event)}>
+                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth, paddingBottom: selectPaddingBottom }}
+                onClick={this.onResizeRelease.bind(this)} onDrop={(event) => this.handleDrop(event)}>
                 
                 {this.renderElements()}
             </div>
