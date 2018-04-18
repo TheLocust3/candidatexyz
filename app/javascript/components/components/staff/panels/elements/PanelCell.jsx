@@ -75,6 +75,13 @@ class PanelCell extends React.Component {
         this.props.onClick(selectedElements);
     }
 
+    updateInnerElement(innerElement) {
+        let element = this.props.element;
+        element[innerElement.index] = innerElement;
+
+        this.updateElements(element);
+    }
+
     updateElements(element) {
         if (this.props.element == element) return;
 
@@ -102,7 +109,7 @@ class PanelCell extends React.Component {
         } else if (this.props.element.elements[0].type == 'textArea') {
             return <PanelTextArea parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'select') {
-            return <PanelSelect parentElement={this.props.element} element={this.props.element.elements[0]} />;
+            return <PanelSelect parentElement={this.props.element} element={this.props.element.elements[0]} updateElement={(element) => this.updateInnerElement(element)} />;
         }
     }
 
