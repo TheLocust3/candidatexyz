@@ -69,7 +69,7 @@ class PanelPreview extends React.Component {
                 </div>
 
                 <div className='panel-preview-editor'>
-                    <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${this.props.panel.settings.height}vh` }}>
+                    <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${Number(this.props.panel.settings.height) + 1}vh` }}>
                         {this.renderElements()}
                     </div>
 

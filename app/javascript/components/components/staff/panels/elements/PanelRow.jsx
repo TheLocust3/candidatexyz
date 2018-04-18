@@ -133,10 +133,11 @@ class PanelRow extends React.Component {
 
         let selected = this.props.selectedElements[0] == this.props.element;
         let lastSelectedClassName = selected && this.props.element.index != this.props.elements.length - 1 ? 'panel-row-selected-resizable' : '';
+        let selectPaddingBottom = selected && this.props.element.index != this.props.elements.length - 1 ? '1vh' : '';
 
         return (
             <div id={this.props.element.uuid} className={`panel-row ${lastSelectedClassName}`}
-                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth, paddingBottom: '1vh' }} onMouseUp={this.onResizeRelease.bind(this)}
+                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth, paddingBottom: selectPaddingBottom }} onMouseUp={this.onResizeRelease.bind(this)}
                 onDrop={(event) => this.handleDrop(event)}>
                 
                 {this.renderElements()}
