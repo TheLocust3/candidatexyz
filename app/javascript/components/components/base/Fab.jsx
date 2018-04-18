@@ -36,11 +36,7 @@ class Fab extends React.Component {
         }
 
         let styles = theme.styling.fab;
-        styles = { ...styles, ...styles.custom };
-
-        if (!_.isEmpty(this.props.customPanelTheme)) {
-            styles = { ...styles, ...this.props.customPanelTheme };
-        }
+        styles = { ...styles, ...styles.custom, ...this.props.customPanelTheme };
 
         return styles;
     }

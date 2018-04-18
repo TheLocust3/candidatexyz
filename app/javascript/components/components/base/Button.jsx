@@ -37,11 +37,7 @@ class Button extends React.Component {
 
         let buttonType = this.props.flat ? 'flat' : 'raised';
         let styles = theme.styling.button[buttonType];
-        styles = { ...styles, ...styles.custom };
-
-        if (!_.isEmpty(this.props.customPanelTheme)) {
-            styles = { ...styles, ...this.props.customPanelTheme };
-        }
+        styles = { ...styles, ...styles.custom, ...this.props.customPanelTheme };
 
         return styles;
     }

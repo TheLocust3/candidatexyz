@@ -19,16 +19,19 @@ class Checkbox extends React.Component {
         let theme = this.theme();
 
         if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.checkbox)) {
-            return {};
-        } else {
-            return theme.styling.checkbox;
+            theme.styling = { checkbox: {} };
         }
+
+        let styles = theme.styling.checkbox;
+        styles = { ...styles, ...styles.custom, ...this.props.customPanelTheme };
+
+        return styles;
     }
 
     renderNone() {
         if (this.theme().classNamePrefix == 'mdc-') return;
 
-        let { className, label, onChange, defaultChecked, theme, dispatch, themeOverride, ...props } = this.props;
+        let { className, label, onChange, defaultChecked, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
         className = _.isEmpty(className) ? '' : className;
         let themedStyle = this.themedStyle();
 
@@ -44,7 +47,7 @@ class Checkbox extends React.Component {
     renderMdc() {
         if (this.theme().classNamePrefix != 'mdc-') return;
 
-        let { className, label, onChange, defaultChecked, theme, dispatch, themeOverride, ...props } = this.props;
+        let { className, label, onChange, defaultChecked, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
         className = _.isEmpty(className) ? '' : className;
         let themedStyle = this.themedStyle();
 
@@ -83,7 +86,8 @@ Checkbox.propTypes = {
     label: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     defaultChecked: PropTypes.bool,
-    themeOverride: PropTypes.object
+    themeOverride: PropTypes.object,
+    customPanelTheme: PropTypes.object
 };
 
 function mapStateToProps(state) {
