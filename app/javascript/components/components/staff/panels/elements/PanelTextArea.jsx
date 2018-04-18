@@ -8,13 +8,13 @@ import TextArea from '../../../base/TextArea';
 class PanelTextArea extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, uuid: `textArea-${uuid()}`, type: 'textArea', text: 'TextArea' };
+        return { index: index, uuid: `textArea-${uuid()}`, type: 'textArea', text: 'TextArea', theme: {} };
     }
 
     render() {
         return (
             <div id={this.props.element.uuid} className='middle-center'>
-                <TextArea label={this.props.element.text} onChange={(event) => event.preventDefault()} />
+                <TextArea label={this.props.element.text} onChange={(event) => event.preventDefault()} customPanelTheme={this.props.element.theme}/>
             </div>
         );
     }

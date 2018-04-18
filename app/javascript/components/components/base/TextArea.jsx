@@ -48,14 +48,17 @@ class TextArea extends React.Component {
         let theme = this.theme();
 
         if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.textArea)) {
-            return {};
-        } else {
-            return theme.styling.textArea;
+            theme.styling = { textArea: {} };
         }
+
+        let styles = theme.styling.textArea;
+        styles = { ...styles, ...styles.custom, ...this.props.customPanelTheme };
+
+        return styles;
     }
 
     render() {
-        let { className, label, name, onChange, required, defaultValue, rows, cols, theme, themeOverride, dispatch, ...props } = this.props;
+        let { className, label, name, onChange, required, defaultValue, rows, cols, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let autoInit = this.theme().classNamePrefix != 'mdc-' ? {} : { 'data-mdc-auto-init': 'MDCTextField' };
@@ -80,7 +83,8 @@ TextArea.propTypes = {
     defaultValue: PropTypes.string,
     rows: PropTypes.number,
     cols: PropTypes.number,
-    themeOverride: PropTypes.object
+    themeOverride: PropTypes.object,
+    customPanelTheme: PropTypes.object
 };
 
 function mapStateToProps(state) {
