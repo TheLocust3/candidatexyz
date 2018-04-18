@@ -79,10 +79,10 @@ class CustomStyler extends React.Component {
             this.state.custom.map((style, index) => {
                 return (
                     <div key={index}>
-                        <TextField label='Name' onChange={(event) => { this.handleNameChange(event, index) }} defaultValue={style.name} style={{ marginRight: '5%' }} />
-                        <TextField label='Value' onChange={(event) => { this.handleValueChange(event, index) }} defaultValue={style.value} />
+                        <TextField label='Name' dense={this.props.small} onChange={(event) => { this.handleNameChange(event, index) }} defaultValue={style.name} style={{ width: '35%', marginRight: '5%' }} />
+                        <TextField label='Value' dense={this.props.small} onChange={(event) => { this.handleValueChange(event, index) }} defaultValue={style.value} style={{ width: '35%' }} />
 
-                        <Fab condensed={true} onClick={(event) => this.onDeleteClick(event, index)} style={{ marginLeft: '3%' }}>
+                        <Fab condensed={true} className='red-button' onClick={(event) => this.onDeleteClick(event, index)} style={{ marginLeft: '3%' }}>
                             <i className='material-icons'>delete</i>
                         </Fab>
 
@@ -97,12 +97,12 @@ class CustomStyler extends React.Component {
         return (
             <div>
                 <div style={{ position: 'relative' }}>
-                    <div className='mdc-typography--headline middle' style={{ display: 'inline' }}>Custom Styles</div>
+                    <div className={`${this.props.small ? 'mdc-typography--subtitle1' : 'mdc-typography--headline'} middle`} style={{ display: 'inline' }}>Custom Styles</div>
                     <Fab condensed={true} onClick={this.onAddClick.bind(this)} style={{ marginLeft: '175px' }}>
                         <i className='material-icons'>add</i>
                     </Fab>
                 </div>
-                <i>For advanced users only</i>
+                <i className={this.props.small ? 'mdc-typography--body1' : ''}>For advanced users only</i>
 
                 <div>
                     {this.renderCustomStyles()}
@@ -114,7 +114,8 @@ class CustomStyler extends React.Component {
 
 CustomStyler.propTypes = {
     custom: PropTypes.object,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    small: PropTypes.bool
 };
 
 export default CustomStyler;

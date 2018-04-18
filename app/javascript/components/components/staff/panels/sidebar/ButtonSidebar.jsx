@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import ColorPicker from '../../../global/ColorPicker';
 import FontPicker from '../../../global/FontPicker';
+import CustomStyler from '../../../global/CustomStyler';
 import TextField from '../../../base/TextField';
 import Button from '../../../base/Button';
 
@@ -76,6 +77,8 @@ class ButtonSidebar extends React.Component {
 
                 <TextField dense={true} type='number' label='Height' onChange={(event) => { this.handleThemeChange(event.target.value, 'height', 'px') }} defaultValue={_.replace(theme.height, 'px', '')} style={{ width: '45%', marginRight: '5%' }} />
                 <TextField dense={true} type='number' label='Width' onChange={(event) => { this.handleThemeChange(event.target.value, 'width', 'px') }} defaultValue={_.replace(theme.width, 'px', '')} style={{ width: '45%' }} />
+
+                <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
             </div>
         );
     }
