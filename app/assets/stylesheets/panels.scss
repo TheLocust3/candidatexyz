@@ -33,9 +33,13 @@
     vertical-align: top;
 }
 
+.panel-preview-toolbar {
+    margin-bottom: 1%;
+}
+
 .toolbar-item {
     display: inline-block;
-    width: 9%;
+    width: 80px;
     text-align: center;
 
     cursor: pointer;

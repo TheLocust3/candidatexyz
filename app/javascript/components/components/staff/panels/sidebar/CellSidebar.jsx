@@ -9,6 +9,7 @@ import CheckboxSidebar from './CheckboxSidebar';
 import TextFieldSidebar from './TextFieldSidebar';
 import TextAreaSidebar from './TextAreaSidebar';
 import SelectSidebar from './SelectSidebar';
+import ImageSidebar from './ImageSidebar';
 
 class CellSidebar extends React.Component {
 
@@ -85,6 +86,14 @@ class CellSidebar extends React.Component {
                     <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
 
                     <SelectSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
+                </div>
+            )
+        } else if (element.type == 'image') {
+            return (
+                <div>
+                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+
+                    <ImageSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
                 </div>
             )
         }

@@ -9,6 +9,7 @@ import PanelCheckbox from './PanelCheckbox';
 import PanelTextField from './PanelTextField';
 import PanelTextArea from './PanelTextArea';
 import PanelSelect from './PanelSelect';
+import PanelImage from './PanelImage';
 
 class PanelCell extends React.Component {
 
@@ -53,6 +54,8 @@ class PanelCell extends React.Component {
             element.elements.push(PanelTextArea.elementStructure(element.elements.length));
         } else if (this.props.draggedItem == 'select') {
             element.elements.push(PanelSelect.elementStructure(element.elements.length));
+        } else if (this.props.draggedItem == 'image') {
+            element.elements.push(PanelImage.elementStructure(element.elements.length));
         }
 
         this.updateElements(element);
@@ -110,6 +113,8 @@ class PanelCell extends React.Component {
             return <PanelTextArea parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'select') {
             return <PanelSelect parentElement={this.props.element} element={this.props.element.elements[0]} updateElement={(element) => this.updateInnerElement(element)} />;
+        } else if (this.props.element.elements[0].type == 'image') {
+            return <PanelImage parentElement={this.props.element} element={this.props.element.elements[0]} />;
         }
     }
 
