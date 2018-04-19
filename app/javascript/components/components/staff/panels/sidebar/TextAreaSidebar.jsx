@@ -81,6 +81,9 @@ class TextAreaSidebar extends React.Component {
 
                 <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} />
 
+                <TextField dense={true} type='number' name='rows' label='Rows' onChange={(event) => { this.handleChange(event) }} defaultValue={String(element.rows)} style={{ width: '45%', marginRight: '5%' }} />
+                <TextField dense={true} type='number' name='cols' label='Cols' onChange={(event) => { this.handleChange(event) }} defaultValue={String(element.cols)} style={{ width: '45%' }} />
+
                 {this.renderThemeEditor()}
                 
                 <MDCAutoInit />
