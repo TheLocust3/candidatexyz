@@ -1,5 +1,6 @@
 class Page < ApplicationRecord
-    has_and_belongs_to_many :panels
+    has_many :page_sections
+    has_many :panels, through: :page_sections
 
     validates :name, presence: true
     validates :url, presence: true, uniqueness: true

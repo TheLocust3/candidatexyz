@@ -50,19 +50,20 @@ ActiveRecord::Schema.define(version: 20180420143126) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "page_sections", id: false, force: :cascade do |t|
+    t.uuid "page_id"
+    t.uuid "panel_id"
+    t.integer "index"
+    t.index ["page_id"], name: "index_page_sections_on_page_id"
+    t.index ["panel_id"], name: "index_page_sections_on_panel_id"
+  end
+
   create_table "pages", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "pages_panels", id: false, force: :cascade do |t|
-    t.uuid "page_id"
-    t.uuid "panel_id"
-    t.index ["page_id"], name: "index_pages_panels_on_page_id"
-    t.index ["panel_id"], name: "index_pages_panels_on_panel_id"
   end
 
   create_table "panels", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

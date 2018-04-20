@@ -13,8 +13,8 @@ class Api::PagesController < Api::ApiController
     def create
         page = Page.new(create_params(params))
         panel_ids = params[:panels].nil? ? [] : params[:panels]
-        page.panels = panel_ids.map { |panel_id|
-            Panel.find(panel_id)
+        page.page_sections = panel_ids.map { |panel_id, index|
+            PageSection.create(page: page, panel: Panel.find(panel_id), index: index)
         }
 
         if page.save
@@ -26,10 +26,15 @@ class Api::PagesController < Api::ApiController
 
     def update
         page = Page.find(params[:id])
-        panel_ids = params[:panels].nil? ? [] : params[:panels]
-        page.panels = panel_ids.map { |panel_id|
-            Panel.find(panel_id)
-        }
+
+        unless page.page_sections.length == 0
+            panel_ids = params[:panels].nil? ? [] : params[:panels]
+            page.page_sections = page.page_sections.map { |page_section|
+                page_section.index = panel_id.index(page_section.panel.id)
+
+                page_section
+            }
+        end
 
         if page.update(update_params(params))
             render :json => Page.find(page.id)
