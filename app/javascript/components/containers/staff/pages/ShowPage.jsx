@@ -4,18 +4,18 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
-import { fetchPanel } from '../../../actions/panel-actions';
+import { fetchPage } from '../../../actions/page-actions';
 import MDCAutoInit from '../../../components/global/MDCAutoInit';
 
-import PanelRenderer from '../../../components/staff/panels/PanelRenderer';
+import PageRenderer from '../../../components/staff/pages/PageRenderer';
 
-class ShowPanel extends React.Component {
+class ShowPage extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch(setDocumentTitle('Panel Editor'));
+        this.props.dispatch(setDocumentTitle('Page Editor'));
         this.props.dispatch(setBlankNavbar(true));
 
-        this.props.dispatch(fetchPanel(this.props.match.params.name));
+        this.props.dispatch(fetchPage(this.props.match.params.url));
     }
 
     render() {
@@ -25,7 +25,7 @@ class ShowPanel extends React.Component {
             <div className='content-bottom content-5'>
                 <div className='mdc-typography--display2'>Panel Preview</div><br />
                 
-                <PanelRenderer panel={this.state.panel} />
+                <PageRenderer page={this.props.page} />
 
                 <MDCAutoInit />
             </div>
@@ -35,9 +35,9 @@ class ShowPanel extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        isReady: state.panels.isReady,
-        panel: state.panels.panel
+        isReady: state.pages.isReady,
+        page: state.pages.page
     };
 }
 
-export default connect(mapStateToProps)(ShowPanel);
+export default connect(mapStateToProps)(ShowPage);

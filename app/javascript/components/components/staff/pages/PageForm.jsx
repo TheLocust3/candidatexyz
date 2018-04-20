@@ -10,7 +10,7 @@ import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 import PanelOrderer from './PanelOrderer';
 
-class PanelForm extends React.Component {
+class PageForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -83,9 +83,9 @@ class PanelForm extends React.Component {
     }
 }
 
-PanelForm.propTypes = {
+PageForm.propTypes = {
     page: PropTypes.object,
     allPanels: PropTypes.array
 };
 
-export default PanelForm;
+export default PageForm;
