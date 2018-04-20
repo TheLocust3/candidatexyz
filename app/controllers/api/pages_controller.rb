@@ -7,12 +7,13 @@ class Api::PagesController < Api::ApiController
     end
 
     def show
-        render :json => Page.where(name: params[:name]).first
+        render :json => Page.where(url: params[:url]).first
     end
 
     def create
         page = Page.new(create_params(params))
-        page.panels = params[:panels].map { |panel_id|
+        panel_ids = params[:panels].nil? ? [] : params[:panels]
+        page.panels = panel_ids.map { |panel_id|
             Panel.find(panel_id)
         }
 
@@ -25,7 +26,8 @@ class Api::PagesController < Api::ApiController
 
     def update
         page = Page.find(params[:id])
-        page.panels = params[:panels].map { |panel_id|
+        panel_ids = params[:panels].nil? ? [] : params[:panels]
+        page.panels = panel_ids.map { |panel_id|
             Panel.find(panel_id)
         }
 
@@ -37,7 +39,7 @@ class Api::PagesController < Api::ApiController
     end
 
     def destroy
-        page = Page.where( name: params[:name]).first
+        page = Page.where( url: params[:url]).first
         page.destroy
 
         render_success
@@ -45,11 +47,11 @@ class Api::PagesController < Api::ApiController
 
     private
     def create_params(params)
-        params.permit(:name, :description)
+        params.permit(:name, :description, :url)
     end
 
     def update_params(params)
-        params.permit(:name, :description)
+        params.permit(:name, :description, :url)
     end
 end
   

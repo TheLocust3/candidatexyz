@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :panels, param: :name
 
     patch 'pages/:id' => 'pages#update'
-    resources :pages, param: :name
+    resources :pages, param: :url
 
     delete 'contacts/unsubscribe' => 'contacts#unsubscribe'
     resources :contacts

@@ -42,12 +42,12 @@ export function fetchAllPages() {
     }
 }
 
-export function fetchPage(name) {
+export function fetchPage(url) {
 
     return function (dispatch) {
         dispatch(requestPage());
 
-        PageApi.get(name).then( data => {
+        PageApi.get(url).then( data => {
             dispatch(receivePage(data));
         });
     }

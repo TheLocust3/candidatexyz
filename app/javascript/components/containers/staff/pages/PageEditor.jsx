@@ -1,0 +1,47 @@
+import _ from 'lodash';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
+import { fetchPage } from '../../../actions/page-actions';
+import MDCAutoInit from '../../../components/global/MDCAutoInit';
+
+import PageForm from '../../../components/staff/pages/PageForm';
+
+class PageEditor extends React.Component {
+
+    componentDidMount() {
+        this.props.dispatch(setDocumentTitle('Page Editor'));
+        this.props.dispatch(setBlankNavbar(true));
+
+        if (!_.isEmpty(this.props.match.params.url)) {
+            this.props.dispatch(fetchPage(this.props.match.params.url));
+        }
+    }
+
+    render() {
+        if (!_.isEmpty(this.props.match.params.url) && !this.props.isReady) return null;
+        let page = _.isEmpty(this.props.match.params.url) ? {} : this.props.page;
+
+        return (
+            <div className='content-bottom content-5'>
+                <div className='mdc-typography--display2'>Panel Editor</div><br />
+                <Link className='link' to={`/staff/panels/${page.url}/show`}>Preview Page</Link><br />
+                
+                <PageForm page={page} />
+
+                <MDCAutoInit />
+            </div>
+        );
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        isReady: state.pages.isReady,
+        page: state.pages.page
+    };
+}
+
+export default connect(mapStateToProps)(PageEditor);

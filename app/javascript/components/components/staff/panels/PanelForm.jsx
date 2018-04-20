@@ -22,9 +22,6 @@ class PanelForm extends React.Component {
             this.state.panel = { name: '', description: '', elements: [ PanelRow.elementStructure(0) ], settings: { } };
         } else {
             this.state.panel = this.props.panel;
-            this.state.panel.elements = _.range(0, Object.keys(this.props.panel.elements).length).map((index) => { // ruby saves json arrays as { '0' => ..., '1' => ... }, convert it to []
-                return this.state.panel.elements[index];
-            });
             this.state.update = true;
         }
 

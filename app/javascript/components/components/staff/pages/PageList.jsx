@@ -15,15 +15,15 @@ class PageList extends React.Component {
         });
     }
 
-    onPanelClick(name) {
-        history.push(`/staff/pages/${name}`);
+    onPanelClick(url) {
+        history.push(`/staff/pages/${url}`);
     }
 
     renderPageList() {
         return (
             this.props.pages.map((page) => {
                 return (
-                    <li key={page.id} className='mdc-list-item selectable-row' onClick={() => this.onPanelClick(page.name)}>
+                    <li key={page.id} className='mdc-list-item selectable-row' onClick={() => this.onPanelClick(page.url)}>
                         <span className='mdc-list-item__text'>
                             {page.name}
 
@@ -34,7 +34,7 @@ class PageList extends React.Component {
 
                         <span className='list-meta-items'>
                             <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Delete'>
-                                <a href='#' className='unstyled-link delete-icon' name={page.name} onClick={this.onDeleteClick.bind(this)}>
+                                <a href='#' className='unstyled-link delete-icon' name={page.url} onClick={this.onDeleteClick.bind(this)}>
                                     delete
                                 </a>
                             </span>

@@ -12,9 +12,9 @@ let PageApi = {
         });
     },
 
-    get(name) {
+    get(url) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/pages/${name}`, {
+            $.ajax(`/api/pages/${url}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -44,9 +44,9 @@ let PageApi = {
         });
     },
 
-    destroy(name) {
+    destroy(url) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/pages/${name}`, {
+            $.ajax(`/api/pages/${url}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject
