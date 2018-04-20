@@ -19,6 +19,8 @@ class PanelSelect extends React.Component {
     constructor(props) {
         super(props);
 
+        if (this.props.show) return;
+
         if (!_.isEmpty(this.props.element.elements)) {
             let element = this.props.element;
             element.elements = _.range(0, Object.keys(element.elements).length).map((index) => {
@@ -57,7 +59,8 @@ class PanelSelect extends React.Component {
 PanelSelect.propTypes = {
     parentElement: PropTypes.object,
     element: PropTypes.object,
-    updateElement: PropTypes.func
+    updateElement: PropTypes.func,
+    show: PropTypes.bool
 };
 
 export default PanelSelect;

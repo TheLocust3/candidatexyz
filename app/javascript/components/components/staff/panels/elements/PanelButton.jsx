@@ -24,7 +24,8 @@ class PanelButton extends React.Component {
 
 PanelButton.propTypes = {
     parentElement: PropTypes.object,
-    element: PropTypes.object
+    element: PropTypes.object,
+    show: PropTypes.bool
 };
 
 export default PanelButton;

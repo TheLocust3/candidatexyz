@@ -22,7 +22,8 @@ class PanelCheckbox extends React.Component {
 
 PanelCheckbox.propTypes = {
     parentElement: PropTypes.object,
-    element: PropTypes.object
+    element: PropTypes.object,
+    show: PropTypes.bool
 };
 
 export default PanelCheckbox;

@@ -26,7 +26,8 @@ class PanelFab extends React.Component {
 
 PanelFab.propTypes = {
     parentElement: PropTypes.object,
-    element: PropTypes.object
+    element: PropTypes.object,
+    show: PropTypes.bool
 };
 
 export default PanelFab;

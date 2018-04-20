@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
 import { fetchPanel } from '../../../actions/panel-actions';
@@ -26,6 +27,7 @@ class PanelEditor extends React.Component {
         return (
             <div className='content-bottom content-5'>
                 <div className='mdc-typography--display2'>Panel Editor</div><br />
+                <Link className='link' to={`/staff/panels/${this.props.panel.name}/show`}>Preview Panel</Link>
                 
                 <PanelForm panel={panel} />
 

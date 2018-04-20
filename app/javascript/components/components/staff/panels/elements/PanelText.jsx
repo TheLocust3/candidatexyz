@@ -23,7 +23,8 @@ class PanelText extends React.Component {
 
 PanelText.propTypes = {
     parentElement: PropTypes.object,
-    element: PropTypes.object
+    element: PropTypes.object,
+    show: PropTypes.bool
 };
 
 export default PanelText;

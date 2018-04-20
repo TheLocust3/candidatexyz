@@ -21,6 +21,8 @@ class PanelCell extends React.Component {
     constructor(props) {
         super(props);
 
+        if (this.props.show) return;
+
         let element = this.props.element;
         element.width = 100.0 / this.props.elements.length;
         this.updateElements(element);
@@ -98,32 +100,32 @@ class PanelCell extends React.Component {
     }
 
     renderElements() {
-        if (_.isEmpty(this.props.element.elements)) {
+        if (_.isEmpty(this.props.element.elements) && !this.props.show) {
             return (
                 <span className='middle-center'>
                     Cell
                 </span>
             );
         } else if (this.props.element.elements[0].type == 'button') {
-            return <PanelButton parentElement={this.props.element} element={this.props.element.elements[0]} />;
+            return <PanelButton show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'fab') {
-            return <PanelFab parentElement={this.props.element} element={this.props.element.elements[0]} />;
+            return <PanelFab show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'checkbox') {
-            return <PanelCheckbox parentElement={this.props.element} element={this.props.element.elements[0]} />;
+            return <PanelCheckbox show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'textField') {
-            return <PanelTextField parentElement={this.props.element} element={this.props.element.elements[0]} />;
+            return <PanelTextField show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'textArea') {
-            return <PanelTextArea parentElement={this.props.element} element={this.props.element.elements[0]} />;
+            return <PanelTextArea show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'select') {
-            return <PanelSelect parentElement={this.props.element} element={this.props.element.elements[0]} updateElement={(element) => this.updateInnerElement(element)} />;
+            return <PanelSelect show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} updateElement={(element) => this.updateInnerElement(element)} />;
         } else if (this.props.element.elements[0].type == 'image') {
-            return <PanelImage parentElement={this.props.element} element={this.props.element.elements[0]} />;
+            return <PanelImage show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'text') {
-            return <PanelText parentElement={this.props.element} element={this.props.element.elements[0]} />;
+            return <PanelText show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         }
     }
 
-    render() {
+    renderEdit() {
         let index = this.props.element.index;
 
         let borderWidth = '';
@@ -145,6 +147,22 @@ class PanelCell extends React.Component {
             </div>
         );
     }
+
+    renderShow() {
+        return (
+            <div className='panel-cell panel-cell-show' style={{ width: `${this.props.element.width}%` }}>
+                {this.renderElements()}
+            </div>
+        );
+    }
+
+    render() {
+        if (this.props.show) {
+            return this.renderShow();
+        } else {
+            return this.renderEdit();
+        }
+    }
 }
 
 PanelCell.propTypes = {
@@ -153,7 +171,8 @@ PanelCell.propTypes = {
     draggedItem: PropTypes.string,
     updateElements: PropTypes.func,
     onClick: PropTypes.func,
-    selectedElements: PropTypes.array
+    selectedElements: PropTypes.array,
+    show: PropTypes.bool
 };
 
 export default PanelCell;

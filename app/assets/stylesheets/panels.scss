@@ -82,6 +82,10 @@
     overflow: hidden;
 }
 
+.panel-row-show {
+    border: 0px dashed;
+}
+
 .panel-selected {
     background-color: #F5F5F5;
 
@@ -98,6 +102,10 @@
     position: relative;
     height: 100%;
     width: 100%;
+}
+
+.panel-cell-show {
+    border: 0px dashed;
 }
 
 .panel-cell-inner {

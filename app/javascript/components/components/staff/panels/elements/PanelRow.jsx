@@ -15,6 +15,8 @@ class PanelRow extends React.Component {
     constructor(props) {
         super(props);
 
+        if (this.props.show) return;
+
         if (!_.isEmpty(this.props.element.elements)) {
             let element = this.props.element;
             element.elements = _.range(0, Object.keys(element.elements).length).map((index) => {
@@ -120,7 +122,7 @@ class PanelRow extends React.Component {
         }
     }
 
-    render() {
+    renderEdit() {
         let index = this.props.element.index;
 
         let borderWidth = '1px 0 1px 0';
@@ -145,6 +147,28 @@ class PanelRow extends React.Component {
             </div>
         );
     }
+
+    renderShow() {
+        return (
+            <div>
+                {this.props.element.elements.map((element) => {
+                    return (
+                        <div key={element.uuid} className='panel-row panel-row-show' style={{ height: `${this.props.element.height}vh` }}>
+                            <PanelCell show={this.props.show} elements={this.props.element.elements} element={element} />
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    }
+
+    render() {
+        if (this.props.show) {
+            return this.renderShow();
+        } else {
+            return this.renderEdit();
+        }
+    }
 }
 
 PanelRow.propTypes = {
@@ -153,7 +177,8 @@ PanelRow.propTypes = {
     draggedItem: PropTypes.string,
     updateElements: PropTypes.func,
     onClick: PropTypes.func,
-    selectedElements: PropTypes.array
+    selectedElements: PropTypes.array,
+    show: PropTypes.bool
 };
 
 export default PanelRow;

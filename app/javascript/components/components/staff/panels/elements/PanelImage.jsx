@@ -21,7 +21,8 @@ class PanelImage extends React.Component {
 
 PanelImage.propTypes = {
     parentElement: PropTypes.object,
-    element: PropTypes.object
+    element: PropTypes.object,
+    show: PropTypes.bool
 };
 
 export default PanelImage;
