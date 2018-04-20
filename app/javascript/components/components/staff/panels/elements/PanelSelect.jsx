@@ -16,21 +16,6 @@ class PanelSelect extends React.Component {
         return { index: index, uuid: `select-item-${uuid()}`, text: 'Sample Item' }
     }
 
-    constructor(props) {
-        super(props);
-
-        if (this.props.show) return;
-
-        if (!_.isEmpty(this.props.element.elements)) {
-            let element = this.props.element;
-            element.elements = _.range(0, Object.keys(element.elements).length).map((index) => {
-                return element.elements[index];
-            });
-
-            this.props.updateElement(element);
-        }
-    }
-
     renderItems() {
         return (
             this.props.element.elements.map((element) => {

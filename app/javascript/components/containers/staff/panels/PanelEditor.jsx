@@ -11,6 +11,14 @@ import PanelForm from '../../../components/staff/panels/PanelForm';
 
 class PanelEditor extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        if (!_.isEmpty(this.props.panel)) {
+            this.state = { panel: this.flattenPanel(this.props.panel) };
+        }
+    }
+
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Panel Editor'));
         this.props.dispatch(setBlankNavbar(true));
@@ -20,14 +28,43 @@ class PanelEditor extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (_.isEmpty(nextProps.panel)) return;
+
+        this.setState({
+            panel: this.flattenPanel(nextProps.panel)
+        });
+    }
+
+    flattenPanel(panel) {
+        let elements = panel.elements;
+        elements = this.flattenElements(elements);
+
+        panel.elements = elements
+        return panel;
+    }
+
+    flattenElements(elements) {
+        if (_.isEmpty(elements)) return {};
+
+        let flattenedElements = _.range(0, Object.keys(elements).length).map((index) => {
+            return elements[index];
+        });
+
+        return flattenedElements.map((element) => {
+            element.elements = this.flattenElements(element.elements);
+            return element;
+        });
+    }
+
     render() {
-        if (!_.isEmpty(this.props.match.params.name) && !this.props.isReady) return null;
-        let panel = _.isEmpty(this.props.match.params.name) ? {} : this.props.panel;
+        if (!_.isEmpty(this.props.match.params.name) && _.isEmpty(this.props.panel)) return null;
+        let panel = _.isEmpty(this.props.match.params.name) ? {} : this.state.panel;
 
         return (
             <div className='content-bottom content-5'>
                 <div className='mdc-typography--display2'>Panel Editor</div><br />
-                <Link className='link' to={`/staff/panels/${this.props.panel.name}/show`}>Preview Panel</Link>
+                <Link className='link' to={`/staff/panels/${panel.name}/show`}>Preview Panel</Link>
                 
                 <PanelForm panel={panel} />
 
@@ -39,7 +76,6 @@ class PanelEditor extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        isReady: state.panels.isReady,
         panel: state.panels.panel
     };
 }

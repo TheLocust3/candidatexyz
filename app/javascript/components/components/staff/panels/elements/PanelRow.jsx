@@ -12,21 +12,6 @@ class PanelRow extends React.Component {
         return { index: index, uuid: `row-${uuid()}`, type: 'row', elements: [] };
     }
 
-    constructor(props) {
-        super(props);
-
-        if (this.props.show) return;
-
-        if (!_.isEmpty(this.props.element.elements)) {
-            let element = this.props.element;
-            element.elements = _.range(0, Object.keys(element.elements).length).map((index) => {
-                return element.elements[index];
-            });
-
-            this.updateElements(element);
-        }
-    }
-
     handleDrop(event) {
         let elements = this.props.elements;
         let element = this.props.element;
