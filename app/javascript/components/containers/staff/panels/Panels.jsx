@@ -3,9 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import ContentApi from '../../../../api/content-api';
 import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
-import { fetchAllPanels } from '../../../actions/panel-actions'
+import { fetchAllPanels } from '../../../actions/panel-actions';
 import MDCAutoInit from '../../../components/global/MDCAutoInit';
 
 import PanelList from '../../../components/staff/panels/PanelList';

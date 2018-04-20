@@ -25,6 +25,7 @@ import ThemeEditor from '../components/containers/staff/ThemeEditor';
 import Panels from '../components/containers/staff/panels/Panels';
 import PanelEditor from '../components/containers/staff/panels/PanelEditor';
 import ShowPanel from '../components/containers/staff/panels/ShowPanel';
+import Pages from '../components/containers/staff/pages/Pages';
 
 class StaffRoutes extends React.Component {
 
@@ -61,6 +62,8 @@ class StaffRoutes extends React.Component {
                 <Route exact path='/staff/panels/new' component={PanelEditor} />
                 <Route exact path='/staff/panels/:name' component={PanelEditor} />
                 <Route exact path='/staff/panels/:name/show' component={ShowPanel} />
+
+                <Route exact path='/staff/pages' component={Pages} />
 
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
                 <Route exact path='/posts/:postType/new' component={CreatePost} />
