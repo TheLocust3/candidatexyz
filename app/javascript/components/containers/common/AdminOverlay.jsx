@@ -138,6 +138,12 @@ class AdminOverlay extends React.Component {
                                     </li>
                                 </Link>
 
+                                <Link to='/staff/pages' className='menu-item-link'>
+                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                                        Pages
+                                    </li>
+                                </Link>
+
                                 <Link to='/staff/panels' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                         Panels

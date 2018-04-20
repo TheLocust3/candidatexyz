@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 20180420143126) do
   end
 
   create_table "pages_panels", id: false, force: :cascade do |t|
-    t.bigint "pages_id"
-    t.bigint "panels_id"
-    t.index ["pages_id"], name: "index_pages_panels_on_pages_id"
-    t.index ["panels_id"], name: "index_pages_panels_on_panels_id"
+    t.uuid "page_id"
+    t.uuid "panel_id"
+    t.index ["page_id"], name: "index_pages_panels_on_page_id"
+    t.index ["panel_id"], name: "index_pages_panels_on_panel_id"
   end
 
   create_table "panels", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
