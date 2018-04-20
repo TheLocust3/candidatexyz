@@ -135,12 +135,12 @@ class PanelRow extends React.Component {
 
     renderShow() {
         return (
-            <div>
+            <div className='panel-row panel-row-show' style={{ height: `${this.props.element.height}vh` }}>
                 {this.props.element.elements.map((element) => {
                     return (
-                        <div key={element.uuid} className='panel-row panel-row-show' style={{ height: `${this.props.element.height}vh` }}>
+                        <span key={element.uuid}>
                             <PanelCell show={this.props.show} elements={this.props.element.elements} element={element} />
-                        </div>
+                        </span>
                     );
                 })}
             </div>

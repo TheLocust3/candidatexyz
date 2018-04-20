@@ -97,6 +97,8 @@ class PanelCell extends React.Component {
                     Cell
                 </span>
             );
+        } else if (_.isEmpty(this.props.element.elements) && this.props.show) {
+            return;
         } else if (this.props.element.elements[0].type == 'button') {
             return <PanelButton show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'fab') {
@@ -141,9 +143,9 @@ class PanelCell extends React.Component {
 
     renderShow() {
         return (
-            <div className='panel-cell panel-cell-show' style={{ width: `${this.props.element.width}%` }}>
+            <span className='panel-cell panel-cell-show' style={{ width: `${this.props.element.width}%` }}>
                 {this.renderElements()}
-            </div>
+            </span>
         );
     }
 

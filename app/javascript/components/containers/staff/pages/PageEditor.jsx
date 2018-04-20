@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
 import { fetchPage } from '../../../actions/page-actions';
+import { fetchAllPanels } from '../../../actions/panel-actions';
 import MDCAutoInit from '../../../components/global/MDCAutoInit';
 
 import PageForm from '../../../components/staff/pages/PageForm';
@@ -14,6 +15,7 @@ class PageEditor extends React.Component {
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Page Editor'));
         this.props.dispatch(setBlankNavbar(true));
+        this.props.dispatch(fetchAllPanels());
 
         if (!_.isEmpty(this.props.match.params.url)) {
             this.props.dispatch(fetchPage(this.props.match.params.url));
@@ -21,7 +23,7 @@ class PageEditor extends React.Component {
     }
 
     render() {
-        if (!_.isEmpty(this.props.match.params.url) && !this.props.isReady) return null;
+        if ((!_.isEmpty(this.props.match.params.url) && !this.props.isReady) || !this.props.arePanelsReady) return null;
         let page = _.isEmpty(this.props.match.params.url) ? {} : this.props.page;
 
         return (
@@ -29,7 +31,7 @@ class PageEditor extends React.Component {
                 <div className='mdc-typography--display2'>Panel Editor</div><br />
                 <Link className='link' to={`/staff/panels/${page.url}/show`}>Preview Page</Link><br />
                 
-                <PageForm page={page} />
+                <PageForm page={page} allPanels={this.props.allPanels} />
 
                 <MDCAutoInit />
             </div>
@@ -40,7 +42,9 @@ class PageEditor extends React.Component {
 function mapStateToProps(state) {
     return {
         isReady: state.pages.isReady,
-        page: state.pages.page
+        page: state.pages.page,
+        arePanelsReady: state.panels.isReady,
+        allPanels: state.panels.panels
     };
 }
 
