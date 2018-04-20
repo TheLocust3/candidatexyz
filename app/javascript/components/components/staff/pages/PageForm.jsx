@@ -36,8 +36,12 @@ class PanelForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
+        let panels = this.state.page.panels.map((panel) => {
+            return panel.id;
+        });
+
         if (!this.state.update) {
-            PageApi.create(this.state.page.name, this.state.page.description, this.state.page.url, this.state.page.panels).then(() => {
+            PageApi.create(this.state.page.name, this.state.page.description, this.state.page.url, panels).then(() => {
                 history.push('/staff/pages');
             }).catch((response) => {
                 this.setState({
@@ -45,7 +49,7 @@ class PanelForm extends React.Component {
                 });
             });
         } else {
-            PageApi.update(this.state.page.id, this.state.page.name, this.state.page.description, this.state.page.url, this.state.page.panels).then(() => {
+            PageApi.update(this.state.page.id, this.state.page.name, this.state.page.description, this.state.page.url, panels).then(() => {
                 history.push('/staff/pages');
             }).catch((response) => {
                 this.setState({

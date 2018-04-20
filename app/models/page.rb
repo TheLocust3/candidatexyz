@@ -4,5 +4,9 @@ class Page < ApplicationRecord
 
     validates :name, presence: true
     validates :url, presence: true, uniqueness: true
+
+    def serializable_hash(options={})
+        super({ :include => { :page_sections => {} } }.update(options))
+    end
 end
   

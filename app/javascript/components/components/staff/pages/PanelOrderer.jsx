@@ -37,7 +37,7 @@ class PanelOrderer extends React.Component {
         event.preventDefault();
 
         let panels = this.props.panels;
-        delete panels[event.target.name];
+        panels.splice(event.target.name, 1);
 
         this.props.setPanels(panels);
     }

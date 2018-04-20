@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import PageApi from '../../api/page-api';
 
 export const REQUEST_PAGE = 'REQUEST_PAGE';
@@ -48,6 +49,10 @@ export function fetchPage(url) {
         dispatch(requestPage());
 
         PageApi.get(url).then( data => {
+            data.panels = _.range(0, data.pageSections.length).map((index) => {
+                return data.pageSections[index].panel;
+            });
+            
             dispatch(receivePage(data));
         });
     }
