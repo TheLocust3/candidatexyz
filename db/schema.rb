@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415205033) do
+ActiveRecord::Schema.define(version: 20180420143126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,21 @@ ActiveRecord::Schema.define(version: 20180415205033) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pages", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pages_panels", id: false, force: :cascade do |t|
+    t.bigint "pages_id"
+    t.bigint "panels_id"
+    t.index ["pages_id"], name: "index_pages_panels_on_pages_id"
+    t.index ["panels_id"], name: "index_pages_panels_on_panels_id"
   end
 
   create_table "panels", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

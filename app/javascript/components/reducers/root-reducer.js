@@ -9,6 +9,7 @@ import { postReducer } from './post-reducer';
 import { imageReducer } from './image-reducer';
 import { themeReducer } from './theme-reducer';
 import { panelReducer } from './panel-reducer';
+import { pageReducer } from './page-reducer';
 import { globalReducer } from './global-reducer';
 
 const reducer = combineReducers({
@@ -21,6 +22,7 @@ const reducer = combineReducers({
     images: imageReducer,
     themes: themeReducer,
     panels: panelReducer,
+    pages: pageReducer,
     global: globalReducer
 });
 

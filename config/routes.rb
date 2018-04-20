@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     patch 'panels/:id' => 'panels#update'
     resources :panels, param: :name
 
+    patch 'pages/:id' => 'pages#update'
+    resources :pages, param: :name
+
     delete 'contacts/unsubscribe' => 'contacts#unsubscribe'
     resources :contacts
 
