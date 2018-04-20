@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import CustomStyler from '../../../global/CustomStyler';
+import TextEditor from '../../../base/TextEditor';
 import TextField from '../../../base/TextField';
 import Button from '../../../base/Button';
 
@@ -59,7 +60,7 @@ class TextSidebar extends React.Component {
 
         this.updateElement(element);
     }
-    
+
     render() {
         let element = this.props.element;
 
@@ -71,7 +72,7 @@ class TextSidebar extends React.Component {
                     <b>ID:</b> <code>{element.uuid}</code>
                 </span><br />
 
-                <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={element.text} />
+                <TextEditor small={true} label='Text' content={this.props.element.text} onChange={(text) => { this.handleChange({ target: { name: 'text', value: text } }) }} />
                 <br />
 
                 <CustomStyler small={true} custom={element.theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />

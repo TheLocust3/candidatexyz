@@ -14,8 +14,8 @@ class PanelText extends React.Component {
         let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
 
         return (
-            <div id={this.props.element.uuid} className='middle-center' style={{ ...theme, ...theme.custom }}>
-                {this.props.element.text}
+            <div id={this.props.element.uuid} style={{ ...theme, ...theme.custom }}>
+                <span dangerouslySetInnerHTML={{__html: this.props.element.text }} />
             </div>
         );
     }
