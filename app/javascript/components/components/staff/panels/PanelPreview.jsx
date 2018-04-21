@@ -56,6 +56,8 @@ class PanelPreview extends React.Component {
     }
 
     render() {
+        let theme = _.isEmpty(this.props.panel.settings.theme) ? {} : this.props.panel.settings.theme;
+
         return (
             <div>
                 <div className='panel-preview-toolbar'>
@@ -72,7 +74,7 @@ class PanelPreview extends React.Component {
                 </div>
 
                 <div className='panel-preview-editor'>
-                    <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${Number(this.props.panel.settings.height) + 1}vh` }}>
+                    <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${Number(this.props.panel.settings.height) + 1}vh`, ...theme, ...theme.custom }}>
                         {this.renderElements()}
                     </div>
 

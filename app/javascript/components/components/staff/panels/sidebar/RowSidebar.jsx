@@ -71,7 +71,6 @@ class RowSidebar extends React.Component {
                 </div>
 
                 <ColorPicker label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
-
                 <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
             </div>
         );

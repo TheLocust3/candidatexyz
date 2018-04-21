@@ -35,8 +35,10 @@ class PanelRenderer extends React.Component {
     }
 
     render() {
+        let theme = _.isEmpty(this.props.panel.settings.theme) ? {} : this.props.panel.settings.theme;
+
         return (
-            <div>
+            <div style={{ ...theme, ...theme.custom }}>
                 {this.state.panel.elements.map((element, index) => {
                     return (
                         <div key={uuid()}>

@@ -8,9 +8,10 @@ import { history } from '../../../../constants';
 import FormWrapper from '../../forms/FormWrapper';
 import Button from '../../base/Button';
 import TextField from '../../base/TextField';
-
 import PanelPreview from './PanelPreview';
 import PanelRow from './elements/PanelRow';
+import ColorPicker from '../../global/ColorPicker';
+import CustomStyler from '../../global/CustomStyler';
 
 class PanelForm extends React.Component {
 
@@ -71,6 +72,20 @@ class PanelForm extends React.Component {
         });
     }
 
+    handleThemeChange(value, attribute) {
+        let settings = this.state.panel.settings;
+
+        settings.theme = _.isEmpty(settings.theme) ? {} : settings.theme;
+        settings.theme[attribute] = value;
+
+        let panel = this.state.panel;
+        panel.settings = settings;
+
+        this.setState({
+            panel: panel
+        });
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
@@ -86,7 +101,6 @@ class PanelForm extends React.Component {
             PanelApi.update(this.state.panel.id, this.state.panel.name, this.state.panel.description, this.state.panel.elements, this.state.panel.settings).then((theme) => {
                 history.push('/staff/panels');
             }).catch((response) => {
-                console.log(response)
                 this.setState({
                     errors: response.responseJSON.errors
                 });
@@ -95,12 +109,17 @@ class PanelForm extends React.Component {
     }
 
     render() {
+        let theme = _.isEmpty(this.state.panel.settings.theme) ? {} : this.state.panel.settings.theme;
+
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
                 <TextField label='Panel Name' name='name' onChange={(event) => this.handlePanelChange(event)} required={true} style={{ width: '100%' }} defaultValue={this.state.panel.name} /><br />
                 <TextField label='Panel Description' name='description' onChange={(event) => this.handlePanelChange(event)} style={{ width: '100%' }} defaultValue={this.state.panel.description} /><br /><br />
 
                 <TextField type='number' label='Panel Height (%)' onChange={(event) => this.handleHeightChange(event)} defaultValue={String(this.state.panel.settings.height)} /><br /><br />
+
+                <ColorPicker label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
+                <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} /><br />
 
                 <PanelPreview panel={this.state.panel} onChange={(elements) => this.handleElementsChange(elements)} recalculateHeight={() => this.recalculateHeight()} /><br />
 
