@@ -151,11 +151,11 @@ thead {
 }
 
 .selectable:hover {
-    background-color: #F5F5F5;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .selectable:active {
-    background-color: #E0E0E0;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .selectable-header {

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ColorPicker from '../../../global/ColorPicker';
 import CustomStyler from '../../../global/CustomStyler';
 import CellSidebar from './CellSidebar';
 import Button from '../../../base/Button';
@@ -68,6 +69,8 @@ class RowSidebar extends React.Component {
                 <div className='mdc-typography--body1'>
                     <b>Height (%):</b> <code>{element.height}</code>
                 </div>
+
+                <ColorPicker label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
 
                 <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
             </div>

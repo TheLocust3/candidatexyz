@@ -11,6 +11,7 @@ import TextAreaSidebar from './TextAreaSidebar';
 import SelectSidebar from './SelectSidebar';
 import ImageSidebar from './ImageSidebar';
 import TextSidebar from './TextSidebar';
+import ColorPicker from '../../../global/ColorPicker';
 import CustomStyler from '../../../global/CustomStyler';
 
 class CellSidebar extends React.Component {
@@ -137,6 +138,8 @@ class CellSidebar extends React.Component {
                 <div className='mdc-typography--body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
                 </div>
+
+                <ColorPicker label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
 
                 <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
             </div>
