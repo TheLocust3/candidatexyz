@@ -34,6 +34,7 @@ let PanelApi = {
     },
 
     update(id, name, description, elements, settings) {
+        console.log(elements)
         return new Promise((resolve, reject) => {
             $.ajax(`/api/panels/${id}`, {
                 type: 'patch',

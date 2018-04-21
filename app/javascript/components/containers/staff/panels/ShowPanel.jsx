@@ -19,13 +19,13 @@ class ShowPanel extends React.Component {
     }
 
     render() {
-        if (!this.props.isReady) return null;
+        if (!this.props.isReady && _.isEmpty(this.props.panel)) return null;
 
         return (
             <div className='content-bottom content-5'>
                 <div className='mdc-typography--display2'>Panel Preview</div><br />
                 
-                <PanelRenderer panel={this.state.panel} />
+                <PanelRenderer panel={this.props.panel} />
 
                 <MDCAutoInit />
             </div>

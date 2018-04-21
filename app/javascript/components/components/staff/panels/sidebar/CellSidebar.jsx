@@ -11,8 +11,21 @@ import TextAreaSidebar from './TextAreaSidebar';
 import SelectSidebar from './SelectSidebar';
 import ImageSidebar from './ImageSidebar';
 import TextSidebar from './TextSidebar';
+import CustomStyler from '../../../global/CustomStyler';
 
 class CellSidebar extends React.Component {
+
+    handleThemeChange(value, attribute) {
+        let elements = this.props.elements;
+        let element = this.props.selectedElements[0];
+
+        element.theme = _.isEmpty(element.theme) ? {} : element.theme;
+        element.theme[attribute] = value;
+
+        elements[element.index] = element;
+
+        this.props.updateInnerElements(elements);
+    }
 
     onDeleteClick(event) {
         event.preventDefault();
@@ -111,6 +124,7 @@ class CellSidebar extends React.Component {
 
     render() {
         let element = this.props.selectedElements[0];
+        let theme = _.isEmpty(element.theme) ? {} : element.theme;
 
         return (
             <div>
@@ -123,6 +137,8 @@ class CellSidebar extends React.Component {
                 <div className='mdc-typography--body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
                 </div>
+
+                <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
             </div>
         );
     }

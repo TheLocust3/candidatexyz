@@ -15,7 +15,7 @@ import PanelText from './PanelText';
 class PanelCell extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, uuid: `cell-${uuid()}`, type: 'cell', elements: [] };
+        return { index: index, uuid: `cell-${uuid()}`, type: 'cell', elements: [], theme: {} };
     }
 
     constructor(props) {
@@ -119,6 +119,7 @@ class PanelCell extends React.Component {
     }
 
     renderEdit() {
+        let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
         let index = this.props.element.index;
 
         let borderWidth = '';
@@ -132,7 +133,7 @@ class PanelCell extends React.Component {
         let selectedClassName = selected ? 'panel-selected' : 'selectable';
 
         return (
-            <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%` }}
+            <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%`, ...theme, ...theme.custom }}
                 onClick={() => this.onClick(...this.props.element.elements)} onDrop={(event) => this.handleDrop(event)}>
                 <div className='panel-cell-inner' style={{ borderWidth: borderWidth }}>
                     {this.renderElements()}
@@ -142,8 +143,10 @@ class PanelCell extends React.Component {
     }
 
     renderShow() {
+        let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
+
         return (
-            <span className='panel-cell panel-cell-show' style={{ width: `${this.props.element.width}%` }}>
+            <span className='panel-cell panel-cell-show' style={{ width: `${this.props.element.width}%`, ...theme, ...theme.custom }}>
                 {this.renderElements()}
             </span>
         );

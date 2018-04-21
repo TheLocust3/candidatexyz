@@ -28,7 +28,7 @@ class PageEditor extends React.Component {
 
         return (
             <div className='content-bottom content-5'>
-                <div className='mdc-typography--display2'>Panel Editor</div><br />
+                <div className='mdc-typography--display2'>Page Editor</div><br />
                 <Link className='link' to={`/staff/pages/${page.url}/show`}>Preview Page</Link><br />
                 
                 <PageForm page={page} allPanels={this.props.allPanels} />

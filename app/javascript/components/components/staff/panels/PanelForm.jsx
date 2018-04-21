@@ -86,6 +86,7 @@ class PanelForm extends React.Component {
             PanelApi.update(this.state.panel.id, this.state.panel.name, this.state.panel.description, this.state.panel.elements, this.state.panel.settings).then((theme) => {
                 history.push('/staff/panels');
             }).catch((response) => {
+                console.log(response)
                 this.setState({
                     errors: response.responseJSON.errors
                 });

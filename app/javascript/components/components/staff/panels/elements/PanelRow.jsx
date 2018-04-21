@@ -9,7 +9,7 @@ import PanelCell from './PanelCell';
 class PanelRow extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, uuid: `row-${uuid()}`, type: 'row', elements: [] };
+        return { index: index, uuid: `row-${uuid()}`, type: 'row', elements: [], theme: {} };
     }
 
     handleDrop(event) {
@@ -108,6 +108,7 @@ class PanelRow extends React.Component {
     }
 
     renderEdit() {
+        let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
         let index = this.props.element.index;
 
         let borderWidth = '1px 0 1px 0';
@@ -125,7 +126,7 @@ class PanelRow extends React.Component {
 
         return (
             <div id={this.props.element.uuid} className={`panel-row ${lastSelectedClassName}`}
-                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth, paddingBottom: selectPaddingBottom }}
+                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth, paddingBottom: selectPaddingBottom, ...theme, ...theme.custom }}
                 onClick={this.onResizeRelease.bind(this)} onDrop={(event) => this.handleDrop(event)}>
                 
                 {this.renderElements()}
@@ -134,8 +135,10 @@ class PanelRow extends React.Component {
     }
 
     renderShow() {
+        let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
+
         return (
-            <div className='panel-row panel-row-show' style={{ height: `${this.props.element.height}vh` }}>
+            <div className='panel-row panel-row-show' style={{ height: `${this.props.element.height}vh`, ...theme, ...theme.custom }}>
                 {this.props.element.elements.map((element) => {
                     return (
                         <span key={element.uuid}>

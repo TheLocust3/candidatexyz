@@ -2,10 +2,20 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import CustomStyler from '../../../global/CustomStyler';
 import CellSidebar from './CellSidebar';
 import Button from '../../../base/Button';
 
 class RowSidebar extends React.Component {
+
+    handleThemeChange(value, attribute) {
+        let element = this.props.selectedElements[0];
+
+        element.theme = _.isEmpty(element.theme) ? {} : element.theme;
+        element.theme[attribute] = value;
+
+        this.props.updateElement(element);
+    }
 
     onDeleteClick(event) {
         event.preventDefault();
@@ -41,6 +51,8 @@ class RowSidebar extends React.Component {
 
     render() {
         let element = this.props.selectedElements[0];
+        let theme = _.isEmpty(element.theme) ? {} : element.theme;
+
         return (
             <div>
                 {this.renderSelectedCell()}
@@ -56,6 +68,8 @@ class RowSidebar extends React.Component {
                 <div className='mdc-typography--body1'>
                     <b>Height (%):</b> <code>{element.height}</code>
                 </div>
+
+                <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
             </div>
         );
     }
