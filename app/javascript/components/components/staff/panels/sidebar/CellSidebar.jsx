@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import DeleteElementButton from './DeleteElementButton';
 import Button from '../../../base/Button';
 import ButtonSidebar from './ButtonSidebar';
 import FabSidebar from './FabSidebar';
@@ -25,20 +26,6 @@ class CellSidebar extends React.Component {
         element.theme[attribute] = value;
 
         elements[element.index] = element;
-
-        this.props.updateInnerElements(elements);
-    }
-
-    onDeleteClick(event) {
-        event.preventDefault();
-
-        let elements = this.props.elements;
-
-        elements.splice(this.props.selectedElements[0].index, 1);
-        elements = elements.map((element, index) => {
-            element.index = index;
-            return element;
-        });
 
         this.props.updateInnerElements(elements);
     }
@@ -142,7 +129,8 @@ class CellSidebar extends React.Component {
                 
                 <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
 
-                <center><Button className='red-button' condensed={true} onClick={this.onDeleteClick.bind(this)}>Trash</Button></center><br />
+                <DeleteElementButton elements={this.props.elements} element={this.props.selectedElements[0]} updateElements={this.props.updateInnerElements} />
+                <br />
 
                 <div className='mdc-typography--body1'>
                     <b>ID:</b> <code>{element.uuid}</code>

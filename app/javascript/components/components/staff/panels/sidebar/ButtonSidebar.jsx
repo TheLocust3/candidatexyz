@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
+import DeleteElementButton from './DeleteElementButton';
 import ColorPicker from '../../../global/ColorPicker';
 import FontPicker from '../../../global/FontPicker';
 import CustomStyler from '../../../global/CustomStyler';
@@ -88,7 +89,8 @@ class ButtonSidebar extends React.Component {
 
         return (
             <div>
-                <center><Button className='red-button' condensed={true} onClick={this.onDeleteClick.bind(this)}>Trash</Button></center><br />
+                <DeleteElementButton elements={this.props.elements} element={element} updateElements={this.props.updateInnerElements} />
+                <br />
 
                 <span className='mdc-typography--body1'>
                     <b>ID:</b> <code>{element.uuid}</code>

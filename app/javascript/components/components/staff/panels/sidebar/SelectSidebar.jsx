@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
+import DeleteElementButton from './DeleteElementButton';
 import PanelSelect from '../elements/PanelSelect';
 import TextField from '../../../base/TextField';
 import Button from '../../../base/Button';
@@ -30,20 +31,6 @@ class SelectSidebar extends React.Component {
 
         element.elements[item.index] = item;
         elements[element.index] = element;
-
-        this.props.updateInnerElements(elements);
-    }
-
-    onDeleteClick(event) {
-        event.preventDefault();
-
-        let elements = this.props.elements;
-
-        elements.splice(this.props.element.index, 1);
-        elements = elements.map((element, index) => {
-            element.index = index;
-            return element;
-        });
 
         this.props.updateInnerElements(elements);
     }
@@ -100,7 +87,8 @@ class SelectSidebar extends React.Component {
 
         return (
             <div>
-                <center><Button className='red-button' condensed={true} onClick={this.onDeleteClick.bind(this)}>Trash</Button></center><br />
+                <DeleteElementButton elements={this.props.elements} element={element} updateElements={this.props.updateInnerElements} />
+                <br />
 
                 <span className='mdc-typography--body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
