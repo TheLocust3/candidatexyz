@@ -11,6 +11,7 @@ import TextAreaSidebar from './TextAreaSidebar';
 import SelectSidebar from './SelectSidebar';
 import ImageSidebar from './ImageSidebar';
 import TextSidebar from './TextSidebar';
+import LinkSidebar from './LinkSidebar';
 import ColorPicker from '../../../global/ColorPicker';
 import CustomStyler from '../../../global/CustomStyler';
 
@@ -117,6 +118,14 @@ class CellSidebar extends React.Component {
                     <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
 
                     <TextSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
+                </div>
+            )
+        } else if (element.type == 'link') {
+            return (
+                <div>
+                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+
+                    <LinkSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
                 </div>
             )
         }

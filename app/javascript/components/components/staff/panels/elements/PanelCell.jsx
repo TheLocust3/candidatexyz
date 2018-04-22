@@ -11,6 +11,7 @@ import PanelTextArea from './PanelTextArea';
 import PanelSelect from './PanelSelect';
 import PanelImage from './PanelImage';
 import PanelText from './PanelText';
+import PanelLink from './PanelLink';
 
 class PanelCell extends React.Component {
 
@@ -52,6 +53,8 @@ class PanelCell extends React.Component {
             element.elements.push(PanelImage.elementStructure(element.elements.length));
         } else if (this.props.draggedItem == 'text') {
             element.elements.push(PanelText.elementStructure(element.elements.length));
+        } else if (this.props.draggedItem == 'link') {
+            element.elements.push(PanelLink.elementStructure(element.elements.length));
         }
 
         this.updateElements(element);
@@ -115,6 +118,8 @@ class PanelCell extends React.Component {
             return <PanelImage show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'text') {
             return <PanelText show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
+        } else if (this.props.element.elements[0].type == 'link') {
+            return <PanelLink show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         }
     }
 
