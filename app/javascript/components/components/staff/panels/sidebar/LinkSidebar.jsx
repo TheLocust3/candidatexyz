@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
+import ColorPicker from '../../../global/ColorPicker';
+import FontPicker from '../../../global/FontPicker';
 import CustomStyler from '../../../global/CustomStyler';
 import TextField from '../../../base/TextField';
 import Button from '../../../base/Button';
@@ -27,7 +29,7 @@ class LinkSidebar extends React.Component {
     handleThemeChange(value, attribute, suffix) {
         let element = this.props.element;
 
-        if (_.isUndefined(suffix)) {
+        if (_.isEmpty(suffix)) {
             element.theme[attribute] = value;
         } else {
             element.theme[attribute] = value + suffix;
@@ -49,10 +51,17 @@ class LinkSidebar extends React.Component {
                     <b>ID:</b> <code>{element.uuid}</code>
                 </span><br />
 
-                <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={element.text} />
+                <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={element.text} /><br />
 
                 <TextField dense={true} label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={element.url} />
                 <br /><br />
+
+                <ColorPicker label='Pick Color' color={theme.color} colors={this.props.colors} onChange={(color) => this.handleThemeChange(color.hex, 'color')} />
+
+                <div style={{ position: 'relative' }}>
+                    <FontPicker onChange={(font) => { this.handleThemeChange(font, 'fontFamily') }} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />
+                    <TextField type='number' label='Font Size' onChange={(event) => { this.handleThemeChange(event.target.value, 'fontSize', 'px') }} defaultValue={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
+                </div>
 
                 <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
                 

@@ -23,7 +23,7 @@ class PanelLink extends React.Component {
 
         return (
             <div id={this.props.element.uuid} className='middle-center'>
-                <Link className='link' to={this.props.element.url} styl={{ ...theme, ...theme.custom }}>
+                <Link className='link' to={this.props.element.url} style={{ ...theme, ...theme.custom }}>
                     {this.props.element.text}
                 </Link>
             </div>
