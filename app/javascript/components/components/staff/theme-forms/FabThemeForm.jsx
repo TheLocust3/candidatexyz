@@ -16,14 +16,11 @@ class FabThemeForm extends React.Component {
     }
 
     updateTheme(theme) {
-        let fab = this.state.fab;
-        fab = theme;
-
         this.setState({
-            fab: fab
+            fab: theme
         });
 
-        this.props.updateTheme(fab);
+        this.props.updateTheme(theme);
     }
 
     render() {

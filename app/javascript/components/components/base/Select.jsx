@@ -76,7 +76,7 @@ class Select extends React.Component {
     }
 
     renderMdc() {
-        let { className, label, onChange, selectedIndex, children, theme, themeOverride, dispatch, ...props } = this.props;
+        let { className, label, onChange, selectedIndex, children, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
         className = _.isEmpty(className) ? '' : className;
 
         return (
@@ -114,7 +114,8 @@ Select.propTypes = {
         PropTypes.arrayOf(PropTypes.element),
         PropTypes.element
     ]).isRequired,
-    themeOverride: PropTypes.object
+    themeOverride: PropTypes.object,
+    customPanelTheme: PropTypes.object
 };
 
 function mapStateToProps(state) {

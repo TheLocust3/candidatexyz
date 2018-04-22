@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
+import SelectStyler from '../../element-stylers/SelectStyler';
 import PanelSelect from '../elements/PanelSelect';
 import TextField from '../../../base/TextField';
 import Button from '../../../base/Button';
@@ -11,15 +12,25 @@ import Fab from '../../../base/Fab';
 
 class SelectSidebar extends React.Component {
 
-    handleChange(event) {
+    updateElement(element) {
         let elements = this.props.elements;
-
-        let element = this.props.element;
-        element[event.target.name] = event.target.value;
-
         elements[element.index] = element;
 
         this.props.updateInnerElements(elements);
+    }
+
+    updateTheme(theme) {
+        let element = this.props.element;
+        element.theme = theme;
+
+        this.updateElement(element);
+    }
+
+    handleChange(event) {
+        let element = this.props.element;
+        element[event.target.name] = event.target.value;
+
+        this.updateElement(element);
     }
 
     handleItemChange(event) {
@@ -92,7 +103,7 @@ class SelectSidebar extends React.Component {
 
                 <span className='mdc-typography--body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
-                </span>
+                </span><br />
 
                 <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} /><br /><br />
 
@@ -103,7 +114,9 @@ class SelectSidebar extends React.Component {
 
                 <span className='mdc-typography--body1'>
                     {this.renderItemEditor()}
-                </span>
+                </span><br />
+
+                <SelectStyler theme={element.theme} updateTheme={(theme) => this.updateTheme(theme)} />
                 
                 <MDCAutoInit />
             </div>

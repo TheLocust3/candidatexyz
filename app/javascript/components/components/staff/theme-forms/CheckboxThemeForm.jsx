@@ -16,14 +16,11 @@ class CheckboxThemeForm extends React.Component {
     }
 
     updateTheme(theme) {
-        let checkbox = this.state.checkbox;
-        checkbox = theme;
-
         this.setState({
-            checkbox: checkbox
+            checkbox: theme
         });
 
-        this.props.updateTheme(checkbox);
+        this.props.updateTheme(theme);
     }
 
     render() {

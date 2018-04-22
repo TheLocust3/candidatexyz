@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
-import CheckboxStyler from '../../element-stylers/CheckboxStyler';
-import TextField from '../../../base/TextField';
 import FabStyler from '../../element-stylers/FabStyler';
+import TextField from '../../../base/TextField';
 
 class FabSidebar extends React.Component {
 

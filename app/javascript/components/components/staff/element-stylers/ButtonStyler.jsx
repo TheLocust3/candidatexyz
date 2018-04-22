@@ -11,7 +11,7 @@ import TextField from '../../base/TextField';
 class ButtonStyler extends React.Component {
 
     handleChange(attribute, value, suffix) {
-        let theme = this.props.theme;
+        let theme = _.isEmpty(this.props.theme) ? {} : this.props.theme;
 
         if (_.isEmpty(suffix)) {
             theme[attribute] = value;

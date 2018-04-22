@@ -4,10 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ColorPicker from '../../global/ColorPicker';
-import CustomStyler from '../../global/CustomStyler';
+import FontPicker from '../../global/FontPicker';
 import TextField from '../../base/TextField';
 
-class FabStyler extends React.Component {
+class TextFieldStyler extends React.Component {
 
     handleChange(attribute, value) {
         let theme = _.isEmpty(this.props.theme) ? {} : this.props.theme;
@@ -21,20 +21,18 @@ class FabStyler extends React.Component {
 
         return (
             <div>
-                <ColorPicker className='color-picker-left' label='Pick Color' color={theme.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleChange('backgroundColor', color.hex)}  />
-                <ColorPicker label='Pick Icon Color' color={theme.color} colors={this.props.colors} onChange={(color) => this.handleChange('color', color.hex)}  />
-                <br /><br />
+                <ColorPicker label='Pick Color' color={theme.color} colors={this.props.colors} onChange={(color) => this.handleChange('color', color.hex)}  />
 
-                <CustomStyler custom={theme.custom} onChange={(custom) => { this.handleChange('custom', custom) }} />
+                <FontPicker fontFamily={theme.fontFamily} onChange={(font) => { this.handleChange('fontFamily', font) }} />
             </div>
         );
     }
 }
 
-FabStyler.propTypes = {
+TextFieldStyler.propTypes = {
     theme: PropTypes.object,
     colors: PropTypes.arrayOf(PropTypes.string),
     updateTheme: PropTypes.func.isRequired
 };
 
-export default FabStyler;
+export default TextFieldStyler;

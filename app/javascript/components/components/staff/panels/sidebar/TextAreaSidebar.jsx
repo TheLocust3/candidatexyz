@@ -4,10 +4,8 @@ import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
-import ColorPicker from '../../../global/ColorPicker';
-import FontPicker from '../../../global/FontPicker';
+import TextAreaStyler from '../../element-stylers/TextAreaStyler';
 import TextField from '../../../base/TextField';
-import Button from '../../../base/Button';
 
 class TextAreaSidebar extends React.Component {
 
@@ -29,30 +27,18 @@ class TextAreaSidebar extends React.Component {
         this.props.updateInnerElements(elements);
     }
 
+    updateTheme(theme) {
+        let element = this.props.element;
+        element.theme = theme;
+
+        this.updateElement(element);
+    }
+
     handleChange(event) {
         let element = this.props.element;
         element[event.target.name] = event.target.value;
 
         this.updateElement(element);
-    }
-
-    handleThemeChange(value, attribute) {
-        let element = this.props.element;
-        element.theme[attribute] = value;
-
-        this.updateElement(element);
-    }
-
-    renderThemeEditor() {
-        let theme = this.props.element.theme;
-
-        return (
-            <div>
-                <ColorPicker label='Pick Color' color={theme.color} onChange={(color) => this.handleThemeChange(color.hex, 'color')}  />
-
-                <FontPicker onChange={(font) => { this.handleThemeChange(font, 'fontFamily') }} fontFamily={theme.fontFamily} />
-            </div>
-        )
     }
 
     render() {
@@ -65,14 +51,14 @@ class TextAreaSidebar extends React.Component {
 
                 <span className='mdc-typography--body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
-                </span>
+                </span><br />
 
-                <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} />
+                <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} /><br />
 
                 <TextField dense={true} type='number' name='rows' label='Rows' onChange={(event) => { this.handleChange(event) }} defaultValue={String(element.rows)} style={{ width: '45%', marginRight: '5%' }} />
                 <TextField dense={true} type='number' name='cols' label='Cols' onChange={(event) => { this.handleChange(event) }} defaultValue={String(element.cols)} style={{ width: '45%' }} />
 
-                {this.renderThemeEditor()}
+                <TextAreaStyler theme={element.theme} updateTheme={(theme) => this.updateTheme(theme)} />
                 
                 <MDCAutoInit />
             </div>

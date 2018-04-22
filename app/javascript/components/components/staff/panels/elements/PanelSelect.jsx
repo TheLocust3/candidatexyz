@@ -9,7 +9,7 @@ import SelectItem from '../../../base/SelectItem';
 class PanelSelect extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, uuid: `select-${uuid()}`, type: 'select', text: 'Select', elements: [ PanelSelect.itemStructure(0) ] };
+        return { index: index, uuid: `select-${uuid()}`, type: 'select', text: 'Select', elements: [ PanelSelect.itemStructure(0) ], theme: {} };
     }
 
     static itemStructure(index) {
@@ -33,7 +33,7 @@ class PanelSelect extends React.Component {
     render() {
         return (
             <div id={this.props.element.uuid} className='middle-center'>
-                <Select label={this.props.element.text} onChange={() => {}}>
+                <Select label={this.props.element.text} onChange={() => {}} customPanelTheme={this.props.element.theme}>
                     {this.renderItems()}
                 </Select>
             </div>
