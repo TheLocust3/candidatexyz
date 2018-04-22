@@ -4,10 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BlockPicker } from 'react-color';
 
-import ColorPicker from '../../global/ColorPicker';
-import FontPicker from '../../global/FontPicker';
+import CheckboxStyler from '../element-stylers/CheckboxStyler';
 import Checkbox from '../../base/Checkbox';
-import TextField from '../../base/TextField';
 
 class CheckboxThemeForm extends React.Component {
 
@@ -17,19 +15,10 @@ class CheckboxThemeForm extends React.Component {
         this.state = { checkbox: _.isEmpty(this.props.theme.styling.checkbox) ? { backgroundColor: this.props.colors[0], borderColor: this.props.colors[0], fontSize: '16px' } : this.props.theme.styling.checkbox };
     }
 
-    handleChange(event, suffix) {
+    updateTheme(theme) {
         let checkbox = this.state.checkbox;
-        checkbox[event.target.name] = event.target.value + suffix;
+        checkbox = theme;
 
-        this.setState({
-            checkbox: checkbox
-        });
-
-        this.props.updateTheme(checkbox);
-    }
-
-    handleColorChange(color, style) {
-        let checkbox = { ...this.state.checkbox, [style]: color.hex };
         this.setState({
             checkbox: checkbox
         });
@@ -42,13 +31,7 @@ class CheckboxThemeForm extends React.Component {
             <div>
                 <Checkbox label='Sample Checkbox' onChange={() => {}} themeOverride={this.props.theme} /><br />
 
-                <ColorPicker className='color-picker-left' label='Pick Color' color={this.state.checkbox.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor')} />
-                <ColorPicker label='Pick Border Color' color={this.state.checkbox.borderColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'borderColor')} />
-
-                <div style={{ position: 'relative' }}>
-                    <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, '') }} fontFamily={this.state.checkbox.fontFamily} style={{ marginTop: '0.75em' }} />
-                    <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'px') }} defaultValue={_.replace(this.state.checkbox.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} />
-                </div>
+                <CheckboxStyler theme={this.state.checkbox} colors={this.props.colors} updateTheme={(theme) => this.updateTheme(theme)} />
             </div>
         );
     }

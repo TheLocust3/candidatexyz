@@ -5,11 +5,7 @@ import PropTypes from 'prop-types';
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
 import ButtonStyler from '../../element-stylers/ButtonStyler';
-import ColorPicker from '../../../global/ColorPicker';
-import FontPicker from '../../../global/FontPicker';
-import CustomStyler from '../../../global/CustomStyler';
 import TextField from '../../../base/TextField';
-import Button from '../../../base/Button';
 
 class ButtonSidebar extends React.Component {
 

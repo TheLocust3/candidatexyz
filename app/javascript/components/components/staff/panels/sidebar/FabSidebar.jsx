@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
-import ColorPicker from '../../../global/ColorPicker';
-import CustomStyler from '../../../global/CustomStyler';
+import CheckboxStyler from '../../element-stylers/CheckboxStyler';
 import TextField from '../../../base/TextField';
-import Button from '../../../base/Button';
+import FabStyler from '../../element-stylers/FabStyler';
 
 class FabSidebar extends React.Component {
 
@@ -29,31 +28,18 @@ class FabSidebar extends React.Component {
         this.props.updateInnerElements(elements);
     }
 
+    updateTheme(theme) {
+        let element = this.props.element;
+        element.theme = theme;
+
+        this.updateElement(element);
+    }
+
     handleChange(event) {
         let element = this.props.element;
         element[event.target.name] = event.target.value;
 
         this.updateElement(element);
-    }
-
-    handleThemeChange(value, attribute) {
-        let element = this.props.element;
-        element.theme[attribute] = value;
-
-        this.updateElement(element);
-    }
-
-    renderThemeEditor() {
-        let theme = this.props.element.theme;
-
-        return (
-            <div>
-                <ColorPicker className='color-picker-left' label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')}  />
-                <ColorPicker label='Pick Icon Color' color={theme.color} onChange={(color) => this.handleThemeChange(color.hex, 'color')}  />
-
-                <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
-            </div>
-        )
     }
 
     render() {
@@ -71,7 +57,7 @@ class FabSidebar extends React.Component {
                 <TextField dense={true} label='Icon' name='icon' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.icon} />
                 <br />
 
-                {this.renderThemeEditor()}
+                <FabStyler theme={element.theme} updateTheme={(theme) => this.updateTheme(theme)} />
                 
                 <MDCAutoInit />
             </div>

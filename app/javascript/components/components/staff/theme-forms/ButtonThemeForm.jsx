@@ -4,11 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ButtonStyler from '../element-stylers/ButtonStyler';
-import ColorPicker from '../../global/ColorPicker';
-import FontPicker from '../../global/FontPicker';
-import CustomStyler from '../../global/CustomStyler';
 import Button from '../../base/Button';
-import TextField from '../../base/TextField';
 
 class ThemeForm extends React.Component {
 
@@ -39,7 +35,7 @@ class ThemeForm extends React.Component {
                     <Button onClick={(event) => event.preventDefault()} themeOverride={this.props.theme}>Sample Raised Button</Button>
                 </center><br /><br />
 
-                <ButtonStyler theme={this.state.button.raised} updateTheme={(theme) => this.updateTheme(theme, 'raised')} />
+                <ButtonStyler theme={this.state.button.raised} colors={this.props.colors} updateTheme={(theme) => this.updateTheme(theme, 'raised')} />
             </div>
         )
     }
@@ -53,7 +49,7 @@ class ThemeForm extends React.Component {
                     <Button flat={true} onClick={(event) => event.preventDefault()} themeOverride={this.props.theme}>Sample Flat Button</Button>
                 </center><br /><br />
 
-                <ButtonStyler theme={this.state.button.flat} updateTheme={(theme) => this.updateTheme(theme, 'flat')} />
+                <ButtonStyler theme={this.state.button.flat} colors={this.props.colors} updateTheme={(theme) => this.updateTheme(theme, 'flat')} />
             </div>
         )
     }

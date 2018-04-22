@@ -4,10 +4,8 @@ import PropTypes from 'prop-types';
 
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
-import ColorPicker from '../../../global/ColorPicker';
-import FontPicker from '../../../global/FontPicker';
+import CheckboxStyler from '../../element-stylers/CheckboxStyler';
 import TextField from '../../../base/TextField';
-import Button from '../../../base/Button';
 
 class CheckboxSidebar extends React.Component {
 
@@ -29,39 +27,18 @@ class CheckboxSidebar extends React.Component {
         this.props.updateInnerElements(elements);
     }
 
+    updateTheme(theme) {
+        let element = this.props.element;
+        element.theme = theme;
+
+        this.updateElement(element);
+    }
+
     handleChange(event) {
         let element = this.props.element;
         element[event.target.name] = event.target.value;
 
         this.updateElement(element);
-    }
-
-    handleThemeChange(value, attribute, suffix) {
-        let element = this.props.element;
-
-        if (_.isUndefined(suffix)) {
-            element.theme[attribute] = value;
-        } else {
-            element.theme[attribute] = value + suffix;
-        }
-
-        this.updateElement(element);
-    }
-
-    renderThemeEditor() {
-        let theme = this.props.element.theme;
-
-        return (
-            <div>
-                <ColorPicker className='color-picker-left' label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
-                <ColorPicker label='Pick Border Color' color={theme.borderColor} onChange={(color) => this.handleThemeChange(color.hex, 'borderColor')} />
-
-                <div style={{ position: 'relative' }}>
-                    <FontPicker onChange={(font) => { this.handleThemeChange(font, 'fontFamily') }} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />
-                    <TextField type='number' label='Font Size' onChange={(event) => { this.handleThemeChange(event.target.value, 'fontSize', 'px') }} defaultValue={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} />
-                </div>
-            </div>
-        )
     }
 
     render() {
@@ -79,7 +56,7 @@ class CheckboxSidebar extends React.Component {
                 <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} />
                 <br />
 
-                {this.renderThemeEditor()}
+                <CheckboxStyler theme={element.theme} updateTheme={(theme) => this.updateTheme(theme)} />
 
                 <MDCAutoInit />
             </div>
