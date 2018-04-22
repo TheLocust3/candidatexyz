@@ -3,6 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ButtonStyler from '../element-stylers/ButtonStyler';
 import ColorPicker from '../../global/ColorPicker';
 import FontPicker from '../../global/FontPicker';
 import CustomStyler from '../../global/CustomStyler';
@@ -20,77 +21,25 @@ class ThemeForm extends React.Component {
         this.state.button.flat = _.isEmpty(this.state.button.flat) ? {} : this.state.button.flat;
     }
 
-    handleChange(event, type, suffix) {
+    updateTheme(theme, type) {
         let button = this.state.button;
-        button[type][event.target.name] = event.target.value + suffix;
+        button[type] = theme;
 
         this.setState({
             button: button
         });
 
         this.props.updateTheme(button);
-    }
-
-    handleColorChange(color, style, name) {
-        let button = { ...this.state.button, [name]: { ...this.state.button[name], [style]: color.hex } };
-        this.setState({
-            button: button
-        });
-
-        this.props.updateTheme(button);
-    }
-
-    handleDimensionChange(event, type) {
-        let button = this.state.button;
-
-        if (_.isEmpty(event.target.value)) {
-            button[type][event.target.name] = 'auto';
-        } else {
-            button[type][event.target.name] = event.target.value + 'px';
-        }
-
-        this.setState({
-            button: button
-        });
-
-        this.props.updateTheme(button);
-    }
-
-    handleCustomChange(custom, type) {
-        let button = this.state.button;
-        button[type].custom = custom;
-
-        this.setState({
-            button: button
-        });
-
-        this.props.updateTheme(button);
-    }
-
-    onSampleClick(event) {
-        event.preventDefault();
     }
 
     renderRaisedButtonPanel() {
         return (
             <div>
                 <center>
-                    <Button onClick={this.onSampleClick.bind(this)} themeOverride={this.props.theme}>Sample Raised Button</Button>
+                    <Button onClick={(event) => event.preventDefault()} themeOverride={this.props.theme}>Sample Raised Button</Button>
                 </center><br /><br />
 
-                <ColorPicker label='Pick Color' color={this.state.button.raised.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'backgroundColor', 'raised')} style={{ display: 'inline', float: 'left', marginRight: '5%' }} />
-                <ColorPicker label='Pick Text Color' color={this.state.button.raised.color} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'raised')} />
-
-                <div style={{ position: 'relative' }}>
-                    <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'raised', '') }} fontFamily={this.state.button.raised.fontFamily} style={{ marginTop: '0.75em' }} />
-                    <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'raised', 'px') }} defaultValue={_.replace(this.state.button.raised.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
-                </div>
-
-                <TextField type='number' label='Height' name='height' onChange={(event) => { this.handleDimensionChange(event, 'raised') }} defaultValue={_.replace(this.state.button.raised.height, 'px', '')} style={{ marginRight: '5%' }} />
-                <TextField type='number' label='Width' name='width' onChange={(event) => { this.handleDimensionChange(event, 'raised') }} defaultValue={_.replace(this.state.button.raised.width, 'px', '')} />
-                <br /><br />
-
-                <CustomStyler custom={this.state.button.raised.custom} onChange={(custom) => { this.handleCustomChange(custom, 'raised') }} />
+                <ButtonStyler theme={this.state.button.raised} updateTheme={(theme) => this.updateTheme(theme, 'raised')} />
             </div>
         )
     }
@@ -101,22 +50,10 @@ class ThemeForm extends React.Component {
         return (
             <div>
                 <center>
-                    <Button flat={true} onClick={this.onSampleClick.bind(this)} themeOverride={this.props.theme}>Sample Raised Button</Button>
+                    <Button flat={true} onClick={(event) => event.preventDefault()} themeOverride={this.props.theme}>Sample Flat Button</Button>
                 </center><br /><br />
 
-                <ColorPicker label='Pick Color' color={this.state.button.flat.backgroundColor} colors={this.props.colors} onChange={(color) => this.handleColorChange(color, 'color', 'flat')} />
-
-                <div style={{ position: 'relative' }}>
-                    <FontPicker onChange={(font) => { this.handleChange({ target: { name: 'fontFamily', value: font } }, 'flat', '') }} fontFamily={this.state.button.flat.fontFamily} style={{ marginTop: '0.75em' }} />
-                    <TextField type='number' label='Font Size' name='fontSize' onChange={(event) => { this.handleChange(event, 'flat', 'px') }} defaultValue={_.replace(this.state.button.flat.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
-                </div>
-
-                <TextField type='number' label='Height' name='height' onChange={(event) => { this.handleDimensionChange(event, 'flat') }} defaultValue={_.replace(this.state.button.flat.height, 'px', '')} style={{ marginRight: '5%' }} />
-                <TextField type='number' label='Width' name='width' onChange={(event) => { this.handleDimensionChange(event, 'flat') }} defaultValue={_.replace(this.state.button.flat.width, 'px', '')} />
-
-                <br /><br />
-
-                <CustomStyler custom={this.state.button.flat.custom} onChange={(custom) => { this.handleCustomChange(custom, 'flat') }} />
+                <ButtonStyler theme={this.state.button.flat} updateTheme={(theme) => this.updateTheme(theme, 'flat')} />
             </div>
         )
     }
@@ -134,7 +71,7 @@ class ThemeForm extends React.Component {
                 </nav><br />
 
                 <div>
-                    <div className='panel active' role='tabpanel' style={{ display: panel == 0 ? 'initial' : 'none' }}>                    
+                    <div className='panel active' role='tabpanel' style={{ display: panel == 0 ? 'initial' : 'none' }}>
                         {this.renderRaisedButtonPanel()}
                     </div>
 
