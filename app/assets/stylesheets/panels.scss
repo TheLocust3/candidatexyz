@@ -115,3 +115,12 @@
     border: 1px dashed;
     border-color: #81C784;
 }
+
+// TODO: This probably won't work in IE
+.panel-select-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

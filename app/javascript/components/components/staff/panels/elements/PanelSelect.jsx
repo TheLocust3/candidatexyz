@@ -21,7 +21,7 @@ class PanelSelect extends React.Component {
             this.props.element.elements.map((element) => {
                 return (
                     <div key={element.uuid}>
-                        <SelectItem>
+                        <SelectItem customPanelTheme={this.props.element.theme}>
                             {element.text}
                         </SelectItem>
                     </div>
@@ -32,7 +32,7 @@ class PanelSelect extends React.Component {
 
     render() {
         return (
-            <div id={this.props.element.uuid} className='middle-center'>
+            <div id={this.props.element.uuid} className='panel-select-wrapper'>
                 <Select label={this.props.element.text} onChange={() => {}} customPanelTheme={this.props.element.theme}>
                     {this.renderItems()}
                 </Select>
