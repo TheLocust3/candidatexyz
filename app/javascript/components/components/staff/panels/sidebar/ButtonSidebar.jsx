@@ -95,7 +95,9 @@ class ButtonSidebar extends React.Component {
                 </span>
 
                 <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} />
-                <br />
+
+                <TextField dense={true} label='URL' name='actionData' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.actionData} />
+                <br /><br />
 
                 {this.renderThemeEditor()}
                 
