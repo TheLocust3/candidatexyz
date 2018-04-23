@@ -28,6 +28,7 @@ class LinkSidebar extends React.Component {
 
     handleThemeChange(value, attribute, suffix) {
         let element = this.props.element;
+        element.theme = _.isEmpty(element.theme) ? {} : element.theme;
 
         if (_.isEmpty(suffix)) {
             element.theme[attribute] = value;
@@ -57,6 +58,7 @@ class LinkSidebar extends React.Component {
                 <br /><br />
 
                 <ColorPicker label='Pick Color' color={theme.color} onChange={(color) => this.handleThemeChange(color.hex, 'color')} />
+                <ColorPicker label='Pick Hover Color' color={theme.colorHover} onChange={(color) => this.handleThemeChange(color.hex, 'colorHover')} />
 
                 <div style={{ position: 'relative' }}>
                     <FontPicker onChange={(font) => { this.handleThemeChange(font, 'fontFamily') }} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />

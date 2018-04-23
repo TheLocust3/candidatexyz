@@ -42,14 +42,14 @@ class PanelIconButton extends React.Component {
             <div id={this.props.element.uuid} className='middle-center'>
                 <style>{/* TODO: Wtf React. Possible patch for important tags in future react versions https://github.com/facebook/react/pull/12181 */}
                     {`
-                        .tmp-icon-button {
+                        .tmp-icon-button-${this.props.element.uuid} {
                             color: ${color} !important
                         }
                     `}
                 </style>
 
                 <Link to={this.props.show ? this.props.element.actionData : '#'} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()}>
-                    <i className={`fab ${this.props.element.icon} tmp-icon-button`} onClick={this.onClick.bind(this)} style={{ ...theme, ...theme.custom }} />
+                    <i className={`fab ${this.props.element.icon} tmp-icon-button-${this.props.element.uuid}`} onClick={this.onClick.bind(this)} style={{ ...theme, ...theme.custom }} />
                 </Link>
             </div>
         );

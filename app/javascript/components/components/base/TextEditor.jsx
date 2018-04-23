@@ -62,7 +62,7 @@ class TextEditor extends React.Component {
                 <div onClick={this.onEditorClick.bind(this)}>
                     <Editor wrapperClassName='editor-wrapper' editorClassName={`editor-editor ${smallClassName}`} toolbarClassName='editor-toolbar'
                         editorState={this.state.editorState} onEditorStateChange={(editorState) => this.handleChange(editorState)}
-                        toolbar={{ options: [ 'inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'link', 'image', 'history' ], image: { uploadEnabled: true, uploadCallback: (image) => { return this.uploadImage(image) } } }}
+                        toolbar={{ options: [ 'inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'image', 'history' ], image: { uploadEnabled: true, uploadCallback: (image) => { return this.uploadImage(image) } } }}
                         editorRef={(ref) => this.setEditorReference(ref)} {...props} />
                 </div>
             </div>
