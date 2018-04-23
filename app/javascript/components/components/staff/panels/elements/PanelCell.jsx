@@ -12,6 +12,7 @@ import PanelSelect from './PanelSelect';
 import PanelImage from './PanelImage';
 import PanelText from './PanelText';
 import PanelLink from './PanelLink';
+import PanelIconButton from './PanelIconButton';
 
 class PanelCell extends React.Component {
 
@@ -55,6 +56,8 @@ class PanelCell extends React.Component {
             element.elements.push(PanelText.elementStructure(element.elements.length));
         } else if (this.props.draggedItem == 'link') {
             element.elements.push(PanelLink.elementStructure(element.elements.length));
+        } else if (this.props.draggedItem == 'iconButton') {
+            element.elements.push(PanelIconButton.elementStructure(element.elements.length));
         }
 
         this.updateElements(element);
@@ -120,6 +123,8 @@ class PanelCell extends React.Component {
             return <PanelText show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         } else if (this.props.element.elements[0].type == 'link') {
             return <PanelLink show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
+        } else if (this.props.element.elements[0].type == 'iconButton') {
+            return <PanelIconButton show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
         }
     }
 

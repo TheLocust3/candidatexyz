@@ -72,6 +72,7 @@ class PanelPreview extends React.Component {
                     <ToolbarItem name='text' label='Text' icon='text_fields' onDrag={(name) => this.handleDrag(name)} />
                     <ToolbarItem name='image' label='Image' icon='image' onDrag={(name) => this.handleDrag(name)} />
                     <ToolbarItem name='link' label='Link' icon='send' onDrag={(name) => this.handleDrag(name)} />
+                    <ToolbarItem name='iconButton' label='Icon Button' icon='extension' onDrag={(name) => this.handleDrag(name)} />
                 </div>
 
                 <div className='panel-preview-editor'>

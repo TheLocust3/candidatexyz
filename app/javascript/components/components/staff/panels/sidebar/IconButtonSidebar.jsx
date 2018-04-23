@@ -8,9 +8,19 @@ import ColorPicker from '../../../global/ColorPicker';
 import FontPicker from '../../../global/FontPicker';
 import CustomStyler from '../../../global/CustomStyler';
 import TextField from '../../../base/TextField';
-import Button from '../../../base/Button';
 
-class LinkSidebar extends React.Component {
+class IconButtonSidebar extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        if (_.isEmpty(this.props.element.theme)) {
+            let element = this.props.element;
+            element.theme = {};
+
+            this.updateElement(element);
+        }
+    }
 
     updateElement(element) {
         let elements = this.props.elements;
@@ -40,7 +50,7 @@ class LinkSidebar extends React.Component {
 
     render() {
         let element = this.props.element;
-        let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
+        let theme = _.isEmpty(element.theme) ? {} : element.theme;
 
         return (
             <div>
@@ -51,17 +61,14 @@ class LinkSidebar extends React.Component {
                     <b>ID:</b> <code>{element.uuid}</code>
                 </span><br />
 
-                <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={element.text} /><br />
+                <TextField dense={true} label='Icon' name='icon' onChange={(event) => this.handleChange(event)} defaultValue={element.icon} /><br />
 
-                <TextField dense={true} label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={element.url} />
+                <TextField dense={true} label='URL' name='actionData' onChange={(event) => this.handleChange(event)} defaultValue={element.actionData} />
                 <br /><br />
 
                 <ColorPicker label='Pick Color' color={theme.color} onChange={(color) => this.handleThemeChange(color.hex, 'color')} />
-
-                <div style={{ position: 'relative' }}>
-                    <FontPicker onChange={(font) => { this.handleThemeChange(font, 'fontFamily') }} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />
-                    <TextField type='number' label='Font Size' onChange={(event) => { this.handleThemeChange(event.target.value, 'fontSize', 'px') }} defaultValue={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
-                </div>
+                <ColorPicker label='Pick Hover Color' color={theme.colorHover} onChange={(color) => this.handleThemeChange(color.hex, 'colorHover')} />
+                <TextField type='number' label='Font Size' onChange={(event) => { this.handleThemeChange(event.target.value, 'fontSize', 'em') }} defaultValue={_.replace(theme.fontSize, 'em', '')}/><br />
 
                 <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
                 
@@ -71,10 +78,10 @@ class LinkSidebar extends React.Component {
     }
 }
 
-LinkSidebar.propTypes = {
+IconButtonSidebar.propTypes = {
     elements: PropTypes.array,
     element: PropTypes.object,
     updateInnerElements: PropTypes.func
 };
 
-export default LinkSidebar;
+export default IconButtonSidebar;

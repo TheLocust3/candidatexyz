@@ -13,6 +13,7 @@ import SelectSidebar from './SelectSidebar';
 import ImageSidebar from './ImageSidebar';
 import TextSidebar from './TextSidebar';
 import LinkSidebar from './LinkSidebar';
+import IconButtonSidebar from './IconButtonSidebar';
 import ColorPicker from '../../../global/ColorPicker';
 import CustomStyler from '../../../global/CustomStyler';
 
@@ -113,6 +114,14 @@ class CellSidebar extends React.Component {
                     <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
 
                     <LinkSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
+                </div>
+            )
+        } else if (element.type == 'iconButton') {
+            return (
+                <div>
+                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+
+                    <IconButtonSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
                 </div>
             )
         }
