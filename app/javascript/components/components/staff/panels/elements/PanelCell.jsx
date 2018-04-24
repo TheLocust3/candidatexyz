@@ -31,7 +31,6 @@ class PanelCell extends React.Component {
     }
 
     handleDrop(event) {
-        let elements = this.props.elements;
         let element = this.props.element;
 
         if (_.isEmpty(element.elements)) {
@@ -63,7 +62,7 @@ class PanelCell extends React.Component {
         this.updateElements(element);
     }
 
-    onClick(element) {
+    onClick(elements) {
         if (_.isEmpty(this.props.element.elements)) {
             this.props.onClick([this.props.element]);
             
@@ -71,10 +70,10 @@ class PanelCell extends React.Component {
         }
 
         let selectedElements = [];
-        if (_.isEmpty(element)) {
+        if (_.isEmpty(elements)) {
             selectedElements = [this.props.element];
         } else {
-            selectedElements = [this.props.element, element];
+            selectedElements = [this.props.element, ...elements];
         }
         
         this.props.onClick(selectedElements);
@@ -96,36 +95,52 @@ class PanelCell extends React.Component {
         this.props.updateElements(elements);
     }
 
-    renderElements() {
-        if (_.isEmpty(this.props.element.elements) && !this.props.show) {
+    renderElement(element) {
+        if (_.isEmpty(element) && !this.props.show) {
             return (
                 <span className='middle-center'>
                     Cell
                 </span>
             );
-        } else if (_.isEmpty(this.props.element.elements) && this.props.show) {
+        } else if (_.isEmpty(element) && this.props.show) {
             return;
-        } else if (this.props.element.elements[0].type == 'button') {
-            return <PanelButton show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
-        } else if (this.props.element.elements[0].type == 'fab') {
-            return <PanelFab show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
-        } else if (this.props.element.elements[0].type == 'checkbox') {
-            return <PanelCheckbox show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
-        } else if (this.props.element.elements[0].type == 'textField') {
-            return <PanelTextField show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
-        } else if (this.props.element.elements[0].type == 'textArea') {
-            return <PanelTextArea show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
-        } else if (this.props.element.elements[0].type == 'select') {
-            return <PanelSelect show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} updateElement={(element) => this.updateInnerElement(element)} />;
-        } else if (this.props.element.elements[0].type == 'image') {
-            return <PanelImage show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
-        } else if (this.props.element.elements[0].type == 'text') {
-            return <PanelText show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
-        } else if (this.props.element.elements[0].type == 'link') {
-            return <PanelLink show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
-        } else if (this.props.element.elements[0].type == 'iconButton') {
-            return <PanelIconButton show={this.props.show} parentElement={this.props.element} element={this.props.element.elements[0]} />;
+        } else if (element.type == 'button') {
+            return <PanelButton show={this.props.show} parentElement={this.props.element} element={element} />;
+        } else if (element.type == 'fab') {
+            return <PanelFab show={this.props.show} parentElement={this.props.element} element={element} />;
+        } else if (element.type == 'checkbox') {
+            return <PanelCheckbox show={this.props.show} parentElement={this.props.element} element={element} />;
+        } else if (element.type == 'textField') {
+            return <PanelTextField show={this.props.show} parentElement={this.props.element} element={element} />;
+        } else if (element.type == 'textArea') {
+            return <PanelTextArea show={this.props.show} parentElement={this.props.element} element={element} />;
+        } else if (element.type == 'select') {
+            return <PanelSelect show={this.props.show} parentElement={this.props.element} element={element} updateElement={(element) => this.updateInnerElement(element)} />;
+        } else if (element.type == 'image') {
+            return <PanelImage show={this.props.show} parentElement={this.props.element} element={element} />;
+        } else if (element.type == 'text') {
+            return <PanelText show={this.props.show} parentElement={this.props.element} element={element} />;
+        } else if (element.type == 'link') {
+            return <PanelLink show={this.props.show} parentElement={this.props.element} element={element} />;
+        } else if (element.type == 'iconButton') {
+            return <PanelIconButton show={this.props.show} parentElement={this.props.element} element={element} />;
         }
+    }
+
+    renderElements() {
+        let elements = _.isEmpty(this.props.element.elements) ? [{}] : this.props.element.elements;
+
+        return (
+            <center className='middle' style={{ width: '100%' }}>
+                {elements.map((element, index) => {
+                    return (
+                        <span key={index} className='panel-element'>
+                            {this.renderElement(element)}
+                        </span>
+                    );
+                })}
+            </center>
+        )
     }
 
     renderEdit() {
@@ -144,7 +159,7 @@ class PanelCell extends React.Component {
 
         return (
             <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%`, ...theme, ...theme.custom }}
-                onClick={() => this.onClick(...this.props.element.elements)} onDrop={(event) => this.handleDrop(event)}>
+                onClick={() => this.onClick(this.props.element.elements)} onDrop={(event) => this.handleDrop(event)}>
                 <div className='panel-cell-inner' style={{ borderWidth: borderWidth }}>
                     {this.renderElements()}
                 </div>

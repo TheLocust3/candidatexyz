@@ -9,7 +9,7 @@ import { history } from '../../../../../constants';
 class PanelIconButton extends React.Component {
 
     static elementStructure(index) {
-        return { index: index, uuid: `iconButton-${uuid()}`, type: 'iconButton', icon: 'fa-facebook-f', action: 'link', actionData: '', theme: {} };
+        return { index: index, uuid: `iconButton-${uuid()}`, type: 'iconButton', icon: 'fa-facebook-f', url: '', theme: {} };
     }
 
     constructor(props) {
@@ -24,13 +24,21 @@ class PanelIconButton extends React.Component {
         });
     }
 
-    onClick(event) {
-        event.preventDefault();
-
-        if (!this.props.show) return;
-
-        if (this.props.element.action == 'link') {
-            history.push(this.props.element.actionData);
+    renderLink() {
+        let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
+        
+        if (_.startsWith(this.props.element.url, 'http://') || _.startsWith(this.props.element.url, 'https://') || _.startsWith(this.props.element.url, 'www.')) {
+            return (
+                <a href={this.props.show ? this.props.element.url : '#'} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()}>
+                    <i className={`fab ${this.props.element.icon} tmp-icon-button-${this.props.element.uuid}`} style={{ ...theme, ...theme.custom }} />
+                </a>
+            )
+        } else {
+            return (
+                <Link to={this.props.show ? this.props.element.url : '#'} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()}>
+                    <i className={`fab ${this.props.element.icon} tmp-icon-button-${this.props.element.uuid}`} style={{ ...theme, ...theme.custom }} />
+                </Link>
+            )
         }
     }
 
@@ -39,7 +47,7 @@ class PanelIconButton extends React.Component {
         let color = this.state.hover ? theme.colorHover : theme.color;
 
         return (
-            <div id={this.props.element.uuid} className='middle-center'>
+            <span id={this.props.element.uuid}>
                 <style>{/* TODO: Wtf React. Possible patch for important tags in future react versions https://github.com/facebook/react/pull/12181 */}
                     {`
                         .tmp-icon-button-${this.props.element.uuid} {
@@ -48,10 +56,8 @@ class PanelIconButton extends React.Component {
                     `}
                 </style>
 
-                <Link to={this.props.show ? this.props.element.actionData : '#'} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()}>
-                    <i className={`fab ${this.props.element.icon} tmp-icon-button-${this.props.element.uuid}`} onClick={this.onClick.bind(this)} style={{ ...theme, ...theme.custom }} />
-                </Link>
-            </div>
+                {this.renderLink()}
+            </span>
         );
     }
 }

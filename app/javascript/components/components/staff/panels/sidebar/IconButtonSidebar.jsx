@@ -63,7 +63,7 @@ class IconButtonSidebar extends React.Component {
 
                 <TextField dense={true} label='Icon' name='icon' onChange={(event) => this.handleChange(event)} defaultValue={element.icon} /><br />
 
-                <TextField dense={true} label='URL' name='actionData' onChange={(event) => this.handleChange(event)} defaultValue={element.actionData} />
+                <TextField dense={true} label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={element.actionData} />
                 <br /><br />
 
                 <ColorPicker label='Pick Color' color={theme.color} onChange={(color) => this.handleThemeChange(color.hex, 'color')} />

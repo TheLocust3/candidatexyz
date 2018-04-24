@@ -13,9 +13,9 @@ class PanelCheckbox extends React.Component {
 
     render() {
         return (
-            <div id={this.props.element.uuid} className='middle-center'>
+            <span id={this.props.element.uuid}>
                 <Checkbox label={this.props.element.text} onChange={() => {}} customPanelTheme={this.props.element.theme} />
-            </div>
+            </span>
         );
     }
 }

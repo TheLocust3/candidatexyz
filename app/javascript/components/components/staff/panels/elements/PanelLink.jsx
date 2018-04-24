@@ -35,11 +35,11 @@ class PanelLink extends React.Component {
         let color = this.state.hover ? theme.colorHover : theme.color;
 
         return (
-            <div id={this.props.element.uuid} className='middle-center'>
+            <span id={this.props.element.uuid}>
                 <Link className='link' to={this.props.show ? this.props.element.url : '#'} style={{ ...theme, ...theme.custom, color: color }} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()}>
                     {this.props.element.text}
                 </Link>
-            </div>
+            </span>
         );
     }
 }

@@ -40,8 +40,7 @@ class CellSidebar extends React.Component {
         this.props.updateInnerElements(elements);
     }
 
-    renderInnerSidebar() {
-        let element = this.props.selectedElements[1];
+    renderInnerSidebar(element) {
         if (_.isEmpty(element)) return;
 
         if (element.type == 'button') {
@@ -127,6 +126,20 @@ class CellSidebar extends React.Component {
         }
     }
     
+    renderInnerSidebars() {
+        return (
+            this.props.selectedElements.map((element, index) => {
+                if (index == 0) return;
+
+                return (
+                    <div key={index}>
+                        {this.renderInnerSidebar(element)}
+                    </div>
+                )
+            })
+        )
+    }
+
 
     render() {
         let element = this.props.selectedElements[0];
@@ -134,7 +147,7 @@ class CellSidebar extends React.Component {
 
         return (
             <div>
-                {this.renderInnerSidebar()}
+                {this.renderInnerSidebars()}
                 
                 <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
 

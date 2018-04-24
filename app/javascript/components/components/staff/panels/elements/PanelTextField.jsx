@@ -13,9 +13,9 @@ class PanelTextField extends React.Component {
 
     render() {
         return (
-            <div id={this.props.element.uuid} className='middle-center'>
+            <span id={this.props.element.uuid}>
                 <TextField label={this.props.element.text} onChange={(event) => event.preventDefault()} customPanelTheme={this.props.element.theme} />
-            </div>
+            </span>
         );
     }
 }

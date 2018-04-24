@@ -13,13 +13,13 @@ class PanelFab extends React.Component {
 
     render() {
         return (
-            <div id={this.props.element.uuid} className='middle-center'>
-                <Fab className='material-icons middle-center' onClick={(event) => event.preventDefault()} customPanelTheme={this.props.element.theme}>
+            <span id={this.props.element.uuid}>
+                <Fab className='material-icons' onClick={(event) => event.preventDefault()} customPanelTheme={this.props.element.theme}>
                     <span className='mdc-fab__icon'>
                         {this.props.element.icon}
                     </span>
                 </Fab>
-            </div>
+            </span>
         );
     }
 }

@@ -13,9 +13,9 @@ class PanelTextArea extends React.Component {
 
     render() {
         return (
-            <div id={this.props.element.uuid} className='middle-center'>
+            <span id={this.props.element.uuid}>
                 <TextArea label={this.props.element.text} onChange={(event) => event.preventDefault()} rows={Number(this.props.element.rows)} cols={Number(this.props.element.cols)} customPanelTheme={this.props.element.theme}/>
-            </div>
+            </span>
         );
     }
 }

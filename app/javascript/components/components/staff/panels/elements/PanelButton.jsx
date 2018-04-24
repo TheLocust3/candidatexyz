@@ -24,11 +24,11 @@ class PanelButton extends React.Component {
 
     render() {
         return (
-            <div id={this.props.element.uuid} className='middle-center'>
+            <span id={this.props.element.uuid}>
                 <Button onClick={this.onClick.bind(this)} customPanelTheme={this.props.element.theme}>
                     {this.props.element.text}
                 </Button>
-            </div>
+            </span>
         );
     }
 }
