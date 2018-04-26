@@ -7,11 +7,15 @@ import { history } from '../../../../constants';
 
 import FormWrapper from '../../forms/FormWrapper';
 import Button from '../../base/Button';
+import Select from '../../base/Select';
+import SelectItem from '../../base/SelectItem';
 import TextField from '../../base/TextField';
 import PanelPreview from './PanelPreview';
 import PanelRow from './elements/PanelRow';
 import ColorPicker from '../../global/ColorPicker';
 import CustomStyler from '../../global/CustomStyler';
+
+const heightTypes = [{ name: 'Percent', value: 'vh' }, { name: 'Pixels', value: 'px' }];
 
 class PanelForm extends React.Component {
 
@@ -26,7 +30,8 @@ class PanelForm extends React.Component {
             this.state.update = true;
         }
 
-        this.state.panel.settings.height = this.state.panel.settings.height == null ? 25 : this.state.panel.settings.height;
+        this.state.panel.settings.height = this.state.panel.settings.height == null ? '25' : this.state.panel.settings.height;
+        this.state.panel.settings.heightType = _.isEmpty(this.state.panel.settings.heightType) ? 'vh' : this.state.panel.settings.heightType;
     }
 
     componentWillMount() {
@@ -42,11 +47,22 @@ class PanelForm extends React.Component {
         this.recalculateHeight();
     }
 
+    handleHeightTypeChange(select) {
+        let panel = this.state.panel;
+        panel.settings.heightType = _.find(heightTypes, { name: select }).value;
+
+        this.setState({
+            panel: panel
+        });
+
+        this.recalculateHeight();
+    }
+
     // TODO: Cleanup recalculateHeight, this is passed down like four components before use
     recalculateHeight() {
         let panel = this.state.panel;
         panel.elements = panel.elements.map((element) => {
-            return { ...element, height: panel.settings.height / panel.elements.length }
+            return { ...element, height: panel.settings.height / panel.elements.length, heightType: panel.settings.heightType }
         });
 
         this.setState({
@@ -108,6 +124,24 @@ class PanelForm extends React.Component {
         }
     }
 
+    renderHeightTypeDropdown() {
+        let selectedIndex = _.findIndex(heightTypes, { value: this.state.panel.settings.heightType });
+
+        return (
+            <div>
+                <Select label='Type' onChange={(select) => this.handleHeightTypeChange(select.value)} selectedIndex={selectedIndex == -1 ? 0 : selectedIndex} style={{ width: '20%' }}>
+                    <SelectItem>
+                        Percent
+                    </SelectItem>
+                    
+                    <SelectItem>
+                        Pixels
+                    </SelectItem>
+                </Select>
+            </div>
+        );
+    }
+
     render() {
         let theme = _.isEmpty(this.state.panel.settings.theme) ? {} : this.state.panel.settings.theme;
 
@@ -117,6 +151,7 @@ class PanelForm extends React.Component {
                 <TextField label='Panel Description' name='description' onChange={(event) => this.handlePanelChange(event)} style={{ width: '100%' }} defaultValue={this.state.panel.description} /><br /><br />
 
                 <TextField type='number' label='Panel Height (%)' onChange={(event) => this.handleHeightChange(event)} defaultValue={String(this.state.panel.settings.height)} /><br /><br />
+                {this.renderHeightTypeDropdown()}<br />
 
                 <ColorPicker label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
                 <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} /><br />

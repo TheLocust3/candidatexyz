@@ -96,6 +96,10 @@ class PanelCell extends React.Component {
     }
 
     renderElement(element) {
+        if (!_.isEmpty(this.props.element.theme) && !_.isEmpty(this.props.element.theme.float)) {
+            element.theme = { ...element.theme, float: this.props.element.theme.float };
+        }
+
         if (_.isEmpty(element) && !this.props.show) {
             return (
                 <span className='middle-center'>
@@ -158,8 +162,8 @@ class PanelCell extends React.Component {
         let selectedClassName = selected ? 'panel-selected' : 'selectable';
 
         return (
-            <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%`, ...theme, ...theme.custom }}
-                onClick={() => this.onClick(this.props.element.elements)} onDrop={(event) => this.handleDrop(event)}>
+            <div id={this.props.element.uuid} className={`panel-cell ${selectedClassName}`} style={{ width: `${this.props.element.width}%`, ...theme, ...theme.custom, float: '' }}
+                onClick={() => this.onClick(this.props.element.elements)} onDrop={(event) => this.handleDrop(event)}>{/*float is stored on cells then passed down, don't want float actually impacting outer cell though*/}
                 <div className='panel-cell-inner' style={{ borderWidth: borderWidth }}>
                     {this.renderElements()}
                 </div>

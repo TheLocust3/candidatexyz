@@ -126,7 +126,7 @@ class PanelRow extends React.Component {
 
         return (
             <div id={this.props.element.uuid} className={`panel-row ${lastSelectedClassName}`}
-                style={{ height: `${this.props.element.height}vh`, borderWidth: borderWidth, paddingBottom: selectPaddingBottom, ...theme, ...theme.custom }}
+                style={{ height: `${this.props.element.height}${this.props.element.heightType}`, borderWidth: borderWidth, paddingBottom: selectPaddingBottom, ...theme, ...theme.custom }}
                 onClick={this.onResizeRelease.bind(this)} onDrop={(event) => this.handleDrop(event)}>
                 
                 {this.renderElements()}
@@ -135,10 +135,12 @@ class PanelRow extends React.Component {
     }
 
     renderShow() {
+        if (_.isEmpty(this.props.element.elements)) return null;
+
         let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
 
         return (
-            <div className='panel-row panel-row-show' style={{ height: `${this.props.element.height}vh`, ...theme, ...theme.custom }}>
+            <div className='panel-row panel-row-show' style={{ height: `${this.props.element.height}${this.props.element.heightType}`, ...theme, ...theme.custom }}>
                 {this.props.element.elements.map((element) => {
                     return (
                         <span key={element.uuid}>

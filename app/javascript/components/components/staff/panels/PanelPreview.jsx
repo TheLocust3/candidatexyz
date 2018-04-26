@@ -28,9 +28,12 @@ class PanelPreview extends React.Component {
             elements = elements.map((element) => {
                 return { ...element, height: this.props.panel.settings.height / elements.length }
             });
-        }
 
-        this.props.onChange(elements);
+            this.props.onChange(elements);
+            this.props.recalculateHeight();
+        } else {
+            this.props.onChange(elements);
+        }
     }
 
     onClick(elements) {
@@ -76,7 +79,7 @@ class PanelPreview extends React.Component {
                 </div>
 
                 <div className='panel-preview-editor'>
-                    <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${Number(this.props.panel.settings.height) + 1}vh`, ...theme, ...theme.custom }}>
+                    <div className='panel-preview' onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()} style={{ height: `${Number(this.props.panel.settings.height) + 1}${this.props.panel.settings.heightType}`, ...theme, ...theme.custom }}>
                         {this.renderElements()}
                     </div>
 

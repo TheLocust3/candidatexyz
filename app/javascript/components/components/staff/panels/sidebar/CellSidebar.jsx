@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import DeleteElementButton from './DeleteElementButton';
 import Button from '../../../base/Button';
+import Select from '../../../base/Select';
+import SelectItem from '../../../base/SelectItem';
 import ButtonSidebar from './ButtonSidebar';
 import FabSidebar from './FabSidebar';
 import CheckboxSidebar from './CheckboxSidebar';
@@ -125,6 +127,26 @@ class CellSidebar extends React.Component {
             )
         }
     }
+
+    renderHorizontalAlignmentDropdown() {
+        return (
+            <div>
+                <Select label='H. Align' onChange={(select) => this.handleThemeChange(select.value, 'float')} style={{ width: '50%' }}>
+                    <SelectItem>
+                        None
+                    </SelectItem>
+                    
+                    <SelectItem>
+                        Left
+                    </SelectItem>
+
+                    <SelectItem>
+                        Right
+                    </SelectItem>
+                </Select>
+            </div>
+        );
+    }
     
     renderInnerSidebars() {
         return (
@@ -139,7 +161,6 @@ class CellSidebar extends React.Component {
             })
         )
     }
-
 
     render() {
         let element = this.props.selectedElements[0];
@@ -159,6 +180,8 @@ class CellSidebar extends React.Component {
                 </div>
 
                 <ColorPicker label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
+
+                {this.renderHorizontalAlignmentDropdown()}<br />
 
                 <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />
             </div>
