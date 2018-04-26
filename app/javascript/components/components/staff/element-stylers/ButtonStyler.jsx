@@ -36,11 +36,11 @@ class ButtonStyler extends React.Component {
 
                 <div style={{ position: 'relative' }}>
                     <FontPicker onChange={(font) => { this.handleChange('fontFamily', font) }} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />
-                    <TextField type='number' label='Font Size' onChange={(event) => { this.handleChange('fontSize', event.target.value, 'px') }} defaultValue={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
+                    <TextField type='number' label='Font Size' onChange={(event) => { this.handleChange('fontSize', event.target.value, 'px') }} value={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
                 </div>
 
-                <TextField type='number' label='Height' onChange={(event) => { this.handleChange('height', event.target.value, 'px') }} defaultValue={_.replace(theme.height, 'px', '')} style={{ marginRight: '5%' }} />
-                <TextField type='number' label='Width' onChange={(event) => { this.handleChange('width', event.target.value, 'px') }} defaultValue={_.replace(theme.width, 'px', '')} />
+                <TextField type='number' label='Height' onChange={(event) => { this.handleChange('height', event.target.value, 'px') }} value={_.replace(theme.height, 'px', '')} style={{ marginRight: '5%' }} />
+                <TextField type='number' label='Width' onChange={(event) => { this.handleChange('width', event.target.value, 'px') }} value={_.replace(theme.width, 'px', '')} />
                 <br /><br />
 
                 <CustomStyler custom={theme.custom} onChange={(custom) => { this.handleChange('custom', custom) }} />

@@ -59,7 +59,7 @@ class TextField extends React.Component {
     }
 
     render() {
-        let { className, label, name, onChange, required, defaultValue, type, size, dense, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
+        let { className, label, name, onChange, required, value, defaultValue, type, size, dense, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let denseClassName = dense ? this.themedClassName('text-field--dense') : '';
@@ -70,7 +70,7 @@ class TextField extends React.Component {
         return (
             <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${denseClassName} ${className}`} {...autoInit} {...props}>
                 <label className={this.themedClassName('text-field__label')} style={{ color: this.themedStyle().color, fontFamily: this.themedStyle().fontFamily }}>{label}</label><br />
-                <input type={type} className={this.themedClassName('text-field__input')} name={name} onChange={onChange} size={size} required={required} />
+                <input type={type} className={this.themedClassName('text-field__input')} name={name} onChange={onChange} value={value} size={size} required={required} />
                 
                 <div className={this.themedClassName('line-ripple')} />
             </div>
@@ -85,6 +85,7 @@ TextField.propTypes = {
     onChange: PropTypes.func.isRequired,
     required: PropTypes.bool,
     defaultValue: PropTypes.string,
+    value: PropTypes.string,
     type: PropTypes.string,
     size: PropTypes.number,
     dense: PropTypes.bool,

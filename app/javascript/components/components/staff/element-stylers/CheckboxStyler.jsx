@@ -35,7 +35,7 @@ class CheckboxStyler extends React.Component {
 
                 <div style={{ position: 'relative' }}>
                     <FontPicker onChange={(font) => this.handleChange('fontFamily', font)} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />
-                    <TextField type='number' label='Font Size' onChange={(event) => { this.handleChange('fontSize', event.target.value, 'px') }} defaultValue={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} />
+                    <TextField type='number' label='Font Size' onChange={(event) => { this.handleChange('fontSize', event.target.value, 'px') }} value={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} />
                 </div>
             </div>
         );

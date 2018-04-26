@@ -12,14 +12,24 @@ class CustomStyler extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = { custom: this.propsToCustom(this.props.custom) };
+    }
+
+    propsToCustom(customProps) {
         let custom = [];
-        if (!_.isEmpty(this.props.custom)) {
-            custom = _.map(this.props.custom, (value, key) => {
+        if (!_.isEmpty(customProps)) {
+            custom = _.map(customProps, (value, key) => {
                 return { name: camelToDashes(key), value: value };
             });
         }
 
-        this.state = { custom: custom };
+        return custom;
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            custom: this.propsToCustom(nextProps.custom)
+        });
     }
 
     customToProps(custom) {
@@ -79,8 +89,8 @@ class CustomStyler extends React.Component {
             this.state.custom.map((style, index) => {
                 return (
                     <div key={index}>
-                        <TextField label='Name' dense={this.props.small} onChange={(event) => { this.handleNameChange(event, index) }} defaultValue={style.name} style={{ width: '35%', marginRight: '5%' }} />
-                        <TextField label='Value' dense={this.props.small} onChange={(event) => { this.handleValueChange(event, index) }} defaultValue={style.value} style={{ width: '35%' }} />
+                        <TextField label='Name' dense={this.props.small} onChange={(event) => { this.handleNameChange(event, index) }} value={style.name} style={{ width: '35%', marginRight: '5%' }} />
+                        <TextField label='Value' dense={this.props.small} onChange={(event) => { this.handleValueChange(event, index) }} value={style.value} style={{ width: '35%' }} />
 
                         <Fab condensed={true} className='red-button' onClick={(event) => this.onDeleteClick(event, index)} style={{ marginLeft: '3%' }}>
                             <i className='material-icons'>delete</i>

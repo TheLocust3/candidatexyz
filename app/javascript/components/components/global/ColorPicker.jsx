@@ -11,7 +11,7 @@ class ColorPicker extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { colorPickerOpen: false, color: this.props.color };
+        this.state = { colorPickerOpen: false };
     }
 
     componentDidMount() {
@@ -31,10 +31,6 @@ class ColorPicker extends React.Component {
     }
 
     handleColorChange(color, event) {
-        this.setState({
-            color: color
-        });
-
         this.props.onChange(color);
     }
 
@@ -54,7 +50,7 @@ class ColorPicker extends React.Component {
                 <Button condensed={true} onClick={this.onColorPickerOpen.bind(this)}>{this.props.label}</Button><br /><br />
                 
                 <div className='color-picker' style={{ visibility: displayPicker }}>
-                    <BlockPicker color={this.state.color} onChangeComplete={(color, event) => this.handleColorChange(color, event)} colors={this.props.colors} />
+                    <BlockPicker color={this.props.color} onChangeComplete={(color, event) => this.handleColorChange(color, event)} colors={this.props.colors} />
                 </div>
             </span>
         );

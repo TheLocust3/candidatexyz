@@ -46,92 +46,52 @@ class CellSidebar extends React.Component {
         if (_.isEmpty(element)) return;
 
         if (element.type == 'button') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <ButtonSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <ButtonSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'fab') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <FabSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <FabSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'checkbox') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <CheckboxSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <CheckboxSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'textField') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <TextFieldSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <TextFieldSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'textArea') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <TextAreaSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <TextAreaSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'select') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <SelectSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <SelectSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'image') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <ImageSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <ImageSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'text') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <TextSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <TextSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'link') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <LinkSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <LinkSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         } else if (element.type == 'iconButton') {
-            return (
-                <div>
-                    <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
-
-                    <IconButtonSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />
-                </div>
-            )
+            return <IconButtonSidebar elements={this.props.selectedElements[0].elements} element={element} updateInnerElements={(elements) => this.updateInnerElements(elements)} />;
         }
     }
 
-    renderHorizontalAlignmentDropdown() {
+    renderSidebar(element) {
         return (
             <div>
-                <Select label='H. Align' onChange={(select) => this.handleThemeChange(select.value, 'float')} style={{ width: '50%' }}>
+                <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+
+                {this.renderInnerSidebar(element)}
+            </div>
+        );
+    }
+
+    renderHorizontalAlignmentDropdown() {
+        let element = this.props.selectedElements[0];
+        let theme = _.isEmpty(element.theme) ? {} : element.theme;
+
+        let selectedIndex = 0;
+        if (theme.float == 'Left') {
+            selectedIndex = 1;
+        } else if (theme.float == 'Right') {
+            selectedIndex = 2;
+        }
+
+        return (
+            <div>
+                <Select label='H. Align' onChange={(select) => this.handleThemeChange(select.value, 'float')} selectedIndex={selectedIndex} style={{ width: '50%' }}>
                     <SelectItem>
                         None
                     </SelectItem>
@@ -155,11 +115,11 @@ class CellSidebar extends React.Component {
 
                 return (
                     <div key={index}>
-                        {this.renderInnerSidebar(element)}
+                        {this.renderSidebar(element)}
                     </div>
                 )
             })
-        )
+        );
     }
 
     render() {

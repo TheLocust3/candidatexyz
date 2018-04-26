@@ -14,7 +14,7 @@ class Select extends React.Component {
         this.state = { uuid: `select-${uuid()}` };
     }
 
-    componentDidMount() {
+    mdcInit() {
         if (this.theme().classNamePrefix == 'mdc-') {
             const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
             select.listen('MDCSelect:change', () => {
@@ -25,6 +25,14 @@ class Select extends React.Component {
                 select.selectedIndex = this.props.selectedIndex;
             }
         }
+    }
+
+    componentDidMount() {
+        this.mdcInit();
+    }
+
+    componentDidUpdate() {
+        this.mdcInit();
     }
 
     theme() {
