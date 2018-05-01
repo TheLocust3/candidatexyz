@@ -13,10 +13,21 @@ class StaffOverview extends React.Component {
         this.props.dispatch(setBlankNavbar(true));
     }
 
+    renderSuperuser() {
+        if (!this.props.user.superuser) return;
+
+        return (
+            <div>
+                You are a superuser
+            </div>
+        );
+    }
+
     render() {
         return (
             <div className='content-15'>
                 <div className='mdc-typography--display3'>Staff Overview</div><br />
+                {this.renderSuperuser()}<br />
 
                 <div style={{ marginLeft: '5%' }}>
                     <Link className='link' to='/staff-management'>Staff Management</Link><br />
@@ -31,4 +42,10 @@ class StaffOverview extends React.Component {
     }
 }
 
-export default connect()(StaffOverview);
+function mapStateToProps(state) {
+    return {
+        user: state.staff.currentUser
+    };
+}
+
+export default connect(mapStateToProps)(StaffOverview);

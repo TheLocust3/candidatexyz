@@ -19,6 +19,8 @@ class StaffManagement extends React.Component {
         return (
             <ul className='mdc-list mdc-list--two-line'>
                 {this.props.users.map((user) => {
+                    if (user.superuser) return;
+
                     let link = this.props.currentUser.admin ? `/staff-management/${user.id}/edit` : '#';
 
                     return (

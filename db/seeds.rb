@@ -149,7 +149,7 @@ Content.create(content_type: 'link', identifier: 'navButton', content: { text: '
 
 Content.create(content_type: 'text', identifier: 'meetCandidate', content: { text: 'Meet CandidateXYZ' })
 
-User.create(email: 'jake.kinsella@gmail.com', password: 'password', admin: true)
+User.create(email: 'jake.kinsella@gmail.com', password: 'password', admin: true, superuser: true)
 User.create(email: 'test@candidatexyz.com', password: 'password', admin: false)
 
 # splashPage
