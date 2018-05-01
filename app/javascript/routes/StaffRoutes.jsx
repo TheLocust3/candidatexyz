@@ -18,16 +18,8 @@ import Volunteer from '../components/containers/volunteers/Volunteer';
 import StaffOverview from '../components/containers/staff/StaffOverview';
 import MessageOverview from '../components/containers/staff/MessageOverview';
 import ShowMessage from '../components/containers/staff/ShowMessage';
-import Images from '../components/containers/staff/Images';
-import UploadImage from '../components/containers/staff/UploadImage';
-import Themes from '../components/containers/staff/Themes';
-import ThemeEditor from '../components/containers/staff/ThemeEditor';
-import Panels from '../components/containers/staff/panels/Panels';
-import PanelEditor from '../components/containers/staff/panels/PanelEditor';
-import ShowPanel from '../components/containers/staff/panels/ShowPanel';
-import Pages from '../components/containers/staff/pages/Pages';
-import PageEditor from '../components/containers/staff/pages/PageEditor';
-import ShowPage from '../components/containers/staff/pages/ShowPage';
+
+import StaffDevelopmentRoutes from './StaffDevelopmentRoutes';
 
 class StaffRoutes extends React.Component {
 
@@ -53,25 +45,10 @@ class StaffRoutes extends React.Component {
                 <Route exact path='/staff/volunteers' component={VolunteerOverview} />
                 <Route exact path='/staff/volunteers/:id' component={Volunteer} />
 
-                <Route exact path='/staff/images' component={Images} />
-                <Route exact path='/staff/images/new' component={UploadImage} />
-
-                <Route exact path='/staff/themes' component={Themes} />
-                <Route exact path='/staff/themes/new' component={ThemeEditor} />
-                <Route exact path='/staff/themes/:name' component={ThemeEditor} />
-
-                <Route exact path='/staff/panels' component={Panels} />
-                <Route exact path='/staff/panels/new' component={PanelEditor} />
-                <Route exact path='/staff/panels/:name' component={PanelEditor} />
-                <Route exact path='/staff/panels/:name/show' component={ShowPanel} />
-
-                <Route exact path='/staff/pages' component={Pages} />
-                <Route exact path='/staff/pages/new' component={PageEditor} />
-                <Route exact path='/staff/pages/:url' component={PageEditor} />
-                <Route exact path='/staff/pages/:url/show' component={ShowPage} />
-
                 <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
                 <Route exact path='/posts/:postType/new' component={CreatePost} />
+
+                <StaffDevelopmentRoutes />
             </Switch>
         );
     }

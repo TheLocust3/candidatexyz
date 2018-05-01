@@ -9,6 +9,7 @@ import { MDCMenu } from '@material/menu';
 
 import Fab from '../../components/base/Fab';
 import { history } from '../../../constants';
+import { DEVELOPMENT } from '../../../features';
 import { fetchCurrentUser } from '../../actions/staff-actions';
 import { setEdit, popContentHistory } from '../../actions/content-actions';
 import AuthApi from '../../../api/auth-api';
@@ -95,6 +96,38 @@ class AdminOverlay extends React.Component {
         )
     }
 
+    renderDevelopmentLinks() {
+        if (!DEVELOPMENT) return;
+
+        return (
+            <div>
+                <Link to='/staff/themes' className='menu-item-link'>
+                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                        Themes
+                    </li>
+                </Link>
+
+                <Link to='/staff/pages' className='menu-item-link'>
+                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                        Pages
+                    </li>
+                </Link>
+
+                <Link to='/staff/panels' className='menu-item-link'>
+                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                        Panels
+                    </li>
+                </Link>
+
+                <Link to='/staff/images' className='menu-item-link'>
+                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                        Images
+                    </li>
+                </Link>
+            </div>
+        )
+    }
+
     render() {
         if (!this.props.isReady || _.isEmpty(this.props.user)) return null;
 
@@ -126,27 +159,11 @@ class AdminOverlay extends React.Component {
                     <div className='mdc-menu-anchor'>
                         <div id='admin-overlay-settings' className='mdc-menu' tabIndex='-1'>
                             <ul className='mdc-menu__items mdc-list' role='menu' aria-hidden='true'>
+                                {this.renderDevelopmentLinks()}
+
                                 <Link to='/edit-user' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                         Settings
-                                    </li>
-                                </Link>
-
-                                <Link to='/staff/themes' className='menu-item-link'>
-                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Themes
-                                    </li>
-                                </Link>
-
-                                <Link to='/staff/pages' className='menu-item-link'>
-                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Pages
-                                    </li>
-                                </Link>
-
-                                <Link to='/staff/panels' className='menu-item-link'>
-                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Panels
                                     </li>
                                 </Link>
 
@@ -165,12 +182,6 @@ class AdminOverlay extends React.Component {
                                 <Link to='/staff/volunteers' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                         Volunteers
-                                    </li>
-                                </Link>
-
-                                <Link to='/staff/images' className='menu-item-link'>
-                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Images
                                     </li>
                                 </Link>
 

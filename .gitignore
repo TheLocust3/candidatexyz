@@ -26,3 +26,5 @@ terraform.tfstate*
 /public/images
 
 .DS_Store
+
+/app/javascript/features.js
