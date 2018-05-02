@@ -61,7 +61,7 @@ class ShowPost extends React.Component {
     onEditClick() {
         if (!this.props.edit) return;
 
-        history.push(`/posts/${this.props.postType}/${this.props.url}/edit`);
+        history.push(`/staff/posts/${this.props.postType}/${this.props.url}/edit`);
     }
 
     renderShare() {

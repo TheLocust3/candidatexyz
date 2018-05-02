@@ -161,13 +161,13 @@ class AdminOverlay extends React.Component {
                             <ul className='mdc-menu__items mdc-list' role='menu' aria-hidden='true'>
                                 {this.renderDevelopmentLinks()}
 
-                                <Link to='/edit-user' className='menu-item-link'>
+                                <Link to='/staff/edit-user' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                         Settings
                                     </li>
                                 </Link>
 
-                                <Link to='/staff-management' className='menu-item-link'>
+                                <Link to='/staff/staff-management' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                         Staff Management
                                     </li>
@@ -185,7 +185,7 @@ class AdminOverlay extends React.Component {
                                     </li>
                                 </Link>
 
-                                <Link to='/edit-content' className='menu-item-link'>
+                                <Link to='/staff/edit-content' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                         Edit Other Content
                                     </li>

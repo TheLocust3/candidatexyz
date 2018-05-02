@@ -21,7 +21,7 @@ class StaffManagement extends React.Component {
                 {this.props.users.map((user) => {
                     if (user.superuser) return;
 
-                    let link = this.props.currentUser.admin ? `/staff-management/${user.id}/edit` : '#';
+                    let link = this.props.currentUser.admin ? `/staff/staff-management/${user.id}/edit` : '#';
 
                     return (
                         <Link className='unstyled-link' key={user.id} to={link}>

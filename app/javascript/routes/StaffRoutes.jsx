@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { fetchCurrentUser } from '../components/actions/staff-actions';
 
-import EditRawContent from '../components/containers/EditRawContent';
+import EditRawContent from '../components/containers/candidate/EditRawContent';
 import EditPost from '../components/containers/posts/EditPost';
 import CreatePost from '../components/containers/posts/CreatePost';
 import EditCurrentUserContainer from '../components/containers/users/EditCurrentUserContainer';
@@ -31,25 +31,27 @@ class StaffRoutes extends React.Component {
         if (_.isEmpty(this.props.user)) return null;
 
         return (
-            <Switch>
-                <Route exact path='/edit-content' component={EditRawContent} />
-                <Route exact path='/edit-user' component={EditCurrentUserContainer} />
-                <Route exact path='/staff-management' component={StaffManagement} />
-                <Route exact path='/staff-management/:id/edit' component={MasterEditUserForm} />
-                <Route exact path='/staff' component={StaffOverview} />
-                <Route exact path='/staff/messages' component={MessageOverview} />
-                <Route exact path='/staff/messages/:id' component={ShowMessage} />
-                <Route exact path='/staff/mail' component={Mail} />
-                <Route exact path='/staff/invite' component={InviteStaff} />
+            <Route path='/staff'>
+                <Switch>
+                    <Route exact path='/staff/edit-content' component={EditRawContent} />
+                    <Route exact path='/staff/edit-user' component={EditCurrentUserContainer} />
+                    <Route exact path='/staff/staff-management' component={StaffManagement} />
+                    <Route exact path='/staff/staff-management/:id/edit' component={MasterEditUserForm} />
+                    <Route exact path='/staff' component={StaffOverview} />
+                    <Route exact path='/staff/messages' component={MessageOverview} />
+                    <Route exact path='/staff/messages/:id' component={ShowMessage} />
+                    <Route exact path='/staff/mail' component={Mail} />
+                    <Route exact path='/staff/invite' component={InviteStaff} />
 
-                <Route exact path='/staff/volunteers' component={VolunteerOverview} />
-                <Route exact path='/staff/volunteers/:id' component={Volunteer} />
+                    <Route exact path='/staff/volunteers' component={VolunteerOverview} />
+                    <Route exact path='/staff/volunteers/:id' component={Volunteer} />
 
-                <Route exact path='/posts/:postType/:url/edit' component={EditPost} />
-                <Route exact path='/posts/:postType/new' component={CreatePost} />
+                    <Route exact path='/staff/posts/:postType/:url/edit' component={EditPost} />
+                    <Route exact path='/staff/posts/:postType/new' component={CreatePost} />
 
-                <StaffDevelopmentRoutes />
-            </Switch>
+                    <StaffDevelopmentRoutes />
+                </Switch>
+            </Route>
         );
     }
 }

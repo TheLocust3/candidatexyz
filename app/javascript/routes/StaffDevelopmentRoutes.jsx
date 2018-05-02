@@ -23,22 +23,22 @@ class StaffDevelopmentRoutes extends React.Component {
 
         return (
             <Switch>
-                <Route exact path='/staff/themes' component={Themes} />
-                <Route exact path='/staff/themes/new' component={ThemeEditor} />
-                <Route exact path='/staff/themes/:name' component={ThemeEditor} />
+                <Route exact path='/themes' component={Themes} />
+                <Route exact path='/themes/new' component={ThemeEditor} />
+                <Route exact path='/themes/:name' component={ThemeEditor} />
 
-                <Route exact path='/staff/panels' component={Panels} />
-                <Route exact path='/staff/panels/new' component={PanelEditor} />
-                <Route exact path='/staff/panels/:name' component={PanelEditor} />
-                <Route exact path='/staff/panels/:name/show' component={ShowPanel} />
+                <Route exact path='/panels' component={Panels} />
+                <Route exact path='/panels/new' component={PanelEditor} />
+                <Route exact path='/panels/:name' component={PanelEditor} />
+                <Route exact path='/panels/:name/show' component={ShowPanel} />
 
-                <Route exact path='/staff/pages' component={Pages} />
-                <Route exact path='/staff/pages/new' component={PageEditor} />
-                <Route exact path='/staff/pages/:url' component={PageEditor} />
-                <Route exact path='/staff/pages/:url/show' component={ShowPage} />
+                <Route exact path='/pages' component={Pages} />
+                <Route exact path='/pages/new' component={PageEditor} />
+                <Route exact path='/pages/:url' component={PageEditor} />
+                <Route exact path='/pages/:url/show' component={ShowPage} />
 
-                <Route exact path='/staff/images' component={Images} />
-                <Route exact path='/staff/images/new' component={UploadImage} />
+                <Route exact path='/images' component={Images} />
+                <Route exact path='/images/new' component={UploadImage} />
             </Switch>
         );
     }

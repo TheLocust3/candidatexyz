@@ -20,7 +20,7 @@ class EditUser extends React.Component {
 
     onDeleteClick() {
         StaffApi.destroy(this.props.user.id).then(() => {
-            history.push('/staff-management');
+            history.push('/staff/staff-management');
         });
     }
 
@@ -32,7 +32,7 @@ class EditUser extends React.Component {
                 <div className='mdc-typography--display2'><b>Edit User</b></div><br />
                 <a href='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</a>
 
-                <MasterEditUserForm redirectUrl='/staff-management' user={this.props.user} />
+                <MasterEditUserForm redirectUrl='/staff/staff-management' user={this.props.user} />
 
                 <MDCAutoInit />
             </div>

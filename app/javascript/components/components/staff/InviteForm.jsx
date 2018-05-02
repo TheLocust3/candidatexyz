@@ -26,7 +26,7 @@ export default class InviteForm extends React.Component {
 
     handleSubmit(event) {
         StaffApi.createToken(this.state.email).then(() => {
-            history.push('/staff-management');
+            history.push('/staff/staff-management');
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors
