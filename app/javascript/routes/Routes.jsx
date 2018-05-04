@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { history } from '../constants';
@@ -20,7 +20,7 @@ import ResetPasswordContainer from '../components/containers/users/ResetPassword
 import Unsubscribe from '../components/containers/contact/Unsubscribe';
 
 import StaffRoutes from '../routes/StaffRoutes';
-import CandidateRoutes from '../routes/CandidateRoutes';
+import RootRoutes from '../routes/RootRoutes';
 
 // Always start navigation at the top of the page
 const ScrollToTop = () => {
@@ -55,7 +55,7 @@ class Routes extends React.Component {
                         <Route exact path='/staff/sign-up/:token' component={StaffSignUp} />
 
                         <Route path='/staff' component={StaffRoutes} />
-                        <Route path='/' component={CandidateRoutes} />
+                        <Route path='/' component={RootRoutes} />
                     </Switch>
 
                     <Footer />
