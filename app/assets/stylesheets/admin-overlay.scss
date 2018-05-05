@@ -1,3 +1,9 @@
+@import 'theme';
+
+.overlay-action-icon {
+    background-color: $purple-primary;
+}
+
 .overlay-actions-left {
     position: fixed;
     bottom: 1%;

@@ -143,14 +143,14 @@ class AdminOverlay extends React.Component {
 
                 <div className='overlay-actions-right'>
                     <Link to='/staff/mail' style={{ marginRight: '5%' }}>
-                        <Fab className='material-icons' aria-label='Mail'>
+                        <Fab className='material-icons overlay-action-icon' aria-label='Mail'>
                             <span className='mdc-fab__icon'>
                                 mail
                             </span>
                         </Fab>
                     </Link>
 
-                    <Fab className='material-icons' aria-label='Settings' onClick={this.onSettingsClick.bind(this)}>
+                    <Fab className='material-icons overlay-action-icon' aria-label='Settings' onClick={this.onSettingsClick.bind(this)}>
                         <span className='mdc-fab__icon'>
                             settings
                         </span>

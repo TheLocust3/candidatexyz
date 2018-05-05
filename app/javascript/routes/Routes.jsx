@@ -7,8 +7,8 @@ import { history } from '../constants';
 import { fetchGlobalTheme } from '../components/actions/theme-actions';
 
 import MDCAutoInit from '../components/components/global/MDCAutoInit';
-import Navbar from '../components/containers/candidate/common/Navbar';
-import Footer from '../components/components/candidate/Footer';
+import RootNavbar from '../components/containers/common/RootNavbar';
+import RootFooter from '../components/containers/common/RootFooter';
 import AdminOverlay from '../components/containers/common/AdminOverlay';
 
 import StaffSignUp from '../components/containers/staff/StaffSignUp';
@@ -43,7 +43,7 @@ class Routes extends React.Component {
                 <div>
                     <Route component={ScrollToTop} />
 
-                    <Navbar />
+                    <RootNavbar />
                     <AdminOverlay />
 
                     <Switch>
@@ -58,7 +58,7 @@ class Routes extends React.Component {
                         <Route path='/' component={RootRoutes} />
                     </Switch>
 
-                    <Footer />
+                    <RootFooter />
 
                     <MDCAutoInit />
                 </div>
