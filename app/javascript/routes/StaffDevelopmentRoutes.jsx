@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 
 import { DEVELOPMENT } from '../features';
 
-import Themes from '../components/containers/staff/Themes';
-import ThemeEditor from '../components/containers/staff/ThemeEditor';
 import Panels from '../components/containers/staff/panels/Panels';
 import PanelEditor from '../components/containers/staff/panels/PanelEditor';
 import ShowPanel from '../components/containers/staff/panels/ShowPanel';
@@ -23,10 +21,6 @@ class StaffDevelopmentRoutes extends React.Component {
 
         return (
             <Switch>
-                <Route exact path='/themes' component={Themes} />
-                <Route exact path='/themes/new' component={ThemeEditor} />
-                <Route exact path='/themes/:name' component={ThemeEditor} />
-
                 <Route exact path='/panels' component={Panels} />
                 <Route exact path='/panels/new' component={PanelEditor} />
                 <Route exact path='/panels/:name' component={PanelEditor} />

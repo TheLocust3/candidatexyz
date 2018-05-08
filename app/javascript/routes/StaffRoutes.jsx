@@ -18,6 +18,8 @@ import Volunteer from '../components/containers/volunteers/Volunteer';
 import StaffOverview from '../components/containers/staff/StaffOverview';
 import MessageOverview from '../components/containers/staff/MessageOverview';
 import ShowMessage from '../components/containers/staff/ShowMessage';
+import Themes from '../components/containers/staff/Themes';
+import ThemeEditor from '../components/containers/staff/ThemeEditor';
 
 import StaffDevelopmentRoutes from './StaffDevelopmentRoutes';
 
@@ -48,6 +50,10 @@ class StaffRoutes extends React.Component {
 
                     <Route exact path='/staff/posts/:postType/:url/edit' component={EditPost} />
                     <Route exact path='/staff/posts/:postType/new' component={CreatePost} />
+
+                    <Route exact path='/staff/themes' component={Themes} />
+                    <Route exact path='/staff/themes/new' component={ThemeEditor} />
+                    <Route exact path='/staff/themes/:name' component={ThemeEditor} />
 
                     <StaffDevelopmentRoutes />
                 </Switch>

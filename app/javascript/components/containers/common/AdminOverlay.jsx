@@ -101,12 +101,6 @@ class AdminOverlay extends React.Component {
 
         return (
             <div>
-                <Link to='/staff/themes' className='menu-item-link'>
-                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                        Themes
-                    </li>
-                </Link>
-
                 <Link to='/staff/pages' className='menu-item-link'>
                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                         Pages
@@ -182,6 +176,12 @@ class AdminOverlay extends React.Component {
                                 <Link to='/staff/volunteers' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                                         Volunteers
+                                    </li>
+                                </Link>
+
+                                <Link to='/staff/themes' className='menu-item-link'>
+                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                                        Themes
                                     </li>
                                 </Link>
 
