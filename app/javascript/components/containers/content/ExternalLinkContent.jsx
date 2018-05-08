@@ -33,7 +33,7 @@ class ExternalLinkContent extends React.Component {
     }
 
     render() {
-        let { identifier, edit, dispatch, children, ...props } = this.props;
+        let { identifier, edit, dispatch, children, editOverlayOpen, isReady, ...props } = this.props;
 
         return (
             <span id={identifier}>
@@ -53,7 +53,9 @@ ExternalLinkContent.propTypes = {
 function mapStateToProps(state) {
     return {
         contents: state.content.contents,
-        edit: state.content.edit
+        edit: state.content.edit,
+        editOverlayOpen: state.content.editOverlayOpen, // forces content to update whenever the edit dialog closes
+        isReady: state.content.isReady // same as above
     };
 }
 

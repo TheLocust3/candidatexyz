@@ -48,13 +48,13 @@ class EditContent extends React.Component {
 
         switch (this.props.content.contentType) {
             case 'text':
-                return <TextContentEditor content={this.props.content} />
+                return <TextContentEditor content={this.props.content} />;
             case 'image':
-                return <ImageContentEditor content={this.props.content} />
+                return <ImageContentEditor content={this.props.content} />;
             case 'link':
-                return <LinkContentEditor content={this.props.content} />
+                return <LinkContentEditor content={this.props.content} />;
             case 'slideshow':
-                return <SlideshowContentEditor content={this.props.content} />
+                return <SlideshowContentEditor content={this.props.content} />;
             default:
                 return;
         }

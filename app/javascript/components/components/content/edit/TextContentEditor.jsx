@@ -8,7 +8,7 @@ import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 import TextArea from '../../base/TextArea';
 import ContentApi from '../../../../api/content-api';
-import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
+import { setEditOverlayOpen, pushContentHistory, fetchAllContent } from '../../../actions/content-actions';
 
 import FormWrapper from '../../forms/FormWrapper';
 
@@ -33,7 +33,9 @@ class TextContentEditor extends React.Component {
 
     handleSubmit(event) {
         this.props.dispatch(pushContentHistory(this.state.oldContent));
-        ContentApi.update(this.props.content.identifier, this.state.content.content);
+        ContentApi.update(this.props.content.identifier, this.state.content.content).then(() => {
+            this.props.dispatch(fetchAllContent());
+        });
 
         this.props.dispatch(setEditOverlayOpen(false));
     }

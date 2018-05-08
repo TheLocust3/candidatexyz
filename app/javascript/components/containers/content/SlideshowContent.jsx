@@ -40,7 +40,7 @@ class SlideshowContent extends React.Component {
     }
 
     render() {
-        let { identifier, contents, edit, dispatch, ...props } = this.props;
+        let { identifier, contents, edit, dispatch, editOverlayOpen, isReady, ...props } = this.props;
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
@@ -60,7 +60,9 @@ SlideshowContent.propTypes = {
 function mapStateToProps(state) {
     return {
         contents: state.content.contents,
-        edit: state.content.edit
+        edit: state.content.edit,
+        editOverlayOpen: state.content.editOverlayOpen, // forces content to update whenever the edit dialog closes
+        isReady: state.content.isReady // same as above
     };
 }
 
