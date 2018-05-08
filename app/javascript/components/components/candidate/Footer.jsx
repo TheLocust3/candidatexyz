@@ -32,7 +32,7 @@ class Footer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        fullscreen: state.global.fullscreen,
+        fullscreen: state.global.fullscreen
     };
 }
 
