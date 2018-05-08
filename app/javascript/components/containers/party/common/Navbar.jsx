@@ -50,15 +50,13 @@ class Navbar extends React.Component {
 
         return (
             <div style={{ height: '40vh' }}>
-                <div className='navbar'>
+                <div className='navbar' style={{ height: 'auto' }}>
                     <Link to='/'><ImageContent identifier='logo' className='navbar-image' /></Link>
 
-                    <div className='navbar-actions'>
-                        <div><SimpleLinkContent identifier='navLink1' className={`link ${invertedLink}`} /></div>
-                        <div><SimpleLinkContent identifier='navLink2' className={`link ${invertedLink}`} /></div>
-                        <div><SimpleLinkContent identifier='navLink3' className={`link ${invertedLink}`} /></div>
-
-                        <div><ExternalLinkContent identifier='navButton'><Button >Donate</Button></ExternalLinkContent></div>
+                    <div className='navbar-actions' style={{ height: '100%', marginTop: '5vh' }}>{/* TODO: marginTop hack cause middling wasn't working */}
+                        <SimpleLinkContent identifier='navLink1' className={`navbar-action link ${invertedLink}`} />
+                        <SimpleLinkContent identifier='navLink2' className={`navbar-action link ${invertedLink}`} />
+                        <SimpleLinkContent identifier='navLink3' className={`navbar-action link ${invertedLink}`} />
                     </div>
                 </div>
             </div>
@@ -95,10 +93,6 @@ class Navbar extends React.Component {
                                 <SimpleLinkContent identifier='navLink2' className='mdc-list-item' onClick={this.onLinkClick.bind(this)} />
 
                                 <SimpleLinkContent identifier='navLink3' className='mdc-list-item' onClick={this.onLinkClick.bind(this)} />
-
-                                <hr className='mdc-list-divider' />
-
-                                <ExternalLinkContent identifier='navButton' className='mdc-list-item' onClick={this.onLinkClick.bind(this)}><span>Donate</span></ExternalLinkContent>
                             </div>
                         </nav>
                     </nav>

@@ -19,8 +19,7 @@
 }
 
 .navbar-image {
-    position: absolute;
-    text-align: left;
+    float: left;
     width: 225px;
     height: auto;
 
@@ -42,7 +41,10 @@
 
 .navbar-actions {
     text-align: right;
-    vertical-align: center;
+}
+
+.navbar-action {
+    margin-right: 3%;
 }
 
 .navbar-actions .mdc-button {
