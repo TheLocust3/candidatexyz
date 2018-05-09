@@ -12,6 +12,7 @@ import { history } from '../../../constants';
 import ThemeApi from '../../../api/theme-api';
 
 import FormWrapper from '../forms/FormWrapper';
+import LinkThemeForm from './theme-forms/LinkThemeForm';
 import ButtonThemeForm from './theme-forms/ButtonThemeForm';
 import CheckboxThemeForm from './theme-forms/CheckboxThemeForm';
 import FabThemeForm from './theme-forms/FabThemeForm';
@@ -28,7 +29,7 @@ class ThemeForm extends React.Component {
         super(props);
 
         if (_.isEmpty(this.props.theme)) {
-            this.state = { name: '', description: '', classNamePrefix: 'mdc-', button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
+            this.state = { name: '', description: '', classNamePrefix: 'mdc-', link: {}, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
         } else if (_.isEmpty(this.props.theme.styling)) {
             this.state = { name: this.props.theme.name, description: this.props.theme.description, classNamePrefix: this.props.theme.classNamePrefix, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
         } else {
@@ -36,6 +37,7 @@ class ThemeForm extends React.Component {
                 name: this.props.theme.name,
                 classNamePrefix: this.props.theme.classNamePrefix,
                 description: this.props.theme.description,
+                link: _.isEmpty(this.props.theme.styling.link) ? {} : this.props.theme.styling.link,
                 button: _.isEmpty(this.props.theme.styling.button) ? {} : this.props.theme.styling.button,
                 checkbox: _.isEmpty(this.props.theme.styling.checkbox) ? {} : this.props.theme.styling.checkbox,
                 fab: _.isEmpty(this.props.theme.styling.fab) ? {} : this.props.theme.styling.fab,
@@ -90,7 +92,7 @@ class ThemeForm extends React.Component {
     }
 
     theme() {
-        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea, select: this.state.select } };
+        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { link: this.state.link, button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea, select: this.state.select } };
     }
 
     renderExtends() {
@@ -113,7 +115,16 @@ class ThemeForm extends React.Component {
                 <TextField label='Theme Name' name='name' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} defaultValue={this.state.name} /><br />
                 <TextField label='Theme Description' name='description' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} defaultValue={this.state.description} /><br /><br />
 
-                {this.renderExtends()}<br /><br />
+                {this.renderExtends()}<br /><br /><br />
+
+                <div className='mdc-typography--display2'>General Theming</div><br /><br />
+
+                <div className='mdc-typography--display1'>Link</div>
+                <LinkThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('link', data)} /><br />
+
+                <br /><hr /><br />
+
+                <div className='mdc-typography--display2'>Element Theming</div><br /><br />
 
                 <div className='mdc-typography--display1'>Button</div>
                 <ButtonThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('button', data)} /><br />

@@ -25,7 +25,7 @@ class ThemeEditor extends React.Component {
 
         return (
             <div className='content-bottom content-10'>
-                <div className='mdc-typography--display2'>Theme Editor</div><br />
+                <div className='mdc-typography--display3'>Theme Editor</div><br />
                 
                 <ThemeForm theme={theme} />
 

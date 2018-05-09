@@ -26,7 +26,7 @@ class CheckboxThemeForm extends React.Component {
     render() {
         return (
             <div>
-                <Checkbox label='Sample Checkbox' onChange={() => {}} themeOverride={this.props.theme} /><br />
+                <Checkbox label='Sample Checkbox' onChange={() => {}} themeOverride={this.props.theme} /><br /><br />
 
                 <CheckboxStyler theme={this.state.checkbox} colors={this.props.colors} updateTheme={(theme) => this.updateTheme(theme)} />
             </div>
