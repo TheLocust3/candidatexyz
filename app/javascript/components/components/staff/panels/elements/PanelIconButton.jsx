@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { uuid } from '../../../../../helpers';
 import { history } from '../../../../../constants';
+import Link from '../../../base/Link';
 
 class PanelIconButton extends React.Component {
 
@@ -24,24 +24,6 @@ class PanelIconButton extends React.Component {
         });
     }
 
-    renderLink() {
-        let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
-        
-        if (_.startsWith(this.props.element.url, 'http://') || _.startsWith(this.props.element.url, 'https://') || _.startsWith(this.props.element.url, 'www.')) {
-            return (
-                <a href={this.props.show ? this.props.element.url : '#'} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()}>
-                    <i className={`fab ${this.props.element.icon} tmp-icon-button-${this.props.element.uuid}`} style={{ ...theme, ...theme.custom }} />
-                </a>
-            )
-        } else {
-            return (
-                <Link to={this.props.show ? this.props.element.url : '#'} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()}>
-                    <i className={`fab ${this.props.element.icon} tmp-icon-button-${this.props.element.uuid}`} style={{ ...theme, ...theme.custom }} />
-                </Link>
-            )
-        }
-    }
-
     render() {
         let theme = _.isEmpty(this.props.element.theme) ? {} : this.props.element.theme;
         let color = this.state.hover ? theme.colorHover : theme.color;
@@ -56,7 +38,9 @@ class PanelIconButton extends React.Component {
                     `}
                 </style>
 
-                {this.renderLink()}
+                <Link to={this.props.show ? this.props.element.url : '#'} onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()}>
+                    <i className={`fab ${this.props.element.icon} tmp-icon-button-${this.props.element.uuid}`} style={{ ...theme, ...theme.custom }} />
+                </Link>
             </span>
         );
     }

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Link from '../base/Link';
 import Fab from '../base/Fab';
 
 class Share extends React.Component {
@@ -16,13 +17,17 @@ class Share extends React.Component {
                 </Fab>
 
                 <div className='share-sub-buttons'>
-                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${this.props.url}`}><Fab className='share-sub-button' condensed={true}>
-                        <i className='fab fa-facebook-f' />
-                    </Fab></a>
+                    <Link to={`https://www.facebook.com/sharer/sharer.php?u=${this.props.url}`} unstyled>
+                        <Fab className='share-sub-button' condensed={true}>
+                            <i className='fab fa-facebook-f' />
+                        </Fab>
+                    </Link>
 
-                    <a href={`http://twitter.com/share?text=${this.props.text}&url=${this.props.url}`}><Fab className='share-sub-button' condensed={true}>
-                        <i className='fab fa-twitter' />
-                    </Fab></a>
+                    <Link to={`http://twitter.com/share?text=${this.props.text}&url=${this.props.url}`}>
+                        <Fab className='share-sub-button' condensed={true}>
+                            <i className='fab fa-twitter' />
+                        </Fab>
+                    </Link>
                 </div>
             </div>
         )

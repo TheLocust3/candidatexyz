@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import $ from 'jquery';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Button from '../../components/base/Button';
+import Link from '../../components/base/Link';
 import { setFullscreen, setDocumentTitle } from '../../actions/global-actions';
 import ContentApi from '../../../api/content-api';
 import MDCAutoInit from '../../components/global/MDCAutoInit';

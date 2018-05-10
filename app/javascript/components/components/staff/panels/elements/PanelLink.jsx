@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { uuid } from '../../../../../helpers';
 import { history } from '../../../../../constants';
+import Link from '../../../base/Link';
 
 class PanelLink extends React.Component {
 

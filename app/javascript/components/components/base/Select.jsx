@@ -11,7 +11,7 @@ class Select extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { uuid: `select-${uuid()}` };
+        this.state = { uuid: `select-${uuid()}`, theme: _.cloneDeep(this.props.theme) };
     }
 
     mdcInit() {
@@ -36,7 +36,7 @@ class Select extends React.Component {
     }
 
     theme() {
-        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+        return _.isEmpty(this.props.themeOverride) ? this.state.theme : this.props.themeOverride;
     }
 
     themedClassName(className) {

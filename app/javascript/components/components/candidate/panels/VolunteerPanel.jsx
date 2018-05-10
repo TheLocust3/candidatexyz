@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
+import Link from '../../base/Link';
 import TextContent from '../../../containers/content/TextContent';
 import VolunteerForm from '../forms/VolunteerForm';
 

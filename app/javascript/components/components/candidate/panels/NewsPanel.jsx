@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Link from '../../base/Link';
 import Button from '../../base/Button';
 import { fetchPostType } from '../../../actions/post-actions';
 import TextContent from '../../../containers/content/TextContent';

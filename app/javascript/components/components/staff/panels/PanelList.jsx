@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import PanelApi from '../../../../api/panel-api';
 import { history } from '../../../../constants';
+import Link from '../../base/Link';
 
 class PanelList extends React.Component {
 
@@ -34,9 +35,9 @@ class PanelList extends React.Component {
 
                         <span className='list-meta-items'>
                             <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Delete'>
-                                <a href='#' className='unstyled-link delete-icon' name={panel.name} onClick={this.onDeleteClick.bind(this)}>
+                                <Link to='#' className='unstyled-link delete-icon' name={panel.name} onClick={this.onDeleteClick.bind(this)}>
                                     delete
-                                </a>
+                                </Link>
                             </span>
                         </span>
                     </li>

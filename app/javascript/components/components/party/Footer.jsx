@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Link from '../base/Link';
 import SocialMediaLinks from '../global/SocialMediaLinks';
 import SimpleLinkContent from '../../containers/content/SimpleLinkContent';
 

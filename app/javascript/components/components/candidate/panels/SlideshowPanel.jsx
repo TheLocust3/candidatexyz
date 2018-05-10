@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Link from '../../base/Link';
 import TextContent from '../../../containers/content/TextContent';
 import SlideshowContent from '../../../containers/content/SlideshowContent';
 import Slideshow from '../../common/Slideshow';

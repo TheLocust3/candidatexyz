@@ -1,10 +1,10 @@
 import $ from 'jquery';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Parallax, Background } from 'react-parallax';
 import { MDCTemporaryDrawer } from '@material/drawer';
 
+import Link from '../../../components/base/Link';
 import Button from '../../../components/base/Button';
 import { MAX_MOBILE_WIDTH } from '../../../../constants';
 import ImageContent from '../../content/ImageContent';
@@ -99,7 +99,7 @@ class Navbar extends React.Component {
                         </section>
 
                         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
-                            <a className='material-icons mdc-toolbar__menu-icon navbar-menu-icon' onClick={this.onMenuClick.bind(this)}>menu</a>
+                            <Link className='material-icons mdc-toolbar__menu-icon navbar-menu-icon' onClick={this.onMenuClick.bind(this)} unstyled>menu</Link>
                         </section>
                     </div>
                 </header>

@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import ThemeApi from '../../../api/theme-api';
+import Link from '../base/Link';
 
 class ThemeList extends React.Component {
 
@@ -23,13 +23,13 @@ class ThemeList extends React.Component {
         return (
             <span>
                 <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Delete'>
-                    <a href='#' className='unstyled-link delete-icon' name={theme.name} onClick={this.onDeleteClick.bind(this)}>
+                    <Link to='#' className='unstyled-link delete-icon' name={theme.name} onClick={this.onDeleteClick.bind(this)}>
                         delete
-                    </a>
+                    </Link>
                 </span>
 
                 <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Edit'>
-                    <Link className='unstyled-link' to={`/staff/themes/${theme.name}`}>
+                    <Link className='unstyled-link' to={`/staff/themes/${theme.name}`} unstyled>
                         edit
                     </Link>
                 </span>
@@ -55,9 +55,9 @@ class ThemeList extends React.Component {
                         <span className='list-meta-items'>
                             {this.renderEditButtons(theme)}
                             <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Set Default'>
-                                <a href='#' className='unstyled-link' name={theme.name} onClick={this.onSetDefaultClick.bind(this)} style={{ color: starColor }}>
+                                <Link to='#' className='unstyled-link' name={theme.name} onClick={this.onSetDefaultClick.bind(this)} style={{ color: starColor }}>
                                     grade
-                                </a>
+                                </Link>
                             </span>
                         </span>
                     </li>

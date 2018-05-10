@@ -11,7 +11,7 @@ class Fab extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { uuid: `fab-${uuid()}` }
+        this.state = { uuid: `fab-${uuid()}`, theme: _.cloneDeep(this.props.theme) }
     }
 
     componentDidMount() {
@@ -19,7 +19,7 @@ class Fab extends React.Component {
     }
 
     theme() {
-        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+        return _.isEmpty(this.props.themeOverride) ? this.state.theme : this.props.themeOverride;
     }
 
     themedClassName(className) {

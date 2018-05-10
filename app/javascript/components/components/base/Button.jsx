@@ -11,7 +11,7 @@ class Button extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { uuid: `button-${uuid()}` }
+        this.state = { uuid: `button-${uuid()}`, theme: _.cloneDeep(this.props.theme) }
     }
 
     componentDidMount() {
@@ -19,7 +19,7 @@ class Button extends React.Component {
     }
 
     theme() {
-        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+        return _.isEmpty(this.props.themeOverride) ? this.state.theme : this.props.themeOverride;
     }
 
     themedClassName(className) {

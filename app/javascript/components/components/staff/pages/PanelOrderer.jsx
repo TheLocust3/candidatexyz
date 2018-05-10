@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Link from '../../base/Link';
 import Select from '../../base/Select';
 import SelectItem from '../../base/SelectItem';
 import Fab from '../../base/Fab';
@@ -59,9 +60,9 @@ class PanelOrderer extends React.Component {
 
                         <span className='list-meta-items'>
                             <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Delete'>
-                                <a href='#' className='unstyled-link delete-icon' name={index} onClick={this.onDeleteClick.bind(this)}>
+                                <Link to='#' className='unstyled-link delete-icon' name={index} onClick={this.onDeleteClick.bind(this)}>
                                     delete
-                                </a>
+                                </Link>
                             </span>
                         </span>
                     </li>

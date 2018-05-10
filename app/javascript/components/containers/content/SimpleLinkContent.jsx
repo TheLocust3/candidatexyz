@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Link from '../../components/base/Link';
 import { fetchContent, setEditingContent } from '../../actions/content-actions';
 
 class SimpleLinkContent extends React.Component {

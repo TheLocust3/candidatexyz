@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { setDocumentTitle, setBlankNavbar } from '../../actions/global-actions';

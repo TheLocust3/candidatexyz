@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Link from '../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchVolunteer } from '../../actions/volunteer-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
@@ -30,7 +31,7 @@ class Volunteer extends React.Component {
         return (
             <div className='content-15 staff-form'>
                 <div className='mdc-typography--display2'><b>Volunteer</b></div><br />
-                <a href='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</a><br /><br />
+                <Link to='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</Link><br /><br />
 
                 <ShowVolunteer volunteer={this.props.volunteer} />
             </div>

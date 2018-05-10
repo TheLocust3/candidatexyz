@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Parallax, Background } from 'react-parallax';
 
+import Link from '../../base/Link';
 import Button from '../../base/Button';
 import ContentApi from '../../../../api/content-api';
 import TextContent from '../../../containers/content/TextContent';

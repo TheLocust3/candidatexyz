@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
+import Link from '../../components/base/Link';
 import { fetchUser } from '../../actions/staff-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
@@ -30,7 +30,7 @@ class EditUser extends React.Component {
         return (
             <div className='content sign-in-form'>
                 <div className='mdc-typography--display2'><b>Edit User</b></div><br />
-                <a href='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</a>
+                <Link to='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</Link>
 
                 <MasterEditUserForm redirectUrl='/staff/staff-management' user={this.props.user} />
 

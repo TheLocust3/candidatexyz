@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import { history } from '../../../../constants';
+import Link from '../../../components/base/Link';
 import { fetchCurrentUser } from '../../../actions/staff-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
 import { fetchPostType } from '../../../actions/post-actions';

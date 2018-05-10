@@ -11,7 +11,7 @@ class TextArea extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { defaultValue: props.defaultValue, uuid: `textfield-${uuid()}` };
+        this.state = { defaultValue: props.defaultValue, uuid: `textfield-${uuid()}`, theme: _.cloneDeep(this.props.theme) };
     }
 
     componentDidMount() {
@@ -35,7 +35,7 @@ class TextArea extends React.Component {
     }
 
     theme() {
-        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+        return _.isEmpty(this.props.themeOverride) ? this.state.theme : this.props.themeOverride;
     }
 
     themedClassName(className) {

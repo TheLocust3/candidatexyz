@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Link from '../../components/base/Link';
 import { fetchContent, setEditingContent } from '../../actions/content-actions';
 
 class ExternalLinkContent extends React.Component {
@@ -37,9 +38,9 @@ class ExternalLinkContent extends React.Component {
 
         return (
             <span id={identifier}>
-                <a href={this.findContent().content.url} onClick={this.onEditContent.bind(this)} {...props}>
+                <Link to={this.findContent().content.url} onClick={this.onEditContent.bind(this)} {...props}>
                     {children}
-                </a>
+                </Link>
             </span>
         );
     }

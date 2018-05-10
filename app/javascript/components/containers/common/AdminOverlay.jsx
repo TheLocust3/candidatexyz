@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Corner, AnchorMargin } from '@material/menu';
 import { MDCSnackbar } from '@material/snackbar';
-import { Link } from 'react-router-dom';
 import { MDCMenu } from '@material/menu';
 
 import Fab from '../../components/base/Fab';
+import Link from '../../components/base/Link';
 import { history } from '../../../constants';
 import { DEVELOPMENT } from '../../../features';
 import { fetchCurrentUser } from '../../actions/staff-actions';

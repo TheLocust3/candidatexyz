@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { setDocumentTitle, setFullscreen } from '../../../actions/global-actions';
 import { fetchPage } from '../../../actions/page-actions';

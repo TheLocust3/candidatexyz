@@ -5,8 +5,14 @@ import { connect } from 'react-redux';
 
 class Checkbox extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = { theme: _.cloneDeep(this.props.theme) }
+    }
+
     theme() {
-        return _.isEmpty(this.props.themeOverride) ? this.props.theme : this.props.themeOverride;
+        return _.isEmpty(this.props.themeOverride) ? this.state.theme : this.props.themeOverride;
     }
 
     themedClassName(className) {
