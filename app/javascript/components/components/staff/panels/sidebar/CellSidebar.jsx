@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import DeleteElementButton from './DeleteElementButton';
+import Header from '../../../base/Header';
 import Button from '../../../base/Button';
 import Select from '../../../base/Select';
 import SelectItem from '../../../base/SelectItem';
@@ -71,7 +72,7 @@ class CellSidebar extends React.Component {
     renderSidebar(element) {
         return (
             <div>
-                <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+                <Header type='title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
 
                 {this.renderInnerSidebar(element)}
             </div>
@@ -130,14 +131,14 @@ class CellSidebar extends React.Component {
             <div>
                 {this.renderInnerSidebars()}
                 
-                <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+                <Header type='title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
 
                 <DeleteElementButton elements={this.props.elements} element={this.props.selectedElements[0]} updateElements={this.props.updateInnerElements} />
                 <br />
 
-                <div className='mdc-typography--body1'>
+                <Header type='body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
-                </div>
+                </Header>
 
                 <ColorPicker label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
 

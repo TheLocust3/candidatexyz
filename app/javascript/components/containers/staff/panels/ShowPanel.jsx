@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../../components/base/Header';
 import Link from '../../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
 import { fetchPanel } from '../../../actions/panel-actions';
@@ -23,7 +24,7 @@ class ShowPanel extends React.Component {
 
         return (
             <div className='content-bottom content-5'>
-                <div className='mdc-typography--display2'>Panel Preview</div><br />
+                <Header type='display2'>Panel Preview</Header><br />
                 
                 <PanelRenderer panel={this.props.panel} />
 

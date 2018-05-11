@@ -1,6 +1,7 @@
 import React from 'react';
 import { Parallax, Background } from 'react-parallax';
 
+import Header from '../../base/Header';
 import Link from '../../base/Link';
 import Button from '../../base/Button';
 import ContentApi from '../../../../api/content-api';
@@ -37,13 +38,13 @@ export default class JoinTeamPanel extends React.Component {
 
                     <div className='join-team-panel-content'>
                         <div className='join-team-panel-title join-team-panel-color'>
-                            <div className='mdc-typography--display2'><b><TextContent identifier='joinTeamPanelTitle' /></b></div>
+                            <Header type='display2'><b><TextContent identifier='joinTeamPanelTitle' /></b></Header>
                         </div>
 
-                        <div className='join-team-panel-actions mdc-typography--headline'>
+                        <Header type='headline' className='join-team-panel-actions'>
                             <Link to='/sign_up'><Button className='join-team-panel-color'>Sign Up</Button></Link>
                             <ExternalLinkContent identifier='joinTeamPanelDonateLink'><Button className='join-team-panel-color'>Donate</Button></ExternalLinkContent>
-                        </div>
+                        </Header>
                     </div>
                 </Parallax>
             </PanelWrapper>

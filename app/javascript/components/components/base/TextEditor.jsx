@@ -6,6 +6,7 @@ import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
 
 import ImageApi from '../../../api/image-api';
+import Header from '../base/Header';
 
 class TextEditor extends React.Component {
 
@@ -57,7 +58,7 @@ class TextEditor extends React.Component {
 
         return (
             <div className='editor'>
-                <div className='mdc-typography--headline'>{label}</div><br />
+                <Header type='headline'>{label}</Header><br />
 
                 <div onClick={this.onEditorClick.bind(this)}>
                     <Editor wrapperClassName='editor-wrapper' editorClassName={`editor-editor ${smallClassName}`} toolbarClassName='editor-toolbar'

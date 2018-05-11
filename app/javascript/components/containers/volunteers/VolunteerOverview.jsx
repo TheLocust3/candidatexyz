@@ -8,6 +8,7 @@ import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchAllVolunteersBy } from '../../actions/volunteer-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import VolunteerApi from '../../../api/volunteer-api';
+import Header from '../../components/base/Header';
 
 import VolunteerTable from '../../components/volunteers/VolunteerTable';
 import Pager from '../../components/global/Pager';
@@ -57,7 +58,7 @@ class VolunteerOverview extends React.Component {
     render() {
         return (
             <div className='content-5'>
-                <div className='mdc-typography--display2'><b>Volunteer Overview</b></div><br />
+                <Header type='display2'><b>Volunteer Overview</b></Header><br />
 
                 <VolunteerTable volunteers={this.props.volunteers} onHeaderClick={(event, reverse) => this.onHeaderClick(event, reverse)} /><br />
 

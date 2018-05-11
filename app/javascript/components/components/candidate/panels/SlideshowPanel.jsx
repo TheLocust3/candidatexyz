@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../base/Header';
 import Link from '../../base/Link';
 import TextContent from '../../../containers/content/TextContent';
 import SlideshowContent from '../../../containers/content/SlideshowContent';
@@ -11,11 +12,11 @@ class SlideshowPanel extends React.Component {
     render() {
         return (
             <SlideshowContent identifier='indexSlideshow'>
-                <div className='mdc-typography--headline'>
-                    <b><TextContent identifier='slideshowBlurb' /></b>
-                </div><br />
+                <Header type='headline'><b><TextContent identifier='slideshowBlurb' /></b></Header><br />
 
-                <Link to='/meet' className='link'><div className='mdc-typography--headline'><TextContent identifier='slideshowLink' /></div></Link>
+                <Link to='/meet' className='link'>
+                    <Header type='headline'><TextContent identifier='slideshowLink' /></Header>
+                </Link>
             </SlideshowContent>
         );
     }

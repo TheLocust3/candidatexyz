@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Header from '../../../base/Header';
 import DeleteElementButton from './DeleteElementButton';
 import ColorPicker from '../../../global/ColorPicker';
 import CustomStyler from '../../../global/CustomStyler';
@@ -43,18 +44,18 @@ class RowSidebar extends React.Component {
             <div>
                 {this.renderSelectedCell()}
 
-                <div className='mdc-typography--title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</div>
+                <Header type='title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
 
                 <DeleteElementButton elements={this.props.elements} element={this.props.selectedElements[0]} updateElements={this.props.updateElement} onClick={() => this.props.recalculateHeight()} />
                 <br />
 
-                <div className='mdc-typography--body1'>
+                <Header type='body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
-                </div>
+                </Header>
 
-                <div className='mdc-typography--body1'>
+                <Header type='body1'>
                     <b>Height (%):</b> <code>{element.height}</code>
-                </div>
+                </Header>
 
                 <ColorPicker label='Pick Color' color={theme.backgroundColor} onChange={(color) => this.handleThemeChange(color.hex, 'backgroundColor')} />
                 <CustomStyler small={true} custom={theme.custom} onChange={(custom) => { this.handleThemeChange(custom, 'custom') }} />

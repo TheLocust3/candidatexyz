@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchTheme } from '../../actions/theme-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
+import Header from '../../components/base/Header';
 
 import ThemeForm from '../../components/staff/ThemeForm';
 
@@ -25,7 +26,7 @@ class ThemeEditor extends React.Component {
 
         return (
             <div className='content-bottom content-10'>
-                <div className='mdc-typography--display3'>Theme Editor</div><br />
+                <Header type='display3'>Theme Editor</Header><br />
                 
                 <ThemeForm theme={theme} />
 

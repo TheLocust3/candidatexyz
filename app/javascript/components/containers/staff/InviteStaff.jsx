@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
+import Header from '../../components/base/Header';
 
 import InviteForm from '../../components/staff/InviteForm';
 
@@ -17,7 +18,7 @@ class InviteStaff extends React.Component {
     render() {
         return (
             <div className='content-15 staff-form'>
-                <div className='mdc-typography--display2'><b>Invite Staffer</b></div><br />
+                <Header type='display2'><b>Invite Staffer</b></Header><br />
 
                 <InviteForm />
                 

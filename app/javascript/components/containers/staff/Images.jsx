@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchAllImages } from '../../actions/image-actions';
@@ -20,7 +21,7 @@ class Images extends React.Component {
     render() {
         return (
             <div className='content-bottom content-10'>
-                <div className='mdc-typography--display2'>Image List</div><br />
+                <Header type='display2'>Image List</Header><br />
                 <Link className='link' to='/staff/images/new'>Upload Image</Link><br />
                 
                 <ImageList images={this.props.images} />

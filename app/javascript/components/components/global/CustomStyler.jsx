@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { dashesToCamel, camelToDashes } from '../../../helpers';
+import Header from '../base/Header';
 import TextField from '../base/TextField';
 import Fab from '../base/Fab';
 import MDCAutoInit from '../global/MDCAutoInit';
@@ -103,16 +104,32 @@ class CustomStyler extends React.Component {
         )
     }
 
+    renderAdvancedWarning() {
+        if (this.props.small) {
+            return (
+                <i>For advanced users only</i>
+            );
+        } else {
+            return (
+                <Header type='body1'>
+                    <i>For advanced users only</i>
+                </Header>
+            );
+        }
+    }
+
     render() {
         return (
             <div>
                 <div style={{ position: 'relative' }}>
-                    <div className={`${this.props.small ? 'mdc-typography--subtitle1' : 'mdc-typography--headline'} middle`} style={{ display: 'inline' }}>Custom Styles</div>
+                    <Header type={this.props.small ? 'subtitle1' : 'headline'} className='middle' style={{ display: 'inline' }}>Custom Styles</Header>
+
                     <Fab condensed={true} onClick={this.onAddClick.bind(this)} style={{ marginLeft: '175px' }}>
                         <i className='material-icons'>add</i>
                     </Fab>
                 </div>
-                <i className={this.props.small ? 'mdc-typography--body1' : ''}>For advanced users only</i>
+
+                {this.renderAdvancedWarning()}
 
                 <div>
                     {this.renderCustomStyles()}

@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 
+import Header from '../../base/Header';
 import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 import { history } from '../../../../constants';
@@ -43,7 +44,9 @@ export default class JoinUsForm extends React.Component {
                 <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
                 <TextField label='Phone number' name='phoneNumber' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%' }} />
 
-                <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
+                <Header type='caption'>
+                    By submitting your cell phone number you are agreeing to receive periodic text messages.
+                </Header>
 
                 <Button className='sign-up-form-button'>Subscribe</Button>
             </FormWrapper>

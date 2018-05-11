@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
+import Header from '../../components/base/Header';
 import TextContent from '../../containers/content/TextContent';
 import JoinUsForm from '../../components/candidate/forms/JoinUsForm';
 
@@ -17,10 +18,10 @@ class SignUp extends React.Component {
         return (
             <div>
                 <div className='content sign-up'>
-                    <div className='mdc-typography--display1'><b><TextContent identifier='signUpHeader' /></b></div><br />
+                    <Header type='display1'><b><TextContent identifier='signUpHeader' /></b></Header><br />
                     
                     <div className='content-25'>
-                        <div className='mdc-typography--title'><b><TextContent identifier='signUpSubtitle' /></b></div><br />
+                        <Header type='title'><b><TextContent identifier='signUpSubtitle' /></b></Header><br />
 
                         <JoinUsForm />
                     </div>

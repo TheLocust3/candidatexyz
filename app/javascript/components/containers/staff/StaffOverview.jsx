@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
@@ -26,7 +27,7 @@ class StaffOverview extends React.Component {
     render() {
         return (
             <div className='content-15'>
-                <div className='mdc-typography--display3'>Staff Overview</div><br />
+                <Header type='display3'>Staff Overview</Header><br />
                 {this.renderSuperuser()}<br />
 
                 <div style={{ marginLeft: '5%' }}>

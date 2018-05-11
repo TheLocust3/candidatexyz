@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Header from '../../../base/Header';
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
 import SelectStyler from '../../element-stylers/SelectStyler';
@@ -101,20 +102,21 @@ class SelectSidebar extends React.Component {
                 <DeleteElementButton elements={this.props.elements} element={element} updateElements={this.props.updateInnerElements} />
                 <br />
 
-                <span className='mdc-typography--body1'>
+                <Header type='body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
-                </span><br />
+                </Header>
 
                 <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} /><br /><br />
 
-                <div className='mdc-typography--subtitle1'>
+                <Header type='subtitle1'>
                     Items
-                </div>
+                </Header>
+
                 <Button condensed={true} onClick={this.onAddItemClick.bind(this)}>Add</Button>
 
-                <span className='mdc-typography--body1'>
+                <Header type='body1'>
                     {this.renderItemEditor()}
-                </span><br />
+                </Header>
 
                 <SelectStyler theme={element.theme} updateTheme={(theme) => this.updateTheme(theme)} />
                 

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Header from '../base/Header';
 import Button from '../base/Button';
 import TextField from '../base/TextField';
 import { history } from '../../../constants';
@@ -36,7 +37,7 @@ export default class SignInForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
-                <div className='mdc-typography--display3'><b>Staff Login</b></div><br />
+                <Header type='display3'><b>Staff Login</b></Header><br />
 
                 <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} />
 

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Header from '../../../base/Header';
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
 import TextFieldStyler from '../../element-stylers/TextFieldStyler';
@@ -49,9 +50,9 @@ class TextFieldSidebar extends React.Component {
                 <DeleteElementButton elements={this.props.elements} element={element} updateElements={this.props.updateInnerElements} />
                 <br />
 
-                <span className='mdc-typography--body1'>
+                <Header type='body1'>
                     <b>ID:</b> <code>{element.uuid}</code>
-                </span><br />
+                </Header>
 
                 <TextField dense={true} label='Text' name='text' onChange={(event) => this.handleChange(event)} defaultValue={this.props.element.text} />
 

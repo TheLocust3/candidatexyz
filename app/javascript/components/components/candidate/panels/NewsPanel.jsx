@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../base/Header';
 import Link from '../../base/Link';
 import Button from '../../base/Button';
 import { fetchPostType } from '../../../actions/post-actions';
@@ -32,7 +33,7 @@ class NewsPanel extends React.Component {
     render() {
         return (
             <PanelWrapper className='news-panel' height='50vh'>
-                <div className='mdc-typography--display1 news-panel-headline'><b><TextContent identifier='newsPanelHeadline' /></b></div>
+                <Header type='display1' className='news-panel-headline'><b><TextContent identifier='newsPanelHeadline' /></b></Header>
 
                 {this.renderNewsList()}
 

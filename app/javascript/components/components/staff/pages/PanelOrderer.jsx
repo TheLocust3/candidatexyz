@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Header from '../../base/Header';
 import Link from '../../base/Link';
 import Select from '../../base/Select';
 import SelectItem from '../../base/SelectItem';
@@ -88,7 +89,7 @@ class PanelOrderer extends React.Component {
     render() {
         return (
             <div>
-                <div className='mdc-typography--headline'>Panels</div><br />
+                <Header type='headline'>Panels</Header><br />
 
                 <div className='relative'>
                     {this.renderPanelSelect()}

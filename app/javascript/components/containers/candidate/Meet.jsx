@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchHeaderImage, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
+import Header from '../../components/base/Header';
 
 import TextContent from '../content/TextContent';
 import ShowPost from '../posts/ShowPost'
@@ -27,7 +28,7 @@ class Meet extends React.Component {
         return (
             <div>
                 <div className='content'>
-                    <div className='header-text mdc-typography--display2'><b><TextContent identifier='meetHeader' /></b></div>
+                    <Header type='display2' className='header-text'><b><TextContent identifier='meetHeader' /></b></Header>
 
                     <div className='content-20'>
                         <ShowPost postType='meet' url='meet-body' />

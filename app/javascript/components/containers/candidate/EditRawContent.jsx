@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
+import Header from '../../components/base/Header';
 import ContentApi from '../../../api/content-api';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import RawContentInlineEditor from '../../components/content/edit/RawContentInlineEditor';
@@ -42,7 +43,7 @@ class EditRawContent extends React.Component {
 
         return (
             <div className='content edit-raw-content'>
-                <div className='mdc-typography--display3'><b>Edit Raw Content</b></div><br />
+                <Header type='display3'><b>Edit Raw Content</b></Header><br />
 
                 <RawContentInlineEditor content={this.state.indexBackground} /><br />
                 

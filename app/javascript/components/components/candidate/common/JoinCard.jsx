@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import TextContent from '../../../containers/content/TextContent';
+import Header from '../../base/Header';
 import SocialMediaLinks from '../../global/SocialMediaLinks';
 import SlimJoinUsForm from '../forms/SlimJoinUsForm'
 
@@ -15,7 +16,7 @@ export default class JoinCard extends React.Component {
             <div className='join-card-root' style={style}>
                 <div className='mdc-card'>
                     <div className='mdc-card__media join-card'>
-                        <div className='mdc-typography--headline card-title'><b><TextContent identifier='joinCardTitle' /></b></div>
+                        <Header type='headline' className='card-title'><b><TextContent identifier='joinCardTitle' /></b></Header>
 
                         <div className='join-description'>
                             <TextContent identifier='joinCardBlurb' />

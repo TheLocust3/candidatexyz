@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchAllMessages } from '../../actions/message-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
+import Header from '../../components/base/Header';
 
 import MessageList from '../../components/staff/MessageList';
 
@@ -19,7 +20,7 @@ class MessageOverview extends React.Component {
     render() {
         return (
             <div className='content-15'>
-                <div className='mdc-typography--display3'>Message Overview</div><br />
+                <Header type='display3'>Message Overview</Header><br />
 
                 <MessageList messages={this.props.messages} />
             </div>

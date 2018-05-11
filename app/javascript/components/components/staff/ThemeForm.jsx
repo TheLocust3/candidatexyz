@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BlockPicker } from 'react-color';
 
+import Header from '../base/Header';
 import Button from '../base/Button';
 import TextField from '../base/TextField';
 import Select from '../base/Select';
@@ -117,31 +118,31 @@ class ThemeForm extends React.Component {
 
                 {this.renderExtends()}<br /><br /><br />
 
-                <div className='mdc-typography--display2'>General Theming</div><br /><br />
+                <Header type='display2'>General Theming</Header><br /><br />
 
-                <div className='mdc-typography--display1'>Link</div>
+                <Header type='display1'>Link</Header>
                 <LinkThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('link', data)} /><br />
 
                 <br /><hr /><br />
 
-                <div className='mdc-typography--display2'>Element Theming</div><br /><br />
+                <Header type='display2'>Element Theming</Header><br /><br />
 
-                <div className='mdc-typography--display1'>Button</div>
+                <Header type='display1'>Button</Header>
                 <ButtonThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('button', data)} /><br />
 
-                <div className='mdc-typography--display1'>Checkbox</div>
+                <Header type='display1'>Checkbox</Header>
                 <CheckboxThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('checkbox', data)} /><br />
 
-                <div className='mdc-typography--display1'>Fab Button</div>
+                <Header type='display1'>Fab Button</Header>
                 <FabThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('fab', data)} /><br />
 
-                <div className='mdc-typography--display1'>TextField</div>
+                <Header type='display1'>TextField</Header>
                 <TextFieldThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textField', data)} /><br />
 
-                <div className='mdc-typography--display1'>TextArea</div>
+                <Header type='display1'>TextArea</Header>
                 <TextAreaThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textArea', data)} /><br />
 
-                <div className='mdc-typography--display1'>Select</div>
+                <Header type='display1'>Select</Header>
                 <SelectThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('select', data)} /><br />
 
                 <Button className='sign-up-form-button'>Save</Button>

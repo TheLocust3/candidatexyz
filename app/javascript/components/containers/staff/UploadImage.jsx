@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
+import Header from '../../components/base/Header';
 
 import UploadImageForm from '../../components/staff/UploadImageForm';
 
@@ -17,7 +18,7 @@ class UploadImage extends React.Component {
     render() {
         return (
             <div className='content-bottom content-10'>
-                <div className='mdc-typography--display2'>Upload Image</div><br />
+                <Header type='display2'>Upload Image</Header><br />
                 
                 <UploadImageForm />
 

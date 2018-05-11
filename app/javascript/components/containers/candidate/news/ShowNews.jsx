@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { setBlankNavbar } from '../../../actions/global-actions';
 import MDCAutoInit from '../../../components/global/MDCAutoInit';
+import Header from '../../../components/base/Header';
 
 import ShowPost from '../../posts/ShowPost'
 
@@ -17,7 +18,7 @@ class ShowIssue extends React.Component {
         return (
             <div>
                 <div className='content-15 news'>
-                    <span className='mdc-typography--headline'><b>News</b></span><br />
+                    <Header type='headline'><b>News</b></Header>
 
                     <ShowPost postType='news' url={this.props.match.params.url} renderAsNews={true} />
                 </div>

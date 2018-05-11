@@ -2,6 +2,7 @@ import _ from 'lodash'
 import React from 'react';
 import { MDCSelect } from '@material/select';
 
+import Header from '../../base/Header';
 import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 import Select from '../../base/Select';
@@ -126,7 +127,10 @@ export default class VolunteerForm extends React.Component {
                 {this.renderOtherHelp()}
 
                 <br />
-                <div className='mdc-typography--caption'>By submitting your cell phone number you are agreeing to receive periodic text messages.</div>
+
+                <Header type='caption'>
+                    By submitting your cell phone number you are agreeing to receive periodic text messages.
+                </Header>
 
                 <Button className='sign-up-form-button'>Submit</Button>
 

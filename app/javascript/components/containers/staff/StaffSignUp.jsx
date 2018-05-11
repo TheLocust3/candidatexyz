@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
+import Header from '../../components/base/Header';
 
 import StaffSignUpForm from '../../components/staff/StaffSignUpForm';
 
@@ -17,7 +18,7 @@ class StaffSignUp extends React.Component {
     render() {
         return (
             <div className='content-15 staff-form'>
-                <div className='mdc-typography--display2'><b>Staff Sign Up</b></div><br />
+                <Header type='display2'><b>Staff Sign Up</b></Header><br />
 
                 <StaffSignUpForm token={this.props.match.params.token} />
                 

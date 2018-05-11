@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import ContentApi from '../../../api/content-api';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
@@ -27,10 +28,10 @@ class Themes extends React.Component {
     render() {
         return (
             <div className='content-bottom content-10'>
-                <div className='mdc-typography--display2'>Theme List</div><br />
+                <Header type='display2'>Theme List</Header><br />
                 <Link className='link' to='/staff/themes/new'>New theme</Link><br />
 
-                <div className='mdc-typography--title'>Current Theme: {this.props.globalTheme.name}</div><br />
+                <Header type='title'>Current Theme: {this.props.globalTheme.name}</Header><br />
                 
                 <ThemeList themes={this.props.themes} globalTheme={this.props.globalTheme} onSetDefaultClick={this.onSetDefaultClick} />
 

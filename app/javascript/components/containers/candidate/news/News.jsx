@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import { history } from '../../../../constants';
+import Header from '../../../components/base/Header';
 import Link from '../../../components/base/Link';
 import { fetchCurrentUser } from '../../../actions/staff-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
@@ -49,7 +50,7 @@ class News extends React.Component {
         return (
             <div>
                 <div className='content-15'>
-                    <div className='mdc-typography--display3'><b><TextContent identifier='newsHeader' /></b></div>
+                    <Header type='display3'><b><TextContent identifier='newsHeader' /></b></Header>
                     {this.renderAddNews()}<br /><br />
 
                     {this.renderNewsList()}

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { history } from '../../../constants';
 import StaffApi from '../../../api/staff-api';
+import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { fetchUser } from '../../actions/staff-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
@@ -29,7 +30,7 @@ class EditUser extends React.Component {
 
         return (
             <div className='content sign-in-form'>
-                <div className='mdc-typography--display2'><b>Edit User</b></div><br />
+                <Header type='display2'><b>Edit User</b></Header><br />
                 <Link to='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</Link>
 
                 <MasterEditUserForm redirectUrl='/staff/staff-management' user={this.props.user} />

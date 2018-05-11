@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../components/base/Header';
 import Button from '../../components/base/Button';
 import { history } from '../../../constants';
 import ContactApi from '../../../api/contact-api';
@@ -24,7 +25,7 @@ class Unsubscribe extends React.Component {
     render() {
         return (
             <div className='content-15'>
-                <div className='mdc-typography--display2'><b>Unsubscribe</b></div><br />
+                <Header type='display2'><b>Header</b></Header><br />
 
                 <Button onClick={this.onUnsubscribeClick.bind(this)}>Unsubscribe</Button>
                 

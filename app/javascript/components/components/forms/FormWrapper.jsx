@@ -2,6 +2,8 @@ import _ from 'lodash'
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Header from '../base/Header';
+
 export default class FormWrapper extends React.Component {
 
     handleSubmit(event) {
@@ -14,7 +16,7 @@ export default class FormWrapper extends React.Component {
         if (_.isEmpty(this.props.errors)) return;
 
         return (
-            <div className='mdc-typography--caption'>
+            <Header type='caption'>
                 {_.map(this.props.errors, (errorMessage, errorName) => {
                     return (
                         <div key={errorName}>
@@ -22,7 +24,7 @@ export default class FormWrapper extends React.Component {
                         </div>
                     )
                 })}
-            </div>
+            </Header>
         )
     }
 

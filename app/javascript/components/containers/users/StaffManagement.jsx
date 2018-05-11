@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { fetchCurrentUser, fetchAllUsers } from '../../actions/staff-actions';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
@@ -46,7 +47,7 @@ class StaffManagement extends React.Component {
 
         return (
             <div className='content edit-user-form'>
-                <div className='mdc-typography--display2'><b>Staff Management</b></div><br />
+                <Header type='display2'><b>Staff Management</b></Header><br />
                 <Link to='/staff/invite' className='link'>Add Staffer</Link>
 
                 {this.renderUserList()}

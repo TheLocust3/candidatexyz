@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Link from '../base/Link';
+import Header from '../base/Header';
 import SocialMediaLinks from '../global/SocialMediaLinks';
 import ApprovedBy from './common/ApprovedBy';
 import SimpleLinkContent from '../../containers/content/SimpleLinkContent';
@@ -15,14 +16,14 @@ class Footer extends React.Component {
             <div className='footer'>
                 <SocialMediaLinks size={2} />
 
-                <div className='mdc-typography--headline link-holder'>
+                <Header type='headline' className='link-holder'>
                     <SimpleLinkContent identifier='footerContact' className='link' />
                     <SimpleLinkContent identifier='footerPrivacy' className='link' />
-                </div>
+                </Header>
 
-                <div className='mdc-typography--body1 footerStaffLogin'>
+                <Header type='body1' className='footer-staff-login'>
                     <Link className='link' to='/sign-in' style={{ fontSize: 18 }}>Staff Login</Link>
-                </div>
+                </Header>
 
                 <ApprovedBy style={{ paddingTop: '3%' }} />
             </div>

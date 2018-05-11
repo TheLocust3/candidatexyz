@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
+import Header from '../components/base/Header';
 
 class NotFound extends React.Component {
 
@@ -13,7 +14,8 @@ class NotFound extends React.Component {
     render() {
         return (
             <div className='content-10'>
-                <div className='mdc-typography--display3'>Page Not Found</div>
+                <Header type='display3'>Page Not Found</Header>
+
                 <p>
                     You've managed to find a page that doesn't exist!
                 </p>

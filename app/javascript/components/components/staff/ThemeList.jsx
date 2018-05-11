@@ -23,7 +23,7 @@ class ThemeList extends React.Component {
         return (
             <span>
                 <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Delete'>
-                    <Link to='#' className='unstyled-link delete-icon' name={theme.name} onClick={this.onDeleteClick.bind(this)}>
+                    <Link to='#' className='unstyled-link delete-icon' name={theme.name} onClick={this.onDeleteClick.bind(this)} unstyled>
                         delete
                     </Link>
                 </span>
@@ -55,7 +55,7 @@ class ThemeList extends React.Component {
                         <span className='list-meta-items'>
                             {this.renderEditButtons(theme)}
                             <span className='mdc-list-item__meta material-icons list-meta-item' aria-label='Set Default'>
-                                <Link to='#' className='unstyled-link' name={theme.name} onClick={this.onSetDefaultClick.bind(this)} style={{ color: starColor }}>
+                                <Link to='#' className='unstyled-link' name={theme.name} onClick={this.onSetDefaultClick.bind(this)} style={{ color: starColor }} unstyled>
                                     grade
                                 </Link>
                             </span>

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../../components/base/Header';
 import Link from '../../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
 import { fetchAllPanels } from '../../../actions/panel-actions';
@@ -20,7 +21,7 @@ class Panels extends React.Component {
     render() {
         return (
             <div className='content-bottom content-10'>
-                <div className='mdc-typography--display2'>Panel List</div><br />
+                <Header type='display2'>Panel List</Header><br />
                 <Link className='link' to='/staff/panels/new'>New panel</Link><br />
                 
                 <PanelList panels={this.props.panels} />

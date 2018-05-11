@@ -8,6 +8,7 @@ import { history } from '../../../constants';
 import { fetchPost } from '../../actions/post-actions';
 import { setHeaderImage, setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { DOMAIN } from '../../../constants';
+import Header from '../../components/base/Header';
 
 import Share from '../../components/global/Share';
 
@@ -89,7 +90,7 @@ class ShowPost extends React.Component {
 
         return (
             <div className={titleClassName}>
-                <span className='mdc-typography--display2'><b>{this.state.post.title}</b></span><br />
+                <Header type='display2'><b>{this.state.post.title}</b></Header>
             </div>
         );
     }

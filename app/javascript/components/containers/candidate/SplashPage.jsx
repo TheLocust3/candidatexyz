@@ -3,6 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../components/base/Header';
 import Button from '../../components/base/Button';
 import Link from '../../components/base/Link';
 import { setFullscreen, setDocumentTitle } from '../../actions/global-actions';
@@ -42,9 +43,7 @@ class SplashPage extends React.Component {
     render() {
         return (
             <div className='splash-page'>
-                <div className='mdc-typography--display2 splashPageHeadline'>
-                    <b><TextContent identifier='splashPageHeadline' /></b>
-                </div><br />
+                <Header type='display2' className='splash-page-headline'><b><TextContent identifier='splashPageHeadline' /></b></Header><br />
 
                 <JoinCard top='45%' right='60%' />
 
