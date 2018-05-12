@@ -33,4 +33,8 @@ $mdc-theme-secondary: #00427c;
     cursor: pointer;
 }
 
+.mdc-tab-bar-header {
+    overflow-x: scroll;
+}
+
 @import '@material/theme/mdc-theme';

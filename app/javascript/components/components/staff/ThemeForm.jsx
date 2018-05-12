@@ -14,6 +14,7 @@ import ThemeApi from '../../../api/theme-api';
 
 import FormWrapper from '../forms/FormWrapper';
 import LinkThemeForm from './theme-forms/LinkThemeForm';
+import HeaderThemeForm from './theme-forms/HeaderThemeForm';
 import ButtonThemeForm from './theme-forms/ButtonThemeForm';
 import CheckboxThemeForm from './theme-forms/CheckboxThemeForm';
 import FabThemeForm from './theme-forms/FabThemeForm';
@@ -30,7 +31,7 @@ class ThemeForm extends React.Component {
         super(props);
 
         if (_.isEmpty(this.props.theme)) {
-            this.state = { name: '', description: '', classNamePrefix: 'mdc-', link: {}, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
+            this.state = { name: '', description: '', classNamePrefix: 'mdc-', link: {}, header: {}, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
         } else if (_.isEmpty(this.props.theme.styling)) {
             this.state = { name: this.props.theme.name, description: this.props.theme.description, classNamePrefix: this.props.theme.classNamePrefix, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
         } else {
@@ -39,6 +40,7 @@ class ThemeForm extends React.Component {
                 classNamePrefix: this.props.theme.classNamePrefix,
                 description: this.props.theme.description,
                 link: _.isEmpty(this.props.theme.styling.link) ? {} : this.props.theme.styling.link,
+                header: _.isEmpty(this.props.theme.styling.header) ? {} : this.props.theme.styling.header,
                 button: _.isEmpty(this.props.theme.styling.button) ? {} : this.props.theme.styling.button,
                 checkbox: _.isEmpty(this.props.theme.styling.checkbox) ? {} : this.props.theme.styling.checkbox,
                 fab: _.isEmpty(this.props.theme.styling.fab) ? {} : this.props.theme.styling.fab,
@@ -122,6 +124,9 @@ class ThemeForm extends React.Component {
 
                 <Header type='display1'>Link</Header>
                 <LinkThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('link', data)} /><br />
+
+                <Header type='display1'>Header</Header>
+                <HeaderThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('header', data)} /><br />
 
                 <br /><hr /><br />
 
