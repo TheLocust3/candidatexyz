@@ -43,7 +43,7 @@ class EditRawContent extends React.Component {
 
         return (
             <div className='content edit-raw-content'>
-                <Header type='display3'><b>Edit Raw Content</b></Header><br />
+                <Header type='headline3'><b>Edit Raw Content</b></Header><br />
 
                 <RawContentInlineEditor content={this.state.indexBackground} /><br />
                 

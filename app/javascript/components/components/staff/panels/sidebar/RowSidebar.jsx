@@ -44,7 +44,7 @@ class RowSidebar extends React.Component {
             <div>
                 {this.renderSelectedCell()}
 
-                <Header type='title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
+                <Header type='headline6' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
 
                 <DeleteElementButton elements={this.props.elements} element={this.props.selectedElements[0]} updateElements={this.props.updateElement} onClick={() => this.props.recalculateHeight()} />
                 <br />

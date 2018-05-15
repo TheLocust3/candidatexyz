@@ -43,7 +43,7 @@ export default class MessageForm extends React.Component {
 
                 <TextField label='Subject' name='subject' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
-                <TextArea label='Message' name='message' onChange={(event) => this.handleChange(event)} rows={20} style={{ width: '100%' }} /><br /><br />
+                <TextArea label='Message' name='message' onChange={(event) => this.handleChange(event)} rows={10} style={{ width: '100%' }} /><br /><br />
 
                 <Button className='sign-up-form-button'>Submit</Button>
             </FormWrapper>

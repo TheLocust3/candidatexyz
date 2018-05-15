@@ -89,7 +89,7 @@ class PanelOrderer extends React.Component {
     render() {
         return (
             <div>
-                <Header type='headline'>Panels</Header><br />
+                <Header type='headline5'>Panels</Header><br />
 
                 <div className='relative'>
                     {this.renderPanelSelect()}

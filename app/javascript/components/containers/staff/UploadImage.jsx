@@ -18,7 +18,7 @@ class UploadImage extends React.Component {
     render() {
         return (
             <div className='content-bottom content-10'>
-                <Header type='display2'>Upload Image</Header><br />
+                <Header type='headline2'>Upload Image</Header><br />
                 
                 <UploadImageForm />
 

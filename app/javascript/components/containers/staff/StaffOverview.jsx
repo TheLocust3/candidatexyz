@@ -27,7 +27,7 @@ class StaffOverview extends React.Component {
     render() {
         return (
             <div className='content-15'>
-                <Header type='display3'>Staff Overview</Header><br />
+                <Header type='headline3'>Staff Overview</Header><br />
                 {this.renderSuperuser()}<br />
 
                 <div style={{ marginLeft: '5%' }}>

@@ -18,7 +18,7 @@ class StaffSignUp extends React.Component {
     render() {
         return (
             <div className='content-15 staff-form'>
-                <Header type='display2'><b>Staff Sign Up</b></Header><br />
+                <Header type='headline2'><b>Staff Sign Up</b></Header><br />
 
                 <StaffSignUpForm token={this.props.match.params.token} />
                 

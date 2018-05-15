@@ -72,34 +72,21 @@ class Select extends React.Component {
             </div>
         )
     }
-
-    renderLabel() {
-        let floatClassName = this.props.selectedIndex == null ? '' : this.themedClassName('select__label--float-above');
-
-        return (
-            <div className={`${this.themedClassName('select__label')} ${floatClassName}`} style={{ ...this.themedStyle() }}>
-                {this.props.label}
-            </div>
-        )
-    }
-
     renderMdc() {
         let { className, label, onChange, selectedIndex, children, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
         className = _.isEmpty(className) ? '' : className;
 
         return (
             <div className={`${this.themedClassName('select')} ${className}`} id={this.state.uuid} role='listbox' data-mdc-auto-init='MDCSelect' {...props}>
-                <div className={this.themedClassName('select__surface')} tabIndex='0'>
-                    {this.renderLabel()}
-                    <div className={this.themedClassName('select__selected-text')} />
-                    <div className={this.themedClassName('select__bottom-line')} />
-                </div>
+                <select className={this.themedClassName('select__native-control')}>
+                    {children}
+                </select>
 
-                <div className={`${this.themedClassName('menu')} ${this.themedClassName('select__menu')}`}>
-                    <ul className={`${this.themedClassName('list')} ${this.themedClassName('menu__items')}`}>
-                        {children}
-                    </ul>
-                </div>
+                <label className={this.themedClassName('floating-label')} style={{ ...this.themedStyle() }}>
+                    {this.props.label}
+                </label>
+                
+                <div className={this.themedClassName('line-ripple')} />
             </div>
         );
     }

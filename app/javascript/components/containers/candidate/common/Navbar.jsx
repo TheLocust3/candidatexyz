@@ -76,7 +76,7 @@ class Navbar extends React.Component {
                         <div><SimpleLinkContent identifier='navLink2' className={`link ${invertedLink}`} /></div>
                         <div><SimpleLinkContent identifier='navLink3' className={`link ${invertedLink}`} /></div>
 
-                        <div><ExternalLinkContent identifier='navButton'><Button >Donate</Button></ExternalLinkContent></div>
+                        <div><ExternalLinkContent identifier='navButton'><Button>Donate</Button></ExternalLinkContent></div>
                     </div>
                 </div>
             </Parallax>

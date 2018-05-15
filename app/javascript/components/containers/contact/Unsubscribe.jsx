@@ -25,7 +25,7 @@ class Unsubscribe extends React.Component {
     render() {
         return (
             <div className='content-15'>
-                <Header type='display2'><b>Header</b></Header><br />
+                <Header type='headline2'><b>Header</b></Header><br />
 
                 <Button onClick={this.onUnsubscribeClick.bind(this)}>Unsubscribe</Button>
                 

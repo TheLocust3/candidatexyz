@@ -29,7 +29,7 @@ class PageEditor extends React.Component {
 
         return (
             <div className='content-bottom content-5'>
-                <Header type='display2'>Page Editor</Header><br />
+                <Header type='headline2'>Page Editor</Header><br />
                 <Link className='link' to={`/staff/pages/${page.url}/show`}>Preview Page</Link><br />
                 
                 <PageForm page={page} allPanels={this.props.allPanels} />

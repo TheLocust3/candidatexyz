@@ -24,7 +24,7 @@ class ShowPanel extends React.Component {
 
         return (
             <div className='content-bottom content-5'>
-                <Header type='display2'>Panel Preview</Header><br />
+                <Header type='headline2'>Panel Preview</Header><br />
                 
                 <PanelRenderer panel={this.props.panel} />
 

@@ -58,7 +58,7 @@ class TextEditor extends React.Component {
 
         return (
             <div className='editor'>
-                <Header type='headline'>{label}</Header><br />
+                <Header type='headline5'>{label}</Header><br />
 
                 <div onClick={this.onEditorClick.bind(this)}>
                     <Editor wrapperClassName='editor-wrapper' editorClassName={`editor-editor ${smallClassName}`} toolbarClassName='editor-toolbar'

@@ -39,11 +39,12 @@ class BaseLink extends React.Component {
     }
 
     renderGlobalLink() {
-        let { className, style, to, children, unstyled, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
+        let { className, style, to, children, unstyled, noDecoration, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         className = unstyled ? className : `link ${className}`;
         let fullStyle = unstyled ? style : { ...this.themedStyle(), ...style };
+        fullStyle = noDecoration ? { ...fullStyle, textDecoration: 'none' } : fullStyle;
 
         return (
             <a id={this.state.uuid} className={className} href={to} style={fullStyle} {...props}>
@@ -53,11 +54,12 @@ class BaseLink extends React.Component {
     }
 
     renderRelativeLink() {
-        let { className, style, to, children, unstyled, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
+        let { className, style, to, children, unstyled, noDecoration, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         className = unstyled ? className : `link ${className}`;
         let fullStyle = unstyled ? style : { ...this.themedStyle(), ...style };
+        fullStyle = noDecoration ? { ...fullStyle, textDecoration: 'none' } : fullStyle;
 
         return (
             <Link id={this.state.uuid} className={className} to={to} style={fullStyle} {...props}>
@@ -85,6 +87,7 @@ BaseLink.propTypes = {
         PropTypes.string
     ]),
     unstyled: PropTypes.bool,
+    noDecoration: PropTypes.bool,
     themeOverride: PropTypes.object,
     customPanelTheme: PropTypes.object
 };

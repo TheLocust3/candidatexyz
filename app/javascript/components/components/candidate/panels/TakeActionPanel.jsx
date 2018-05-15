@@ -9,8 +9,8 @@ class TakeActionPanel extends React.Component {
     render() {
         return (
             <div className='take-action'>
-                <Header type='display3'><b><TextContent identifier='actionHeader' /></b></Header><br />
-                <Header type='headline'><TextContent identifier='actionSubtitle' /></Header><br />
+                <Header type='headline3'><b><TextContent identifier='actionHeader' /></b></Header><br />
+                <Header type='headline5'><TextContent identifier='actionSubtitle' /></Header><br />
 
                 <p className='content-20 take-action-text'>
                     <TextContent identifier='actionBody' /><br /><br />

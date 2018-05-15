@@ -122,7 +122,7 @@ class CustomStyler extends React.Component {
         return (
             <div>
                 <div style={{ position: 'relative' }}>
-                    <Header type={this.props.small ? 'subtitle1' : 'headline'} className='middle' style={{ display: 'inline' }}>Custom Styles</Header>
+                    <Header type={this.props.small ? 'subtitle1' : 'headline4'} className='middle' style={{ display: 'inline' }}>Custom Styles</Header>
 
                     <Fab condensed={true} onClick={this.onAddClick.bind(this)} style={{ marginLeft: '175px' }}>
                         <i className='material-icons'>add</i>

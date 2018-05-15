@@ -20,15 +20,15 @@ class ShowMessage extends React.Component {
     render() {
         return (
             <div className='content-15'>
-                <Header type='display3'>Show Message</Header><br />
+                <Header type='headline3'>Show Message</Header><br />
 
-                <Header type='headline'>Name</Header><br />
+                <Header type='headline5'>Name</Header><br />
                 {this.props.message.firstName} {this.props.message.lastName}<br /><br />
 
-                <Header type='headline'>Email</Header><br />
+                <Header type='headline5'>Email</Header><br />
                 {this.props.message.email}<br /><br />
 
-                <Header type='headline'>Message</Header><br />
+                <Header type='headline5'>Message</Header><br />
                 Subject: {this.props.message.subject}<br /><br />
                 {this.props.message.message}<br /><br />
             </div>

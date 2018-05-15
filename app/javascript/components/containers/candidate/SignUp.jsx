@@ -18,10 +18,10 @@ class SignUp extends React.Component {
         return (
             <div>
                 <div className='content sign-up'>
-                    <Header type='display1'><b><TextContent identifier='signUpHeader' /></b></Header><br />
+                    <Header type='headline2'><b><TextContent identifier='signUpHeader' /></b></Header><br />
                     
                     <div className='content-25'>
-                        <Header type='title'><b><TextContent identifier='signUpSubtitle' /></b></Header><br />
+                        <Header type='headline6'><b><TextContent identifier='signUpSubtitle' /></b></Header><br />
 
                         <JoinUsForm />
                     </div>

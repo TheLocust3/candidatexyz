@@ -58,7 +58,7 @@ class VolunteerOverview extends React.Component {
     render() {
         return (
             <div className='content-5'>
-                <Header type='display2'><b>Volunteer Overview</b></Header><br />
+                <Header type='headline2'><b>Volunteer Overview</b></Header><br />
 
                 <VolunteerTable volunteers={this.props.volunteers} onHeaderClick={(event, reverse) => this.onHeaderClick(event, reverse)} /><br />
 

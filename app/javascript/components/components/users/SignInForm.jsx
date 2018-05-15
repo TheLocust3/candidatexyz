@@ -37,7 +37,7 @@ export default class SignInForm extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors}>
-                <Header type='display3'><b>Staff Login</b></Header><br />
+                <Header type='headline3'><b>Staff Login</b></Header><br />
 
                 <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} />
 

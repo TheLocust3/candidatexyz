@@ -16,7 +16,7 @@ class Footer extends React.Component {
             <div className='footer'>
                 <SocialMediaLinks size={2} />
 
-                <Header type='headline' className='link-holder'>
+                <Header type='headline5' className='link-holder'>
                     <SimpleLinkContent identifier='footerContact' className='link' />
                     <SimpleLinkContent identifier='footerPrivacy' className='link' />
                 </Header>

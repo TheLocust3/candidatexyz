@@ -18,7 +18,7 @@ class Mail extends React.Component {
     render() {
         return (
             <div className='content-15 staff-form'>
-                <Header type='display2'><b>Mail Everyone</b></Header><br />
+                <Header type='headline2'><b>Mail Everyone</b></Header><br />
 
                 <MailForm />
                 

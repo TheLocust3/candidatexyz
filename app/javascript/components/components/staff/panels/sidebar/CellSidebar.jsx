@@ -72,7 +72,7 @@ class CellSidebar extends React.Component {
     renderSidebar(element) {
         return (
             <div>
-                <Header type='title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
+                <Header type='headline6' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
 
                 {this.renderInnerSidebar(element)}
             </div>
@@ -131,7 +131,7 @@ class CellSidebar extends React.Component {
             <div>
                 {this.renderInnerSidebars()}
                 
-                <Header type='title' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
+                <Header type='headline6' style={{ textAlign: 'center' }}>{_.capitalize(element.type)} Options</Header>
 
                 <DeleteElementButton elements={this.props.elements} element={this.props.selectedElements[0]} updateElements={this.props.updateInnerElements} />
                 <br />

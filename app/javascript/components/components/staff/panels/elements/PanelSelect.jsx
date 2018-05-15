@@ -21,7 +21,7 @@ class PanelSelect extends React.Component {
             this.props.element.elements.map((element) => {
                 return (
                     <div key={element.uuid}>
-                        <SelectItem customPanelTheme={this.props.element.theme}>
+                        <SelectItem>
                             {element.text}
                         </SelectItem>
                     </div>

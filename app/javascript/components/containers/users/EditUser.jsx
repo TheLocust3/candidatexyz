@@ -30,7 +30,7 @@ class EditUser extends React.Component {
 
         return (
             <div className='content sign-in-form'>
-                <Header type='display2'><b>Edit User</b></Header><br />
+                <Header type='headline2'><b>Edit User</b></Header><br />
                 <Link to='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</Link>
 
                 <MasterEditUserForm redirectUrl='/staff/staff-management' user={this.props.user} />

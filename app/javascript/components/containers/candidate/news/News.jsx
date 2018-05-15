@@ -50,7 +50,7 @@ class News extends React.Component {
         return (
             <div>
                 <div className='content-15'>
-                    <Header type='display3'><b><TextContent identifier='newsHeader' /></b></Header>
+                    <Header type='headline3'><b><TextContent identifier='newsHeader' /></b></Header>
                     {this.renderAddNews()}<br /><br />
 
                     {this.renderNewsList()}

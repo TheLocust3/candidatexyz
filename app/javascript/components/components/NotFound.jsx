@@ -14,7 +14,7 @@ class NotFound extends React.Component {
     render() {
         return (
             <div className='content-10'>
-                <Header type='display3'>Page Not Found</Header>
+                <Header type='headline3'>Page Not Found</Header>
 
                 <p>
                     You've managed to find a page that doesn't exist!

@@ -17,7 +17,7 @@ class Privacy extends React.Component {
     render() {
         return (
             <div className='content content-15'>
-                <Header type='display3'><b><TextContent identifier='privacyHeader' /></b></Header><br />
+                <Header type='headline3'><b><TextContent identifier='privacyHeader' /></b></Header><br />
 
                 <TextContent identifier='privacyPolicy' />
                 

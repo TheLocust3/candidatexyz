@@ -34,7 +34,7 @@ class ExternalLinkContent extends React.Component {
     }
 
     render() {
-        let { identifier, edit, dispatch, children, editOverlayOpen, isReady, ...props } = this.props;
+        let { identifier, edit, dispatch, children, editOverlayOpen, isReady, contents, ...props } = this.props;
 
         return (
             <span id={identifier}>

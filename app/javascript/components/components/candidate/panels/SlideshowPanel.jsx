@@ -12,10 +12,10 @@ class SlideshowPanel extends React.Component {
     render() {
         return (
             <SlideshowContent identifier='indexSlideshow'>
-                <Header type='headline'><b><TextContent identifier='slideshowBlurb' /></b></Header><br />
+                <Header type='headline5'><b><TextContent identifier='slideshowBlurb' /></b></Header><br />
 
                 <Link to='/meet' className='link'>
-                    <Header type='headline'><TextContent identifier='slideshowLink' /></Header>
+                    <Header type='headline5'><TextContent identifier='slideshowLink' /></Header>
                 </Link>
             </SlideshowContent>
         );

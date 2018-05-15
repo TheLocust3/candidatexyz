@@ -90,7 +90,7 @@ class ShowPost extends React.Component {
 
         return (
             <div className={titleClassName}>
-                <Header type='display2'><b>{this.state.post.title}</b></Header>
+                <Header type='headline3'><b>{this.state.post.title}</b></Header>
             </div>
         );
     }

@@ -28,7 +28,7 @@ class Meet extends React.Component {
         return (
             <div>
                 <div className='content'>
-                    <Header type='display2' className='header-text'><b><TextContent identifier='meetHeader' /></b></Header>
+                    <Header type='headline2' className='header-text'><b><TextContent identifier='meetHeader' /></b></Header>
 
                     <div className='content-20'>
                         <ShowPost postType='meet' url='meet-body' />

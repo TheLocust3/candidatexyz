@@ -21,7 +21,7 @@ class Panels extends React.Component {
     render() {
         return (
             <div className='content-bottom content-10'>
-                <Header type='display2'>Panel List</Header><br />
+                <Header type='headline2'>Panel List</Header><br />
                 <Link className='link' to='/staff/panels/new'>New panel</Link><br />
                 
                 <PanelList panels={this.props.panels} />

@@ -31,7 +31,7 @@ class Volunteer extends React.Component {
 
         return (
             <div className='content-15 staff-form'>
-                <Header type='display2'><b>Volunteer</b></Header><br />
+                <Header type='headline2'><b>Volunteer</b></Header><br />
                 <Link to='#' className='link' onClick={this.onDeleteClick.bind(this)}>Delete</Link><br /><br />
 
                 <ShowVolunteer volunteer={this.props.volunteer} />

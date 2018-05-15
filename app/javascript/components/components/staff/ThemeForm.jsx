@@ -120,34 +120,34 @@ class ThemeForm extends React.Component {
 
                 {this.renderExtends()}<br /><br /><br />
 
-                <Header type='display2'>General Theming</Header><br /><br />
+                <Header type='headline2'>General Theming</Header><br /><br />
 
-                <Header type='display1'>Link</Header>
+                <Header type='headline1'>Link</Header>
                 <LinkThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('link', data)} /><br />
 
-                <Header type='display1'>Header</Header>
+                <Header type='headline1'>Header</Header>
                 <HeaderThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('header', data)} /><br />
 
                 <br /><hr /><br />
 
-                <Header type='display2'>Element Theming</Header><br /><br />
+                <Header type='headline2'>Element Theming</Header><br /><br />
 
-                <Header type='display1'>Button</Header>
+                <Header type='headline1'>Button</Header>
                 <ButtonThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('button', data)} /><br />
 
-                <Header type='display1'>Checkbox</Header>
+                <Header type='headline1'>Checkbox</Header>
                 <CheckboxThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('checkbox', data)} /><br />
 
-                <Header type='display1'>Fab Button</Header>
+                <Header type='headline1'>Fab Button</Header>
                 <FabThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('fab', data)} /><br />
 
-                <Header type='display1'>TextField</Header>
+                <Header type='headline1'>TextField</Header>
                 <TextFieldThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textField', data)} /><br />
 
-                <Header type='display1'>TextArea</Header>
+                <Header type='headline1'>TextArea</Header>
                 <TextAreaThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textArea', data)} /><br />
 
-                <Header type='display1'>Select</Header>
+                <Header type='headline1'>Select</Header>
                 <SelectThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('select', data)} /><br />
 
                 <Button className='sign-up-form-button'>Save</Button>

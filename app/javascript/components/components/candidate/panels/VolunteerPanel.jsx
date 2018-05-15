@@ -12,7 +12,7 @@ export default class VolunteerPanel extends React.Component {
     render() {
         return (
             <PanelWrapper className='volunteer-panel'>
-                <Header type='display2' className='panel-headline'><b><TextContent identifier='volunteerPanelHeadline' /></b></Header><br />
+                <Header type='headline2' className='panel-headline'><b><TextContent identifier='volunteerPanelHeadline' /></b></Header><br />
 
                 <VolunteerForm />
             </PanelWrapper>

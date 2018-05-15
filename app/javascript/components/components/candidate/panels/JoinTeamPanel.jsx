@@ -38,12 +38,12 @@ export default class JoinTeamPanel extends React.Component {
 
                     <div className='join-team-panel-content'>
                         <div className='join-team-panel-title join-team-panel-color'>
-                            <Header type='display2'><b><TextContent identifier='joinTeamPanelTitle' /></b></Header>
+                            <Header type='headline2'><b><TextContent identifier='joinTeamPanelTitle' /></b></Header>
                         </div>
 
-                        <Header type='headline' className='join-team-panel-actions'>
-                            <Link to='/sign_up'><Button className='join-team-panel-color'>Sign Up</Button></Link>
-                            <ExternalLinkContent identifier='joinTeamPanelDonateLink'><Button className='join-team-panel-color'>Donate</Button></ExternalLinkContent>
+                        <Header type='headline5' className='join-team-panel-actions'>
+                            <Link to='/sign_up' noDecoration><Button className='join-team-panel-color'>Sign Up</Button></Link>
+                            <ExternalLinkContent identifier='joinTeamPanelDonateLink' noDecoration={true}><Button className='join-team-panel-color'>Donate</Button></ExternalLinkContent>
                         </Header>
                     </div>
                 </Parallax>

@@ -18,16 +18,16 @@ class Meet extends React.Component {
     render() {
         return (
             <div className='content content-15'>
-                <Header type='display3'><b><TextContent identifier='mediaKitHeader' /></b></Header><br />
+                <Header type='headline3'><b><TextContent identifier='mediaKitHeader' /></b></Header><br />
 
-                <Header type='headline'><b><TextContent identifier='mediaKitPressContactHeadline' /></b></Header><br />
+                <Header type='headline5'><b><TextContent identifier='mediaKitPressContactHeadline' /></b></Header><br />
                 <TextContent identifier='mediaKitPressSecretaryContact' /><br /><br />
 
-                <Header type='headline'><b><TextContent identifier='mediaKitBiographyHeadline' /></b></Header><br />
-                Visit <Link to='/meet'><TextContent identifier='meetCandidate' /></Link> for information.<br /><br />
-                Click <Link to='/short-bio'>here</Link> for an abbreviated biography.<br /><br />
+                <Header type='headline5'><b><TextContent identifier='mediaKitBiographyHeadline' /></b></Header><br />
+                Visit <Link to='/meet' unstyled><TextContent identifier='meetCandidate' /></Link> for information.<br /><br />
+                Click <Link to='/short-bio' unstyled>here</Link> for an abbreviated biography.<br /><br />
 
-                <Header type='headline'><b><TextContent identifier='mediaKitPhotosHeadline' /></b></Header><br />
+                <Header type='headline5'><b><TextContent identifier='mediaKitPhotosHeadline' /></b></Header><br />
                 <div className="mdc-layout-grid">
                     <div className="mdc-layout-grid__inner">
                         <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6"><ImageContent identifier='mediaKitPhoto1' className='media-photo' /></div>

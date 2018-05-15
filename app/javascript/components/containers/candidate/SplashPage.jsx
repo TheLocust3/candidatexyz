@@ -43,7 +43,7 @@ class SplashPage extends React.Component {
     render() {
         return (
             <div className='splash-page'>
-                <Header type='display2' className='splash-page-headline'><b><TextContent identifier='splashPageHeadline' /></b></Header><br />
+                <Header type='headline2' className='splash-page-headline'><b><TextContent identifier='splashPageHeadline' /></b></Header><br />
 
                 <JoinCard top='45%' right='60%' />
 

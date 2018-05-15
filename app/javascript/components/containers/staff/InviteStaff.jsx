@@ -18,7 +18,7 @@ class InviteStaff extends React.Component {
     render() {
         return (
             <div className='content-15 staff-form'>
-                <Header type='display2'><b>Invite Staffer</b></Header><br />
+                <Header type='headline2'><b>Invite Staffer</b></Header><br />
 
                 <InviteForm />
                 

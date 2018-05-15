@@ -28,10 +28,10 @@ class Themes extends React.Component {
     render() {
         return (
             <div className='content-bottom content-10'>
-                <Header type='display2'>Theme List</Header><br />
+                <Header type='headline2'>Theme List</Header><br />
                 <Link className='link' to='/staff/themes/new'>New theme</Link><br />
 
-                <Header type='title'>Current Theme: {this.props.globalTheme.name}</Header><br />
+                <Header type='headline6'>Current Theme: {this.props.globalTheme.name}</Header><br />
                 
                 <ThemeList themes={this.props.themes} globalTheme={this.props.globalTheme} onSetDefaultClick={this.onSetDefaultClick} />
 

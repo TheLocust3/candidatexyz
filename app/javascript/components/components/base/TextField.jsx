@@ -69,8 +69,8 @@ class TextField extends React.Component {
 
         return (
             <div id={this.state.uuid} className={`${this.themedClassName('text-field')} ${denseClassName} ${className}`} {...autoInit} {...props}>
-                <label className={this.themedClassName('text-field__label')} style={{ color: this.themedStyle().color, fontFamily: this.themedStyle().fontFamily }}>{label}</label><br />
                 <input type={type} className={this.themedClassName('text-field__input')} name={name} onChange={onChange} value={value} size={size} required={required} />
+                <label className={this.themedClassName('floating-label')} style={{ color: this.themedStyle().color, fontFamily: this.themedStyle().fontFamily }}>{label}</label><br />
                 
                 <div className={this.themedClassName('line-ripple')} />
             </div>
