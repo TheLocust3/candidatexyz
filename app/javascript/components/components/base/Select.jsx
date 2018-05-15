@@ -17,7 +17,7 @@ class Select extends React.Component {
     mdcInit() {
         if (this.theme().classNamePrefix == 'mdc-') {
             const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
-            select.listen('MDCSelect:change', () => {
+            select.listen('change', () => {
                 this.props.onChange(select);
             });
 

@@ -33,7 +33,7 @@ class ThemeForm extends React.Component {
         if (_.isEmpty(this.props.theme)) {
             this.state = { name: '', description: '', classNamePrefix: 'mdc-', link: {}, header: {}, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
         } else if (_.isEmpty(this.props.theme.styling)) {
-            this.state = { name: this.props.theme.name, description: this.props.theme.description, classNamePrefix: this.props.theme.classNamePrefix, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
+            this.state = { name: this.props.theme.name, description: this.props.theme.description, classNamePrefix: this.props.theme.classNamePrefix, link: {}, header: {}, button: {}, checkbox: {}, fab: {}, textField: {}, textArea: {}, select: {}, errors: {} };
         } else {
             this.state = {
                 name: this.props.theme.name,
@@ -75,7 +75,7 @@ class ThemeForm extends React.Component {
             });
         } else {
             ThemeApi.update(this.props.theme.id, this.theme().name, this.theme().description, this.theme().classNamePrefix,  this.theme().styling).then((theme) => {
-                history.push('/staff/themes');
+                window.location.href = '/staff/themes';
             }).catch((response) => {
                 this.setState({
                     errors: response.responseJSON.errors
@@ -95,7 +95,7 @@ class ThemeForm extends React.Component {
     }
 
     theme() {
-        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { link: this.state.link, button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea, select: this.state.select } };
+        return { name: this.state.name, description: this.state.description, classNamePrefix: this.state.classNamePrefix, styling: { link: this.state.link, header: this.state.header, button: this.state.button, checkbox: this.state.checkbox, fab: this.state.fab, textField: this.state.textField, textArea: this.state.textArea, select: this.state.select } };
     }
 
     renderExtends() {
@@ -120,34 +120,34 @@ class ThemeForm extends React.Component {
 
                 {this.renderExtends()}<br /><br /><br />
 
-                <Header type='headline2'>General Theming</Header><br /><br />
+                <Header type='headlin2'>General Theming</Header><br /><br />
 
-                <Header type='headline1'>Link</Header>
+                <Header type='headline3'>Link</Header>
                 <LinkThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('link', data)} /><br />
 
-                <Header type='headline1'>Header</Header>
+                <Header type='headline3'>Header</Header>
                 <HeaderThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('header', data)} /><br />
 
                 <br /><hr /><br />
 
                 <Header type='headline2'>Element Theming</Header><br /><br />
 
-                <Header type='headline1'>Button</Header>
+                <Header type='headline3'>Button</Header>
                 <ButtonThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('button', data)} /><br />
 
-                <Header type='headline1'>Checkbox</Header>
+                <Header type='headline3'>Checkbox</Header>
                 <CheckboxThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('checkbox', data)} /><br />
 
-                <Header type='headline1'>Fab Button</Header>
+                <Header type='headline3'>Fab Button</Header>
                 <FabThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('fab', data)} /><br />
 
-                <Header type='headline1'>TextField</Header>
+                <Header type='headline3'>TextField</Header>
                 <TextFieldThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textField', data)} /><br />
 
-                <Header type='headline1'>TextArea</Header>
+                <Header type='headline3'>TextArea</Header>
                 <TextAreaThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('textArea', data)} /><br />
 
-                <Header type='headline1'>Select</Header>
+                <Header type='headline3'>Select</Header>
                 <SelectThemeForm theme={this.theme()} colors={COLORS} updateTheme={(data) => this.updateTheme('select', data)} /><br />
 
                 <Button className='sign-up-form-button'>Save</Button>

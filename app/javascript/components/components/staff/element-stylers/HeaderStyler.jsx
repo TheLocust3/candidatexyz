@@ -1,0 +1,51 @@
+import _ from 'lodash';
+import $ from 'jquery';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import ColorPicker from '../../global/ColorPicker';
+import FontPicker from '../../global/FontPicker';
+import CustomStyler from '../../global/CustomStyler';
+import TextField from '../../base/TextField';
+
+class HeaderStyler extends React.Component {
+
+    handleChange(attribute, value, suffix) {
+        let theme = _.isEmpty(this.props.theme) ? {} : this.props.theme;
+
+        if (_.isEmpty(suffix)) {
+            theme[attribute] = value;
+        } else {
+            theme[attribute] = value + suffix;
+        }
+
+        this.props.updateTheme(theme);
+    }
+
+    render() {
+        let theme = _.isEmpty(this.props.theme) ? {} : this.props.theme;
+
+        return (
+            <div>
+                <ColorPicker label='Pick Text Color' color={theme.color} colors={this.props.colors} onChange={(color) => this.handleChange('color', color.hex)}  />
+
+                <div style={{ position: 'relative' }}>
+                    <FontPicker onChange={(font) => { this.handleChange('fontFamily', font) }} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />
+                    <TextField type='number' label='Font Size' onChange={(event) => { this.handleChange('fontSize', event.target.value, 'px') }} value={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
+                </div>
+
+                <br /><br />
+
+                <CustomStyler custom={theme.custom} onChange={(custom) => { this.handleChange('custom', custom) }} />
+            </div>
+        );
+    }
+}
+
+HeaderStyler.propTypes = {
+    theme: PropTypes.object,
+    colors: PropTypes.arrayOf(PropTypes.string),
+    updateTheme: PropTypes.func.isRequired
+};
+
+export default HeaderStyler;

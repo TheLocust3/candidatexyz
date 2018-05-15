@@ -27,11 +27,15 @@ class Header extends React.Component {
     themedStyle() {
         let theme = this.theme();
 
-        if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling[this.props.type])) {
-            theme.styling = { [this.props.type]: {} };
+        if (_.isEmpty(theme.styling) || _.isEmpty(theme.styling.header)) {
+            theme.styling = { header: {} };
         }
 
-        let styles = theme.styling[this.props.type];
+        if (_.isEmpty(theme.styling.header[this.props.type])) {
+            theme.styling.header[this.props.type] = {};
+        }
+
+        let styles = theme.styling.header[this.props.type];
         let customPanelTheme = _.isEmpty(this.props.customPanelTheme) ? {} : this.props.customPanelTheme;
         styles = { ...styles, ...styles.custom, ...customPanelTheme, ...customPanelTheme.custom };
 
@@ -58,8 +62,8 @@ Header.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.element),
         PropTypes.element,
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.string
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)
     ]),
     themeOverride: PropTypes.object,
     customPanelTheme: PropTypes.object

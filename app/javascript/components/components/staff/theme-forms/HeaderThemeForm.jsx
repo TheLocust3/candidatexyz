@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from '../../base/Header';
-import LinkStyler from '../element-stylers/LinkStyler';
+import HeaderStyler from '../element-stylers/HeaderStyler';
 
 class HeaderThemeForm extends React.Component {
 
@@ -19,17 +19,22 @@ class HeaderThemeForm extends React.Component {
         this.state.header.headline4 = _.isEmpty(this.state.header.headline4) ? {} : this.state.header.headline4;
         this.state.header.headline5 = _.isEmpty(this.state.header.headline5) ? {} : this.state.header.headline5;
         this.state.header.headline6 = _.isEmpty(this.state.header.headline6) ? {} : this.state.header.headline6;
+
+        this.state.header.headline5 = _.isEmpty(this.state.header.subtitle1) ? {} : this.state.header.subtitle1;
+        this.state.header.headline6 = _.isEmpty(this.state.header.subtitle2) ? {} : this.state.header.subtitle2;
+        this.state.header.headline5 = _.isEmpty(this.state.header.body1) ? {} : this.state.header.body1;
+        this.state.header.headline6 = _.isEmpty(this.state.header.body2) ? {} : this.state.header.body2;
     }
 
     updateTheme(theme, type) {
-        let button = this.state.button;
-        button[type] = theme;
+        let header = this.state.header;
+        header[type] = theme;
 
         this.setState({
-            button: button
+            header: header
         });
 
-        this.props.updateTheme(button);
+        this.props.updateTheme(header);
     }
 
     renderHeader(type) {
@@ -39,7 +44,7 @@ class HeaderThemeForm extends React.Component {
                     <Header type={type} themeOverride={this.props.theme}>Sample {_.capitalize(type)}</Header>
                 </center><br /><br />
 
-                
+                <HeaderStyler theme={this.state.header[type]} colors={this.props.colors} updateTheme={(theme) => this.updateTheme(theme, type)} />
             </div>
         )
     }
