@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { setDocumentTitle, setBlankNavbar } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
+import SlideshowContent from '../content/SlideshowContent';
 
 class Index extends React.Component {
 
@@ -14,7 +15,7 @@ class Index extends React.Component {
     render() {
         return (
             <div>
-                Index!
+                <SlideshowContent identifier='indexSlideshow' time={1000}></SlideshowContent>
 
                 <MDCAutoInit />
             </div>

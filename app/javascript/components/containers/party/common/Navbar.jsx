@@ -49,7 +49,7 @@ class Navbar extends React.Component {
         let invertedLink = this.props.blankNavbar ? 'inverted-link' : '';
 
         return (
-            <div style={{ height: '40vh' }}>
+            <div style={{ height: '30vh' }}>
                 <div className='navbar' style={{ height: 'auto' }}>
                     <Link to='/'><ImageContent identifier='logo' className='navbar-image' /></Link>
 

@@ -44,7 +44,7 @@ class SlideshowContent extends React.Component {
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
-                <Slideshow images={this.findContent().content}>
+                <Slideshow images={this.findContent().content} {...props}>
                     {this.props.children}
                 </Slideshow>
             </span>
