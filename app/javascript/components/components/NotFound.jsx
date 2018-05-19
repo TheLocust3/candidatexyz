@@ -13,7 +13,7 @@ class NotFound extends React.Component {
     
     render() {
         return (
-            <div className='content-10'>
+            <div className='content content-10'>
                 <Header type='headline3'>Page Not Found</Header>
 
                 <p>

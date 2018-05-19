@@ -49,7 +49,7 @@ class News extends React.Component {
     render() {
         return (
             <div>
-                <div className='content-15'>
+                <div className='content content-15'>
                     <Header type='headline3'><b><TextContent identifier='newsHeader' /></b></Header>
                     {this.renderAddNews()}<br /><br />
 

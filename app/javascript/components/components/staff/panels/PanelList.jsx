@@ -48,7 +48,7 @@ class PanelList extends React.Component {
 
     render() {
         return (
-            <div className='content-5'>
+            <div className='content content-5'>
                 {this.renderPanelList()}
             </div>
         );

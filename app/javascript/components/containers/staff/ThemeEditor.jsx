@@ -25,7 +25,7 @@ class ThemeEditor extends React.Component {
         let theme = _.isEmpty(this.props.match.params.name) ? {} : this.props.theme;
 
         return (
-            <div className='content-bottom content-10'>
+            <div className='content content-bottom content-10'>
                 <Header type='headline3'>Theme Editor</Header><br />
                 
                 <ThemeForm theme={theme} />

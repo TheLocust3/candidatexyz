@@ -12,7 +12,7 @@ class TakeActionPanel extends React.Component {
                 <Header type='headline3'><b><TextContent identifier='actionHeader' /></b></Header><br />
                 <Header type='headline5'><TextContent identifier='actionSubtitle' /></Header><br />
 
-                <p className='content-20 take-action-text'>
+                <p className='content content-20 take-action-text'>
                     <TextContent identifier='actionBody' /><br /><br />
 
                     <TextContent identifier='actionEnding' /><br />

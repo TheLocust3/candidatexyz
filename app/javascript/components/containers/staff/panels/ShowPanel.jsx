@@ -23,7 +23,7 @@ class ShowPanel extends React.Component {
         if (!this.props.isReady && _.isEmpty(this.props.panel)) return null;
 
         return (
-            <div className='content-bottom content-5'>
+            <div className='content content-bottom content-5'>
                 <Header type='headline2'>Panel Preview</Header><br />
                 
                 <PanelRenderer panel={this.props.panel} />

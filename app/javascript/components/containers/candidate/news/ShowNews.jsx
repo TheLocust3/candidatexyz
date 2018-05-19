@@ -17,7 +17,7 @@ class ShowIssue extends React.Component {
     render() {
         return (
             <div>
-                <div className='content-15 news'>
+                <div className='content content-15 news'>
                     <Header type='headline5'><b>News</b></Header>
 
                     <ShowPost postType='news' url={this.props.match.params.url} renderAsNews={true} />

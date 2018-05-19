@@ -28,7 +28,7 @@ class PageEditor extends React.Component {
         let page = _.isEmpty(this.props.match.params.url) ? {} : this.props.page;
 
         return (
-            <div className='content-bottom content-5'>
+            <div className='content content-bottom content-5'>
                 <Header type='headline2'>Page Editor</Header><br />
                 <Link className='link' to={`/staff/pages/${page.url}/show`}>Preview Page</Link><br />
                 

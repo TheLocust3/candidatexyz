@@ -37,7 +37,7 @@ class ImageList extends React.Component {
 
     render() {
         return (
-            <div className='content-10'>
+            <div className='content content-10'>
                 {this.renderImageList()}
             </div>
         );

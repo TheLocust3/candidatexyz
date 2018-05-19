@@ -14,7 +14,7 @@ class Index extends React.Component {
     
     render() {
         return (
-            <div>
+            <div className='content'>
                 <SlideshowContent identifier='indexSlideshow' time={1000}></SlideshowContent>
 
                 <MDCAutoInit />

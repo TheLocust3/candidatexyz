@@ -19,7 +19,7 @@ class MessageOverview extends React.Component {
 
     render() {
         return (
-            <div className='content-15'>
+            <div className='content content-15'>
                 <Header type='headline3'>Message Overview</Header><br />
 
                 <MessageList messages={this.props.messages} />

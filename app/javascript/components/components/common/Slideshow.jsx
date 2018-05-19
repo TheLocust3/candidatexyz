@@ -10,14 +10,32 @@ export default class Slideshow extends React.Component {
         this.state = { index: 0 };
     }
 
-    componentDidMount() {
+    createInterval() {
         let time = _.isEmpty(this.props.time) ? 4000 : this.props.time;
 
         this.interval = setInterval(() => this.tick(), time);
     }
+
+    componentDidMount() {
+        this.createInterval();
+        $('.slideshow-circle-holder').hide();
+
+        let timer;
+        $('.slideshow').mousemove(() => {
+            $('.slideshow-circle-holder').fadeIn(150);
+            clearTimeout(timer);
+
+            timer = setTimeout(() => {
+                $('.slideshow-circle-holder').fadeOut(1000, () => {
+                    $(this).remove();
+                });
+            }, 1000);
+        });
+    }
     
     componentWillUnmount() {
         clearInterval(this.interval);
+        $('.slideshow').off('mousemove');
     }
 
     tick() {
@@ -39,6 +57,23 @@ export default class Slideshow extends React.Component {
         });
     }
 
+    onCircleClick(index) {
+        this.setState({
+            index: index
+        });
+
+        clearInterval(this.interval);
+        this.props.images.map((image, i) => {
+            if (index == i) {
+                $(`#image-${i}`).css('z-index', 3);
+            } else {
+                $(`#image-${i}`).css('z-index', 1).show();
+            }
+        });
+
+        this.createInterval();
+    }
+
     renderBlurb() {
         if (_.isEmpty(this.props.children)) return;
 
@@ -49,18 +84,34 @@ export default class Slideshow extends React.Component {
         );
     }
 
+    renderCircles() {
+        let fullscreenCircleClassName = _.isEmpty(this.props.children) ? 'slideshow-circle-holder-fullscreen' : '';
+        
+        return (
+            <div className={`slideshow-circle-holder ${fullscreenCircleClassName}`}>
+                {this.props.images.map((image, index) => {
+                    let activeClassName = this.state.index == index ? 'slideshow-circle-active' : '';
+
+                    return <span key={index} className={`slideshow-circle ${activeClassName}`} onClick={() => this.onCircleClick(index)} />;
+                })}
+            </div>
+        );
+    }
+
     renderImages() {
         let fullscreenImageClassName = _.isEmpty(this.props.children) ? 'slideshow-image-fullscreen' : '';
 
         return (
-            <div>
+            <div style={{ display: 'inline' }}>
                 {this.props.images.map((image, index) => {
                     let imageClassName = index == this.state.index ? 'slideshow-image-active' : '';
 
                     return <img key={index} id={`image-${index}`} src={image} className={`slideshow-image ${fullscreenImageClassName} ${imageClassName}`} />
                 })}
+
+                {this.renderCircles()}
             </div>
-        )
+        );
     }
 
     render() {

@@ -20,7 +20,7 @@ class Images extends React.Component {
 
     render() {
         return (
-            <div className='content-bottom content-10'>
+            <div className='content content-bottom content-10'>
                 <Header type='headline2'>Image List</Header><br />
                 <Link className='link' to='/staff/images/new'>Upload Image</Link><br />
                 

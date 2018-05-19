@@ -22,7 +22,7 @@ class Pages extends React.Component {
         if (!this.props.isReady) return null;
 
         return (
-            <div className='content-bottom content-10'>
+            <div className='content content-bottom content-10'>
                 <Header type='headline2'>Page List</Header><br />
                 <Link className='link' to='/staff/pages/new'>New page</Link><br />
                 

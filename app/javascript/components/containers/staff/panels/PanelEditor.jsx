@@ -63,7 +63,7 @@ class PanelEditor extends React.Component {
         let panel = _.isEmpty(this.props.match.params.name) ? {} : this.state.panel;
 
         return (
-            <div className='content-bottom content-5'>
+            <div className='content content-bottom content-5'>
                 <Header type='headline2'>Page Editor</Header><br />
                 <Link className='link' to={`/staff/panels/${panel.name}/show`}>Preview Panel</Link>
                 

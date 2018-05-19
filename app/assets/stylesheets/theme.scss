@@ -37,4 +37,8 @@ $mdc-theme-secondary: #00427c;
     overflow-x: scroll;
 }
 
+.mdc-toolbar__row {
+    height: 100%;
+}
+
 @import '@material/theme/mdc-theme';

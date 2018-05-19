@@ -46,18 +46,22 @@ class Navbar extends React.Component {
     }
 
     renderDeskop() {        
-        let invertedLink = this.props.blankNavbar ? 'inverted-link' : '';
-
         return (
-            <div style={{ height: '30vh' }}>
-                <div className='navbar' style={{ height: 'auto' }}>
-                    <Link to='/'><ImageContent identifier='logo' className='navbar-image' /></Link>
+            <div className='mdc-toolbar mdc-toolbar--fixed navbar'>
+                <div className='mdc-toolbar__row'>
+                    <section className='mdc-toolbar__section mdc-toolbar__section--align-start relative'>
+                        <Link to='/'><ImageContent identifier='logo' className='navbar-image middle' /></Link>
+                    </section>
 
-                    <div className='navbar-actions' style={{ height: '100%', marginTop: '5vh' }}>{/* TODO: marginTop hack cause middling wasn't working */}
-                        <SimpleLinkContent identifier='navLink1' className={`navbar-action link ${invertedLink}`} />
-                        <SimpleLinkContent identifier='navLink2' className={`navbar-action link ${invertedLink}`} />
-                        <SimpleLinkContent identifier='navLink3' className={`navbar-action link ${invertedLink}`} />
-                    </div>
+                    <section className='mdc-toolbar__section mdc-toolbar__section--align-end relative'>
+                        <div className='middle' style={{ width: '100%' }}>
+                            <div style={{ float: 'right' }}>
+                                <span className='navbar-item'><SimpleLinkContent identifier='navLink1' className='link' /></span>
+                                <span className='navbar-item'><SimpleLinkContent identifier='navLink2' className='link navbar-item' /></span>
+                                <span className='navbar-item'><SimpleLinkContent identifier='navLink3' className='link navbar-item' /></span>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         );
@@ -68,8 +72,8 @@ class Navbar extends React.Component {
             <div style={{ height: '10vh' }}>
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>
                     <div className='mdc-toolbar__row'>
-                        <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
-                            <Link to='/'><ImageContent identifier='logo' className='navbar-image' /></Link>
+                        <section className='mdc-toolbar__section mdc-toolbar__section--align-start relative'>
+                            <Link to='/'><ImageContent identifier='logo' className='navbar-image middle' /></Link>
                         </section>
 
                         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">

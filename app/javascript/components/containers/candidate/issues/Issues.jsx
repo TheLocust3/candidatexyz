@@ -46,7 +46,7 @@ class Issues extends React.Component {
     render() {
         return (
             <div>
-                <div className='content-20 issues'>
+                <div className='content content-20 issues'>
                     <ShowPost postType='issues-page' url='issues-blurb' />
 
                     {this.renderIssueList()}<br />

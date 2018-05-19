@@ -48,7 +48,7 @@ class PageList extends React.Component {
 
     render() {
         return (
-            <div className='content-5'>
+            <div className='content content-5'>
                 {this.renderPageList()}
             </div>
         );
