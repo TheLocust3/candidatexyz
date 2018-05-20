@@ -6,7 +6,6 @@ import Link from '../../base/Link';
 import Button from '../../base/Button';
 import { fetchPostType } from '../../../actions/post-actions';
 import TextContent from '../../../containers/content/TextContent';
-import NewsThumbnail from '../../../containers/news/NewsThumbnail';
 
 import PanelWrapper from '../../panels/PanelWrapper';
 
@@ -22,9 +21,7 @@ class NewsPanel extends React.Component {
         return (
             <div>
                 {posts.map((post, index) => {
-                    if (index < 3) {
-                        return <NewsThumbnail post={post} history={history} key={post.id} small={true} />;
-                    }
+                    return 'test';
                 })}
             </div>
         )
@@ -33,7 +30,7 @@ class NewsPanel extends React.Component {
     render() {
         return (
             <PanelWrapper className='news-panel' height='50vh'>
-                <Header type='headline2' className='news-panel-headline'><b><TextContent identifier='newsPanelHeadline' /></b></Header>
+                <Header type='headline2' className='news-panel-headline'><TextContent identifier='newsPanelHeadline' /></Header>
 
                 {this.renderNewsList()}
 

@@ -69,7 +69,7 @@ class Navbar extends React.Component {
 
     renderMobile() {
         return (
-            <div style={{ height: '10vh' }}>
+            <div>
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>
                     <div className='mdc-toolbar__row'>
                         <section className='mdc-toolbar__section mdc-toolbar__section--align-start relative'>

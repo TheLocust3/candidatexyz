@@ -5,6 +5,9 @@ import { setDocumentTitle, setBlankNavbar } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import SlideshowContent from '../content/SlideshowContent';
 
+import AboutPanel from '../../components/party/panels/AboutPanel';
+import NewsPanel from '../../components/party/panels/NewsPanel';
+
 class Index extends React.Component {
 
     componentDidMount() {
@@ -16,6 +19,10 @@ class Index extends React.Component {
         return (
             <div className='content'>
                 <SlideshowContent identifier='indexSlideshow' time={1000}></SlideshowContent>
+
+                <AboutPanel />
+
+                <NewsPanel />
 
                 <MDCAutoInit />
             </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import { history } from '../../../../constants';
+import { history } from '../../../constants';
 
 const THUMBNAIL_BODY_LENGTH = 200;
 

@@ -2,16 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import { history } from '../../../../constants';
-import Header from '../../../components/base/Header';
-import Link from '../../../components/base/Link';
-import { fetchCurrentUser } from '../../../actions/staff-actions';
-import { setBlankNavbar, setDocumentTitle } from '../../../actions/global-actions';
-import { fetchPostType } from '../../../actions/post-actions';
-import MDCAutoInit from '../../../components/global/MDCAutoInit';
+import { history } from '../../../constants';
+import Header from '../../components/base/Header';
+import Link from '../../components/base/Link';
+import { fetchCurrentUser } from '../../actions/staff-actions';
+import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
+import { fetchPostType } from '../../actions/post-actions';
+import MDCAutoInit from '../../components/global/MDCAutoInit';
 
-import ShowPost from '../../posts/ShowPost';
-import TextContent from '../../content/TextContent';
+import ShowPost from '../posts/ShowPost';
+import TextContent from '../content/TextContent';
 import NewsThumbnail from './NewsThumbnail';
 
 class News extends React.Component {

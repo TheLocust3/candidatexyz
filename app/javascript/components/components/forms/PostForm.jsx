@@ -44,7 +44,7 @@ class PostForm extends React.Component {
     handleSubmit(event) {
         if (_.isEmpty(this.props.post)) {
             PostApi.create(this.state.post.postType, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
-                history.push('/home');
+                history.push('/');
             }).catch((response) => {
                 this.setState({
                     errors: response.responseJSON.errors
@@ -52,7 +52,7 @@ class PostForm extends React.Component {
             });
         } else {
             PostApi.update(this.state.post.postType, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
-                history.push('/home');
+                history.push('/');
             }).catch((response) => {
                 this.setState({
                     errors: response.responseJSON.errors
@@ -63,7 +63,7 @@ class PostForm extends React.Component {
 
     onDeleteClick() {
         PostApi.destroy(this.state.post.postType, this.state.post.url).then(() => {
-            history.push('/home');
+            history.push('/');
         });
     }
 

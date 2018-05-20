@@ -10,8 +10,6 @@ import Privacy from '../components/containers/candidate/Privacy';
 import Contact from '../components/containers/candidate/Contact';
 import MediaKit from '../components/containers/candidate/MediaKit';
 import ShortBio from '../components/containers/candidate/ShortBio';
-import News from '../components/containers/candidate/news/News';
-import ShowNews from '../components/containers/candidate/news/ShowNews';
 import Issues from '../components/containers/candidate/issues/Issues';
 import ShowIssue from '../components/containers/candidate/issues/ShowIssue';
 
@@ -27,9 +25,7 @@ export function candidateRoutes() {
         <Route exact path='/contact' component={Contact} key='7' />,
         <Route exact path='/media-kit' component={MediaKit} key='8' />,
         <Route exact path='/short-bio' component={ShortBio} key='9' />,
-        <Route exact path='/news' component={News} key='10' />,
-        <Route exact path='/news/:url' component={ShowNews} key='11' />,
-        <Route exact path='/issues' component={Issues} key='12' />,
-        <Route exact path='/issues/:url' component={ShowIssue} key='13' />,
+        <Route exact path='/issues' component={Issues} key='10' />,
+        <Route exact path='/issues/:url' component={ShowIssue} key='11' />,
     ];
 }

@@ -170,6 +170,16 @@ Content.create(content_type: 'text', identifier: 'newsHeader', content: { text: 
 Content.create(content_type: 'text', identifier: 'volunteerPanelHeadline', content: { text: 'Volunteer with us.' })
 Content.create(content_type: 'raw', identifier: 'voluneteerHelpOptions', content: 'Data Entry,Make Calls, Door-to-Door Canvassing,Share information and news on social media,Hold Signs/Standouts')
 
+# party
+Content.create(content_type: 'text', identifier: 'partyAboutPanelHeadline', content: { text: 'The Reading Democrats' })
+
+Post.create(post_type: 'party-about-panel', url: 'party-about', title: '', body: "
+<p>The Boston Ward 5 Democratic Committee conducts the official business of the Massachusetts Democratic Party in Boston Ward 5, which includes Beacon Hill, Bay Village, Back Bay, and parts of the South End, Chinatown and Fenway.
+
+We advocate for the election of Democrats at the local, state, and national level.
+
+In addition, we support public policies that are important to Boston, to the Commonwealth of Massachusetts, and to the nation. We also help our neighbors stay informed.</p>")
+
 # posts
 Post.create(post_type: 'meet', url: 'meet-body', title: '', body: "<p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu massa efficitur, laoreet ex malesuada, scelerisque sem. Nam porttitor elit at felis molestie aliquet. Sed id metus massa. Etiam congue magna eget vulputate hendrerit. Proin hendrerit maximus ipsum, ut lobortis sem ultrices et. Integer quis odio egestas, tristique purus sit amet, pretium ante. Pellentesque tincidunt mollis libero non imperdiet.<br /><br />
