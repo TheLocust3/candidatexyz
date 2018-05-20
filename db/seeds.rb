@@ -173,6 +173,8 @@ Content.create(content_type: 'raw', identifier: 'voluneteerHelpOptions', content
 # party
 Content.create(content_type: 'text', identifier: 'partyAboutPanelHeadline', content: { text: 'The Reading Democrats' })
 
+Content.create(content_type: 'text', identifier: 'partyMeetPanelHeadline', content: { text: 'Come to an Event' })
+
 Post.create(post_type: 'party-about-panel', url: 'party-about', title: '', body: "
 <p>The Boston Ward 5 Democratic Committee conducts the official business of the Massachusetts Democratic Party in Boston Ward 5, which includes Beacon Hill, Bay Village, Back Bay, and parts of the South End, Chinatown and Fenway.
 

@@ -7,16 +7,17 @@ import TextContent from '../../../containers/content/TextContent';
 import PanelWrapper from '../../panels/PanelWrapper';
 import ShowPost from '../../../containers/posts/ShowPost';
 
-export default class AboutPanel extends React.Component {
+export default class MeetPanel extends React.Component {
 
     render() {
         return (
-            <PanelWrapper className='about-panel'>
-                <center><Header type='headline2' className='panel-headline'><TextContent identifier='partyAboutPanelHeadline' /></Header></center>
+            <PanelWrapper className='meet-panel'>
+                <center><Header type='headline2' className='panel-headline'><TextContent identifier='partyMeetPanelHeadline' /></Header></center>
+                <br />
 
                 <div className='content-20'>
-                    <ShowPost postType='party-about-panel' url='party-about' />
-                </div>                
+                    test
+                </div>
             </PanelWrapper>
         );
     }
