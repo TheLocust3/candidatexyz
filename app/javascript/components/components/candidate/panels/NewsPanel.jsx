@@ -32,7 +32,7 @@ class NewsPanel extends React.Component {
 
     render() {
         return (
-            <PanelWrapper className='news-panel' height='50vh'>
+            <PanelWrapper className='news-panel'>
                 <Header type='headline2' className='news-panel-headline'><b><TextContent identifier='newsPanelHeadline' /></b></Header>
 
                 {this.renderNewsList()}

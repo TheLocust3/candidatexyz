@@ -77,7 +77,7 @@ class PostForm extends React.Component {
 
     render() {
         return (
-            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content-bottom content-15'>
+            <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content content-bottom content-15'>
                 <TextField label='Title' name='title' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.title} style={{ width: '100%' }} /><br />
 
                 <TextField label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} /><br />

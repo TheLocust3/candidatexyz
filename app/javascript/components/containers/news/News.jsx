@@ -13,6 +13,7 @@ import MDCAutoInit from '../../components/global/MDCAutoInit';
 import ShowPost from '../posts/ShowPost';
 import TextContent from '../content/TextContent';
 import NewsThumbnail from './NewsThumbnail';
+import NewsPreview from './NewsPreview';
 
 class News extends React.Component {
 
@@ -30,12 +31,16 @@ class News extends React.Component {
         let posts = _.reverse(_.sortBy(this.props.posts, [(post) => { return post.createdAt }]));
 
         return (
-            <div className='news-list'>
+            <div>
                 {posts.map((post, index) => {
-                    return <NewsThumbnail post={post} history={history} key={post.id} />;
+                    return (
+                        <div key={index}>
+                            <NewsPreview key={index} post={post} /><br />
+                        </div>
+                    );
                 })}
             </div>
-        )
+        );
     }
 
     renderAddNews() {
@@ -66,7 +71,7 @@ function mapStateToProps(state) {
     return {
         posts: state.posts.postsOfType,
         isUserReady: state.staff.isReady,
-        user: state.staff.currentUser
+        user: state.staff.currentUser,
     };
 }
 

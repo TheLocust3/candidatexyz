@@ -13,6 +13,11 @@
     width: 100%;
 }
 
+.post-image-preview {
+    height: 30vh;
+    object-fit: cover;
+}
+
 .post-created-at {
     font-size: 12px;
 }

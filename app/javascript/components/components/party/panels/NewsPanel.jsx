@@ -8,6 +8,7 @@ import { fetchPostType } from '../../../actions/post-actions';
 import TextContent from '../../../containers/content/TextContent';
 
 import PanelWrapper from '../../panels/PanelWrapper';
+import NewsPreview from '../../../containers/news/NewsPreview';
 
 class NewsPanel extends React.Component {
 
@@ -16,12 +17,16 @@ class NewsPanel extends React.Component {
     }
 
     renderNewsList() {
-        let posts = _.reverse(_.sortBy(this.props.posts, [(post) => { return post.createdAt }]));
+        let posts = _.slice(_.reverse(_.sortBy(this.props.posts, [(post) => { return post.createdAt }])), 0, 3);
 
         return (
-            <div>
+            <div className='content-20'>
                 {posts.map((post, index) => {
-                    return 'test';
+                    return (
+                        <div key={index}>
+                            <NewsPreview key={index} post={post} /><br />
+                        </div>
+                    );
                 })}
             </div>
         )
@@ -29,7 +34,7 @@ class NewsPanel extends React.Component {
 
     render() {
         return (
-            <PanelWrapper className='news-panel' height='50vh'>
+            <PanelWrapper className='news-panel content-bottom'>
                 <Header type='headline2' className='news-panel-headline'><TextContent identifier='newsPanelHeadline' /></Header>
 
                 {this.renderNewsList()}
