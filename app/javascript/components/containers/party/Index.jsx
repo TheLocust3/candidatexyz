@@ -18,7 +18,7 @@ class Index extends React.Component {
     
     render() {
         return (
-            <div className='content'>
+            <div className='root-content'>
                 <SlideshowContent identifier='indexSlideshow' time={1000}></SlideshowContent>
 
                 <AboutPanel />

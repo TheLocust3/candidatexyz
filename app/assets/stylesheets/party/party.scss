@@ -19,8 +19,16 @@
     padding-left: 10px;
 }
 
-.content {
+.root-content {
     margin-top: 75px;
+}
+
+.content {
+    margin-top: 150px;
+
+    @media (max-width: $mobile-width) {
+        margin-top: 100px;
+    }
 }
 
 .about-panel {

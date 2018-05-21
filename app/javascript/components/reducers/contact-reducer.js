@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 const initialState = {
     isReady: false,
     contact: {},
-    contacts: {},
+    contacts: []
 };
 
 export function contactReducer(state = initialState, action) {

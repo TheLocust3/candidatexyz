@@ -49,7 +49,7 @@ export default class JoinUsForm extends React.Component {
                     By submitting your cell phone number you are agreeing to receive periodic text messages.
                 </Header>
 
-                <Button className='sign-up-form-button'>Subscribe</Button>
+                <Button className='sign-up-form-button'>Sign Up</Button>
             </FormWrapper>
         );
     }
