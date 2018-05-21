@@ -9,6 +9,7 @@ import { MDCMenu } from '@material/menu';
 import Fab from '../../components/base/Fab';
 import Link from '../../components/base/Link';
 import { history } from '../../../constants';
+import { home } from '../../../features';
 import { DEVELOPMENT } from '../../../features';
 import { fetchCurrentUser } from '../../actions/staff-actions';
 import { setEdit, popContentHistory } from '../../actions/content-actions';
@@ -56,7 +57,7 @@ class AdminOverlay extends React.Component {
 
     onLogoutClick(event) {
         AuthApi.signOut().then(() => {
-            history.push('/home');
+            history.push(home);
         })
     }
 

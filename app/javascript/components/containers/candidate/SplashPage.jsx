@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/base/Header';
 import Button from '../../components/base/Button';
 import Link from '../../components/base/Link';
+import { home } from '../../../features';
 import { setFullscreen, setDocumentTitle } from '../../actions/global-actions';
 import ContentApi from '../../../api/content-api';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
@@ -47,7 +48,7 @@ class SplashPage extends React.Component {
 
                 <JoinCard top='45%' right='60%' />
 
-                <Link to='/home'><Button className='splash-page-button'><TextContent identifier='splashPageButton' /></Button></Link>
+                <Link to={home}><Button className='splash-page-button'><TextContent identifier='splashPageButton' /></Button></Link>
 
                 <MDCAutoInit />
             </div>

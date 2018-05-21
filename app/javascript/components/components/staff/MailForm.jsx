@@ -8,6 +8,7 @@ import TextField from '../base/TextField';
 import TextEditor from '../base/TextEditor';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
+import { home } from '../../../features';
 import MailApi from '../../../api/mail-api';
 
 import FormWrapper from '../forms/FormWrapper';
@@ -34,7 +35,7 @@ export default class MailForm extends React.Component {
 
     handleSubmit(event) {
         MailApi.sendToContacts(this.state.subject, this.state.body).then(() => {
-            history.push('/home');
+            history.push(home);
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors

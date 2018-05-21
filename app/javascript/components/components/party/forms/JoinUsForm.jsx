@@ -40,10 +40,10 @@ export default class JoinUsForm extends React.Component {
                 <TextField label='First Name' name='firstName' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
                 <TextField label='Last Name' name='lastName' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%' }} /><br /><br />
 
-                <TextField label='Zipcode' name='zipCode' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
+                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
-                <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
-                <TextField label='Phone number' name='phoneNumber' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%' }} />
+                <TextField label='Phone number' name='phoneNumber' onChange={(event) => this.handleChange(event)} style={{ width: '47.5%', marginRight: '5%' }} />
+                <TextField label='Zipcode' name='zipCode' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%' }} /><br /><br />
 
                 <Header type='caption'>
                     By submitting your cell phone number you are agreeing to receive periodic text messages.

@@ -5,6 +5,7 @@ import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 import TextArea from '../../base/TextArea';
 import { history } from '../../../../constants';
+import { home } from '../../../../features';
 import MessageApi from '../../../../api/message-api';
 
 import FormWrapper from '../../forms/FormWrapper';
@@ -25,7 +26,7 @@ export default class MessageForm extends React.Component {
 
     handleSubmit(event) {
         MessageApi.create(this.state.firstName, this.state.lastName, this.state.email, this.state.subject, this.state.message).then(() => {
-            history.push('/home');
+            history.push(home);
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Parallax, Background } from 'react-parallax';
 import { MDCTemporaryDrawer } from '@material/drawer';
 
+import { home } from '../../../../features';
 import Link from '../../../components/base/Link';
 import Button from '../../../components/base/Button';
 import { MAX_MOBILE_WIDTH } from '../../../../constants';
@@ -69,7 +70,7 @@ class Navbar extends React.Component {
                 {this.renderHeaderImage()}
 
                 <div className='navbar'>
-                    <Link to='/home'><ImageContent identifier='logo' className='navbar-image' /></Link>
+                    <Link to={home}><ImageContent identifier='logo' className='navbar-image' /></Link>
 
                     <div className='navbar-actions'>
                         <div><SimpleLinkContent identifier='navLink1' className={`link ${invertedLink}`} /></div>
@@ -95,7 +96,7 @@ class Navbar extends React.Component {
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>
                     <div className='mdc-toolbar__row'>
                         <section className='mdc-toolbar__section mdc-toolbar__section--align-start relative'>
-                            <Link to='/home'><ImageContent identifier='logo' className='navbar-image middle' /></Link>
+                            <Link to={home}><ImageContent identifier='logo' className='navbar-image middle' /></Link>
                         </section>
 
                         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">

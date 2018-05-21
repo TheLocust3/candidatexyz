@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/base/Header';
 import Button from '../../components/base/Button';
 import { history } from '../../../constants';
+import { home } from '../../../features';
 import ContactApi from '../../../api/contact-api';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
@@ -18,7 +19,7 @@ class Unsubscribe extends React.Component {
 
     onUnsubscribeClick() {
         ContactApi.unsubscribe(this.props.match.params.token).then(() => {
-            history.push('/home');
+            history.push(home);
         });
     }
 

@@ -10,6 +10,7 @@ import SelectItem from '../../base/SelectItem';
 import ContentApi from '../../../../api/content-api';
 import MDCAutoInit from '../../global/MDCAutoInit';
 import { history, STATES } from '../../../../constants';
+import { home } from '../../../../features';
 import VolunteerApi from '../../../../api/volunteer-api';
 
 import FormWrapper from '../../forms/FormWrapper';
@@ -59,7 +60,7 @@ export default class VolunteerForm extends React.Component {
 
     handleSubmit(event) {
         VolunteerApi.create(this.state.email, this.state.phoneNumber, this.state.firstName, this.state.lastName, this.state.address, this.state.zipCode, this.state.city, this.state.state, this.state.helpBlurb).then(() => {
-            history.push('/home');
+            history.push(home);
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors

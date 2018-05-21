@@ -7,7 +7,7 @@ import SlideshowContent from '../content/SlideshowContent';
 
 import AboutPanel from '../../components/party/panels/AboutPanel';
 import NewsPanel from '../../components/party/panels/NewsPanel';
-import MeetPanel from '../../components/party/panels/MeetPanel';
+import JoinPanel from '../../components/party/panels/JoinPanel';
 
 class Index extends React.Component {
 
@@ -25,7 +25,7 @@ class Index extends React.Component {
 
                 <NewsPanel />
 
-                <MeetPanel />
+                <JoinPanel />
 
                 <MDCAutoInit />
             </div>
