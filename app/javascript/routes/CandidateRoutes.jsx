@@ -6,7 +6,6 @@ import Index from '../components/containers/candidate/Index';
 import Meet from '../components/containers/candidate/Meet';
 import Action from '../components/containers/candidate/Action';
 import SignUp from '../components/containers/candidate/SignUp';
-import Privacy from '../components/containers/candidate/Privacy';
 import Contact from '../components/containers/candidate/Contact';
 import MediaKit from '../components/containers/candidate/MediaKit';
 import ShortBio from '../components/containers/candidate/ShortBio';
@@ -21,11 +20,10 @@ export function candidateRoutes() {
         <Route exact path='/meet' component={Meet} key='3' />,
         <Route exact path='/action' component={Action} key='4' />,
         <Route exact path='/sign_up' component={SignUp} key='5' />,
-        <Route exact path='/privacy' component={Privacy} key='6' />,
-        <Route exact path='/contact' component={Contact} key='7' />,
-        <Route exact path='/media-kit' component={MediaKit} key='8' />,
-        <Route exact path='/short-bio' component={ShortBio} key='9' />,
-        <Route exact path='/issues' component={Issues} key='10' />,
-        <Route exact path='/issues/:url' component={ShowIssue} key='11' />,
+        <Route exact path='/contact' component={Contact} key='6' />,
+        <Route exact path='/media-kit' component={MediaKit} key='7' />,
+        <Route exact path='/short-bio' component={ShortBio} key='8' />,
+        <Route exact path='/issues' component={Issues} key='9' />,
+        <Route exact path='/issues/:url' component={ShowIssue} key='10' />,
     ];
 }

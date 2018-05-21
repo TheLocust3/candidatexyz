@@ -16,12 +16,14 @@ class Footer extends React.Component {
                 <SocialMediaLinks size={2} />
 
                 <Header type='headline5' className='link-holder'>
-                    <SimpleLinkContent identifier='footerContact' className='link' />
                     <SimpleLinkContent identifier='footerPrivacy' className='link' />
+                    <Link className='link' to='/sign-in'>Staff Login</Link>
                 </Header>
 
-                <Header type='body1' className='footer-staff-login'>
-                    <Link className='link' to='/sign-in' style={{ fontSize: 18 }}>Staff Login</Link>
+                <Header type='body1' className='footer-staff-login' style={{ fontSize: 12 }}>
+                    <div className='made-with' onClick={() => window.location.href = 'https://candidatexyz.com' }>
+                        Made with <b>candidateXYZ</b>.
+                    </div>
                 </Header>
             </div>
         );

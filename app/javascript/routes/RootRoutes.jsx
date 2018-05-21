@@ -7,6 +7,7 @@ import { CANDIDATE_WEBSITE, PARTY_WEBSITE } from '../features';
 import { candidateRoutes } from './CandidateRoutes';
 import { partyRoutes } from './PartyRoutes';
 
+import Privacy from '../components/containers/Privacy';
 import News from '../components/containers/news/News';
 import ShowNews from '../components/containers/news/ShowNews';
 import NotFound from '../components/components/NotFound';
@@ -28,8 +29,10 @@ class RootRoutes extends React.Component {
     render() {
         return (
             <Switch>
-                <Route exact path='/news' component={News} />,
-                <Route exact path='/news/:url' component={ShowNews} />,
+                <Route exact path='/privacy' component={Privacy} />
+
+                <Route exact path='/news' component={News} />
+                <Route exact path='/news/:url' component={ShowNews} />
 
                 {this.renderCandidateRoutes()}
                 {this.renderPartyRoutes()}
