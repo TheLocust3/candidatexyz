@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 
 import { fetchCurrentUser } from '../components/actions/staff-actions';
 
-import EditRawContent from '../components/containers/candidate/EditRawContent';
+import { CANDIDATE_WEBSITE, PARTY_WEBSITE } from '../features';
+import { candidateStaffRoutes } from './CandidateStaffRoutes';
+import { partyStaffRoutes } from './PartyStaffRoutes';
+
 import EditPost from '../components/containers/posts/EditPost';
 import CreatePost from '../components/containers/posts/CreatePost';
 import EditCurrentUserContainer from '../components/containers/users/EditCurrentUserContainer';
@@ -30,13 +33,27 @@ class StaffRoutes extends React.Component {
         this.props.dispatch(fetchCurrentUser());
     }
 
+    renderCandidateRoutes() {
+        if (!CANDIDATE_WEBSITE) return;
+
+        return candidateStaffRoutes();
+    }
+
+    renderPartyRoutes() {
+        if (!PARTY_WEBSITE) return;
+
+        return partyStaffRoutes();
+    }
+
     render() {
         if (_.isEmpty(this.props.user)) return null;
 
         return (
             <Route path='/staff'>
                 <Switch>
-                    <Route exact path='/staff/edit-content' component={EditRawContent} />
+                    {this.renderCandidateRoutes()}
+                    {this.renderPartyRoutes()}
+
                     <Route exact path='/staff/edit-user' component={EditCurrentUserContainer} />
                     <Route exact path='/staff/staff-management' component={StaffManagement} />
                     <Route exact path='/staff/staff-management/:id/edit' component={MasterEditUserForm} />

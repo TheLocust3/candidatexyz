@@ -16,7 +16,7 @@ export default class AboutPanel extends React.Component {
 
                 <div className='content-20'>
                     <ShowPost postType='party-about-panel' url='party-about' />
-                </div>                
+                </div>
             </PanelWrapper>
         );
     }
