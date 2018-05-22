@@ -1,3 +1,5 @@
+Content.create(content_type: 'text', identifier: 'websiteTitle', content: { text: 'CandidateXYZ' })
+
 # action
 Content.create(content_type: 'text', identifier: 'actionHeader', content: { text: 'Take Action.' })
 Content.create(content_type: 'text', identifier: 'actionSubtitle', content: { text: 'MAKE A DIFFERENCE' })

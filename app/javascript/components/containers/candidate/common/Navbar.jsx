@@ -8,6 +8,7 @@ import { home } from '../../../../features';
 import Link from '../../../components/base/Link';
 import Button from '../../../components/base/Button';
 import { MAX_MOBILE_WIDTH } from '../../../../constants';
+import TextContent from '../../content/TextContent';
 import ImageContent from '../../content/ImageContent';
 import SimpleLinkContent from '../../content/SimpleLinkContent';
 import ExternalLinkContent from '../../content/ExternalLinkContent';
@@ -109,7 +110,7 @@ class Navbar extends React.Component {
                     <nav className='mdc-drawer__drawer'>
                         <header className='mdc-drawer__header'>
                             <div className='mdc-drawer__header-content mdc-theme--text-primary-on-primary mdc-theme--primary-bg'>
-                                CandidateXYZ
+                                <TextContent identifier='websiteTitle' />
                             </div>
                         </header>
 

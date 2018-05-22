@@ -12,14 +12,17 @@ class EditRawContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false, partyCalendarUrl: {} };
+        this.state = { isReady: false, partyCalendarUrl: {}, websiteTitle: {} };
     }
 
     componentWillMount() {
         ContentApi.get('partyCalendarUrl').then((partyCalendarUrl) => {
-            this.setState({
-                isReady: true,
-                partyCalendarUrl: partyCalendarUrl
+            ContentApi.get('websiteTitle').then((partyCalendarUrl) => {
+                this.setState({
+                    isReady: true,
+                    partyCalendarUrl: partyCalendarUrl,
+                    websiteTitle: websiteTitle
+                });
             });
         });
     }
@@ -37,6 +40,8 @@ class EditRawContent extends React.Component {
                 <Header type='headline2'>Edit Raw Content</Header><br />
 
                 <RawContentInlineEditor content={this.state.partyCalendarUrl} />
+
+                <RawContentInlineEditor content={this.state.websiteTitle} />
 
                 <MDCAutoInit />
             </div>

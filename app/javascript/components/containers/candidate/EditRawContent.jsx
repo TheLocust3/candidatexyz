@@ -12,7 +12,7 @@ class EditRawContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false, indexBackground: {}, joinTeamBackground: {}, meetBackground: {}, voluneteerHelpOptions: {} };
+        this.state = { isReady: false, indexBackground: {}, joinTeamBackground: {}, meetBackground: {}, voluneteerHelpOptions: {}, websiteTitle: {} };
     }
 
     componentWillMount() {
@@ -20,12 +20,15 @@ class EditRawContent extends React.Component {
             ContentApi.get('joinTeamBackground').then((joinTeamBackground) => {
                 ContentApi.get('meetBackground').then((meetBackground) => {
                     ContentApi.get('voluneteerHelpOptions').then((voluneteerHelpOptions) => {
-                        this.setState({
-                            isReady: true,
-                            indexBackground: indexBackground,
-                            joinTeamBackground: joinTeamBackground,
-                            meetBackground: meetBackground,
-                            voluneteerHelpOptions: voluneteerHelpOptions
+                        ContentApi.get('websiteTitle').then((partyCalendarUrl) => {
+                            this.setState({
+                                isReady: true,
+                                indexBackground: indexBackground,
+                                joinTeamBackground: joinTeamBackground,
+                                meetBackground: meetBackground,
+                                voluneteerHelpOptions: voluneteerHelpOptions,
+                                websiteTitle: websiteTitle
+                            });
                         });
                     });
                 });
@@ -52,6 +55,8 @@ class EditRawContent extends React.Component {
                 <RawContentInlineEditor content={this.state.meetBackground} />
 
                 <RawContentInlineEditor content={this.state.voluneteerHelpOptions} />
+
+                <RawContentInlineEditor content={this.state.websiteTitle} />
 
                 <MDCAutoInit />
             </div>
