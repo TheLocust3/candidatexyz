@@ -6,8 +6,12 @@ import MDCAutoInit from '../../components/global/MDCAutoInit';
 
 import Header from '../../components/base/Header';
 import TextContent from '../../containers/content/TextContent';
+import ShowPost from '../../containers/posts/ShowPost';
 
-class AboutUs extends React.Component {
+import JoinPanel from '../../components/party/panels/JoinPanel';
+import VolunteerPanel from '../../components/party/panels/VolunteerPanel';
+
+class GetInvolved extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('About Us'));
@@ -17,7 +21,14 @@ class AboutUs extends React.Component {
     render() {
         return (
             <div className='content'>
-                <Header type='headline2'><TextContent identifier='partyAboutUsHeadline' /></Header>
+                <div className='content-15'>
+                    <Header type='headline2'><TextContent identifier='partyGetInvolvedHeadline' /></Header>
+                    <ShowPost postType='party-involved' url='party-involved-blurb' />
+                </div>
+
+                <JoinPanel />
+
+                <VolunteerPanel />
 
                 <MDCAutoInit />
             </div>
@@ -25,4 +36,4 @@ class AboutUs extends React.Component {
     }
 }
 
-export default connect()(AboutUs);
+export default connect()(GetInvolved);

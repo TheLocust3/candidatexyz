@@ -194,6 +194,13 @@ Post.create(post_type: 'party-events', url: 'party-events-blurb', title: '', bod
 
 Content.create(content_type: 'raw', identifier: 'partyCalendarUrl', content: 'https://calendar.google.com/calendar/embed?src=u037gu187lnt79755tn76hrkos%40group.calendar.google.com&ctz=America%2FNew_York')
 
+Content.create(content_type: 'text', identifier: 'partyGetInvolvedHeadline', content: { text: 'Get Involed' })
+Post.create(post_type: 'party-involved', url: 'party-involved-blurb', title: '', body: "
+<p>We've got lots of ways for you to get involved with us'!</p>")
+
+Content.create(content_type: 'text', identifier: 'partyVolunteerPanelHeadline', content: { text: 'Volunteer With Us' })
+Content.create(content_type: 'text', identifier: 'partyVolunteerPanelSubtitle', content: { text: 'We do cool shit' })
+
 # posts
 Post.create(post_type: 'meet', url: 'meet-body', title: '', body: "<p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu massa efficitur, laoreet ex malesuada, scelerisque sem. Nam porttitor elit at felis molestie aliquet. Sed id metus massa. Etiam congue magna eget vulputate hendrerit. Proin hendrerit maximus ipsum, ut lobortis sem ultrices et. Integer quis odio egestas, tristique purus sit amet, pretium ante. Pellentesque tincidunt mollis libero non imperdiet.<br /><br />

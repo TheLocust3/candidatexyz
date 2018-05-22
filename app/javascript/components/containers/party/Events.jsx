@@ -30,7 +30,7 @@ class Events extends React.Component {
     
     render() {
         return (
-            <div className='content content-20'>
+            <div className='content content-20 content-bottom'>
                 <Header type='headline2'><TextContent identifier='partyEventsHeadline' /></Header>
                 <ShowPost postType='party-events' url='party-events-blurb' />
 

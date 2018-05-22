@@ -55,7 +55,7 @@ class News extends React.Component {
         return (
             <div>
                 <div className='content content-15'>
-                    <Header type='headline3'><b><TextContent identifier='newsHeader' /></b></Header>
+                    <Header type='headline2'><TextContent identifier='newsHeader' /></Header>
                     {this.renderAddNews()}<br /><br />
 
                     {this.renderNewsList()}
