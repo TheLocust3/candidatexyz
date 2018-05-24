@@ -9,8 +9,7 @@ import { MDCMenu } from '@material/menu';
 import Fab from '../../components/base/Fab';
 import Link from '../../components/base/Link';
 import { history } from '../../../constants';
-import { home } from '../../../features';
-import { DEVELOPMENT } from '../../../features';
+import { home, DEVELOPMENT, PARTY_WEBSITE, CANDIDATE_WEBSITE } from '../../../features';
 import { fetchCurrentUser } from '../../actions/staff-actions';
 import { setEdit, popContentHistory } from '../../actions/content-actions';
 import AuthApi from '../../../api/auth-api';
@@ -120,7 +119,21 @@ class AdminOverlay extends React.Component {
                     </li>
                 </Link>
             </div>
-        )
+        );
+    }
+
+    renderCandidateLinks() {
+        if (!CANDIDATE_WEBSITE) return;
+
+        return (
+            <div>
+                <Link to='/staff/messages' className='menu-item-link'>
+                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                        Messages
+                    </li>
+                </Link>
+            </div>
+        );
     }
 
     render() {
@@ -168,11 +181,7 @@ class AdminOverlay extends React.Component {
                                     </li>
                                 </Link>
 
-                                <Link to='/staff/messages' className='menu-item-link'>
-                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Messages
-                                    </li>
-                                </Link>
+                                {this.renderCandidateLinks()}
 
                                 <Link to='/staff/volunteers' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>

@@ -70,7 +70,7 @@ export default class VolunteerForm extends React.Component {
 
     renderStateDropdown() {
         return (
-            <Select label='State' onChange={(select) => this.handleStateChange(select)} style={{ width: '30%' }}>
+            <Select label='State' onChange={(select) => this.handleStateChange(select)} style={{ width: '30%' }} selectedIndex={19}>
                 {STATES.map((state) => {
                     return (
                         <SelectItem key={state}>
