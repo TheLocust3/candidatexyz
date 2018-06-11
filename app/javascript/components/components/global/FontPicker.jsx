@@ -23,9 +23,17 @@ class FontPicker extends React.Component {
         let selectedIndex = _.findIndex(FONTS, { value: fontFamily });
         
         let other = selectedIndex == -1 && !_.isEmpty(fontFamily);
-        selectedIndex = other ? _.findIndex(FONTS, { value: 'other' }) : selectedIndex;
 
-        this.state = { selectedIndex: selectedIndex, otherOpen: other };
+        this.state = { selectedIndex: this.selectedIndex(), otherOpen: other };
+    }
+
+    selectedIndex() {
+        let fontFamily = _.isEmpty(this.props.fontFamily) ? '' : this.props.fontFamily;
+        let selectedIndex = _.findIndex(FONTS, { value: fontFamily });
+        
+        selectedIndex = selectedIndex == -1 && !_.isEmpty(fontFamily) ? _.findIndex(FONTS, { value: 'other' }) : selectedIndex;
+
+        return selectedIndex;
     }
 
     handleFontChange(select) {
@@ -34,7 +42,8 @@ class FontPicker extends React.Component {
                 otherOpen: true
             });
         } else {
-            this.props.onChange(_.find(FONTS, { name: select.value }).value);
+            this.props.onFontFamilyChange(_.find(FONTS, { name: select.value }).value);
+            this.props.onLoadedFontChange('');
 
             this.setState({
                 otherOpen: false
@@ -59,7 +68,7 @@ class FontPicker extends React.Component {
     render() {
         return (
             <div>
-                <Select label='Font' onChange={(select) => this.handleFontChange(select)} selectedIndex={this.state.selectedIndex} style={{ width: '30%', ...this.props.style }}>
+                <Select label='Font' onChange={(select) => this.handleFontChange(select)} selectedIndex={this.selectedIndex()} style={{ width: '30%', ...this.props.style }}>
                     {FONTS.map((font) => {
                         return (
                             <SelectItem key={font.name}>
