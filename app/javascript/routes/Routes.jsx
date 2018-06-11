@@ -7,6 +7,7 @@ import { history } from '../constants';
 import { fetchGlobalTheme } from '../components/actions/theme-actions';
 
 import MDCAutoInit from '../components/components/global/MDCAutoInit';
+import FontLoader from '../components/components/global/FontLoader';
 import RootNavbar from '../components/containers/common/RootNavbar';
 import RootFooter from '../components/containers/common/RootFooter';
 import AdminOverlay from '../components/containers/common/AdminOverlay';
@@ -42,6 +43,7 @@ class Routes extends React.Component {
             <Router history={history}>
                 <div>
                     <Route component={ScrollToTop} />
+                    <FontLoader />
 
                     <RootNavbar />
                     <AdminOverlay />

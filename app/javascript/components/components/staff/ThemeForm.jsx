@@ -9,6 +9,7 @@ import Button from '../base/Button';
 import TextField from '../base/TextField';
 import Select from '../base/Select';
 import SelectItem from '../base/SelectItem';
+import FontLoader from '../global/FontLoader';
 import { history } from '../../../constants';
 import ThemeApi from '../../../api/theme-api';
 
@@ -158,6 +159,8 @@ class ThemeForm extends React.Component {
                 <br /><br />
 
                 <Button className='sign-up-form-button'>Save</Button>
+                
+                <FontLoader themeOverride={this.theme()} />
             </FormWrapper>
         );
     }

@@ -62,7 +62,7 @@ class LinkSidebar extends React.Component {
                 <ColorPicker label='Pick Hover Color' color={theme.colorHover} onChange={(color) => this.handleThemeChange(color.hex, 'colorHover')} />
 
                 <div style={{ position: 'relative' }}>
-                    <FontPicker onChange={(font) => { this.handleThemeChange(font, 'fontFamily') }} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />
+                    <FontPicker onFontFamilyChange={(font) => { this.handleChange('fontFamily', font) }} onLoadedFontChange={(font) => { this.handleChange('loadedFont', font) }} fontFamily={theme.fontFamily} loadedFont={theme.loadedFont} style={{ marginTop: '0.75em' }} />
                     <TextField type='number' label='Font Size' onChange={(event) => { this.handleThemeChange(event.target.value, 'fontSize', 'px') }} defaultValue={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
                 </div>
 

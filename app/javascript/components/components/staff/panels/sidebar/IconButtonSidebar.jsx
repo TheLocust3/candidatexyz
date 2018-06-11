@@ -6,7 +6,6 @@ import Header from '../../../base/Header';
 import MDCAutoInit from '../../../global/MDCAutoInit';
 import DeleteElementButton from './DeleteElementButton';
 import ColorPicker from '../../../global/ColorPicker';
-import FontPicker from '../../../global/FontPicker';
 import CustomStyler from '../../../global/CustomStyler';
 import TextField from '../../../base/TextField';
 

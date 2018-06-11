@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -30,7 +29,7 @@ class LinkStyler extends React.Component {
                 <ColorPicker label='Pick Text Color' color={theme.color} colors={this.props.colors} onChange={(color) => this.handleChange('color', color.hex)}  />
 
                 <div style={{ position: 'relative' }}>
-                    <FontPicker onChange={(font) => { this.handleChange('fontFamily', font) }} fontFamily={theme.fontFamily} style={{ marginTop: '0.75em' }} />
+                    <FontPicker onFontFamilyChange={(font) => { this.handleChange('fontFamily', font) }} onLoadedFontChange={(font) => { this.handleChange('loadedFont', font) }} fontFamily={theme.fontFamily} loadedFont={theme.loadedFont} style={{ marginTop: '0.75em' }} />
                     <TextField type='number' label='Font Size' onChange={(event) => { this.handleChange('fontSize', event.target.value, 'px') }} value={_.replace(theme.fontSize, 'px', '')} style={{ position: 'absolute', top: 0, left: '35%' }} /><br />
                 </div>
 

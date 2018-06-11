@@ -22,7 +22,7 @@ class TextAreaStyler extends React.Component {
             <div>
                 <ColorPicker label='Pick Color' color={theme.color} colors={this.props.colors} onChange={(color) => this.handleChange('color', color.hex)}  />
 
-                <FontPicker fontFamily={theme.fontFamily} onChange={(font) => { this.handleChange('fontFamily', font) }} />
+                <FontPicker onFontFamilyChange={(font) => { this.handleChange('fontFamily', font) }} onLoadedFontChange={(font) => { this.handleChange('loadedFont', font) }} fontFamily={theme.fontFamily} loadedFont={theme.loadedFont} />
             </div>
         );
     }
