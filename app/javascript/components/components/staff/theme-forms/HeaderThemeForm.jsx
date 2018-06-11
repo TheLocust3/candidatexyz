@@ -1,10 +1,10 @@
 import _ from 'lodash';
-import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from '../../base/Header';
 import HeaderStyler from '../element-stylers/HeaderStyler';
+import FontPicker from '../../global/FontPicker';
 
 class HeaderThemeForm extends React.Component {
 
@@ -20,10 +20,10 @@ class HeaderThemeForm extends React.Component {
         this.state.header.headline5 = _.isEmpty(this.state.header.headline5) ? {} : this.state.header.headline5;
         this.state.header.headline6 = _.isEmpty(this.state.header.headline6) ? {} : this.state.header.headline6;
 
-        this.state.header.headline5 = _.isEmpty(this.state.header.subtitle1) ? {} : this.state.header.subtitle1;
-        this.state.header.headline6 = _.isEmpty(this.state.header.subtitle2) ? {} : this.state.header.subtitle2;
-        this.state.header.headline5 = _.isEmpty(this.state.header.body1) ? {} : this.state.header.body1;
-        this.state.header.headline6 = _.isEmpty(this.state.header.body2) ? {} : this.state.header.body2;
+        this.state.header.subtitle1 = _.isEmpty(this.state.header.subtitle1) ? {} : this.state.header.subtitle1;
+        this.state.header.subtitle2 = _.isEmpty(this.state.header.subtitle2) ? {} : this.state.header.subtitle2;
+        this.state.header.body1 = _.isEmpty(this.state.header.body1) ? {} : this.state.header.body1;
+        this.state.header.body2 = _.isEmpty(this.state.header.body2) ? {} : this.state.header.body2;
     }
 
     updateTheme(theme, type) {
@@ -33,6 +33,20 @@ class HeaderThemeForm extends React.Component {
         this.setState({
             header: header
         });
+
+        this.props.updateTheme(header);
+    }
+
+    handleFontChange(attribute, value) {
+        let header = this.state.header;
+
+        _.map(header, (subHeader, key) => {
+            if (_.isObject(subHeader)) {
+                header[key][attribute] = value;
+            }
+        });
+
+        header[attribute] = value;
 
         this.props.updateTheme(header);
     }
@@ -54,6 +68,9 @@ class HeaderThemeForm extends React.Component {
 
         return (
             <div>
+                <FontPicker onFontFamilyChange={(font) => { this.handleFontChange('fontFamily', font) }} onLoadedFontChange={(font) => { this.handleFontChange('loadedFont', font) }} fontFamily={this.state.header.fontFamily} loadedFont={this.state.header.loadedFont} />
+                <br />
+
                 <div className='mdc-tab-bar-header'>
                     <nav className='mdc-tab-bar' role='tablist' data-mdc-auto-init='MDCTabBar'>
                         <span role='tab' className='mdc-tab mdc-tab--active' onClick={() => { this.setState({ panel: 0 }); }}>Headline1</span>
