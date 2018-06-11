@@ -17,9 +17,6 @@ class Select extends React.Component {
     mdcInit() {
         if (this.theme().classNamePrefix == 'mdc-') {
             const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
-            select.listen('change', () => {
-                this.props.onChange(select);
-            });
 
             if (this.props.selectedIndex != null) {
                 select.selectedIndex = this.props.selectedIndex;
@@ -66,19 +63,20 @@ class Select extends React.Component {
                     {label}
                 </div>
 
-                <select onChange={(event) => { this.props.onChange(event.target.value) }} {...props}>
+                <select onChange={(event) => { this.props.onChange(event.target) }} {...props}>
                     {children}
                 </select>
             </div>
         )
     }
+
     renderMdc() {
         let { className, label, onChange, selectedIndex, children, theme, themeOverride, customPanelTheme, dispatch, ...props } = this.props;
         className = _.isEmpty(className) ? '' : className;
 
         return (
             <div className={`${this.themedClassName('select')} ${className}`} id={this.state.uuid} role='listbox' data-mdc-auto-init='MDCSelect' {...props}>
-                <select className={this.themedClassName('select__native-control')}>
+                <select onChange={(event) => { this.props.onChange(event.target) }} className={this.themedClassName('select__native-control')}>
                     {children}
                 </select>
 

@@ -68,7 +68,7 @@ class ThemeList extends React.Component {
 
     render() {
         return (
-            <div className='content content-5'>
+            <div>
                 {this.renderThemeList()}
             </div>
         );
