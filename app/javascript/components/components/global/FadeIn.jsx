@@ -72,23 +72,19 @@ class FadeInElements extends React.Component {
         }
 
         const transitionDuration = this.transitionDuration;
-        return (
-          <div>
-                {React.Children.map(this.props.children, (child, i) => {
-                    return (
-                        <div
-                            style={{
-                                transition: `opacity ${transitionDuration}ms`,
-                                position: "relative",
-                                opacity: this.state.maxIsVisible > i ? 1 : 0
-                            }}
-                        >
-                            {child}
-                        </div>
-                    );
-                })}
-          </div>
-        );
+        return React.Children.map(this.props.children, (child, i) => {
+            return (
+                <div
+                    style={{
+                        transition: `opacity ${transitionDuration}ms`,
+                        position: "relative",
+                        opacity: this.state.maxIsVisible > i ? 1 : 0
+                    }}
+                >
+                    {child}
+                </div>
+            );
+        });
     }
 }
 
