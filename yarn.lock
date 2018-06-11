@@ -5361,6 +5361,10 @@ react-draft-wysiwyg@^1.12.11:
     linkify-it "^2.0.3"
     prop-types "^15.6.0"
 
+react-fade-in@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-fade-in/-/react-fade-in-0.1.6.tgz#59efdd54c3ddc7b1dbe0c7a2993f4efe4af4049f"
+
 react-parallax@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-1.6.1.tgz#5846e43e4e9e021f87c394152b3baf3240779b27"

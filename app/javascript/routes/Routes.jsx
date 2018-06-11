@@ -1,12 +1,13 @@
 import _ from 'lodash';
 import React from 'react';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { history } from '../constants';
 import { fetchGlobalTheme } from '../components/actions/theme-actions';
 
 import MDCAutoInit from '../components/components/global/MDCAutoInit';
+import FadeIn from '../components/components/global/FadeIn';
 import FontLoader from '../components/components/global/FontLoader';
 import RootNavbar from '../components/containers/common/RootNavbar';
 import RootFooter from '../components/containers/common/RootFooter';
@@ -41,7 +42,7 @@ class Routes extends React.Component {
 
         return (
             <Router history={history}>
-                <div>
+                <FadeIn>
                     <Route component={ScrollToTop} />
                     <FontLoader />
 
@@ -63,7 +64,7 @@ class Routes extends React.Component {
                     <RootFooter />
 
                     <MDCAutoInit />
-                </div>
+                </FadeIn>
             </Router>
         );
     }
