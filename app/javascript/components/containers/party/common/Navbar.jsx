@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import { MDCTemporaryDrawer } from '@material/drawer';
 
 import Link from '../../../components/base/Link';
-import Button from '../../../components/base/Button';
 import { MAX_MOBILE_WIDTH } from '../../../../constants';
 import TextContent from '../../content/TextContent';
 import ImageContent from '../../content/ImageContent';
 import SimpleLinkContent from '../../content/SimpleLinkContent';
-import ExternalLinkContent from '../../content/ExternalLinkContent';
 
 class Navbar extends React.Component {
 

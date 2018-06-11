@@ -1,5 +1,12 @@
 @import 'theme';
 
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
 .overlay-action-icon {
     background-color: $purple-primary;
 }

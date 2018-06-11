@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { MDCTextField } from '@material/textfield';
 
 import Button from '../../base/Button';
 import TextField from '../../base/TextField';
@@ -12,7 +11,7 @@ import { setEditOverlayOpen, pushContentHistory, fetchAllContent } from '../../.
 
 import FormWrapper from '../../forms/FormWrapper';
 
-const TEXT_FIELD_CUTOFF = 30;
+const TEXT_FIELD_CUTOFF = 100;
 
 class TextContentEditor extends React.Component {
 

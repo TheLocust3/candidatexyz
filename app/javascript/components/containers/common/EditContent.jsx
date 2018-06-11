@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import $ from 'jquery';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -19,14 +18,12 @@ class EditContent extends React.Component {
 
     componentDidMount() {
         $(document).click((event) => { // TODO: find a better way to do this
-            let target = event.target;
-
             if (!$(event.target).parents().is(`#${this.props.content.identifier}`) && !$(event.target).parents().is('.edit-content-wrapper') && this.props.edit) {
                 this.props.dispatch(setEditOverlayOpen(false));
                 this.props.dispatch(fetchAllContent());
             } else if (!$(event.target).parents().is('.edit-content-wrapper')) {
                 this.setState({
-                    top: event.pageY + 5,
+                    top: event.pageY + 10,
                     left: event.pageX
                 });
             }
