@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -34,7 +33,7 @@ class NewsPreview extends React.Component {
 
                 <span dangerouslySetInnerHTML={{__html: post.body.substring(0, PREVIEW_BODY_LENGTH) }} />
 
-                <Link to={`/news/${post.url}`} unstyled>Read more</Link>
+                <Link to={`/news/${post.url}`}>Read more</Link>
             </div>
         );
     }
