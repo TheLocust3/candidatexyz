@@ -87,16 +87,17 @@ class ShowPost extends React.Component {
         if (_.isEmpty(this.state.post.title)) return;
 
         let titleClassName = this.props.renderAsIssue && !_.isEmpty(this.state.post.image) ? 'floating-title' : '';
+        let headerType = _.isEmpty(this.props.headerType) ? 'headline2' : this.props.headerType;
 
         return (
             <div className={titleClassName}>
-                <Header type='headline2'>{this.state.post.title}</Header>
+                <Header type={headerType}>{this.state.post.title}</Header>
             </div>
         );
     }
 
     render() {
-        let { postType, url, posts, renderAsNews, renderAsIssue, edit, dispatch, ...props } = this.props;
+        let { postType, url, posts, renderAsNews, renderAsIssue, headerType, edit, dispatch, ...props } = this.props;
 
         if (!_.isEmpty(this.state.post.title)) {
             this.props.dispatch(setDocumentTitle(this.state.post.title));
@@ -120,7 +121,8 @@ ShowPost.propTypes = {
     postType: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     renderAsNews: PropTypes.bool,
-    renderAsIssue: PropTypes.bool
+    renderAsIssue: PropTypes.bool,
+    headerType: PropTypes.string
 };
 
 function mapStateToProps(state) {

@@ -207,6 +207,12 @@ class AdminOverlay extends React.Component {
                                     </li>
                                 </Link>
 
+                                <Link to='/staff/help' className='menu-item-link'>
+                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
+                                        Help
+                                    </li>
+                                </Link>
+
                                 <li className='mdc-list-item' role='menuitem' tabIndex='0' onClick={this.onLogoutClick.bind(this)}>
                                     Logout
                                 </li>

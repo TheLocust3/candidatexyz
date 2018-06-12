@@ -25,6 +25,7 @@ import ShowMessage from '../components/containers/staff/ShowMessage';
 import SignUpOverview from '../components/containers/staff/SignUpOverview';
 import Themes from '../components/containers/staff/Themes';
 import ThemeEditor from '../components/containers/staff/ThemeEditor';
+import Help from '../components/containers/staff/Help';
 
 import StaffDevelopmentRoutes from './StaffDevelopmentRoutes';
 
@@ -75,6 +76,8 @@ class StaffRoutes extends React.Component {
                     <Route exact path='/staff/themes' component={Themes} />
                     <Route exact path='/staff/themes/new' component={ThemeEditor} />
                     <Route exact path='/staff/themes/:name' component={ThemeEditor} />
+
+                    <Route exact path='/staff/help' component={Help} />
 
                     <StaffDevelopmentRoutes />
                 </Switch>

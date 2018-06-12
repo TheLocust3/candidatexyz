@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Header from '../../base/Header';
-import Link from '../../base/Link';
 import TextContent from '../../../containers/content/TextContent';
 
 import PanelWrapper from '../../panels/PanelWrapper';

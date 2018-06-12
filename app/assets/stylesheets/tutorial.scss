@@ -1,0 +1,32 @@
+.tutorial-slideshow {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+
+    padding: 5%;
+
+    border-style: dashed;
+    border-color: #E0E0E0;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+.tutorial-slideshow-inner {
+    position: relative;
+    height: 60%;
+}
+
+.tutorial-slide {
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.tutorial-slide-visible {
+    opacity: 1;
+}
+
+.tutorial-slideshow-button {
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+}
