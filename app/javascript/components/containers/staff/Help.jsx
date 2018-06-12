@@ -26,8 +26,8 @@ class Help extends React.Component {
         event.preventDefault();
 
         let nextSlideIndex = this.state.slideIndex + 1;
-        if (nextSlideIndex > 5) {
-            nextSlideIndex = 5;
+        if (nextSlideIndex > 6) {
+            nextSlideIndex = 6;
         }
 
         this.setState({
@@ -48,24 +48,28 @@ class Help extends React.Component {
             <div className='tutorial-slideshow'>
                 <Header type='headline6' className='tutorial-slideshow-inner'>
                     <p className={`tutorial-slide middle ${this.state.slideIndex == 0 ? 'tutorial-slide-visible' : ''}`}>
-                        Click the button with a pencil on it to enter Edit Mode.
+                        Click next to begin a quick tutorial on how to use your website.
                     </p>
 
                     <p className={`tutorial-slide middle ${this.state.slideIndex == 1 ? 'tutorial-slide-visible' : ''}`}>
+                        Click the button with a pencil on it to enter Edit Mode.
+                    </p>
+
+                    <p className={`tutorial-slide middle ${this.state.slideIndex == 2 ? 'tutorial-slide-visible' : ''}`}>
                         In Edit Mode you can click on any content that you want to edit (text, images, slideshows, etc).<br />
                         You can also undo certain edits by hitting the undo button.<br />
                         Try editing some of the sample text on this page now. Hit 'Done' (on the bottom of the page) when you are ready to move on.
                     </p>
 
-                    <p className={`tutorial-slide middle ${this.state.slideIndex == 2 ? 'tutorial-slide-visible' : ''}`}>
+                    <p className={`tutorial-slide middle ${this.state.slideIndex == 3 ? 'tutorial-slide-visible' : ''}`}>
                         The envelope button allows you to send an email to everyone who has signed up on your site.
                     </p>
 
-                    <p className={`tutorial-slide middle ${this.state.slideIndex == 3 ? 'tutorial-slide-visible' : ''}`}>
+                    <p className={`tutorial-slide middle ${this.state.slideIndex == 4 ? 'tutorial-slide-visible' : ''}`}>
                         Finally, the gear button opens further Staff options.
                     </p>
 
-                    <p className={`tutorial-slide middle ${this.state.slideIndex == 4 ? 'tutorial-slide-visible' : ''}`}>
+                    <p className={`tutorial-slide middle ${this.state.slideIndex == 5 ? 'tutorial-slide-visible' : ''}`}>
                         <b>Staff Options</b><br />
                         Settings: Edit your personal user settings<br />
                         Staff Management: Manage your staff. Invite staff, update permissions, etc<br />
@@ -74,7 +78,7 @@ class Help extends React.Component {
                         Edit Other Content: Edit certain content that can't be edited anywhere else (calendars, website name)<br />
                     </p>
 
-                    <p className={`tutorial-slide middle-center ${this.state.slideIndex == 5 ? 'tutorial-slide-visible' : ''}`}>
+                    <p className={`tutorial-slide middle-center ${this.state.slideIndex == 6 ? 'tutorial-slide-visible' : ''}`}>
                         <Button onClick={this.onReplayClick.bind(this)}>Replay</Button>
                     </p>
                 </Header>
