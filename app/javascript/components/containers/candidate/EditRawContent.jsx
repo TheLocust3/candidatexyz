@@ -20,7 +20,7 @@ class EditRawContent extends React.Component {
             ContentApi.get('joinTeamBackground').then((joinTeamBackground) => {
                 ContentApi.get('meetBackground').then((meetBackground) => {
                     ContentApi.get('voluneteerHelpOptions').then((voluneteerHelpOptions) => {
-                        ContentApi.get('websiteTitle').then((partyCalendarUrl) => {
+                        ContentApi.get('websiteTitle').then((websiteTitle) => {
                             this.setState({
                                 isReady: true,
                                 indexBackground: indexBackground,
@@ -46,7 +46,7 @@ class EditRawContent extends React.Component {
 
         return (
             <div className='content edit-raw-content'>
-                <Header type='headline2'>Edit Raw Content</Header><br />
+                <Header type='headline2'>Edit Other Content</Header><br />
 
                 <RawContentInlineEditor content={this.state.indexBackground} /><br />
                 

@@ -17,7 +17,7 @@ class EditRawContent extends React.Component {
 
     componentWillMount() {
         ContentApi.get('partyCalendarUrl').then((partyCalendarUrl) => {
-            ContentApi.get('websiteTitle').then((partyCalendarUrl) => {
+            ContentApi.get('websiteTitle').then((websiteTitle) => {
                 this.setState({
                     isReady: true,
                     partyCalendarUrl: partyCalendarUrl,
@@ -37,7 +37,7 @@ class EditRawContent extends React.Component {
 
         return (
             <div className='content edit-raw-content'>
-                <Header type='headline2'>Edit Raw Content</Header><br />
+                <Header type='headline2'>Edit Other Content</Header><br />
 
                 <RawContentInlineEditor content={this.state.partyCalendarUrl} />
 

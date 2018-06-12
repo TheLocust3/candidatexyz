@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React from 'react';
 
 import Button from '../base/Button';
@@ -8,7 +7,7 @@ import ImageApi from '../../../api/image-api';
 
 import FormWrapper from '../forms/FormWrapper';
 
-export default class MessageForm extends React.Component {
+export default class UploadImageForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -43,7 +42,7 @@ export default class MessageForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content-10'>
                 <TextField label='Image Identifier' name='identifier' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '100%' }} /><br /><br />
 
-                <input type='file' name='image' id='submit-image' accept="image/*" onChange={this.handleImageUpload.bind(this)} /><br />
+                <input type='file' name='image' id='submit-image' accept='image/*' onChange={this.handleImageUpload.bind(this)} /><br />
 
                 <Button className='sign-up-form-button'>Upload</Button>
             </FormWrapper>

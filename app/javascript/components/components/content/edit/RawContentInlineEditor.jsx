@@ -20,7 +20,12 @@ class RawContentInlineEditor extends React.Component {
 
     handleContentChange(event) {
         let content = this.state.content;
-        content.content = event.target.value;
+
+        if (_.isObject(this.props.content.content)) {
+            content.content = { text: event.target.value };
+        } else {
+            content.content = event.target.value;
+        }
 
         this.setState({
             content: content
@@ -35,9 +40,11 @@ class RawContentInlineEditor extends React.Component {
     }
 
     render() {
+        let content = _.isObject(this.props.content.content) ? this.props.content.content.text : this.props.content.content; // hope it's text if there's an object
+
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)}>
-                <TextField label={this.props.content.identifier} onChange={(event) => this.handleContentChange(event)} defaultValue={this.props.content.content} size={100} />
+                <TextField label={this.props.content.identifier} onChange={(event) => this.handleContentChange(event)} defaultValue={content} size={100} />
 
                 <Button className='edit-raw-content-button'>Save</Button>
             </FormWrapper>
