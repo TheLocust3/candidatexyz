@@ -2,12 +2,17 @@ class Mailer < ApplicationMailer
 
     def to_contacts(subject, body)
         mail_template
-
-        @body = body
         
         Contact.all.map { |contact|
             @token = Rails.application.message_verifier(:unsubscribe).generate(contact.id)
-            mail(to: contact.email, subject: subject, template_path: 'mail', template_name: 'campaign')
+
+            substituted_subject = subject.gsub('[FIRST_NAME]', contact.first_name)
+            substituted_subject = substituted_subject.gsub('[LAST_NAME]', contact.last_name)
+
+            @body = body.gsub('[FIRST_NAME]', contact.first_name)
+            @body = @body.gsub('[LAST_NAME]', contact.last_name)
+
+            mail(to: contact.email, subject: substituted_subject, template_path: 'mail', template_name: 'campaign')
         }
     end
 
