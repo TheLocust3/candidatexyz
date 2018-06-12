@@ -5,7 +5,8 @@ const initialState = {
     blankNavbar: false,
     headerImage: '',
     fullscreen: false,
-    documentTitle: ''
+    documentTitle: '',
+    websiteTitle: ''
 };
 
 export function globalReducer(state = initialState, action) {
@@ -21,7 +22,7 @@ export function globalReducer(state = initialState, action) {
                 fullscreen: action.data
             });
         case GlobalActions.SET_DOCUMENT_TITLE:
-            document.title = `${TITLE} - ${action.data}`
+            document.title = `${state.websiteTitle} - ${action.data}`
 
             return Object.assign({}, state, {
                 documentTitle: action.data
@@ -31,6 +32,10 @@ export function globalReducer(state = initialState, action) {
                 blankNavbar: false,
                 fullscreen: false,
                 headerImage: action.data
+            });
+        case GlobalActions.STORE_WEBSITE_TITLE:
+            return Object.assign({}, state, {
+                websiteTitle: action.data
             });
         default:
             return state;

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { history } from '../constants';
 import { fetchGlobalTheme } from '../components/actions/theme-actions';
+import { fetchWebsiteTitle } from '../components/actions/global-actions';
 
 import MDCAutoInit from '../components/components/global/MDCAutoInit';
 import FadeIn from '../components/components/global/FadeIn';
@@ -35,6 +36,7 @@ class Routes extends React.Component {
 
     componentWillMount() {
         this.props.dispatch(fetchGlobalTheme());
+        this.props.dispatch(fetchWebsiteTitle());
     }
 
     render() {
