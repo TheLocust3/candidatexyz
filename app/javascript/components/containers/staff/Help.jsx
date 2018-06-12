@@ -25,8 +25,21 @@ class Help extends React.Component {
     onNextClick(event) {
         event.preventDefault();
 
+        let nextSlideIndex = this.state.slideIndex + 1;
+        if (nextSlideIndex > 5) {
+            nextSlideIndex = 5;
+        }
+
         this.setState({
-            slideIndex: this.state.slideIndex + 1
+            slideIndex: nextSlideIndex
+        });
+    }
+
+    onReplayClick(event) {
+        event.preventDefault();
+
+        this.setState({
+            slideIndex: 0
         });
     }
 
@@ -53,11 +66,16 @@ class Help extends React.Component {
                     </p>
 
                     <p className={`tutorial-slide middle ${this.state.slideIndex == 4 ? 'tutorial-slide-visible' : ''}`}>
-                        <b>Settings:</b> Edit your personal user settings<br />
-                        <b>Staff Management:</b> Manage your staff. Invite staff, update permissions, etc<br />
-                        <b>Volunteers:</b> A list of volunteers who have signed up on your site<br />
-                        <b>Sign Ups:</b> A list of people who have signed up on your site. Used to send mass emails<br />
-                        <b>Edit Other Content:</b> Edit certain content that can't be edited anywhere else (calendars, website name)<br />
+                        <b>Staff Options</b><br />
+                        Settings: Edit your personal user settings<br />
+                        Staff Management: Manage your staff. Invite staff, update permissions, etc<br />
+                        Volunteers: A list of volunteers who have signed up on your site<br />
+                        Sign Ups: A list of people who have signed up on your site. Used to send mass emails<br />
+                        Edit Other Content: Edit certain content that can't be edited anywhere else (calendars, website name)<br />
+                    </p>
+
+                    <p className={`tutorial-slide middle-center ${this.state.slideIndex == 5 ? 'tutorial-slide-visible' : ''}`}>
+                        <Button onClick={this.onReplayClick.bind(this)}>Replay</Button>
                     </p>
                 </Header>
 
