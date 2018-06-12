@@ -8,8 +8,6 @@ import Header from '../../components/base/Header';
 
 import TextContent from '../content/TextContent';
 import ShowPost from '../posts/ShowPost'
-import JoinCard from '../../components/candidate/common/JoinCard';
-import Slideshow from '../../components/common/Slideshow';
 
 class Meet extends React.Component {
 
