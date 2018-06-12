@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 
         <style>
             .body {
@@ -9,7 +9,7 @@
                 margin-left: 3%;
             }
 
-            .logo {
+            .header-image {
                 width: 20%;
                 height: auto;
             }
@@ -22,15 +22,15 @@
     </head>
 
     <body>
-        <center><img class='logo' src='<%= @logo %>' /></center><br />
+        <center><img class='header-image' src='<%= @header_image %>' /></center><br />
 
         <%= yield %>
 
         <div class='footer'>
             <center>
-                <%= @approved_by.html_safe %><br /><br />
+                <%= @footer.html_safe %><br /><br />
 
-                If you believe you received this message in error or wish to no longer receive email from us, please <a href='127.0.0.1:3000/unsubscribe/<%= @token %>'>unsubscribe</a>.
+                If you believe you received this message in error or wish to no longer receive email from us, please <a href='<%= root_url %>/unsubscribe/<%= @token %>'>unsubscribe</a>.
             </center>
         </div>
     </body>

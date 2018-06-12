@@ -1,7 +1,4 @@
-import _ from 'lodash'
 import React from 'react';
-import { MDCSelect } from '@material/select';
-import { Editor } from 'react-draft-wysiwyg';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';

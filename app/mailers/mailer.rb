@@ -15,7 +15,7 @@ class Mailer < ApplicationMailer
         mail_template
 
         @body = "
-            <a href='127.0.0.1:3000/staff/sign-up/#{token}'>Join.</a>
+            <a href='#{root_url}staff/sign-up/#{token}'>Join.</a>
         "
 
         mail(to: to, subject: 'Join Staff', template_path: 'mail', template_name: 'campaign')
@@ -23,7 +23,7 @@ class Mailer < ApplicationMailer
 
     private
     def mail_template
-        @logo = Content.where( identifier: 'logo' ).first.content['image']
-        @approved_by = Content.where( identifier: 'approvedByBlurb' ).first.content['text']
+        @header_image = Content.where( identifier: 'emailHeaderImage' ).first.content['image']
+        @footer = Content.where( identifier: 'emailFooterBlurb' ).first.content['text']
     end
 end

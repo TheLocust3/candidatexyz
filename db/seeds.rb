@@ -1,5 +1,11 @@
 Content.create(content_type: 'text', identifier: 'websiteTitle', content: { text: 'CandidateXYZ' })
 
+# email
+Content.create(content_type: 'image', identifier: 'emailHeaderImage', content: { image: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59933e3e7131a5f7bfb18c09/1518809293655/?format=1500w' })
+Content.create(content_type: 'text', identifier: 'emailFooterBlurb', content: { text: '
+    A sample footer
+' })
+
 # action
 Content.create(content_type: 'text', identifier: 'actionHeader', content: { text: 'Take Action.' })
 Content.create(content_type: 'text', identifier: 'actionSubtitle', content: { text: 'MAKE A DIFFERENCE' })
