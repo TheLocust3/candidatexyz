@@ -9,6 +9,7 @@ import ContentApi from '../../../../api/content-api';
 import { setEditOverlayOpen, pushContentHistory } from '../../../actions/content-actions';
 
 import FormWrapper from '../../forms/FormWrapper';
+import ImageUploader from '../../global/ImageUploader';
 
 class ImageContentEditor extends React.Component {
 
@@ -34,12 +35,22 @@ class ImageContentEditor extends React.Component {
         this.props.dispatch(setEditOverlayOpen(false));
     }
 
+    onUpload(url) {   
+        let content = this.state.content;
+        content.content.image = url;
+
+        this.setState({
+            content: content
+        });
+    }
+
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)}>
-                <TextField label='Image URL' onChange={(event) => this.handleContentChange(event)} defaultValue={this.props.content.content.image} size={40}/>
+                <TextField label='Image URL' onChange={(event) => this.handleContentChange(event)} defaultValue={this.props.content.content.image} size={40} style={{ width: '100%' }} />
 
                 <Button className='edit-content-button'>Save</Button>
+                <ImageUploader className='edit-content-button' handleUpload={(url) => this.onUpload(url)} style={{ marginRight: '3%' }} />
             </FormWrapper>
         );
     }
