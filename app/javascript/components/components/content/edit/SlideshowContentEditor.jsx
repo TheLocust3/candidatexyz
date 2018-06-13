@@ -58,17 +58,19 @@ class SlideshowContentEditor extends React.Component {
 
     renderSlideshowFields() {
         return (
-            this.state.content.content.map((image, index) => {
-                return (
-                    <div key={index} className='relative'>
-                        <TextField name={`image${index + 1}`} label={`Image ${index + 1}`} onChange={(event) => this.handleContentChange(event)} defaultValue={image} style={{ width: '80%' }} />
+            <div>
+                {this.state.content.content.map((image, index) => {
+                    return (
+                        <div key={index} className='relative'>
+                            <TextField name={`image${index + 1}`} label={`Image ${index + 1}`} onChange={(event) => this.handleContentChange(event)} defaultValue={image} style={{ width: '80%' }} />
 
-                        <Fab condensed={true} className='red-button middle' onClick={(event) => this.onDeleteClick(event, index)} style={{ position: 'absolute', right: 0, marginTop: '3%' }}>
-                            <i className='material-icons'>delete</i>
-                        </Fab>
-                    </div>
-                )
-            })
+                            <Fab condensed={true} className='red-button middle' onClick={(event) => this.onDeleteClick(event, index)} style={{ position: 'absolute', right: 0, marginTop: '3%' }}>
+                                <i className='material-icons'>delete</i>
+                            </Fab>
+                        </div>
+                    )
+                })}
+            </div>
         )
     }
 

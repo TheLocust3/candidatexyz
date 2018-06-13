@@ -12,7 +12,6 @@ import TextContent from '../../content/TextContent';
 import ImageContent from '../../content/ImageContent';
 import SimpleLinkContent from '../../content/SimpleLinkContent';
 import ExternalLinkContent from '../../content/ExternalLinkContent';
-import JoinTeamPanel from '../../../components/candidate/panels/JoinTeamPanel';
 
 class Navbar extends React.Component {
 

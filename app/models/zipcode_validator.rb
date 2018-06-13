@@ -1,6 +1,6 @@
 class ZipcodeValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
-        if value.nil?
+        if value.nil? || value == ''
             return
         end
 
