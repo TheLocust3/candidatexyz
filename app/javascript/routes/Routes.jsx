@@ -44,7 +44,7 @@ class Routes extends React.Component {
 
         return (
             <Router history={history}>
-                <FadeIn>
+                <div>
                     <Route component={ScrollToTop} />
                     <FontLoader />
 
@@ -66,7 +66,7 @@ class Routes extends React.Component {
                     <RootFooter />
 
                     <MDCAutoInit />
-                </FadeIn>
+                </div>
             </Router>
         );
     }
