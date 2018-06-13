@@ -20,10 +20,10 @@ class Api::PostsController < Api::ApiController
     end
 
     def update
-        post = Post.where( :post_type => params[:post_type], :url => params[:url] ).first
+        post = Post.find(params[:id])
 
         if post.update(update_params(params))
-            render :json => Post.where( :post_type => params[:post_type], :url => params[:url] ).first
+            render :json => Post.find(params[:id])
         else
             render_errors(post)
         end

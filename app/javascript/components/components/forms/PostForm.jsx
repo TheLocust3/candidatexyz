@@ -51,7 +51,7 @@ class PostForm extends React.Component {
                 });
             });
         } else {
-            PostApi.update(this.state.post.postType, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
+            PostApi.update(this.state.post.id, this.state.post.postType, this.state.post.url, this.state.post.title, this.state.post.body, this.state.post.image).then(() => {
                 history.push('/');
             }).catch((response) => {
                 this.setState({

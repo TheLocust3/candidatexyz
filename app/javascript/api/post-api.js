@@ -33,11 +33,11 @@ let PostApi = {
         });
     },
 
-    update(postType, url, title, body, image) {
+    update(id, postType, url, title, body, image) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/posts/${postType}/${url}`, {
+            $.ajax(`/api/posts/${id}`, {
                 type: 'patch',
-                data: { url: url, title: title, body: body, image: image },
+                data: { post_type: postType, url: url, title: title, body: body, image: image },
                 success: resolve,
                 error: reject
             });
