@@ -87,7 +87,7 @@ class PostForm extends React.Component {
 
         return (
             <div>
-                <ImageUploader handleUpload={(url) => this.onUpload(url)} styleOuter={{ display: 'inline-block' }} />
+                <ImageUploader text='Upload Image' handleUpload={(url) => this.onUpload(url)} styleOuter={{ display: 'inline-block' }} />
 
                 <i style={{ marginLeft: '3%' }}>{this.state.post.image}</i>
             </div>
