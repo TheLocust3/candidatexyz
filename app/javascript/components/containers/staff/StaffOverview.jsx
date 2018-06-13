@@ -29,7 +29,7 @@ class StaffOverview extends React.Component {
                 {this.renderSuperuser()}<br />
 
                 <div style={{ marginLeft: '5%' }}>
-                    <Link className='link' to='/staff-management'>Staff Management</Link><br />
+                    <Link className='link' to='/staff/staff-management'>Staff Management</Link><br />
                     <Link className='link' to='/staff/messages'>Messages</Link><br />
                     <Link className='link' to='/staff/volunteers'>Volunteers</Link><br />
                     <Link className='link' to='/staff/edit-content'>Edit Miscellaneous Content</Link><br />

@@ -57,6 +57,7 @@ class AdminOverlay extends React.Component {
     onLogoutClick(event) {
         AuthApi.signOut().then(() => {
             history.push(home);
+            window.location.reload();
         })
     }
 
