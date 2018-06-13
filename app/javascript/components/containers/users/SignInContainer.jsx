@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { home } from '../../../features';
@@ -17,6 +18,8 @@ class SignInContainer extends React.Component {
     render() {
         return (
             <div className='content sign-in-form'>
+                <Header type='headline2'>Staff Login</Header><br />
+
                 <SignInForm redirectUrl={home} /><br />
 
                 <Link className='link-small' to='/forgot-password'>Forgot password?</Link>
