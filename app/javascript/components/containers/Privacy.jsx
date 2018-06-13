@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { setBlankNavbar, setDocumentTitle } from '../actions/global-actions';
 import MDCAutoInit from '../components/global/MDCAutoInit';
 import Header from '../components/base/Header';
+
 import TextContent from '../containers/content/TextContent';
-import JoinTeamPanel from '../components/candidate/panels/JoinTeamPanel';
+import ShowPost from './posts/ShowPost';
 
 class Privacy extends React.Component {
 
@@ -19,7 +20,7 @@ class Privacy extends React.Component {
             <div className='content content-15'>
                 <Header type='headline3'><TextContent identifier='privacyHeader' /></Header><br />
 
-                <TextContent identifier='privacyPolicy' />
+                <ShowPost postType='privacy' url='privacy' />
                 
                 <MDCAutoInit />
             </div>
