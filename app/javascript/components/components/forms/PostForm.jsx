@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
-import TextArea from '../base/TextArea';
 import TextEditor from '../base/TextEditor';
 import { history } from '../../../constants';
 import PostApi from '../../../api/post-api';
 
 import FormWrapper from './FormWrapper';
+import ImageUploader from '../global/ImageUploader';
 
 class PostForm extends React.Component {
     
@@ -67,16 +67,31 @@ class PostForm extends React.Component {
         });
     }
 
+    onUpload(url) {   
+        let post = this.state.post;
+        post.image = url;
+
+        this.setState({
+            post: post
+        });
+    }
+
     renderUrl() {
-        if (this.props.post.protected) return;
+        if (this.state.post.protected) return;
 
         return <TextField label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} />;
     }
 
     renderImage() {
-        if (this.props.post.protected) return;
+        if (this.state.post.protected) return;
 
-        return <TextField label='Image URL' name='image' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.image} style={{ width: '100%' }} />;
+        return (
+            <div>
+                <ImageUploader handleUpload={(url) => this.onUpload(url)} styleOuter={{ display: 'inline-block' }} />
+
+                <i style={{ marginLeft: '3%' }}>{this.state.post.image}</i>
+            </div>
+        );
     }
 
     renderDeleteButton() {
@@ -92,7 +107,7 @@ class PostForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content content-bottom content-15'>
                 <TextField label='Title' name='title' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.title} style={{ width: '100%' }} /><br />
 
-                {this.renderUrl()}<br />
+                {this.renderUrl()}<br /><br />
 
                 {this.renderImage()}<br />
 

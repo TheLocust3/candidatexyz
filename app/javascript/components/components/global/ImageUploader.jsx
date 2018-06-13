@@ -22,10 +22,10 @@ class ImageUploader extends React.Component {
     }
 
     render() {
-        let { handleUpload, ...props } = this.props;
+        let { handleUpload, styleOuter, ...props } = this.props;
 
         return (
-            <div>
+            <div style={styleOuter}>
                 <input type='file' accept='image/*' id='image-uploader' onChange={this.handleImageUpload.bind(this)} style={{ display: 'none' }} />
 
                 <Button onClick={this.onClick.bind(this)} {...props}>Upload</Button>
@@ -36,6 +36,7 @@ class ImageUploader extends React.Component {
 
 ImageUploader.propTypes = {
     handleUpload: PropTypes.func.isRequired,
+    styleOuter: PropTypes.object
 };
 
 export default ImageUploader;
