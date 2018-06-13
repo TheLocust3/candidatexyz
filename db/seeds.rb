@@ -66,7 +66,7 @@ Content.create(content_type: 'text', identifier: 'meetHeader', content: { text: 
 # privacy
 Content.create(content_type: 'text', identifier: 'privacyHeader', content: { text: 'Privacy Policy' })
 
-Post.create(post_type: 'privacy', url: 'privacy', title: '', body: "
+Post.create(post_type: 'privacy', url: 'privacy', protected: true, title: '', body: "
 <p>CandidateXYZ for Office has created this privacy notice to explain how we use information that you may provide while visiting our website and to demonstrate our firm commitment to Internet privacy.</p>
 
 <p>CandidateXYZ for Office may modify this policy from time to time so we encourage you to check this page for updates.</p>
@@ -190,7 +190,7 @@ Content.create(content_type: 'text', identifier: 'partyJoinPanelHeadline', conte
 
 Content.create(content_type: 'text', identifier: 'partyJoinPanelSubtitle', content: { text: 'You better join us' })
 
-Post.create(post_type: 'party-about-panel', url: 'party-about', title: '', body: "
+Post.create(post_type: 'party-about-panel', url: 'party-about', protected: true, title: '', body: "
 <p>The Boston Ward 5 Democratic Committee conducts the official business of the Massachusetts Democratic Party in Boston Ward 5, which includes Beacon Hill, Bay Village, Back Bay, and parts of the South End, Chinatown and Fenway.
 
 We advocate for the election of Democrats at the local, state, and national level.
@@ -208,14 +208,14 @@ Post.create(post_type: 'party-events', url: 'party-events-blurb', title: '', bod
 Content.create(content_type: 'raw', identifier: 'partyCalendarUrl', content: 'https://calendar.google.com/calendar/embed?src=u037gu187lnt79755tn76hrkos%40group.calendar.google.com&ctz=America%2FNew_York')
 
 Content.create(content_type: 'text', identifier: 'partyGetInvolvedHeadline', content: { text: 'Get Involed' })
-Post.create(post_type: 'party-involved', url: 'party-involved-blurb', title: '', body: "
+Post.create(post_type: 'party-involved', url: 'party-involved-blurb', protected: true, title: '', body: "
 <p>We've got lots of ways for you to get involved with us'!</p>")
 
 Content.create(content_type: 'text', identifier: 'partyVolunteerPanelHeadline', content: { text: 'Volunteer With Us' })
 Content.create(content_type: 'text', identifier: 'partyVolunteerPanelSubtitle', content: { text: 'We do cool shit' })
 
 # posts
-Post.create(post_type: 'meet', url: 'meet-body', title: '', body: "<p>
+Post.create(post_type: 'meet', url: 'meet-body', protected: true, title: '', body: "<p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu massa efficitur, laoreet ex malesuada, scelerisque sem. Nam porttitor elit at felis molestie aliquet. Sed id metus massa. Etiam congue magna eget vulputate hendrerit. Proin hendrerit maximus ipsum, ut lobortis sem ultrices et. Integer quis odio egestas, tristique purus sit amet, pretium ante. Pellentesque tincidunt mollis libero non imperdiet.<br /><br />
 
     Aliquam cursus sagittis augue, eu volutpat risus iaculis sed. Nulla tempus elementum est et rutrum. Pellentesque sed tempor lectus. Nunc pharetra erat sit amet lectus molestie, ac dignissim lacus fermentum. Aliquam nec tincidunt neque. Cras id sagittis velit, id ornare quam. Vivamus turpis ante, placerat et maximus a, laoreet ac nibh. Mauris semper consequat mi, at sodales est pellentesque sed. Praesent dignissim, ipsum vel porta posuere, nisl eros auctor orci, in ultrices dui enim sed felis. Proin iaculis elementum purus id iaculis. Fusce quis nisi cursus, fringilla ex nec, fringilla lectus. Phasellus ornare fermentum posuere. Nam in mi ornare, efficitur diam ac, scelerisque elit.<br /><br />
@@ -227,7 +227,7 @@ Post.create(post_type: 'meet', url: 'meet-body', title: '', body: "<p>
     Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales tellus, vel fermentum nisi rhoncus a. Sed velit tellus, tempor hendrerit ligula nec, consequat pretium neque. Proin sed neque augue. Quisque accumsan euismod libero a maximus. Curabitur vitae viverra turpis. Nullam porttitor risus et leo luctus dignissim. Integer vel rutrum massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar dui nunc, sit amet accumsan ante gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sit amet ornare tortor. Nam vel mollis lacus
 </p>")
 
-Post.create(post_type: 'issues-page', url: 'issues-blurb', title: 'On the Issues', body: "<p>
+Post.create(post_type: 'issues-page', url: 'issues-blurb', protected: true, title: 'On the Issues', body: "<p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu massa efficitur, laoreet ex malesuada, scelerisque sem. Nam porttitor elit at felis molestie aliquet. Sed id metus massa. Etiam congue magna eget vulputate hendrerit. Proin hendrerit maximus ipsum, ut lobortis sem ultrices et. Integer quis odio egestas, tristique purus sit amet, pretium ante. Pellentesque tincidunt mollis libero non imperdiet.
 Praesent ac erat ut lorem iaculis vehicula in vitae tellus. Sed interdum sodales tellus, vel fermentum nisi rhoncus a. Sed velit tellus, tempor hendrerit ligula nec, consequat pretium neque. Proin sed neque augue. Quisque accumsan euismod libero a maximus. Curabitur vitae viverra turpis. Nullam porttitor risus et leo luctus dignissim. Integer vel rutrum massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar dui nunc, sit amet accumsan ante gravida non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sit amet ornare tortor. Nam vel mollis lacus.
 </p>")

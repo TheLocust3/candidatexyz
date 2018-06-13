@@ -67,12 +67,24 @@ class PostForm extends React.Component {
         });
     }
 
+    renderUrl() {
+        if (this.props.post.protected) return;
+
+        return <TextField label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} />;
+    }
+
+    renderImage() {
+        if (this.props.post.protected) return;
+
+        return <TextField label='Image URL' name='image' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.image} style={{ width: '100%' }} />;
+    }
+
     renderDeleteButton() {
         if (_.isEmpty(this.props.post)) return;
 
         return (
             <Button style={{ float: 'right', marginRight: '3%' }} onClick={this.onDeleteClick.bind(this)}>Delete</Button>
-        )
+        );
     }
 
     render() {
@@ -80,9 +92,9 @@ class PostForm extends React.Component {
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)} errors={this.state.errors} className='content content-bottom content-15'>
                 <TextField label='Title' name='title' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.title} style={{ width: '100%' }} /><br />
 
-                <TextField label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} /><br />
+                {this.renderUrl()}<br />
 
-                <TextField label='Image URL' name='image' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.image} style={{ width: '100%' }} /><br />
+                {this.renderImage()}<br />
 
                 <TextEditor label='Body' content={this.state.post.body} onChange={(text) => { this.handleEditorChange(text) }} />
 
