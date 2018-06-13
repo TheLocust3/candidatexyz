@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React from 'react';
 
 import { history } from '../../../constants';
@@ -11,26 +12,22 @@ class FadeInElements extends React.Component {
         this.state = { completeRender: false, timer: true, maxIsVisible: 0 };
     }
 
-    get delay() {
-        return this.props.delay || 50;
-    }
-    
-    get transitionDuration() {
-        return this.props.transitionDuration || 400;
-    }
-
     fadeTimer() {
         clearInterval(this.interval);
 
         const count = React.Children.count(this.props.children);
+        _.range(0, count).map((i) => {
+            $(`#fade-in${i}`).hide();
+        });
         let i = 0;
 
         this.interval = setInterval(() => {
             i++;
+            $(`#fade-in${i}`).fadeIn(400);
             if (i > count) clearInterval(this.interval);
     
             this.setState({ maxIsVisible: i });
-        }, this.delay);
+        }, 100);
     }
     
     componentWillMount() {
@@ -70,13 +67,9 @@ class FadeInElements extends React.Component {
             return null;
         }
 
-        const transitionDuration = this.transitionDuration;
         return React.Children.map(this.props.children, (child, i) => {
             return (
-                <div style={{
-                    transition: `opacity ${transitionDuration}ms`,
-                    opacity: this.state.maxIsVisible > i ? 1 : 0
-                }}>
+                <div id={`fade-in${i}`}>
                     {child}
                 </div>
             );
