@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -6,6 +6,34 @@ import Link from '../base/Link';
 import Fab from '../base/Fab';
 
 class Share extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = { shown: false };
+    }
+
+    componentDidMount() {
+        $('.share-sub-buttons').hide();
+
+        $('.share-button').hover(() => {
+            $('.share-sub-buttons').fadeIn(250);
+
+            this.setState({
+                shown: true
+            });
+        });
+
+        $('.share-menu').hover(null, () => {
+            if (this.state.shown) {
+                $('.share-sub-buttons').fadeOut(250);
+
+                this.setState({
+                    shown: false
+                });
+            }
+        });
+    }
 
     render() {
         return (

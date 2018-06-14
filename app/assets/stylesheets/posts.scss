@@ -50,23 +50,3 @@
 .share-sub-button {
     margin-bottom: 30%;
 }
-
-.share-sub-buttons {
-    visibility: hidden;
-    opacity: 0.0;
-    -webkit-transition: all 250ms ease-in-out;
-    -moz-transition: all 250ms ease-in-out;
-    -ms-transition: all 250ms ease-in-out;
-    -o-transition: all 250ms ease-in-out;
-    transition: all 250ms ease-in-out;
-}
-
-.share-sub-buttons:hover {
-    visibility: visible;
-    opacity: 1.0;
-}
-
-.share-button:hover + .share-sub-buttons {
-    visibility: visible;
-    opacity: 1.0;
-}
