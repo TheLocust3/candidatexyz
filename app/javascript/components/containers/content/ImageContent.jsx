@@ -32,12 +32,25 @@ class ImageContent extends React.Component {
         this.props.dispatch(setEditingContent(this.findContent()));
     }
 
+    renderImage(props) {
+        let content = this.findContent();
+        if (_.isEmpty(content.content.image)) {
+            return (
+                <div>
+                    {content.content.text}
+                </div>
+            )
+        } else {
+            return <img src={content.content.image} {...props} />;
+        }
+    }
+
     render() {
         let { identifier, contents, edit, dispatch, editOverlayOpen, isReady, ...props } = this.props;
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
-                <img src={this.findContent().content.image} {...props} />
+                {this.renderImage(props)}
             </span>
         );
     }

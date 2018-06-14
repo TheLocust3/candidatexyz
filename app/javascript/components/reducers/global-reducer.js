@@ -1,5 +1,4 @@
 import * as GlobalActions from '../actions/global-actions';
-import { TITLE } from '../../constants';
 
 const initialState = {
     blankNavbar: false,

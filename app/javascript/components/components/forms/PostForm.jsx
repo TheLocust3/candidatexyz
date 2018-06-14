@@ -79,7 +79,7 @@ class PostForm extends React.Component {
     renderUrl() {
         if (this.state.post.protected) return;
 
-        return <TextField label='URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} />;
+        return <TextField label='Article URL' name='url' onChange={(event) => this.handleChange(event)} defaultValue={this.state.post.url} style={{ width: '100%' }} required />;
     }
 
     renderImage() {

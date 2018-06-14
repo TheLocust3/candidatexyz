@@ -17,11 +17,24 @@ class ImageContentEditor extends React.Component {
         super(props);
 
         this.state = { content: props.content, oldContent: _.cloneDeep(this.props.content) };
+
+        if (_.isEmpty(this.state.content.content.text)) {
+            this.state.content.content.text = '';
+        }
     }
 
-    handleContentChange(event) {
+    handleImageChange(event) {
         let content = this.state.content;
         content.content.image = event.target.value;
+
+        this.setState({
+            content: content
+        });
+    }
+
+    handleTextChange(event) {
+        let content = this.state.content;
+        content.content.text = event.target.value;
 
         this.setState({
             content: content
@@ -47,7 +60,8 @@ class ImageContentEditor extends React.Component {
     render() {
         return (
             <FormWrapper handleSubmit={(event) => this.handleSubmit(event)}>
-                <TextField label='Image URL' onChange={(event) => this.handleContentChange(event)} defaultValue={this.props.content.content.image} size={40} style={{ width: '100%' }} />
+                <TextField label='Image URL' onChange={(event) => this.handleImageChange(event)} defaultValue={this.state.content.content.image} size={20} style={{ width: '100%' }} />
+                <TextField label='Replacement Text' onChange={(event) => this.handleTextChange(event)} defaultValue={this.state.content.content.text} size={20} style={{ width: '100%' }} />
 
                 <Button className='edit-content-button'>Save</Button>
                 <ImageUploader className='edit-content-button' handleUpload={(url) => this.onUpload(url)} style={{ marginRight: '3%' }} />

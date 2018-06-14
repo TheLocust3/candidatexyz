@@ -49,7 +49,9 @@ class Navbar extends React.Component {
             <div className='mdc-toolbar mdc-toolbar--fixed navbar'>
                 <div className='mdc-toolbar__row'>
                     <section className='mdc-toolbar__section mdc-toolbar__section--align-start relative'>
-                        <Link to='/'><ImageContent identifier='logo' className='navbar-image middle' /></Link>
+                        <div className='middle'>
+                            <Link to='/'><ImageContent identifier='logo' className='navbar-image' /></Link>
+                        </div>
                     </section>
 
                     <section className='mdc-toolbar__section mdc-toolbar__section--align-end relative'>
@@ -72,7 +74,9 @@ class Navbar extends React.Component {
                 <header className='mdc-toolbar mdc-toolbar--fixed navbar'>
                     <div className='mdc-toolbar__row'>
                         <section className='mdc-toolbar__section mdc-toolbar__section--align-start relative'>
-                            <Link to='/'><ImageContent identifier='logo' className='navbar-image middle' /></Link>
+                            <div className='middle' style={{ marginLeft: '1vw' }}>
+                                <Link to='/'><ImageContent identifier='logo' className='navbar-image middle' /></Link>
+                            </div>
                         </section>
 
                         <section className="mdc-toolbar__section mdc-toolbar__section--align-end">
