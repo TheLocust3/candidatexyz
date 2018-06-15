@@ -1,10 +1,8 @@
-import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchAllMessages } from '../../actions/message-actions';
-import MDCAutoInit from '../../components/global/MDCAutoInit';
 import Header from '../../components/base/Header';
 
 import MessageList from '../../components/staff/MessageList';
