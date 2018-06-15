@@ -1,10 +1,10 @@
-import $ from 'jquery';
+import { volunteerApi } from '../helpers';
 
 let ContactApi = {
 
     getAll() {
         return new Promise((resolve, reject) => {
-            $.ajax('/api/contacts', {
+            volunteerApi('/contacts', {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -14,7 +14,7 @@ let ContactApi = {
 
     get(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/contacts/${id}`, {
+            volunteerApi(`/contacts/${id}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -24,7 +24,7 @@ let ContactApi = {
 
     create(email, zipCode, firstName, lastName, phoneNumber) {
         return new Promise((resolve, reject) => {
-            $.ajax('/api/contacts', {
+            volunteerApi('/contacts', {
                 type: 'post',
                 data: { email: email, zipcode: zipCode, first_name: firstName, last_name: lastName, phone_number: phoneNumber },
                 success: resolve,
@@ -35,7 +35,7 @@ let ContactApi = {
 
     update(id, email, zipCode, firstName, lastName, phoneNumber) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/contacts/${id}`, {
+            volunteerApi(`/contacts/${id}`, {
                 type: 'patch',
                 data: { email: email, zipcode: zipCode, first_name: firstName, last_name: lastName, phone_number: phoneNumber },
                 success: resolve,
@@ -46,7 +46,7 @@ let ContactApi = {
 
     destroy(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/contacts/${id}`, {
+            volunteerApi(`/contacts/${id}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject
@@ -56,7 +56,7 @@ let ContactApi = {
 
     unsubscribe(token) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/contacts/unsubscribe?token=${token}`, {
+            volunteerApi(`/contacts/unsubscribe?token=${token}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject

@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 const initialState = {
     isReady: false,
     message: {},
-    messages: [],
+    messages: { messages: [] }
 };
 
 export function messageReducer(state = initialState, action) {

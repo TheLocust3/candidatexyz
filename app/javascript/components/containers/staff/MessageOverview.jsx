@@ -22,7 +22,7 @@ class MessageOverview extends React.Component {
             <div className='content content-15'>
                 <Header type='headline3'>Message Overview</Header><br />
 
-                <MessageList messages={this.props.messages} />
+                <MessageList messages={this.props.messages.messages} />
             </div>
         );
     }

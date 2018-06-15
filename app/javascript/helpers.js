@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import { VOLUNTEER_API_DOMAIN } from './constants';
+
 // Stolen from https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 export function uuid() {
     return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
@@ -11,4 +14,8 @@ export function dashesToCamel(str) {
 
 export function camelToDashes(str) {
     return str.replace(/\W+/g, '-').replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+export function volunteerApi(url, hash) {
+    return $.ajax(`${VOLUNTEER_API_DOMAIN}${url}`, hash);
 }

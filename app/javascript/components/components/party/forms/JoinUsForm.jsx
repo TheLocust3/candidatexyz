@@ -23,7 +23,7 @@ export default class JoinUsForm extends React.Component {
     }
 
     handleSubmit(event) {
-        ContactApi.create(this.state.email, '', this.state.firstName).then(() => {
+        ContactApi.create(this.state.email, '', this.state.firstName, this.state.lastName).then(() => {
             history.push(home);
         }).catch((response) => {
             this.setState({

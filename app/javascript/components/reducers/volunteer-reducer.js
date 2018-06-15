@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 const initialState = {
     isReady: false,
     volunteer: {},
-    volunteers: []
+    volunteers: { volunteers: [] }
 };
 
 export function volunteerReducer(state = initialState, action) {

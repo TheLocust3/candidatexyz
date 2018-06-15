@@ -60,7 +60,7 @@ class VolunteerOverview extends React.Component {
             <div className='content content-5'>
                 <Header type='headline2'><b>Volunteer Overview</b></Header><br />
 
-                <VolunteerTable volunteers={this.props.volunteers} onHeaderClick={(event, reverse) => this.onHeaderClick(event, reverse)} /><br />
+                <VolunteerTable volunteers={this.props.volunteers.volunteers} onHeaderClick={(event, reverse) => this.onHeaderClick(event, reverse)} /><br />
 
                 <Pager numberOfPages={this.state.numberOfPages} page={this.state.page} url='/staff/volunteers' />
                 

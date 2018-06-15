@@ -1,10 +1,10 @@
-import $ from 'jquery';
+import { volunteerApi } from '../helpers';
 
 let MessageApi = {
 
     getAll() {
         return new Promise((resolve, reject) => {
-            $.ajax('/api/messages', {
+            volunteerApi('/messages', {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -14,7 +14,7 @@ let MessageApi = {
 
     get(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/messages/${id}`, {
+            volunteerApi(`/messages/${id}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -24,7 +24,7 @@ let MessageApi = {
 
     create(firstName, lastName, email, subject, message) {
         return new Promise((resolve, reject) => {
-            $.ajax('/api/messages', {
+            volunteerApi('/messages', {
                 type: 'post',
                 data: { first_name: firstName, last_name: lastName, email: email, subject: subject, message: message },
                 success: resolve,
@@ -35,7 +35,7 @@ let MessageApi = {
 
     destroy(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/messages/${id}`, {
+            volunteerApi(`/messages/${id}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject

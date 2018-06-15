@@ -1,10 +1,10 @@
-import $ from 'jquery';
+import { volunteerApi } from '../helpers';
 
 let VolunteerApi = {
 
     getAll() {
         return new Promise((resolve, reject) => {
-            $.ajax('/api/volunteers', {
+            volunteerApi('/volunteers', {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -14,7 +14,7 @@ let VolunteerApi = {
 
     getAllBy(pageNumber, recordsPerPage, order, descending) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/volunteers?page_number=${pageNumber}&records_per_page=${recordsPerPage}&order=${order}&descending=${descending}`, {
+            volunteerApi(`/volunteers?page_number=${pageNumber}&records_per_page=${recordsPerPage}&order=${order}&descending=${descending}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -24,7 +24,7 @@ let VolunteerApi = {
 
     getNumberOfPages(recordsPerPage) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/volunteers/number_of_pages?records_per_page=${recordsPerPage}`, {
+            volunteerApi(`/volunteers/number_of_pages?records_per_page=${recordsPerPage}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -34,7 +34,7 @@ let VolunteerApi = {
 
     get(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/volunteers/${id}`, {
+            volunteerApi(`/volunteers/${id}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -44,7 +44,7 @@ let VolunteerApi = {
 
     create(email, phoneNumber, firstName, lastName, address, zipCode, city, state, helpBlurb) {
         return new Promise((resolve, reject) => {
-            $.ajax('/api/volunteers', {
+            volunteerApi('/volunteers', {
                 type: 'post',
                 data: { email: email, phone_number: phoneNumber, first_name: firstName, last_name: lastName, address: address, zipcode: zipCode, city: city, state: state, help_blurb: helpBlurb },
                 success: resolve,
@@ -53,9 +53,9 @@ let VolunteerApi = {
         });
     },
 
-    update(id, email, phoneNumber, firstName, lastName, address1, address2, zipCode, city, state, helpBlurb) {
+    update(id, email, phoneNumber, firstName, lastName, address, zipCode, city, state, helpBlurb) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/volunteers/${id}`, {
+            volunteerApi(`/volunteers/${id}`, {
                 type: 'patch',
                 data: { email: email, phone_number: phoneNumber, first_name: firstName, last_name: lastName, address: address, zipcode: zipCode, city: city, state: state, help_blurb: helpBlurb },
                 success: resolve,
@@ -66,7 +66,7 @@ let VolunteerApi = {
 
     destroy(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/volunteers/${id}`, {
+            volunteerApi(`/volunteers/${id}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject
