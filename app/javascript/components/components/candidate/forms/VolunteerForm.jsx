@@ -20,7 +20,7 @@ export default class VolunteerForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { email: '', phoneNumber: '', firstName: '', lastName: '', address: '', zipCode: '', city: '', state: '', helpBlurb: '', errors: {}, helpOptions: [], otherOpened: false };
+        this.state = { email: '', phoneNumber: '', firstName: '', lastName: '', address: '', zipCode: '', city: '', state: 'MA', helpBlurb: '', errors: {}, helpOptions: [], otherOpened: false };
     }
 
     componentDidMount() {
@@ -29,6 +29,7 @@ export default class VolunteerForm extends React.Component {
             helpOptions.push('Other');
 
             this.setState({
+                helpBlurb: helpOptions[0],
                 helpOptions: helpOptions
             });
         });
@@ -117,9 +118,9 @@ export default class VolunteerForm extends React.Component {
 
                 <TextField label='Address' name='address' onChange={(event) => this.handleChange(event)} style={{ width: '100%' }} /><br /><br />
 
-                <TextField label='Zipcode' name='zipCode' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '30%', marginRight: '5%' }} />
                 <TextField label='City' name='city' onChange={(event) => this.handleChange(event)} style={{ width: '30%', marginRight: '5%' }} />
                 {this.renderStateDropdown()}
+                <TextField label='Zipcode' name='zipCode' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '30%', marginRight: '5%' }} />
 
                 <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
                 <TextField label='Phone Number' name='phoneNumber' onChange={(event) => this.handleChange(event)} style={{ width: '47.5%' }} />

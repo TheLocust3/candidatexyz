@@ -48,8 +48,6 @@ class VolunteerTable extends React.Component {
         });
 
         this.props.onHeaderClick(event, descending);
-
-        history.push(`/staff/volunteers?page=0`)
     }
 
     renderArrow(sort) {
@@ -70,7 +68,7 @@ class VolunteerTable extends React.Component {
                         <th id='first_name' onClick={this.onHeaderClick.bind(this)}>First Name {this.renderArrow('first_name')}</th>
                         <th id='last_name' onClick={this.onHeaderClick.bind(this)}>Last Name  {this.renderArrow('last_name')}</th>
                         <th id='email' onClick={this.onHeaderClick.bind(this)}>Email {this.renderArrow('email')}</th>
-                        <th id='address1' onClick={this.onHeaderClick.bind(this)}>Address {this.renderArrow('address1')}</th>
+                        <th id='address' onClick={this.onHeaderClick.bind(this)}>Address {this.renderArrow('address')}</th>
                         <th id='help_blurb' onClick={this.onHeaderClick.bind(this)}>Help Type {this.renderArrow('help_blurb')}</th>
                     </tr>
                 </thead>
