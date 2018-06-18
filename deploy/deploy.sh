@@ -3,7 +3,7 @@
 set -e
 
 NAME=candidatexyz
-BUCKET=candidatexyz-$NAME
+BUCKET=candidatexyz-demo-$NAME
 DEPLOYMENT_GROUP=production
 
 #git archive --format=tar.gz -9 -o deploy.tar.gz HEAD
