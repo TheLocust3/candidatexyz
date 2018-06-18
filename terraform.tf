@@ -127,7 +127,7 @@ data "aws_iam_policy_document" "ec2-role" {
 
 data "aws_iam_policy_document" "s3" {
   statement {
-    actions   = ["s3:PutObject"]
+    actions   = ["s3:PutObject", "s3:PutObjectAcl"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.bucket.bucket}/*"]
   }
 }
