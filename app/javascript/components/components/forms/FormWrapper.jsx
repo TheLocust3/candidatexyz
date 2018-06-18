@@ -20,7 +20,7 @@ export default class FormWrapper extends React.Component {
                 {_.map(this.props.errors, (errorMessage, errorName) => {
                     return (
                         <div key={errorName}>
-                            {_.capitalize(errorName)} {_.join(errorMessage, ', ')}
+                            {_.capitalize(errorName)}: {_.join(_.capitalize(errorMessage), ', ')}
                         </div>
                     )
                 })}

@@ -27,7 +27,7 @@ export default class ResetPasswordForm extends React.Component {
             history.push(this.props.redirectUrl);
         }).catch( response => {
             this.setState({
-                errors: response.responseJSON.errors
+                errors: { error: response.data.errors }
             });
         });
     }

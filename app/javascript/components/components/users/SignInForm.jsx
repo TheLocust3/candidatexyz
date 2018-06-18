@@ -27,7 +27,7 @@ export default class SignInForm extends React.Component {
             history.push('/staff');
         }).catch((response) => {
             this.setState({
-                errors: { error: [response.responseJSON.error] }
+                errors: { error: response.data.errors }
             });
         });
     }
