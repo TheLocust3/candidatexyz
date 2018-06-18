@@ -24,7 +24,7 @@ let VolunteerApi = {
 
     getNumberOfPages(recordsPerPage) {
         return new Promise((resolve, reject) => {
-            volunteerApi(`/volunteers/number_of_pages?records_per_page=${recordsPerPage}`, {
+            volunteerApi(`/volunteers/number-of-pages?records_per_page=${recordsPerPage}`, {
                 type: 'get',
                 success: resolve,
                 error: reject

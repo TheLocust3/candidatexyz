@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '../base/Button';
 import TextField from '../base/TextField';
 import AuthApi from '../../../api/auth-api';
+import { history } from '../../../constants';
 
 import FormWrapper from '../forms/FormWrapper';
 
@@ -22,9 +23,9 @@ export default class SignInForm extends React.Component {
     }
 
     handleSubmit(event) {
-        AuthApi.signIn(this.state.email, this.state.password, this.state.rememberMe).then( response => {
-            window.location.href = '/staff';
-        }).catch( response => {
+        AuthApi.signIn(this.state.email, this.state.password, this.state.rememberMe).then((response) => {
+            history.push('/staff');
+        }).catch((response) => {
             this.setState({
                 errors: { error: [response.responseJSON.error] }
             });

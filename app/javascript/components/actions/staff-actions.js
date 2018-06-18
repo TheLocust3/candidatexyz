@@ -1,4 +1,5 @@
 import StaffApi from '../../api/staff-api';
+import AuthApi from '../../api/auth-api';
 
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
@@ -68,14 +69,11 @@ export function fetchAllUsers() {
     }
 }
 
-
 export function fetchCurrentUser() {
 
     return function (dispatch) {
         dispatch(requestCurrentUser());
 
-        StaffApi.getCurrentUser().then( data => {
-            dispatch(receiveCurrentUser(data));
-        });
+        dispatch(receiveCurrentUser(AuthApi.getCurrentUser()));
     }
 }

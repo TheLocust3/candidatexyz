@@ -2,8 +2,9 @@ import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import * as Auth from 'j-toker';
 
-import { store } from '../constants';
+import { store, USER_API_DOMAIN } from '../constants';
 
 import Routes from '../routes/Routes';
 
@@ -13,6 +14,9 @@ $.ajaxSetup({
     }
 });
 
+$.auth.configure({
+    apiUrl: USER_API_DOMAIN
+});
 
 class Base extends React.Component {
 

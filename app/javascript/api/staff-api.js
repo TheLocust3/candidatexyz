@@ -22,16 +22,6 @@ let StaffApi = {
         });
     },
 
-    getCurrentUser() {
-        return new Promise((resolve, reject) => {
-            $.ajax('/api/current_user', {
-                type: 'get',
-                success: resolve,
-                error: reject
-            });
-        });
-    },
-
     createToken(email) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/staff/create_invite`, {

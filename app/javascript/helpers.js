@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { VOLUNTEER_API_DOMAIN } from './constants';
+import { VOLUNTEER_API_DOMAIN, USER_API_DOMAIN } from './constants';
 
 // Stolen from https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 export function uuid() {
