@@ -22,7 +22,7 @@ class Footer extends React.Component {
 
                 <Header type='body1' className='footer-staff-login' style={{ fontSize: 12 }}>
                     <div className='made-with' onClick={() => window.location.href = 'https://candidatexyz.com' }>
-                        Made with <b>candidateXYZ</b>.
+                        Created with <b>candidateXYZ</b>.
                     </div>
                 </Header>
             </div>
