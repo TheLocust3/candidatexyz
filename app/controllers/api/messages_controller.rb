@@ -14,7 +14,7 @@ class Api::MessagesController < Api::ApiController
         message = Message.new(create_params(params))
 
         if message.save
-            render :json => Message.find(message.id)
+            render :json => message
         else
             render_errors(message)
         end

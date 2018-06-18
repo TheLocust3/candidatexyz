@@ -23,7 +23,7 @@ class Api::VolunteersController < Api::ApiController
         volunteer = Volunteer.new(create_params(params))
 
         if volunteer.save
-            render :json => Volunteer.find(volunteer.id)
+            render :json => volunteer
         else
             render_errors(volunteer)
         end
@@ -33,7 +33,7 @@ class Api::VolunteersController < Api::ApiController
         volunteer = Volunteer.find(params[:id])
 
         if volunteer.update(update_params(params))
-            render :json => Volunteer.find(volunteer.id)
+            render :json => volunteer
         else
             render_errors(volunteer)
         end

@@ -14,7 +14,7 @@ class Api::ContentController < Api::ApiController
         content = Content.new(create_params(params))
 
         if content.save
-            render :json => Content.where( :identifier => params[:identifier] ).first
+            render :json => content
         else
             render_errors(content)
         end
@@ -25,7 +25,7 @@ class Api::ContentController < Api::ApiController
         content.content = params[:content]
 
         if content.save
-            render :json => Content.where( :identifier => params[:identifier] ).first
+            render :json => content
         else
             render_errors(content)
         end

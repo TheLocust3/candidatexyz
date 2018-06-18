@@ -15,7 +15,7 @@ class Api::ThemesController < Api::ApiController
         theme.styling = params[:styling]
 
         if theme.save
-            render :json => Theme.find(theme.id)
+            render :json => theme
         else
             render_errors(theme)
         end
@@ -26,7 +26,7 @@ class Api::ThemesController < Api::ApiController
         theme.styling = params[:styling]
 
         if theme.update(update_params(params))
-            render :json => Theme.find(theme.id)
+            render :json => theme
         else
             render_errors(theme)
         end

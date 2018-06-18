@@ -18,7 +18,7 @@ class Api::PagesController < Api::ApiController
         }
 
         if page.save
-            render :json => Page.find(page.id)
+            render :json => page
         else
             render_errors(page)
         end
@@ -34,7 +34,7 @@ class Api::PagesController < Api::ApiController
         }
 
         if page.update(update_params(params))
-            render :json => Page.find(page.id)
+            render :json => page
         else
             render_errors(page)
         end

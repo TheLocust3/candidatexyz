@@ -16,7 +16,7 @@ class Api::PanelsController < Api::ApiController
         panel.settings = params[:settings]
 
         if panel.save
-            render :json => Panel.find(panel.id)
+            render :json => panel
         else
             render_errors(panel)
         end
@@ -28,7 +28,7 @@ class Api::PanelsController < Api::ApiController
         panel.settings = params[:settings]
 
         if panel.update(update_params(params))
-            render :json => Panel.find(panel.id)
+            render :json => panel
         else
             render_errors(panel)
         end

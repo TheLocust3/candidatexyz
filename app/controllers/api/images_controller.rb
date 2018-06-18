@@ -16,7 +16,7 @@ class Api::ImagesController < Api::ApiController
         File.open("#{Rails.root}/public/images/#{image.identifier}", 'wb') { |file| file.write(Base64.decode64(params[:image])) }
 
         if image.save
-            render :json => Image.find(image.id)
+            render :json => image
         else
             render_errors(image)
         end
@@ -28,7 +28,7 @@ class Api::ImagesController < Api::ApiController
         File.open("#{Rails.root}/public/images/#{image.identifier}", 'wb') { |file| file.write(Base64.decode64(params[:image])) }
 
         if image.update(update_params(params))
-            render :json => Image.find(image.id)
+            render :json => image
         else
             render_errors(image)
         end

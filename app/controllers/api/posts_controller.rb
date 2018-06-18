@@ -13,7 +13,7 @@ class Api::PostsController < Api::ApiController
         post = Post.new(create_params(params))
 
         if post.save
-            render :json => Post.find(post.id)
+            render :json => post
         else
             render_errors(post)
         end
@@ -23,7 +23,7 @@ class Api::PostsController < Api::ApiController
         post = Post.find(params[:id])
 
         if post.update(update_params(params))
-            render :json => Post.find(params[:id])
+            render :json => post
         else
             render_errors(post)
         end

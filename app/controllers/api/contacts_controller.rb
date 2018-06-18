@@ -14,7 +14,7 @@ class Api::ContactsController < Api::ApiController
         contact = Contact.new(create_params(params))
 
         if contact.save
-            render :json => Contact.find(contact.id)
+            render :json => contact
         else
             render_errors(contact)
         end
@@ -24,7 +24,7 @@ class Api::ContactsController < Api::ApiController
         contact = Contact.find(params[:id])
 
         if contact.update(update_params(params))
-            render :json => Contact.find(contact.id)
+            render :json => contact.id
         else
             render_errors(contact)
         end
