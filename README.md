@@ -10,7 +10,7 @@ AWS_SECRET_ACCESS_KEY
 ```
 
 ## Deployment instructions
-`./bin/rake assets:precompile RAILS_ENV=production`
+`bundle exec assets:precompile RAILS_ENV=production`
 `./deploy/deploy`
 
 secrets.env
@@ -26,4 +26,4 @@ USERNAME=demo
 ```
 
 ## Running
-`rails s -b 127.0.0.1 -p 3001`
+`bundle exec rails s -b 127.0.0.1 -p 3001`
