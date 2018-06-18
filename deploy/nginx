@@ -3,9 +3,15 @@ upstream app {
 }
 
 server {
+    listen 80;
     server_name candidatexyz.com www.candidatexyz.com;
+    root /home/ubuntu;
 
     try_files $uri @app;
+
+    if ($http_x_forwarded_proto = http) {
+        return 301 https://$host$request_uri;
+    }
 
     location @app {
         proxy_pass http://app;
@@ -14,31 +20,5 @@ server {
         proxy_redirect off;
     }
 
-    listen [::]:443 ssl ipv6only=on; # managed by Certbot
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/candidatexyz.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/candidatexyz.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
     error_log  /home/ubuntu/nginx_error.log  warn;
-}
-
-
-server {
-    if ($host = www.candidatexyz.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-    if ($host = candidatexyz.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    server_name candidatexyz.com www.candidatexyz.com;
-    return 404; # managed by Certbot
 }
