@@ -18,7 +18,15 @@ class TextContentEditor extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: props.content, oldContent: _.cloneDeep(this.props.content) };
+        this.state = { content: props.content, oldContent: _.cloneDeep(this.props.content), textField: props.content.content.text.length < TEXT_FIELD_CUTOFF };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.content.identifier != nextProps.content.identifier) { // only change textfield to textarea if user selected new content
+            this.setState({
+                textField: nextProps.content.content.text.length < TEXT_FIELD_CUTOFF
+            });
+        }
     }
 
     handleContentChange(event) {
@@ -40,7 +48,7 @@ class TextContentEditor extends React.Component {
     }
 
     renderTextField() {
-        if (this.props.content.content.text.length < TEXT_FIELD_CUTOFF) {
+        if (this.state.textField) {
             return (
                 <TextField label='Text Content' onChange={(event) => this.handleContentChange(event)} defaultValue={this.props.content.content.text} size={40} />
             )
