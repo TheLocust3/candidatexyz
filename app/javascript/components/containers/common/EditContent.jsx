@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -18,21 +19,23 @@ class EditContent extends React.Component {
 
     // created to work around slideshow editor bug. When final element gets deleted, it gets stranded from the element tree so it has no html tag but that's cool
     hasHtmlTag(parents) {
+        let found = false;
         _.forEach(parents, (parent) => {
             if ($(parent).is('html')) {
-                return true;
+                found = true;
             }
         });
 
-        return false;
+        return found;
     }
 
     componentDidMount() {
         $(document).click((event) => { // TODO: find a better way to do this
-            if (!$(event.target).parents().is(`#${this.props.content.identifier}`) && !$(event.target).parents().is('.edit-content-wrapper') && this.props.edit && this.hasHtmlTag($(event.target).parents())) {
+            let parents = $(event.target).parents();
+            if (!parents.is(`#${this.props.content.identifier}`) && !parents.is('.edit-content-wrapper') && this.props.edit && this.hasHtmlTag(parents)) {
                 this.props.dispatch(setEditOverlayOpen(false));
                 this.props.dispatch(fetchAllContent());
-            } else if (!$(event.target).parents().is('.edit-content-wrapper')) {
+            } else if (!parents.is('.edit-content-wrapper') && this.hasHtmlTag(parents)) {
                 this.setState({
                     top: event.pageY + 10,
                     left: event.pageX

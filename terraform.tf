@@ -38,7 +38,7 @@ data "aws_vpc" "default" {
 }
 
 data "aws_acm_certificate" "certificate" {
-  domain = "candidatexyz.com"
+  domain = "demo.candidatexyz.com"
 }
 
 resource "random_id" "database_password" {
