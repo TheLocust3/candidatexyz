@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as Auth from 'j-toker';
 
-import { store, USER_API_DOMAIN } from '../constants';
+import { store, USER_API_DOMAIN, DOMAIN } from '../constants';
 
 import Routes from '../routes/Routes';
 
@@ -15,7 +15,8 @@ $.ajaxSetup({
 });
 
 $.auth.configure({
-    apiUrl: USER_API_DOMAIN
+    apiUrl: USER_API_DOMAIN,
+    passwordResetSuccessUrl: () => { return `${DOMAIN}/reset_password` }
 });
 
 class Base extends React.Component {

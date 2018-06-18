@@ -23,7 +23,7 @@ export default class ResetPasswordForm extends React.Component {
     }
 
     handleSubmit(event) {
-        AuthApi.resetPassword(this.props.token, this.state.password, this.state.passwordConfirmation).then( response => {
+        AuthApi.resetPassword(this.state.password, this.state.passwordConfirmation).then( response => {
             history.push(this.props.redirectUrl);
         }).catch( response => {
             this.setState({
@@ -47,5 +47,4 @@ export default class ResetPasswordForm extends React.Component {
 
 ResetPasswordForm.propTypes = {
     redirectUrl: PropTypes.string.isRequired,
-    token: PropTypes.string.isRequired
 };
