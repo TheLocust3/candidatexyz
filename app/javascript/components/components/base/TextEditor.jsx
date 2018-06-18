@@ -31,7 +31,7 @@ class TextEditor extends React.Component {
 
     uploadImage(file) {
         return ImageApi.create(null, file).then((image) => {
-            return { data: { link: `/images/${image.identifier}` } }
+            return { data: { link: image.url } }
         }).catch((response) => {
             this.setState({
                 errors: response.responseJSON.errors

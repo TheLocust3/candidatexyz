@@ -11,7 +11,7 @@ class ImageUploader extends React.Component {
     handleImageUpload(event) {
         let identifier = uuid();
         ImageApi.create(identifier, event.target.files[0]).then((response) => {
-            this.props.handleUpload(`/images/${identifier}`);
+            this.props.handleUpload(response.url);
         });
     }
 

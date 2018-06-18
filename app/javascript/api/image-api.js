@@ -49,17 +49,6 @@ let ImageApi = {
         });
     },
 
-    update(identifier, image) {
-        return new Promise((resolve, reject) => {
-            $.ajax(`/api/images/${identifier}`, {
-                type: 'patch',
-                data: { image: image },
-                success: resolve,
-                error: reject
-            });
-        });
-    },
-
     destroy(id) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/images/${id}`, {

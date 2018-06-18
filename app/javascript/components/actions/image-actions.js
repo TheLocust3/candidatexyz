@@ -42,7 +42,7 @@ export function fetchAllImages() {
     }
 }
 
-export function fetchImages(identifier) {
+export function fetchImage(identifier) {
 
     return function (dispatch) {
         dispatch(requestImage());

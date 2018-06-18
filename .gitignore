@@ -29,3 +29,5 @@ terraform.tfstate*
 .DS_Store
 
 /app/javascript/features.js
+
+environment.env

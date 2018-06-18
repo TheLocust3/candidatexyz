@@ -57,6 +57,11 @@ resource "random_id" "random" {
   byte_length = 8
 }
 
+resource "aws_s3_bucket" "bucket" {
+  bucket = "${var.name}-images"
+  acl    = "public-read"
+}
+
 resource "aws_security_group" "security_group" {
   name        = "${var.name} security group"
   description = "Managed by Terraform"
@@ -120,6 +125,19 @@ data "aws_iam_policy_document" "ec2-role" {
   }
 }
 
+data "aws_iam_policy_document" "s3" {
+  statement {
+    actions   = ["s3:PutObject"]
+    resources = ["arn:aws:s3:::${aws_s3_bucket.bucket.bucket}/*"]
+  }
+}
+
+resource "aws_iam_policy" "s3" {
+  name   = "${var.name}-ec2-s3"
+  path   = "/"
+  policy = "${data.aws_iam_policy_document.s3.json}"
+}
+
 resource "aws_iam_role" "ec2-role" {
   name               = "${var.name}-ec2"
   assume_role_policy = "${data.aws_iam_policy_document.ec2-role.json}"
@@ -128,6 +146,11 @@ resource "aws_iam_role" "ec2-role" {
 resource "aws_iam_role_policy_attachment" "ec2-role-for-codedeploy" {
   role       = "${aws_iam_role.ec2-role.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforAWSCodeDeploy"
+}
+
+resource "aws_iam_role_policy_attachment" "s3" {
+  role       = "${aws_iam_role.ec2-role.name}"
+  policy_arn = "${aws_iam_policy.s3.arn}"
 }
 
 resource "aws_iam_instance_profile" "ec2-profile" {
@@ -233,7 +256,7 @@ resource "aws_db_instance" "db_instance" {
   allocated_storage      = "5"
   storage_type           = "gp2"
   engine                 = "postgres"
-  engine_version         = "9.6.3"
+  engine_version         = "9.6.6"
   instance_class         = "db.t2.micro"
   vpc_security_group_ids = ["${aws_security_group.db_security_group.id}"]
 

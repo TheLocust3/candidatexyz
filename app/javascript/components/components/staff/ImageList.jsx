@@ -22,7 +22,7 @@ class ImageList extends React.Component {
                         </p>
 
                         <div className='relative'>
-                            <img className='image-thumbnail' src={`/images/${image.identifier}`} />
+                            <img className='image-thumbnail' src={image.url} />
 
                             <Fab className='middle' condensed={true} onClick={(event) => this.onDeleteClick(event, image.id)} style={{ marginLeft: '5%' }}>
                                 <i className='material-icons'>delete</i>

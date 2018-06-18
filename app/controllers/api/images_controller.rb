@@ -13,21 +13,13 @@ class Api::ImagesController < Api::ApiController
     def create
         image = Image.new(create_params(params))
 
-        File.open("#{Rails.root}/public/images/#{image.identifier}", 'wb') { |file| file.write(Base64.decode64(params[:image])) }
+        bucket = "#{Rails.application.secrets.project_name}-images"
+        key = "#{Rails.application.secrets.username}/#{image.identifier}"
+
+        S3.put_object(bucket: bucket, key: key, body: Base64.decode64(params[:image]), acl: 'public-read')
+        image.url = "https://s3.amazonaws.com/#{bucket}/#{key}"
 
         if image.save
-            render :json => image
-        else
-            render_errors(image)
-        end
-    end
-
-    def update
-        image = Image.where( :identifier => params[:identifier] ).first
-
-        File.open("#{Rails.root}/public/images/#{image.identifier}", 'wb') { |file| file.write(Base64.decode64(params[:image])) }
-
-        if image.update(update_params(params))
             render :json => image
         else
             render_errors(image)
@@ -44,10 +36,6 @@ class Api::ImagesController < Api::ApiController
     private
     def create_params(params)
         params.permit(:identifier)
-    end
-
-    def update_params(params)
-        params.permit()
     end
   end
   
