@@ -17,5 +17,13 @@ export function camelToDashes(str) {
 }
 
 export function volunteerApi(url, hash) {
-    return $.ajax(`${VOLUNTEER_API_DOMAIN}${url}`, hash);
+    return $.ajax(`${VOLUNTEER_API_DOMAIN}${url}`, {
+        beforeSend: function(xhr, settings) { // attach authentication headers to request, modified from https://github.com/lynndylanhurley/j-toker/blob/0f76481813c6a20642de0756c5077da338ac4a0b/src/j-toker.js#L1172
+            let currentHeaders = $.auth.retrieveData('authHeaders');
+            for (var key in $.auth.getConfig().tokenFormat) {
+                xhr.setRequestHeader(key, currentHeaders[key]);
+            }
+        },
+        ...hash
+    });
 }
