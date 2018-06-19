@@ -61,7 +61,7 @@ let AuthApi = {
     },
 
     getCurrentUser() {
-        return $.auth.user;
+        return $.auth.validateToken();
     }
 };
 

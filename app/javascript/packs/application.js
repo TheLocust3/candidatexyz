@@ -16,7 +16,9 @@ $.ajaxSetup({
 
 $.auth.configure({
     apiUrl: USER_API_DOMAIN,
-    passwordResetSuccessUrl: () => { return `${DOMAIN}/reset_password` }
+    passwordResetSuccessUrl: () => { return `${DOMAIN}/reset_password` },
+    storage: 'cookies',
+    cookieExpiry: 14,
 });
 
 class Base extends React.Component {
