@@ -14,7 +14,7 @@ export default class MasterEditUserForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { email: this.props.user.email, firstName: this.props.user.first_name, lastName: this.props.user.last_name, admin: this.props.user.admin, errors: {} };
+        this.state = { email: this.props.user.email, firstName: this.props.user.firstName, lastName: this.props.user.lastName, admin: this.props.user.admin, errors: {} };
     }
 
     handleChange(event) {

@@ -1,10 +1,11 @@
 import $ from 'jquery';
+import { userApi } from '../helpers';
 
 let StaffApi = {
 
     getAll() {
         return new Promise((resolve, reject) => {
-            $.ajax('/api/staff', {
+            userApi('/staff', {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -14,7 +15,7 @@ let StaffApi = {
 
     get(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/staff/${id}`, {
+            userApi(`/staff/${id}`, {
                 type: 'get',
                 success: resolve,
                 error: reject
@@ -24,7 +25,7 @@ let StaffApi = {
 
     createToken(email) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/staff/create_invite`, {
+            userApi(`/staff/create_invite`, {
                 type: 'post',
                 data: { email: email },
                 success: resolve,
@@ -35,7 +36,7 @@ let StaffApi = {
 
     create(token, email, firstName, lastName, password, passwordConfirmation) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/staff`, {
+            userApi(`/staff`, {
                 type: 'post',
                 data: { token: token, email: email, first_name: firstName, last_name: lastName, password: password, password_confirmation: passwordConfirmation },
                 success: resolve,
@@ -46,7 +47,7 @@ let StaffApi = {
 
     update(id, email, firstName, lastName, admin) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/staff/${id}`, {
+            userApi(`/staff/${id}`, {
                 type: 'patch',
                 data: { email: email, first_name: firstName, last_name: lastName, admin: admin },
                 success: resolve,
@@ -57,7 +58,7 @@ let StaffApi = {
 
     destroy(id) {
         return new Promise((resolve, reject) => {
-            $.ajax(`/api/staff/${id}`, {
+            userApi(`/staff/${id}`, {
                 type: 'delete',
                 success: resolve,
                 error: reject

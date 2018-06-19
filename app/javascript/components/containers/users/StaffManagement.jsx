@@ -19,7 +19,7 @@ class StaffManagement extends React.Component {
     renderUserList() {
         return (
             <ul className='mdc-list mdc-list--two-line'>
-                {this.props.users.map((user) => {
+                {this.props.users.users.map((user) => {
                     if (user.superuser) return;
 
                     let link = this.props.currentUser.admin ? `/staff/staff-management/${user.id}/edit` : '#';
@@ -42,13 +42,19 @@ class StaffManagement extends React.Component {
         );
     }
 
+    renderAddStaffer() {
+        if (!this.props.currentUser.admin) return;
+
+        return <Link to='/staff/invite' className='link'>Add Staffer</Link>;
+    }
+
     render() {
         if (!this.props.isReady) return null;
 
         return (
             <div className='content edit-user-form'>
                 <Header type='headline2'><b>Staff Management</b></Header><br />
-                <Link to='/staff/invite' className='link'>Add Staffer</Link>
+                {this.renderAddStaffer()}
 
                 {this.renderUserList()}
 

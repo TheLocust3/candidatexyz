@@ -4,7 +4,7 @@ const initialState = {
     isReady: false,
     currentUser: {},
     user: {},
-    users: []
+    users: { users: [] }
 };
 
 export function staffReducer(state = initialState, action) {
