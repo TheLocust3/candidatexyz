@@ -20,8 +20,6 @@ Rails.application.routes.draw do
     post 'posts' => 'posts#create'
     patch 'posts/:id' => 'posts#update'
     delete 'posts/:post_type/:url' => 'posts#destroy'
-
-    post 'mail/send_to_contacts' => 'mail#send_to_contacts'
   end
 
   get '*path', to: 'root#index', :constraints => lambda{|req| req.path !~ /\.(min.css|min.js)$/ }

@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import { DOMAIN } from '../constants';
 import { userApi } from '../helpers';
 
 let StaffApi = {
@@ -27,7 +27,7 @@ let StaffApi = {
         return new Promise((resolve, reject) => {
             userApi(`/staff/create_invite`, {
                 type: 'post',
-                data: { email: email },
+                data: { email: email, url: `${DOMAIN}/staff/sign-up/` },
                 success: resolve,
                 error: reject
             });
