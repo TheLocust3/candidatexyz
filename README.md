@@ -10,7 +10,7 @@ AWS_SECRET_ACCESS_KEY
 ```
 
 ## Deployment instructions
-`bundle exec assets:precompile RAILS_ENV=production`
+`bundle exec rake assets:precompile RAILS_ENV=production`
 `./deploy/deploy`
 
 secrets.env
