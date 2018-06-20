@@ -162,9 +162,6 @@ Content.create(content_type: 'link', identifier: 'navButton', content: { text: '
 
 Content.create(content_type: 'text', identifier: 'meetCandidate', content: { text: 'Meet CandidateXYZ' })
 
-User.create(email: 'jake.kinsella@gmail.com', password: 'password', admin: true, superuser: true)
-User.create(email: 'demo@candidatexyz.com', password: 'password', first_name: 'Demo', last_name: 'Account', admin: false)
-
 # splashPage
 Content.create(content_type: 'raw', identifier: 'splashPageBackground', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59cc37a49f745669f140c067/1506555832105/IMG_0459+copy.jpg?format=2500w')
 Content.create(content_type: 'text', identifier: 'splashPageHeadline', content: { text: 'Join CandidateXYZ' })
