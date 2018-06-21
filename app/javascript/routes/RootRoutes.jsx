@@ -1,9 +1,10 @@
-import _ from 'lodash';
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { CANDIDATE_WEBSITE, PARTY_WEBSITE } from '../features';
+import { CAMPAIGN_NAME } from '../constants';
+import { fetchCampaign } from '../components/actions/campaign-actions';
 import { candidateRoutes } from './CandidateRoutes';
 import { partyRoutes } from './PartyRoutes';
 
@@ -13,6 +14,10 @@ import ShowNews from '../components/containers/news/ShowNews';
 import NotFound from '../components/components/NotFound';
 
 class RootRoutes extends React.Component {
+
+    componentWillMount() {
+        this.props.dispatch(fetchCampaign(CAMPAIGN_NAME));
+    }
 
     renderCandidateRoutes() {
         if (!CANDIDATE_WEBSITE) return;
@@ -27,6 +32,8 @@ class RootRoutes extends React.Component {
     }
 
     render() {
+        if (_.isEmpty(this.props.campaign)) return null;
+        
         return (
             <Switch>
                 <Route exact path='/privacy' component={Privacy} />
@@ -44,4 +51,10 @@ class RootRoutes extends React.Component {
     }
 }
 
-export default connect()(RootRoutes);
+function mapStateToProps(state) {
+    return {
+        campaign: state.campaigns.campaign
+    };
+}
+
+export default connect(mapStateToProps)(RootRoutes);
