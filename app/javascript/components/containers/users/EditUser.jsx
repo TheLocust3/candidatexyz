@@ -6,7 +6,7 @@ import { StaffApi } from 'candidatexyz-common-js';
 import { history } from '../../../constants';
 import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
-import { fetchUser } from '../../actions/staff-actions';
+import { StaffActions } from 'candidatexyz-common-js';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import MasterEditUserForm from '../../components/users/MasterEditUserForm';
@@ -14,7 +14,7 @@ import MasterEditUserForm from '../../components/users/MasterEditUserForm';
 class EditUser extends React.Component {
 
     componentWillMount() {
-        this.props.dispatch(fetchUser(this.props.match.params.id));
+        this.props.dispatch(StaffActions.fetchUser(this.props.match.params.id));
         this.props.dispatch(setDocumentTitle('Reset Password'));
         this.props.dispatch(setBlankNavbar(true));
     }

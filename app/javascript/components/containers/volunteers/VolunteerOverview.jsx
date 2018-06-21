@@ -6,7 +6,7 @@ import { VolunteerApi } from 'candidatexyz-common-js';
 
 import { history } from '../../../constants';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
-import { fetchAllVolunteersBy } from '../../actions/volunteer-actions';
+import { VolunteerActions } from 'candidatexyz-common-js';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import Header from '../../components/base/Header';
 
@@ -48,7 +48,7 @@ class VolunteerOverview extends React.Component {
             page: page
         });
 
-        this.props.dispatch(fetchAllVolunteersBy(page, VOLUNTEERS_PER_PAGE, sort, reverse));
+        this.props.dispatch(VolunteerActions.fetchAllVolunteersBy(page, VOLUNTEERS_PER_PAGE, sort, reverse));
     }
 
     onHeaderClick(event, reverse) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
-import { fetchAllMessages } from '../../actions/message-actions';
+import { MessageActions } from 'candidatexyz-common-js';
 import Header from '../../components/base/Header';
 
 import MessageList from '../../components/staff/MessageList';
@@ -12,7 +12,7 @@ class MessageOverview extends React.Component {
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Message Overview'));
         this.props.dispatch(setBlankNavbar(true));
-        this.props.dispatch(fetchAllMessages());
+        this.props.dispatch(MessageActions.fetchAllMessages());
     }
 
     render() {

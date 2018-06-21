@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchCurrentUser } from '../../actions/staff-actions';
+import { StaffActions } from 'candidatexyz-common-js';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import EditUserForm from '../../components/users/EditUserForm';
@@ -9,7 +9,7 @@ import EditUserForm from '../../components/users/EditUserForm';
 class EditCurrentUserContainer extends React.Component {
 
     componentWillMount() {
-        this.props.dispatch(fetchCurrentUser());
+        this.props.dispatch(StaffActions.fetchCurrentUser());
         this.props.dispatch(setDocumentTitle('Reset Password'));
         this.props.dispatch(setBlankNavbar(true));
     }

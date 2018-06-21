@@ -1,11 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { staffReducer } from './staff-reducer';
-import { campaignReducer } from './campaign-reducer';
-import { contactReducer } from './contact-reducer';
-import { volunteerReducer } from './volunteer-reducer';
+import { staffReducer, campaignReducer, contactReducer, volunteerReducer, messageReducer } from 'candidatexyz-common-js';
 import { contentReducer } from './content-reducer';
-import { messageReducer } from './message-reducer';
 import { postReducer } from './post-reducer';
 import { imageReducer } from './image-reducer';
 import { themeReducer } from './theme-reducer';

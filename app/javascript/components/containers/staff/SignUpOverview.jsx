@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
-import { fetchAllContacts } from '../../actions/contact-actions';
+import { ContactActions } from 'candidatexyz-common-js';
 import Header from '../../components/base/Header';
 
 import SignUpList from '../../components/staff/SignUpList';
@@ -12,7 +12,7 @@ class SignUpOverview extends React.Component {
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Sign Ups Overview'));
         this.props.dispatch(setBlankNavbar(true));
-        this.props.dispatch(fetchAllContacts());
+        this.props.dispatch(ContactActions.fetchAllContacts());
     }
 
     render() {

@@ -6,7 +6,7 @@ import { VolunteerApi } from 'candidatexyz-common-js';
 import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
-import { fetchVolunteer } from '../../actions/volunteer-actions';
+import { VolunteerActions } from 'candidatexyz-common-js';
 import { history } from '../../../constants';
 
 import ShowVolunteer from '../../components/volunteers/ShowVolunteer';
@@ -16,7 +16,7 @@ class Volunteer extends React.Component {
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Volunteer Overview'));
         this.props.dispatch(setBlankNavbar(true));
-        this.props.dispatch(fetchVolunteer(this.props.match.params.id));
+        this.props.dispatch(VolunteerActions.fetchVolunteer(this.props.match.params.id));
     }
 
     onDeleteClick() {

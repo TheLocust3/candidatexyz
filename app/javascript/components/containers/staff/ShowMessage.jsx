@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
-import { fetchMessage } from '../../actions/message-actions';
+import { MessageActions } from 'candidatexyz-common-js';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import Header from '../../components/base/Header';
 
@@ -14,7 +14,7 @@ class ShowMessage extends React.Component {
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Show Message'));
         this.props.dispatch(setBlankNavbar(true));
-        this.props.dispatch(fetchMessage(this.props.match.params.id));
+        this.props.dispatch(MessageActions.fetchMessage(this.props.match.params.id));
     }
 
     render() {

@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchCurrentUser } from '../components/actions/staff-actions';
+import { StaffActions } from 'candidatexyz-common-js';
 
 import { CANDIDATE_WEBSITE, PARTY_WEBSITE } from '../features';
 import { candidateStaffRoutes } from './CandidateStaffRoutes';
@@ -32,7 +32,7 @@ import StaffDevelopmentRoutes from './StaffDevelopmentRoutes';
 class StaffRoutes extends React.Component {
 
     componentWillMount() {
-        this.props.dispatch(fetchCurrentUser());
+        this.props.dispatch(StaffActions.fetchCurrentUser());
     }
 
     renderCandidateRoutes() {

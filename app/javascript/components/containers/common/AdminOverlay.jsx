@@ -10,7 +10,7 @@ import Fab from '../../components/base/Fab';
 import Link from '../../components/base/Link';
 import { history } from '../../../constants';
 import { home, DEVELOPMENT, PARTY_WEBSITE, CANDIDATE_WEBSITE } from '../../../features';
-import { fetchCurrentUser } from '../../actions/staff-actions';
+import { StaffActions } from 'candidatexyz-common-js';
 import { setEdit, popContentHistory } from '../../actions/content-actions';
 
 import EditContent from './EditContent';
@@ -24,7 +24,7 @@ class AdminOverlay extends React.Component {
     }
 
     componentWillMount() {
-        this.props.dispatch(fetchCurrentUser());
+        this.props.dispatch(StaffActions.fetchCurrentUser());
 
         history.listen((event) => {
             this.props.dispatch(setEdit(false));

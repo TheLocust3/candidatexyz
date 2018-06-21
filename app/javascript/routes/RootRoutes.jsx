@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { CANDIDATE_WEBSITE, PARTY_WEBSITE } from '../features';
 import { CAMPAIGN_NAME } from '../constants';
-import { fetchCampaign } from '../components/actions/campaign-actions';
+import { CampaignActions } from 'candidatexyz-common-js';
 import { candidateRoutes } from './CandidateRoutes';
 import { partyRoutes } from './PartyRoutes';
 
@@ -16,7 +16,7 @@ import NotFound from '../components/components/NotFound';
 class RootRoutes extends React.Component {
 
     componentWillMount() {
-        this.props.dispatch(fetchCampaign(CAMPAIGN_NAME));
+        this.props.dispatch(CampaignActions.fetchCampaign(CAMPAIGN_NAME));
     }
 
     renderCandidateRoutes() {

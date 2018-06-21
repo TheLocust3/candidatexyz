@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 
 import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
-import { fetchCurrentUser, fetchAllUsers } from '../../actions/staff-actions';
+import { StaffActions } from 'candidatexyz-common-js';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
 class StaffManagement extends React.Component {
 
     componentWillMount() {
-        this.props.dispatch(fetchCurrentUser());
-        this.props.dispatch(fetchAllUsers());
+        this.props.dispatch(StaffActions.fetchCurrentUser());
+        this.props.dispatch(StaffActions.fetchAllUsers());
         this.props.dispatch(setDocumentTitle('Staff Management'));
         this.props.dispatch(setBlankNavbar(true));
     }
