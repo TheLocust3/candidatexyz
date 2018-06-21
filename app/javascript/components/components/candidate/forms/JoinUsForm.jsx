@@ -1,12 +1,12 @@
 import _ from 'lodash'
 import React from 'react';
+import { ContactApi } from 'candidatexyz-common-js';
 
 import Header from '../../base/Header';
 import Button from '../../base/Button';
 import TextField from '../../base/TextField';
 import { history } from '../../../../constants';
 import { home } from '../../../../features';
-import ContactApi from '../../../../api/contact-api';
 
 import FormWrapper from '../../forms/FormWrapper';
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AuthApi } from 'candidatexyz-common-js';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
 import { history } from '../../../constants';
-import AuthApi from '../../../api/auth-api';
 
 import FormWrapper from '../forms/FormWrapper';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { MailApi } from 'candidatexyz-common-js';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
@@ -7,7 +8,6 @@ import Header from '../base/Header';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
 import { home } from '../../../features';
-import MailApi from '../../../api/mail-api';
 
 import FormWrapper from '../forms/FormWrapper';
 

@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import { StaffApi } from 'candidatexyz-common-js';
 
 import { history } from '../../../constants';
-import StaffApi from '../../../api/staff-api';
 import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { fetchUser } from '../../actions/staff-actions';

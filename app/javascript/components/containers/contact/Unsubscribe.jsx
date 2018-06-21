@@ -1,12 +1,11 @@
-import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import { ContactApi } from 'candidatexyz-common-js';
 
 import Header from '../../components/base/Header';
 import Button from '../../components/base/Button';
 import { history } from '../../../constants';
 import { home } from '../../../features';
-import ContactApi from '../../../api/contact-api';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 

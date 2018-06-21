@@ -1,4 +1,4 @@
-import MessageApi from '../../api/message-api';
+import { MessageApi } from 'candidatexyz-common-js';
 
 export const REQUEST_MESSAGE = 'REQUEST_MESSAGE';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';

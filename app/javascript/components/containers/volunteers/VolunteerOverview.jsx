@@ -2,12 +2,12 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+import { VolunteerApi } from 'candidatexyz-common-js';
 
 import { history } from '../../../constants';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchAllVolunteersBy } from '../../actions/volunteer-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
-import VolunteerApi from '../../../api/volunteer-api';
 import Header from '../../components/base/Header';
 
 import VolunteerTable from '../../components/volunteers/VolunteerTable';

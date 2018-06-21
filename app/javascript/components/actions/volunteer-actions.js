@@ -1,4 +1,4 @@
-import VolunteerApi from '../../api/volunteer-api';
+import { VolunteerApi } from 'candidatexyz-common-js';
 
 export const REQUEST_VOLUNTEER = 'REQUEST_VOLUNTEER';
 export const RECEIVE_VOLUNTEER = 'RECEIVE_VOLUNTEER';

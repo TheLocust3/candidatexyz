@@ -1,4 +1,4 @@
-import ContactApi from '../../api/contact-api';
+import { ContactApi } from 'candidatexyz-common-js';
 
 export const REQUEST_CONTACT = 'REQUEST_CONTACT';
 export const RECEIVE_CONTACT = 'RECEIVE_CONTACT';

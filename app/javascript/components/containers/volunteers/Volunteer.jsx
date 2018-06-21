@@ -1,13 +1,12 @@
 import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import { VolunteerApi } from 'candidatexyz-common-js';
 
 import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
 import { fetchVolunteer } from '../../actions/volunteer-actions';
-import MDCAutoInit from '../../components/global/MDCAutoInit';
-import VolunterApi from '../../../api/volunteer-api';
 import { history } from '../../../constants';
 
 import ShowVolunteer from '../../components/volunteers/ShowVolunteer';
@@ -21,7 +20,7 @@ class Volunteer extends React.Component {
     }
 
     onDeleteClick() {
-        VolunterApi.destroy(this.props.match.params.id).then(() => {
+        VolunteerApi.destroy(this.props.match.params.id).then(() => {
             history.push('/staff/volunteers');
         });
     }

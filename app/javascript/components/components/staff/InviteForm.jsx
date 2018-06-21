@@ -1,12 +1,12 @@
 import _ from 'lodash'
 import React from 'react';
 import { MDCSelect } from '@material/select';
+import { StaffApi } from 'candidatexyz-common-js';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
 import MDCAutoInit from '../global/MDCAutoInit';
 import { history } from '../../../constants';
-import StaffApi from '../../../api/staff-api';
 
 import FormWrapper from '../forms/FormWrapper';
 

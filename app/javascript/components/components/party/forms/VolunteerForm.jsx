@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 import { MDCSelect } from '@material/select';
+import { VolunteerApi } from 'candidatexyz-common-js';
 
 import Header from '../../base/Header';
 import Button from '../../base/Button';
@@ -11,7 +12,6 @@ import ContentApi from '../../../../api/content-api';
 import MDCAutoInit from '../../global/MDCAutoInit';
 import { history, STATES } from '../../../../constants';
 import { home } from '../../../../features';
-import VolunteerApi from '../../../../api/volunteer-api';
 
 import FormWrapper from '../../forms/FormWrapper';
 

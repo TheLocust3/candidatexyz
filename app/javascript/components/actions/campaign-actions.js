@@ -1,4 +1,4 @@
-import CampaignApi from '../../api/campaign-api';
+import { CampaignApi } from 'candidatexyz-common-js';
 
 export const REQUEST_CAMPAIGN = 'REQUEST_CAMPAIGN';
 export const RECEIVE_CAMPAIGN = 'RECEIVE_CAMPAIGN';

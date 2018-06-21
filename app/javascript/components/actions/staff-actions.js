@@ -1,5 +1,4 @@
-import StaffApi from '../../api/staff-api';
-import AuthApi from '../../api/auth-api';
+import { StaffApi, AuthApi } from 'candidatexyz-common-js';
 
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';

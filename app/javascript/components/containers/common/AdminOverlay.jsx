@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Corner, AnchorMargin } from '@material/menu';
 import { MDCSnackbar } from '@material/snackbar';
 import { MDCMenu } from '@material/menu';
+import { AuthApi } from 'candidatexyz-common-js';
 
 import Fab from '../../components/base/Fab';
 import Link from '../../components/base/Link';
@@ -11,7 +12,6 @@ import { history } from '../../../constants';
 import { home, DEVELOPMENT, PARTY_WEBSITE, CANDIDATE_WEBSITE } from '../../../features';
 import { fetchCurrentUser } from '../../actions/staff-actions';
 import { setEdit, popContentHistory } from '../../actions/content-actions';
-import AuthApi from '../../../api/auth-api';
 
 import EditContent from './EditContent';
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StaffApi } from 'candidatexyz-common-js';
 
 import Button from '../base/Button';
 import Checkbox from '../base/Checkbox';
 import TextField from '../base/TextField';
 import { history } from '../../../constants';
-import StaffApi from '../../../api/staff-api';
 
 import FormWrapper from '../forms/FormWrapper';
 
