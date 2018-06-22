@@ -1,0 +1,73 @@
+$color1: #EF5350;
+$color2: #42A5F5;
+$color3: #66BB6A;
+
+$hover-darken: 3%;
+$active-darken: 5%;
+
+.highlight-block-container {
+    width: 100%;
+
+    margin-top: 3%;
+}
+
+.highlight-block {
+    display: inline-block;
+    height: 0;
+
+    margin: 0.5%;
+
+    color: white;
+    cursor: pointer;
+
+    border-radius: 5px;
+}
+
+.highlight-block:hover {
+    color: #f7f7f7;
+}
+
+.highlight-block:active {
+    color: #e5e5e5;
+}
+
+.highlight-block-inner {
+    width: 100%;
+    text-align: center;
+}
+
+.highlight-block--color1 {
+    background-color: $color1;
+}
+
+.highlight-block--color1:hover {
+    background-color: darken($color1, $hover-darken);
+}
+
+.highlight-block--color1:active {
+    background-color: darken($color1, $active-darken);
+}
+
+.highlight-block--color2 {
+    background-color: $color2;
+}
+
+.highlight-block--color2:hover {
+    background-color: darken($color2, $hover-darken);
+}
+
+.highlight-block--color2:active {
+    background-color: darken($color2, $active-darken);
+}
+
+.highlight-block--color3 {
+    background-color: $color3;
+}
+
+.highlight-block--color3:hover {
+    background-color: darken($color3, $hover-darken);
+}
+
+.highlight-block--color3:active {
+    background-color: darken($color3, $active-darken);
+}

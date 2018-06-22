@@ -29,7 +29,7 @@ class NewsThumbnail extends React.Component {
                 <img className='news-thumbnail-image' src={post.image} />
                 
                 <div className='news-thumbnail-text'>
-                    <div style={{ fontSize: '26px' }}><b>{post.title}</b></div><br />
+                    <div style={{ fontSize: '26px' }}>{post.title}</div><br />
                     <span dangerouslySetInnerHTML={{__html: post.body.substring(0, length) }} /><br />
 
                     {this.renderCreatedAt()}

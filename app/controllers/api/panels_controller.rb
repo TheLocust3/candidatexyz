@@ -1,6 +1,7 @@
 class Api::PanelsController < Api::ApiController
 
-    before_action :authenticate_user!, only: [ :index, :create, :update, :destroy ]
+    include CandidateXYZ::Concerns::Authenticatable
+    before_action :authenticate, only: [ :index, :create, :update, :destroy ]
 
     def index
         render :json => Panel.all

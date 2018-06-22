@@ -6,7 +6,8 @@ import MDCAutoInit from '../../components/global/MDCAutoInit';
 import SlideshowContent from '../content/SlideshowContent';
 
 import AboutPanel from '../../components/party/panels/AboutPanel';
-import NewsPanel from '../../components/party/panels/NewsPanel';
+import NewsPanel from '../../components/candidate/panels/NewsPanel';
+import NavigationPanel from '../../components/party/panels/NavigationPanel';
 import JoinPanel from '../../components/party/panels/JoinPanel';
 
 class Index extends React.Component {
@@ -24,6 +25,8 @@ class Index extends React.Component {
                 <AboutPanel />
 
                 <NewsPanel />
+
+                <NavigationPanel />
 
                 <JoinPanel />
 

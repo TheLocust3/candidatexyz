@@ -1692,7 +1692,7 @@ camelcase@^4.1.0:
 
 "candidatexyz-common-js@https://github.com/TheLocust3/candidatexyz-common-js.git":
   version "1.0.1"
-  resolved "https://github.com/TheLocust3/candidatexyz-common-js.git#2b5073b3ceb714774dc9851e0e10fd00e29b3f04"
+  resolved "https://github.com/TheLocust3/candidatexyz-common-js.git#e96873ceef9740255ff39c9a62623a7c6289adee"
   dependencies:
     babel-cli "^6.26.0"
     babel-polyfill "^6.26.0"
