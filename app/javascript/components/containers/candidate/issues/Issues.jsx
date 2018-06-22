@@ -63,7 +63,7 @@ class Issues extends React.Component {
 function mapStateToProps(state) {
     return {
         posts: state.posts.postsOfType,
-        isUserReady: state.staff.isReady,
+        isUserReady: state.staff.isCurrentUserReady,
         user: state.staff.currentUser
     };
 }

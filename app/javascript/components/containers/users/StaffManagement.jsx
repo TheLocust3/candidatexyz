@@ -49,7 +49,7 @@ class StaffManagement extends React.Component {
     }
 
     render() {
-        if (!this.props.isReady) return null;
+        if (!this.props.isReady || !this.props.isCurrentUserReady) return null;
 
         return (
             <div className='content edit-user-form'>
@@ -67,6 +67,7 @@ class StaffManagement extends React.Component {
 function mapStateToProps(state) {
     return {
         isReady: state.staff.isReady,
+        isCurrentUserReady: state.staff.isCurrentUserReady,
         currentUser: state.staff.currentUser,
         users: state.staff.users
     };

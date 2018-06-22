@@ -29,7 +29,7 @@ class EditCurrentUserContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        isReady: state.staff.isReady,
+        isReady: state.staff.isCurrentUserReady,
         user: state.staff.currentUser
     };
 }
