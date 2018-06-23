@@ -162,6 +162,11 @@ Content.create(content_type: 'link', identifier: 'navButton', content: { text: '
 
 Content.create(content_type: 'text', identifier: 'meetCandidate', content: { text: 'Meet CandidateXYZ' })
 
+# navigation blocks
+Content.create(content_type: 'block', identifier: 'getInvolvedBlock', content: { icon: 'group', text: 'Get Involved', link: '/get-involved' })
+Content.create(content_type: 'block', identifier: 'eventsBlock', content: { icon: 'event', text: 'Events', link: '/events' })
+Content.create(content_type: 'block', identifier: 'newsBlock', content: { icon: 'library_books', text: 'News', link: '/news' })
+
 # splashPage
 Content.create(content_type: 'raw', identifier: 'splashPageBackground', content: 'https://static1.squarespace.com/static/598dd363a5790a4026dac8ab/t/59cc37a49f745669f140c067/1506555832105/IMG_0459+copy.jpg?format=2500w')
 Content.create(content_type: 'text', identifier: 'splashPageHeadline', content: { text: 'Join CandidateXYZ' })

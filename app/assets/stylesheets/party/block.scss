@@ -1,6 +1,9 @@
+@import '../theme';
+
 $color1: #EF5350;
 $color2: #42A5F5;
 $color3: #66BB6A;
+$color4: $mdc-theme-primary;
 
 $hover-darken: 3%;
 $active-darken: 5%;
@@ -70,4 +73,16 @@ $active-darken: 5%;
 
 .highlight-block--color3:active {
     background-color: darken($color3, $active-darken);
+}
+
+.highlight-block--color4 {
+    background-color: $color4;
+}
+
+.highlight-block--color4:hover {
+    background-color: darken($color4, $hover-darken);
+}
+
+.highlight-block--color4:active {
+    background-color: darken($color4, $active-darken);
 }

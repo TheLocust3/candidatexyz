@@ -8,6 +8,7 @@ import TextContentEditor from '../../components/content/edit/TextContentEditor';
 import ImageContentEditor from '../../components/content/edit/ImageContentEditor';
 import LinkContentEditor from '../../components/content/edit/LinkContentEditor';
 import SlideshowContentEditor from '../../components/content/edit/SlideshowContentEditor';
+import BlockContentEditor from '../../components/content/edit/BlockContentEditor';
 
 class EditContent extends React.Component {
 
@@ -66,6 +67,8 @@ class EditContent extends React.Component {
                 return <LinkContentEditor content={this.props.content} />;
             case 'slideshow':
                 return <SlideshowContentEditor content={this.props.content} />;
+            case 'block':
+                return <BlockContentEditor content={this.props.content} />;
             default:
                 return;
         }

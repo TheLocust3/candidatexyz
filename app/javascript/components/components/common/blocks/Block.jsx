@@ -2,16 +2,18 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { history } from '../../../../../constants';
+import { history } from '../../../../constants';
 
 export default class Block extends React.Component {
 
-    onClick() {
+    onClick(event) {
+        if (this.props.edit) return;
+
         history.push(this.props.to);
     }
 
     render() {
-        let { className, totalBlocks, color, to, children, ...props } = this.props;
+        let { className, totalBlocks, color, to, children, edit, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
         let side = `${100.0 / totalBlocks - 1}%`;
@@ -35,5 +37,6 @@ Block.propTypes = {
         PropTypes.arrayOf(PropTypes.element),
         PropTypes.element,
         PropTypes.string
-    ]).isRequired
+    ]).isRequired,
+    edit: PropTypes.bool
 };

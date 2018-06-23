@@ -5,13 +5,15 @@ import PropTypes from 'prop-types';
 export default class BlockContainer extends React.Component {
 
     render() {
-        let { className, children, ...props } = this.props;
+        let { className, totalBlocks, children, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
 
+        const childrenWithProps = React.Children.map(children, child => React.cloneElement(child, { totalBlocks: totalBlocks }));
+
         return (
-            <div className={`highlight-block-container ${className}`}>
-                {children}
+            <div className={`highlight-block-container ${className}`} {...props}>
+                {childrenWithProps}
             </div>
         );
     }
@@ -19,6 +21,7 @@ export default class BlockContainer extends React.Component {
 
 BlockContainer.propTypes = {
     className: PropTypes.string,
+    totalBlocks: PropTypes.number,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.element),
         PropTypes.element,
