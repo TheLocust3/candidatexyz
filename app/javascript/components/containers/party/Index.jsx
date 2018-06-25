@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setDocumentTitle, setBlankNavbar } from '../../actions/global-actions';
+import { setDocumentTitle, setBlankNavbar, setFullscreen } from '../../actions/global-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import SlideshowContent from '../content/SlideshowContent';
 
@@ -15,6 +15,7 @@ class Index extends React.Component {
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Home'));
         this.props.dispatch(setBlankNavbar(true));
+        this.props.dispatch(setFullscreen(true));
     }
     
     render() {

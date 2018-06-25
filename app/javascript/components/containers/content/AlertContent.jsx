@@ -35,10 +35,10 @@ class AlertContent extends React.Component {
     }
 
     render() {
-        let { identifier, contents, edit, editOverlayOpen, isReady, dispatch, ...props } = this.props;
+        let { identifier, contents, edit, editOverlayOpen, fullscreen, isReady, dispatch, ...props } = this.props;
         let content = this.findContent();
 
-        if (_.isEmpty(content.content) || (_.isEmpty(content.content.text) && !edit)) return null;
+        if (_.isEmpty(content.content) || fullscreen || (_.isEmpty(content.content.text) && !edit)) return null;
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
@@ -61,7 +61,8 @@ function mapStateToProps(state) {
         contents: state.content.contents,
         edit: state.content.edit,
         editOverlayOpen: state.content.editOverlayOpen, // forces content to update whenever the edit dialog closes
-        isReady: state.content.isReady // same as above
+        isReady: state.content.isReady, // same as above
+        setFullscreen: state.global.fullscreen
     };
 }
 
