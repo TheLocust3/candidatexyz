@@ -71,7 +71,7 @@ export default class VolunteerForm extends React.Component {
 
     renderStateDropdown() {
         return (
-            <Select label='State' onChange={(select) => this.handleStateChange(select)} style={{ width: '30%' }} selectedIndex={19}>
+            <Select label='State' onChange={(select) => this.handleStateChange(select)} style={{ width: '30%', paddingBottom: '1px', marginRight: '5%' }} selectedIndex={19}>
                 {STATES.map((state) => {
                     return (
                         <SelectItem key={state}>
@@ -118,7 +118,7 @@ export default class VolunteerForm extends React.Component {
 
                 <TextField label='City' name='city' onChange={(event) => this.handleChange(event)} style={{ width: '30%', marginRight: '5%' }} />
                 {this.renderStateDropdown()}
-                <TextField label='Zipcode' name='zipCode' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '30%', marginRight: '5%' }} />
+                <TextField label='Zipcode' name='zipCode' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '30%', marignLeft: '5%' }} />
 
                 <TextField type='email' label='Email' name='email' onChange={(event) => this.handleChange(event)} required={true} style={{ width: '47.5%', marginRight: '5%' }} />
                 <TextField label='Phone Number' name='phoneNumber' onChange={(event) => this.handleChange(event)} style={{ width: '47.5%' }} />

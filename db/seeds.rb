@@ -211,7 +211,7 @@ Post.create(post_type: 'party-events', url: 'party-events-blurb', title: '', bod
 
 Content.create(content_type: 'raw', identifier: 'partyCalendarUrl', content: 'https://calendar.google.com/calendar/embed?src=u037gu187lnt79755tn76hrkos%40group.calendar.google.com&ctz=America%2FNew_York')
 
-Content.create(content_type: 'text', identifier: 'partyGetInvolvedHeadline', content: { text: 'Get Involed' })
+Content.create(content_type: 'text', identifier: 'partyGetInvolvedHeadline', content: { text: 'Get Involved' })
 Post.create(post_type: 'party-involved', url: 'party-involved-blurb', protected: true, title: '', body: "
 <p>We've got lots of ways for you to get involved with us'!</p>")
 
