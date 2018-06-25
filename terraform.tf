@@ -62,7 +62,7 @@ resource "aws_s3_bucket" "bucket" {
   acl    = "public-read"
 }
 
-resource "aws_s3_bucket" "bucket" {
+resource "aws_s3_bucket" "bucket2" {
   bucket = "candidatexyz-${var.name}"
   acl    = "aws-exec-read"
 }
