@@ -9,8 +9,6 @@ import SimpleLinkContent from '../../containers/content/SimpleLinkContent';
 class Footer extends React.Component {
 
     render() {
-        if (this.props.fullscreen) return null;
-
         return (
             <div className='footer'>
                 <SocialMediaLinks size={2} />
@@ -30,10 +28,4 @@ class Footer extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        fullscreen: state.global.fullscreen
-    };
-}
-
-export default connect(mapStateToProps)(Footer);
+export default connect()(Footer);
