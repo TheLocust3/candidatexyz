@@ -38,12 +38,12 @@ class AlertContent extends React.Component {
         let { identifier, contents, edit, editOverlayOpen, isReady, dispatch, ...props } = this.props;
         let content = this.findContent();
 
-        if (_.isEmpty(content.content)) return null;
+        if (_.isEmpty(content.content) || (_.isEmpty(content.content.text) && !edit)) return null;
 
         return (
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
-                <div className='alert'>
-                    <Header type='headline4'>
+                <div className='alert relative'>
+                    <Header type='headline4' className='middle-center'>
                         {content.content.text}
                     </Header>
                 </div>
