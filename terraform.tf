@@ -62,6 +62,11 @@ resource "aws_s3_bucket" "bucket" {
   acl    = "public-read"
 }
 
+resource "aws_s3_bucket" "bucket" {
+  bucket = "candidatexyz-${var.name}"
+  acl    = "aws-exec-read"
+}
+
 resource "aws_security_group" "security_group" {
   name        = "${var.name} security group"
   description = "Managed by Terraform"
