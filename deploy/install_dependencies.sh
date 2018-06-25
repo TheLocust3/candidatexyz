@@ -34,7 +34,7 @@ cd /home/ubuntu/rails
 sudo apt-get install -y awscli
 
 aws s3 cp s3://candidatexyz-volunteerapi/common.tar.gz /home/ubuntu/rails/
-tar -xvzf common.tar.gz
+sudo tar -xvzf common.tar.gz
 
 # pull secrets
 export $(cat /home/ubuntu/secrets.env | xargs)
