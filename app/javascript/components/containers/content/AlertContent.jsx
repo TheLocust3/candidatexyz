@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -34,6 +35,10 @@ class AlertContent extends React.Component {
         this.props.dispatch(setEditingContent(this.findContent()));
     }
 
+    onCloseClick(event) {
+        $(`#${this.props.identifier} div`).slideUp(300);
+    }
+
     render() {
         let { identifier, contents, edit, editOverlayOpen, fullscreen, isReady, dispatch, ...props } = this.props;
         let content = this.findContent();
@@ -44,8 +49,16 @@ class AlertContent extends React.Component {
             <span id={identifier} onClick={this.onEditContent.bind(this)}>
                 <div className='alert relative'>
                     <Header type='headline4' className='middle-center'>
-                        {content.content.text}
+                        <div className='alert-text'>
+                            {content.content.text}
+                        </div>
                     </Header>
+
+                    <div className='alert-right middle' onClick={this.onCloseClick.bind(this)}>
+                        <i className='material-icons'>
+                            clear
+                        </i>
+                    </div>
                 </div>
             </span>
         );
