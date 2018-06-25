@@ -16,7 +16,7 @@ import NotFound from '../components/components/NotFound';
 class RootRoutes extends React.Component {
 
     componentWillMount() {
-        this.props.dispatch(CampaignActions.fetchCampaign(CAMPAIGN_NAME));
+        this.props.dispatch(CampaignActions.fetchCampaignByName(CAMPAIGN_NAME));
     }
 
     renderCandidateRoutes() {
