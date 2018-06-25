@@ -8,7 +8,6 @@ import { fetchGlobalTheme } from '../components/actions/theme-actions';
 import { fetchWebsiteTitle } from '../components/actions/global-actions';
 
 import MDCAutoInit from '../components/components/global/MDCAutoInit';
-import FadeIn from '../components/components/global/FadeIn';
 import FontLoader from '../components/components/global/FontLoader';
 import RootNavbar from '../components/containers/common/RootNavbar';
 import RootFooter from '../components/containers/common/RootFooter';
@@ -44,7 +43,7 @@ class Routes extends React.Component {
 
         return (
             <Router history={history}>
-                <FadeIn>
+                <div>
                     <Route component={ScrollToTop} />
                     <FontLoader />
 
@@ -66,7 +65,7 @@ class Routes extends React.Component {
                     <RootFooter />
 
                     <MDCAutoInit />
-                </FadeIn>
+                </div>
             </Router>
         );
     }
