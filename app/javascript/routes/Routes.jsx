@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { AnalyticEntryApi } from 'candidatexyz-common-js';
 
 import { history } from '../constants';
 import { fetchGlobalTheme } from '../components/actions/theme-actions';
@@ -36,6 +37,10 @@ class Routes extends React.Component {
     componentWillMount() {
         this.props.dispatch(fetchGlobalTheme());
         this.props.dispatch(fetchWebsiteTitle());
+    }
+
+    componentDidMount() {
+        AnalyticEntryApi.pageView();
     }
 
     render() {
