@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { CampaignActions, AnalyticEntryApi } from 'candidatexyz-common-js';
 
 import { CANDIDATE_WEBSITE, PARTY_WEBSITE } from '../features';
 import { CAMPAIGN_NAME } from '../constants';
-import { CampaignActions } from 'candidatexyz-common-js';
 import { candidateRoutes } from './CandidateRoutes';
 import { partyRoutes } from './PartyRoutes';
 
@@ -15,8 +15,27 @@ import NotFound from '../components/components/NotFound';
 
 class RootRoutes extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = { pageView: false };
+    }
+
     componentWillMount() {
         this.props.dispatch(CampaignActions.fetchCampaignByName(CAMPAIGN_NAME));
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (_.isEmpty(nextProps.campaign)) return;
+
+        if (!this.state.pageView) {
+            AnalyticEntryApi.pageView();
+
+            this.setState({
+                pageView: true
+            });
+        }
+        
     }
 
     renderCandidateRoutes() {
