@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "^3.2.1",
     "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "candidatexyz-common-js": "https://github.com/TheLocust3/candidatexyz-common-js.git",
     "core-js": "^2.5.7",
