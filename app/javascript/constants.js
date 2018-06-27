@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import thunkMiddleware from 'redux-thunk/es';
 import { configure } from 'candidatexyz-common-js';
 
 import reducer from './components/reducers/root-reducer';
 import { LOCAL } from './features';
 
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from 'history/es';
 
 export let history = createBrowserHistory();
 export const store = createStore(reducer, applyMiddleware(thunkMiddleware));
