@@ -1,4 +1,4 @@
-const environment = require('./environment')
+const environment = require('./environment');
 
 environment.loaders.prepend('babel', {
     test: /\.js/,
@@ -9,4 +9,8 @@ environment.loaders.prepend('babel', {
     }
 });
 
-module.exports = environment.toWebpackConfig()
+const config = environment.toWebpackConfig();
+
+delete(config.optimization.minimizer);
+
+module.exports = config;
