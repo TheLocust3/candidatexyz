@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
+import 'objectFitPolyfill';
 
 export default class Slideshow extends React.Component {
 
@@ -17,6 +18,8 @@ export default class Slideshow extends React.Component {
     }
 
     componentDidMount() {
+        objectFitPolyfill();
+
         this.createInterval();
         $('.slideshow-circle-holder').hide();
 
@@ -31,6 +34,10 @@ export default class Slideshow extends React.Component {
                 });
             }, 1000);
         });
+    }
+
+    componentDidUpdate() {
+        objectFitPolyfill();
     }
     
     componentWillUnmount() {
@@ -106,7 +113,7 @@ export default class Slideshow extends React.Component {
                 {this.props.images.map((image, index) => {
                     let imageClassName = index == this.state.index ? 'slideshow-image-active' : '';
 
-                    return <img key={index} id={`image-${index}`} src={image} className={`slideshow-image ${fullscreenImageClassName} ${imageClassName}`} />
+                    return <img key={index} id={`image-${index}`} data-object-fit='cover' src={image} className={`slideshow-image ${fullscreenImageClassName} ${imageClassName}`} />
                 })}
 
                 {this.renderCircles()}

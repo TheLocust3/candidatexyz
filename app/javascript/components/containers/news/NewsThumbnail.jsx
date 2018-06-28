@@ -1,13 +1,17 @@
-import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import 'objectFitPolyfill';
 
 import { history } from '../../../constants';
 
 const THUMBNAIL_BODY_LENGTH = 200;
 
 class NewsThumbnail extends React.Component {
+
+    componentDidMount() {
+        objectFitPolyfill();
+    }
 
     onThumbnailClick() {
         history.push(`/news/${this.props.post.url}`)
@@ -25,8 +29,8 @@ class NewsThumbnail extends React.Component {
         let length = small ? THUMBNAIL_BODY_LENGTH : THUMBNAIL_BODY_LENGTH * 2;
         
         return (
-            <div className={`news-thumbnail ${smallClassName}`} onClick={this.onThumbnailClick.bind(this)} {...props}>
-                <img className='news-thumbnail-image' src={post.image} />
+            <div className={`news-thumbnail ${smallClassName}`} onClick={this.onThumbnailClick.bind(this)} data-object-fit='cover' {...props}>
+                <img className='news-thumbnail-image' src={post.image} data-object-fit='cover' />
                 
                 <div className='news-thumbnail-text'>
                     <div style={{ fontSize: '26px' }}>{post.title}</div><br />
