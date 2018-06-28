@@ -19,8 +19,6 @@ import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
 import ResetPasswordContainer from '../components/containers/users/ResetPasswordContainer';
 
-import Unsubscribe from '../components/containers/contact/Unsubscribe';
-
 import StaffRoutes from '../routes/StaffRoutes';
 import RootRoutes from '../routes/RootRoutes';
 
@@ -55,7 +53,6 @@ class Routes extends React.Component {
                         <Route exact path='/forgot-password' component={ForgotPasswordContainer} />
                         <Route exact path='/reset_password' component={ResetPasswordContainer} />
 
-                        <Route exact path='/unsubscribe/:token' component={Unsubscribe} />
                         <Route exact path='/staff/sign-up/:token' component={StaffSignUp} />
 
                         <Route path='/staff' component={StaffRoutes} />
