@@ -1,10 +1,10 @@
 import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ImageApi } from 'candidatexyz-common-js';
 
 import { uuid } from '../../../helpers';
 import Button from '../base/Button';
-import ImageApi from '../../../api/image-api';
 
 class ImageUploader extends React.Component {
 

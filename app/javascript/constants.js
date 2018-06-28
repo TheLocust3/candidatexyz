@@ -11,7 +11,7 @@ export let history = createBrowserHistory();
 export const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 export const MAX_MOBILE_WIDTH = 768;
 export const STATES = [ 'AL', 'AK', 'AZ', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY', 'AS', 'DC', 'FM', 'GU', 'MH', 'MP', 'PW', 'PR', 'VI' ];
-export const CAMPAIGN_NAME = 'Reading Democratic Committe'; // TODO: make this dynamic
+export const CAMPAIGN_NAME = 'Reading Democratic Committee'; // TODO: make this dynamic
 
 export const DOMAIN = LOCAL ? 'http://127.0.0.1:3001' : 'https://demo.candidatexyz.com';
 export const VOLUNTEER_API_DOMAIN = LOCAL ? 'http://127.0.0.1:3002' : 'https://api.candidatexyz.com';

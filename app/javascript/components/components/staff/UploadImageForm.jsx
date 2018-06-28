@@ -1,9 +1,9 @@
 import React from 'react';
+import { ImageApi } from 'candidatexyz-common-js';
 
 import Button from '../base/Button';
 import TextField from '../base/TextField';
 import { history } from '../../../constants';
-import ImageApi from '../../../api/image-api';
 
 import FormWrapper from '../forms/FormWrapper';
 

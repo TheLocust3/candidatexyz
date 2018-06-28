@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ImageApi } from 'candidatexyz-common-js';
 
-import ImageApi from '../../../api/image-api';
 import Fab from '../base/Fab';
 
 class ImageList extends React.Component {

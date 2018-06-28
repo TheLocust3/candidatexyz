@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { ImageActions } from 'candidatexyz-common-js';
 
 import Header from '../../components/base/Header';
 import Link from '../../components/base/Link';
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
-import { fetchAllImages } from '../../actions/image-actions';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 
 import ImageList from '../../components/staff/ImageList';
@@ -14,7 +14,7 @@ class Images extends React.Component {
     componentDidMount() {
         this.props.dispatch(setDocumentTitle('Upload Image'));
         this.props.dispatch(setBlankNavbar(true));
-        this.props.dispatch(fetchAllImages());
+        this.props.dispatch(ImageActions.fetchAllImages());
     }
 
     render() {

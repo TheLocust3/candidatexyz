@@ -4,8 +4,8 @@ import { EditorState, ContentState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
+import { ImageApi } from 'candidatexyz-common-js';
 
-import ImageApi from '../../../api/image-api';
 import Header from '../base/Header';
 
 class TextEditor extends React.Component {
