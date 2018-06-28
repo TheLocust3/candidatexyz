@@ -93,6 +93,7 @@ body, #root {
 }
 
 .button {
+    background-color: $mdc-theme-primary !important;
     font-family: $button-font-family;
     font-size: $button-font-size;
     height: 50px;
