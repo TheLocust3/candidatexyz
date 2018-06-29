@@ -17,7 +17,7 @@ class Footer extends React.Component {
 
                 <Header type='headline5' className='link-holder'>
                     <SimpleLinkContent identifier='footerPrivacy' className='link' />
-                    <a className='link' href={`${APP_DOMAIN}/sign_in`}>Staff Login</a>
+                    <a className='link' href={APP_DOMAIN}>Staff Login</a>
                 </Header>
 
                 <Header type='body1' className='footer-staff-login' style={{ fontSize: 12 }}>

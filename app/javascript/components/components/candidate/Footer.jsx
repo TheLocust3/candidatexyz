@@ -24,7 +24,7 @@ class Footer extends React.Component {
                 </Header>
 
                 <Header type='body1' className='footer-staff-login'>
-                    <a className='link' href={`${APP_DOMAIN}/sign_in`} style={{ fontSize: 18 }}>Staff Login</a>
+                    <a className='link' href={APP_DOMAIN} style={{ fontSize: 18 }}>Staff Login</a>
                 </Header>
 
                 <ApprovedBy style={{ paddingTop: '3%' }} />
