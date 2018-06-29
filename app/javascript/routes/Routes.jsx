@@ -13,8 +13,6 @@ import RootNavbar from '../components/containers/common/RootNavbar';
 import RootFooter from '../components/containers/common/RootFooter';
 import AdminOverlay from '../components/containers/common/AdminOverlay';
 
-import StaffSignUp from '../components/containers/staff/StaffSignUp';
-
 import SignInContainer from '../components/containers/users/SignInContainer';
 import ForgotPasswordContainer from '../components/containers/users/ForgotPasswordContainer';
 import ResetPasswordContainer from '../components/containers/users/ResetPasswordContainer';
@@ -52,8 +50,6 @@ class Routes extends React.Component {
                         <Route exact path='/sign-in' component={SignInContainer} />
                         <Route exact path='/forgot-password' component={ForgotPasswordContainer} />
                         <Route exact path='/reset_password' component={ResetPasswordContainer} />
-
-                        <Route exact path='/staff/sign-up/:token' component={StaffSignUp} />
 
                         <Route path='/staff' component={StaffRoutes} />
                         <Route path='/' component={RootRoutes} />
