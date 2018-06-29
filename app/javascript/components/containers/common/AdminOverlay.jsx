@@ -8,7 +8,7 @@ import { AuthApi } from 'candidatexyz-common-js';
 
 import Fab from '../../components/base/Fab';
 import Link from '../../components/base/Link';
-import { history } from '../../../constants';
+import { history, APP_DOMAIN } from '../../../constants';
 import { home, DEVELOPMENT, PARTY_WEBSITE, CANDIDATE_WEBSITE } from '../../../features';
 import { StaffActions } from 'candidatexyz-common-js';
 import { setEdit, popContentHistory } from '../../actions/content-actions';
@@ -113,29 +113,9 @@ class AdminOverlay extends React.Component {
                     </li>
                 </Link>
 
-                <Link to='/staff/images' className='menu-item-link'>
-                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                        Images
-                    </li>
-                </Link>
-
                 <Link to='/staff/themes' className='menu-item-link'>
                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
                         Themes
-                    </li>
-                </Link>
-            </div>
-        );
-    }
-
-    renderCandidateLinks() {
-        if (!CANDIDATE_WEBSITE) return;
-
-        return (
-            <div>
-                <Link to='/staff/messages' className='menu-item-link'>
-                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                        Messages
                     </li>
                 </Link>
             </div>
@@ -156,14 +136,6 @@ class AdminOverlay extends React.Component {
                 </div>
 
                 <div className='overlay-actions-right'>
-                    <Link to='/staff/mail' style={{ marginRight: '5%' }}>
-                        <Fab className='material-icons overlay-action-icon' aria-label='Mail'>
-                            <span className='mdc-fab__icon'>
-                                mail
-                            </span>
-                        </Fab>
-                    </Link>
-
                     <Fab className='material-icons overlay-action-icon' aria-label='Settings' onClick={this.onSettingsClick.bind(this)}>
                         <span className='mdc-fab__icon'>
                             settings
@@ -175,31 +147,11 @@ class AdminOverlay extends React.Component {
                             <ul className='mdc-menu__items mdc-list' role='menu' aria-hidden='true'>
                                 {this.renderDevelopmentLinks()}
 
-                                <Link to='/staff/edit-user' className='menu-item-link'>
+                                <a href={APP_DOMAIN} className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Settings
+                                        Dashboard
                                     </li>
-                                </Link>
-
-                                <Link to='/staff/staff-management' className='menu-item-link'>
-                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Staff Management
-                                    </li>
-                                </Link>
-
-                                {this.renderCandidateLinks()}
-
-                                <Link to='/staff/volunteers' className='menu-item-link'>
-                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Volunteers
-                                    </li>
-                                </Link>
-
-                                <Link to='/staff/sign-ups' className='menu-item-link'>
-                                    <li className='mdc-list-item' role='menuitem' tabIndex='0'>
-                                        Sign Ups
-                                    </li>
-                                </Link>
+                                </a>
 
                                 <Link to='/staff/edit-content' className='menu-item-link'>
                                     <li className='mdc-list-item' role='menuitem' tabIndex='0'>

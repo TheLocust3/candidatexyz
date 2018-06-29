@@ -11,8 +11,6 @@ import ShowPanel from '../components/containers/staff/panels/ShowPanel';
 import Pages from '../components/containers/staff/pages/Pages';
 import PageEditor from '../components/containers/staff/pages/PageEditor';
 import ShowPage from '../components/containers/staff/pages/ShowPage';
-import Images from '../components/containers/staff/Images'; // TODO: Probably don't need these pages anyways
-import UploadImage from '../components/containers/staff/UploadImage';
 
 class StaffDevelopmentRoutes extends React.Component {
 
@@ -30,9 +28,6 @@ class StaffDevelopmentRoutes extends React.Component {
                 <Route exact path='/pages/new' component={PageEditor} />
                 <Route exact path='/pages/:url' component={PageEditor} />
                 <Route exact path='/pages/:url/show' component={ShowPage} />
-
-                <Route exact path='/images' component={Images} />
-                <Route exact path='/images/new' component={UploadImage} />
             </Switch>
         );
     }

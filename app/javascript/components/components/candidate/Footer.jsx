@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { APP_DOMAIN } from '../../../constants';
+
 import Link from '../base/Link';
 import Header from '../base/Header';
 import SocialMediaLinks from '../global/SocialMediaLinks';
@@ -22,7 +24,7 @@ class Footer extends React.Component {
                 </Header>
 
                 <Header type='body1' className='footer-staff-login'>
-                    <Link className='link' to='/sign-in' style={{ fontSize: 18 }}>Staff Login</Link>
+                    <a className='link' href={`${APP_DOMAIN}/sign_in`} style={{ fontSize: 18 }}>Staff Login</a>
                 </Header>
 
                 <ApprovedBy style={{ paddingTop: '3%' }} />
