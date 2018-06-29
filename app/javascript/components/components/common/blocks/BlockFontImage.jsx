@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -10,10 +11,18 @@ export default class BlockFontImage extends React.Component {
         let { className, type, totalBlocks, children, ...props } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
-        let side = 100.0 / totalBlocks - 1;
+        let sidePercent = (100.0 / totalBlocks - 1) * IMAGE_PROPORTION / 100.0;
+        let maxSide = sidePercent * 100 * 10;
+
+        let side = '';
+        if (sidePercent * $(window).width() > maxSide) {
+            side = `${maxSide}px`;
+        } else {
+            side = `${sidePercent * 100}vw`;
+        }
 
         return (
-            <i className={`material-icons highlight-block-image ${className}`} aria-hidden='true' style={{ fontSize: `${side * IMAGE_PROPORTION}vw` }}>
+            <i className={`material-icons highlight-block-image ${className}`} aria-hidden='true' style={{ fontSize: side }}>
                 {type}
             </i>
         );
