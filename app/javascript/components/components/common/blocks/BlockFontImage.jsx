@@ -13,7 +13,7 @@ export default class BlockFontImage extends React.Component {
         className = _.isEmpty(className) ? '' : className;
         let sidePercent = (100.0 / totalBlocks - 1) * IMAGE_PROPORTION / 100.0;
         let maxSide = sidePercent * 100 * 10;
-        let minSide = sidePercent * 100 * 5;
+        let minSide = sidePercent * 100 * 7;
 
         let side = '';
         if (sidePercent * $(window).width() > maxSide) {

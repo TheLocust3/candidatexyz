@@ -19,7 +19,7 @@ export default class Block extends React.Component {
         className = _.isEmpty(className) ? '' : className;
         let sidePercent = (100.0 / totalBlocks - 1) / 100.0;
         let maxSide = (sidePercent * 100.0) * 10;
-        let minSide = (sidePercent * 100.0) * 5;
+        let minSide = (sidePercent * 100.0) * 7;
 
         let side = '';
         if (sidePercent * $(window).width() > maxSide) {
