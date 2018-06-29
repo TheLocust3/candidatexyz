@@ -39,7 +39,7 @@ class Share extends React.Component {
         return (
             <div className='share-menu'>
                 <Fab className='material-icons share-button' aria-label='Share'>
-                    <span className='mdc-fab__icon'>
+                    <span className='mdc-fab__icon middle-center'>
                         share
                     </span>
                 </Fab>
@@ -47,13 +47,13 @@ class Share extends React.Component {
                 <div className='share-sub-buttons'>
                     <Link to={`https://www.facebook.com/sharer/sharer.php?u=${this.props.url}`} unstyled>
                         <Fab className='share-sub-button' condensed={true}>
-                            <i className='fab fa-facebook-f' />
+                            <i className='fab fa-facebook-f middle-center' />
                         </Fab>
                     </Link>
 
                     <Link to={`http://twitter.com/share?text=${this.props.text}&url=${this.props.url}`}>
                         <Fab className='share-sub-button' condensed={true}>
-                            <i className='fab fa-twitter' />
+                            <i className='fab fa-twitter middle-center' />
                         </Fab>
                     </Link>
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import 'objectFitPolyfill';
+import objectFitImages from 'object-fit-images';
 
 import { history } from '../../../constants';
 
@@ -13,7 +13,7 @@ const PREVIEW_BODY_LENGTH = 3000;
 class NewsPreview extends React.Component {
 
     componentDidMount() {
-        objectFitPolyfill();
+        objectFitImages();
     }
 
     onThumbnailClick() {
@@ -34,7 +34,7 @@ class NewsPreview extends React.Component {
                 <Header type='headline4'>{post.title}</Header>
                 {this.renderCreatedAt()}<br />
 
-                <center><i><img className='post-image post-image-preview' data-object-fit='cover' src={post.image} /></i></center>
+                <center><i><img className='post-image post-image-preview' src={post.image} /></i></center>
 
                 <span dangerouslySetInnerHTML={{__html: post.body.substring(0, PREVIEW_BODY_LENGTH) }} />
 

@@ -15,7 +15,7 @@
     "lodash": "^4.17.5",
     "material-components-web": "^0.35.1",
     "moment": "^2.21.0",
-    "objectFitPolyfill": "^2.1.1",
+    "object-fit-images": "^3.2.3",
     "prop-types": "^15.6.0",
     "query-string": "^5.1.0",
     "raf": "^3.4.0",

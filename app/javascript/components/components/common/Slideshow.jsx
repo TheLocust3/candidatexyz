@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'objectFitPolyfill';
+import objectFitImages from 'object-fit-images';
 
 export default class Slideshow extends React.Component {
 
@@ -18,7 +18,7 @@ export default class Slideshow extends React.Component {
     }
 
     componentDidMount() {
-        objectFitPolyfill();
+        objectFitImages();
 
         this.createInterval();
         $('.slideshow-circle-holder').hide();
@@ -37,9 +37,9 @@ export default class Slideshow extends React.Component {
     }
 
     componentDidUpdate() {
-        objectFitPolyfill();
+        objectFitImages();
     }
-    
+
     componentWillUnmount() {
         clearInterval(this.interval);
         $('.slideshow').off('mousemove');

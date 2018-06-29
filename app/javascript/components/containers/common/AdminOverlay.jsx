@@ -76,7 +76,7 @@ class AdminOverlay extends React.Component {
         if (this.props.edit) {
             return (
                 <div>
-                    <Fab className='material-icons overlay-action-icon' aria-label='Undo' onClick={this.onUndoClick.bind(this)}>
+                    <Fab className='material-icons overlay-action-icon middle-center' aria-label='Undo' onClick={this.onUndoClick.bind(this)}>
                         <span className='mdc-fab__icon'>
                             undo
                         </span>
@@ -87,7 +87,7 @@ class AdminOverlay extends React.Component {
 
         return (
             <div>
-                <Fab className='material-icons overlay-action-icon' aria-label='Edit' onClick={this.onEditClick.bind(this)}>
+                <Fab className='material-icons overlay-action-icon middle-center' aria-label='Edit' onClick={this.onEditClick.bind(this)}>
                     <span className='mdc-fab__icon'>
                         edit
                     </span>
@@ -137,7 +137,7 @@ class AdminOverlay extends React.Component {
 
                 <div className='overlay-actions-right'>
                     <Fab className='material-icons overlay-action-icon' aria-label='Settings' onClick={this.onSettingsClick.bind(this)}>
-                        <span className='mdc-fab__icon'>
+                        <span className='mdc-fab__icon middle-center'>
                             settings
                         </span>
                     </Fab>

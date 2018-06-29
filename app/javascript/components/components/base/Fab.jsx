@@ -37,7 +37,9 @@ class Fab extends React.Component {
 
         let styles = theme.styling.fab;
         let customPanelTheme = _.isEmpty(this.props.customPanelTheme) ? {} : this.props.customPanelTheme;
-        styles = { ...styles, ...styles.custom, ...customPanelTheme, ...customPanelTheme.custom };
+
+        // ie needs a background color override
+        styles = { backgroundColor: '#00427c', ...styles, ...styles.custom, ...customPanelTheme, ...customPanelTheme.custom };
 
         return styles;
     }
@@ -49,7 +51,7 @@ class Fab extends React.Component {
         let fabMiniClassName = condensed ? this.themedClassName('fab--mini') : '';
 
         return (
-            <button id={this.state.uuid} className={`${this.themedClassName('fab')} ${fabMiniClassName} ${className}`} style={{  ...this.themedStyle(), ...style }} {...props}>
+            <button id={this.state.uuid} className={`relative ${this.themedClassName('fab')} ${fabMiniClassName} ${className}`} style={{  ...this.themedStyle(), ...style }} {...props}>
                 {children}
             </button>
         );
