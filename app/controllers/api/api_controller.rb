@@ -13,6 +13,12 @@ class Api::ApiController < ApplicationController
         render :json => {}, :status => 401
     end
 
+    def authenticate_user_campaign_id
+        if @campaign_id != Content.where( :identifier => 'campaignId' ).first.content
+            render_unauthorized
+        end
+    end
+
     private
     def not_found
         render :json => {}, :status => 404

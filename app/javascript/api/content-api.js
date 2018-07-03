@@ -33,6 +33,16 @@ let ContentApi = {
         });
     },
 
+    refreshCampaignId() {
+        return new Promise((resolve, reject) => {
+            $.ajax(`/api/refresh_campaign_id`, {
+                type: 'patch',
+                success: resolve,
+                error: reject
+            });
+        });
+    },
+
     update(identifier, content) {
         return new Promise((resolve, reject) => {
             $.ajax(`/api/content/${identifier}`, {

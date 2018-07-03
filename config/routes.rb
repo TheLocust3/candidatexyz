@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :images
 
     resources :content, param: :identifier
+    patch 'refresh_campaign_id' => 'content#refreshCampaignId'
     
     get 'posts/:post_type' => 'posts#index'
     get 'posts/:post_type/:url' => 'posts#show'

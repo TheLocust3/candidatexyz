@@ -2,6 +2,8 @@ class Api::PostsController < Api::ApiController
 
     include CandidateXYZ::Concerns::Authenticatable
     before_action :authenticate, only: [ :create, :update, :destroy ]
+    before_action :authenticate_campaign_id, only: [ :create, :update, :destroy ]
+    before_action :authenticate_user_campaign_id, only: [ :create, :update, :destroy ]
 
     def index
         render :json => Post.where( :post_type => params[:post_type] )

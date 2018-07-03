@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { setBlankNavbar, setDocumentTitle } from '../../actions/global-actions';
+import { history } from '../../../constants';
 import Header from '../../components/base/Header';
+import Button from '../../components/base/Button';
 import ContentApi from '../../../api/content-api';
 import MDCAutoInit from '../../components/global/MDCAutoInit';
 import RawContentInlineEditor from '../../components/content/edit/RawContentInlineEditor';
@@ -41,6 +43,12 @@ class EditRawContent extends React.Component {
         this.props.dispatch(setBlankNavbar(true));
     }
 
+    onCampaignIdRefresh() {
+        ContentApi.refreshCampaignId().then(() => {
+            history.push('/')
+        });
+    }
+
     render() {
         if (!this.state.isReady) return null;
 
@@ -57,6 +65,11 @@ class EditRawContent extends React.Component {
                 <RawContentInlineEditor content={this.state.voluneteerHelpOptions} />
 
                 <RawContentInlineEditor content={this.state.websiteTitle} />
+                <br /><br />
+
+                <Button onClick={this.onCampaignIdRefresh.bind(this)}>
+                    Refresh Campaign ID
+                </Button>
 
                 <MDCAutoInit />
             </div>

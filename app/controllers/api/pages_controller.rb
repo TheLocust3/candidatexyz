@@ -2,6 +2,8 @@ class Api::PagesController < Api::ApiController
 
     include CandidateXYZ::Concerns::Authenticatable
     before_action :authenticate, only: [ :index, :create, :update, :destroy ]
+    before_action :authenticate_campaign_id, only: [ :index, :create, :update, :destroy ]
+    before_action :authenticate_user_campaign_id, only: [ :index, :create, :update, :destroy ]
 
     def index
         render :json => Page.all
