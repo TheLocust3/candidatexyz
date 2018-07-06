@@ -125,11 +125,13 @@ export default class Slideshow extends React.Component {
         let fullscreenClassName = _.isEmpty(this.props.children) ? 'slideshow-fullscreen' : '';
 
         return (
+            <center style={{ position: 'relative' }}>
             <div className={`slideshow ${fullscreenClassName}`}>
                 {this.renderImages()}
                 
                 {this.renderBlurb()}
             </div>
+            </center>
         );
     }
 }
