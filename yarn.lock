@@ -1999,7 +1999,7 @@ camelcase@^4.1.0:
 
 "candidatexyz-common-js@https://github.com/TheLocust3/candidatexyz-common-js.git":
   version "1.0.1"
-  resolved "https://github.com/TheLocust3/candidatexyz-common-js.git#88a96c8da851efc4a7c9212e218d0732ef7fd7e7"
+  resolved "https://github.com/TheLocust3/candidatexyz-common-js.git#55ec5caa53f51a638041d8f715117217be646b07"
   dependencies:
     babel-cli "^6.26.0"
     babel-polyfill "^6.26.0"
@@ -2013,6 +2013,7 @@ camelcase@^4.1.0:
     jquery "^3.3.1"
     lodash "^4.17.10"
     material-components-web "^0.37.0"
+    moment "^2.22.2"
     proptypes "^1.1.0"
     react "^16.4.1"
     react-dom "^16.4.1"
@@ -4700,6 +4701,10 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
 moment@^2.21.0:
   version "2.21.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
+
+moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
 move-concurrently@^1.0.1:
   version "1.0.1"

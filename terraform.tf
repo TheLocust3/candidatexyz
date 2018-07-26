@@ -192,6 +192,7 @@ resource "aws_launch_configuration" "launch" {
   security_groups      = ["${aws_security_group.security_group.id}"]
   iam_instance_profile = "${aws_iam_instance_profile.ec2-profile.name}"
   key_name             = "${var.key}"
+  enable_monitoring    = false
 
   lifecycle {
     create_before_destroy = true
