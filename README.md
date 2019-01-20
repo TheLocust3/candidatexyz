@@ -1,6 +1,7 @@
 # candidateXYZ
 
-The first MVP version of [candidateXYZ](https://candidatexyz.com). A basic template for campaign websites based off of Congressman Seth Moulton's website. Fully themeable and customizable based on user input.
+The first MVP version of [candidateXYZ](https://candidatexyz.com). A basic template for campaign websites based off of Congressman Seth Moulton's website. Fully themeable and customizable based on user input.  
+Check out the story [here](https://jakekinsella.com/projects/candidatexyz).
 
 ## Local development
 
